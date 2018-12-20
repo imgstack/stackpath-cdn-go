@@ -6204,6 +6204,7 @@
         },
         "serverlessScripting": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfServerlessScripting"
           },

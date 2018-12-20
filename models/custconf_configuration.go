@@ -384,7 +384,7 @@ type CustconfConfiguration struct {
 
 	// Serverless Script Processing is currently under development and will only
 	// be used in limited testing.
-	ServerlessScripting []*CustconfServerlessScripting `json:"serverlessScripting"`
+	ServerlessScripting []*CustconfServerlessScripting `json:"serverlessScripting,omitempty"`
 
 	// The static header injection policy allows you to insert headers into the
 	// CDN request and response processor.
