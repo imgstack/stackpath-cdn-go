@@ -23,7 +23,7 @@ type CustconfRequestReceiptReportPercentage struct {
 	DedupReportPercentage int32 `json:"dedupReportPercentage,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

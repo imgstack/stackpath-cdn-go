@@ -16,7 +16,7 @@ import (
 type CustconfDNSIPV6 struct {
 
 	// enable
-	Enable bool `json:"enable,omitempty"`
+	Enable bool `json:"enable"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

@@ -21,7 +21,7 @@ import (
 type CustconfLanguageRedirect struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// The origin HTTP response code that applies to this policy
 	HTTPCode int32 `json:"httpCode,omitempty"`

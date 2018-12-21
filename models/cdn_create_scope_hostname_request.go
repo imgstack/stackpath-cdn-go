@@ -16,7 +16,7 @@ import (
 type CdnCreateScopeHostnameRequest struct {
 
 	// disable transparent mode
-	DisableTransparentMode bool `json:"disableTransparentMode,omitempty"`
+	DisableTransparentMode bool `json:"disableTransparentMode"`
 
 	// domain
 	Domain string `json:"domain,omitempty"`

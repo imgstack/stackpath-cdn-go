@@ -16,7 +16,7 @@ import (
 type CustconfMemoryCacheable struct {
 
 	// cacheable
-	Cacheable bool `json:"cacheable,omitempty"`
+	Cacheable bool `json:"cacheable"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

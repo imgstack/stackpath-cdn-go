@@ -28,7 +28,7 @@ type CustconfOriginRequestModification struct {
 	ClientRequestFilter []*CustconfRequestFilter `json:"clientRequestFilter"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// flow control
 	FlowControl string `json:"flowControl,omitempty"`

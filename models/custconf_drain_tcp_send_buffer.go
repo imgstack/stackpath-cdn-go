@@ -18,7 +18,7 @@ type CustconfDrainTCPSendBuffer struct {
 
 	// Force edges to wait for acknowledge of data in the TCP send buffer after
 	// writing the requested content into the socket.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

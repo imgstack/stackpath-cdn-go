@@ -22,16 +22,16 @@ type PurgeContentRequestItem struct {
 	Headers []string `json:"headers"`
 
 	// invalidate only
-	InvalidateOnly bool `json:"invalidateOnly,omitempty"`
+	InvalidateOnly bool `json:"invalidateOnly"`
 
 	// purge all dynamic
-	PurgeAllDynamic bool `json:"purgeAllDynamic,omitempty"`
+	PurgeAllDynamic bool `json:"purgeAllDynamic"`
 
 	// purge selector
 	PurgeSelector []*PurgeContentRequestPurgeSelector `json:"purgeSelector"`
 
 	// recursive
-	Recursive bool `json:"recursive,omitempty"`
+	Recursive bool `json:"recursive"`
 
 	// url
 	URL string `json:"url,omitempty"`

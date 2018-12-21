@@ -17,7 +17,7 @@ import (
 type CustconfCrossDomain struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// The contents of the cross domain file you want delivered instead of the
 	// default

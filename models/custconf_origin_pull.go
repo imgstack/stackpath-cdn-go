@@ -21,17 +21,17 @@ type CustconfOriginPull struct {
 	DefaultBehavior OriginPullDefaultBehaviorEnumWrapperValue `json:"defaultBehavior,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`
 
 	// GFS sends a path without any query string parameters when making external
 	// origin requests regardless if any parameters were sent by the User-Agent.
-	NoQSParams bool `json:"noQSParams,omitempty"`
+	NoQSParams bool `json:"noQSParams"`
 
 	// pass all headers on dedup
-	PassAllHeadersOnDedup bool `json:"passAllHeadersOnDedup,omitempty"`
+	PassAllHeadersOnDedup bool `json:"passAllHeadersOnDedup"`
 
 	// redirect action
 	RedirectAction OriginPullRedirectActionEnumWrapperValue `json:"redirectAction,omitempty"`
@@ -49,7 +49,7 @@ type CustconfOriginPull struct {
 
 	// This value instructs the CDN to use the original Host header from the
 	// client request when revalidating "no-cache" assets against your origin.
-	TransparentMode bool `json:"transparentMode,omitempty"`
+	TransparentMode bool `json:"transparentMode"`
 }
 
 // Validate validates this custconf origin pull

@@ -20,7 +20,7 @@ import (
 type CustconfAuthURLSignLMV struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// end time field name
 	EndTimeFieldName string `json:"endTimeFieldName,omitempty"`

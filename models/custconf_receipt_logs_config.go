@@ -16,7 +16,7 @@ import (
 type CustconfReceiptLogsConfig struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	ExtraLogFields string `json:"extraLogFields,omitempty"`

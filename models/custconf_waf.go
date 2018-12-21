@@ -19,10 +19,10 @@ type CustconfWaf struct {
 	CanonicalName string `json:"canonicalName,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// failover to origin
-	FailoverToOrigin bool `json:"failoverToOrigin,omitempty"`
+	FailoverToOrigin bool `json:"failoverToOrigin"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -40,7 +40,7 @@ type CustconfWaf struct {
 	PopFilter string `json:"popFilter,omitempty"`
 
 	// stand alone mode
-	StandAloneMode bool `json:"standAloneMode,omitempty"`
+	StandAloneMode bool `json:"standAloneMode"`
 }
 
 // Validate validates this custconf waf

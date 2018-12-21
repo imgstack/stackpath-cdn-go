@@ -20,7 +20,7 @@ import (
 type CustconfOriginResponseQueue struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -42,7 +42,7 @@ type CustconfOriginResponseQueue struct {
 	// if a request failed to properly execute the script designated by this
 	// policy.  If this option is unselected, the caching server ignores script
 	// errors and continues processing the request.
-	QuitOnError bool `json:"quitOnError,omitempty"`
+	QuitOnError bool `json:"quitOnError"`
 
 	// This is the path of the script on the CDN caching server.
 	ScriptPath string `json:"scriptPath,omitempty"`

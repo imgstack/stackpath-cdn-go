@@ -19,7 +19,7 @@ type CustconfOriginPullProtocol struct {
 
 	// This key allows you to configure the CDN caching servers to use SNI while
 	// making Secured Connection to Origin.
-	EnableSNI bool `json:"enableSNI,omitempty"`
+	EnableSNI bool `json:"enableSNI"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

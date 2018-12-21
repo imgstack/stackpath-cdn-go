@@ -18,7 +18,7 @@ import (
 type CustconfOriginPullShieldOverride struct {
 
 	// Suspends origin shielding functionality.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

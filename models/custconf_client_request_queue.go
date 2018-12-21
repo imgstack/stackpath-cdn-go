@@ -21,7 +21,7 @@ import (
 type CustconfClientRequestQueue struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -54,10 +54,10 @@ type CustconfClientRequestQueue struct {
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// provide IP geo info
-	ProvideIPGeoInfo bool `json:"provideIPGeoInfo,omitempty"`
+	ProvideIPGeoInfo bool `json:"provideIPGeoInfo"`
 
 	// quit on error
-	QuitOnError bool `json:"quitOnError,omitempty"`
+	QuitOnError bool `json:"quitOnError"`
 
 	// Integer that defines the maximum size in bytes of a Client request's body
 	// that can be sent by the CDN Caching Server to the Script Engine when
@@ -69,7 +69,7 @@ type CustconfClientRequestQueue struct {
 
 	// Boolean flag for indicating whether the CDN Caching Server needs to send
 	// the body provided in a Client request to the Script Engine.
-	SendRequestBody bool `json:"sendRequestBody,omitempty"`
+	SendRequestBody bool `json:"sendRequestBody"`
 }
 
 // Validate validates this custconf client request queue

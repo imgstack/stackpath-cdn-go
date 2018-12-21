@@ -41,7 +41,7 @@ type CdnCertificate struct {
 	Issuer string `json:"issuer,omitempty"`
 
 	// Whether a certificate is managed by StackPath or the end user
-	ProviderManaged bool `json:"providerManaged,omitempty"`
+	ProviderManaged bool `json:"providerManaged"`
 
 	// status
 	Status CdnCertificateStatus `json:"status,omitempty"`
@@ -50,7 +50,7 @@ type CdnCertificate struct {
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames"`
 
 	// trusted
-	Trusted bool `json:"trusted,omitempty"`
+	Trusted bool `json:"trusted"`
 
 	// update date
 	// Format: date-time

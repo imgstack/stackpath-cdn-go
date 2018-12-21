@@ -16,7 +16,7 @@ import (
 type CustconfReceiptLogs struct {
 
 	// Determines whether receipt access logging be enabled for this customer.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

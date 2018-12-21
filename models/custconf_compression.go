@@ -31,7 +31,7 @@ import (
 type CustconfCompression struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character. The list of file
 	// extensions you want the caching servers to use to identify the content you

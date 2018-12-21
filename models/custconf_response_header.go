@@ -18,10 +18,10 @@ import (
 type CustconfResponseHeader struct {
 
 	// This gives the ability to disable the ETag header on the response.
-	EnableETag bool `json:"enableETag,omitempty"`
+	EnableETag bool `json:"enableETag"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// A pipe delimited list of rules that instructs the CDN caching servers to
 	// include a content-disposition header. The rules included in this setting

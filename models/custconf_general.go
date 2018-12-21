@@ -18,10 +18,10 @@ type CustconfGeneral struct {
 
 	// The allow zero byte files policy enables the caching of zero byte files
 	// (empty files) on the caching servers.
-	AllowZeroByteFile bool `json:"allowZeroByteFile,omitempty"`
+	AllowZeroByteFile bool `json:"allowZeroByteFile"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

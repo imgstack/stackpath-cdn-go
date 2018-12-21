@@ -16,7 +16,7 @@ import (
 type CustconfWafClustersOverride struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`

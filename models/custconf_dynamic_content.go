@@ -20,7 +20,7 @@ import (
 type CustconfDynamicContent struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character. A comma-separated list of
 	// glob patterns that represent HTTP request headers you want included in the

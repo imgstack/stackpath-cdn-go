@@ -18,14 +18,14 @@ import (
 type CustconfAuthVhostLockout struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`
 
 	// By enabling this checkbox your content is only accessible through one of
 	// your configured Hostnames.
-	Lockout bool `json:"lockout,omitempty"`
+	Lockout bool `json:"lockout"`
 }
 
 // Validate validates this custconf auth vhost lockout

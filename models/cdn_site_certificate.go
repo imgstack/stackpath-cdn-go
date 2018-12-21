@@ -21,7 +21,7 @@ type CdnSiteCertificate struct {
 
 	// valid will be true when a hostname associated with the site is covered
 	// by the certificate, otherwise the value will be false.
-	Valid bool `json:"valid,omitempty"`
+	Valid bool `json:"valid"`
 }
 
 // Validate validates this cdn site certificate

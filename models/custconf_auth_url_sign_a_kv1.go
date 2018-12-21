@@ -19,7 +19,7 @@ import (
 type CustconfAuthURLSignAKv1 struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// extract
 	Extract string `json:"extract,omitempty"`

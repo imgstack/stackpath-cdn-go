@@ -17,7 +17,7 @@ import (
 type CustconfDeviceBasedDynamicContent struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -39,7 +39,7 @@ type CustconfDeviceBasedDynamicContent struct {
 
 	// A flag that tells the CDN to pass through the DEVICE parameter to the
 	// origin.
-	PassToOrigin bool `json:"passToOrigin,omitempty"`
+	PassToOrigin bool `json:"passToOrigin"`
 
 	// String of values deliminated by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`

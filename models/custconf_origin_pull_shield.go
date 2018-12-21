@@ -22,7 +22,7 @@ type CustconfOriginPullShield struct {
 	Behavior OriginPullShieldBehaviorEnumWrapperValue `json:"behavior,omitempty"`
 
 	// This enables origin shielding.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

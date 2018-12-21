@@ -20,7 +20,7 @@ type CustconfLegacyXdomain struct {
 
 	// When enabled, the CDN supports the use of the Client Access and Cross
 	// Domain policies.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

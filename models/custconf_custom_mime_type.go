@@ -24,7 +24,7 @@ type CustconfCustomMimeType struct {
 	Code string `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character. This is a comma separated
 	// list of file extension and mime type pairs that describe the mime type

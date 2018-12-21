@@ -25,7 +25,7 @@ type CustconfAuthACL struct {
 	ClientIPSrc AuthACLClientIPSrcEnumWrapperValue `json:"clientIPSrc,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This allows you to specify the name of a HTTP request header which will
 	// contain the client IP address to use for this policy.

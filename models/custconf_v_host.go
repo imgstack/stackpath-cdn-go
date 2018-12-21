@@ -22,13 +22,13 @@ type CustconfVHost struct {
 	Domain string `json:"domain,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`
 
 	// root
-	Root bool `json:"root,omitempty"`
+	Root bool `json:"root"`
 }
 
 // Validate validates this custconf v host

@@ -17,7 +17,7 @@ import (
 type CdnScanOriginResponse struct {
 
 	// domain in use
-	DomainInUse bool `json:"domainInUse,omitempty"`
+	DomainInUse bool `json:"domainInUse"`
 
 	// hostname
 	Hostname string `json:"hostname,omitempty"`

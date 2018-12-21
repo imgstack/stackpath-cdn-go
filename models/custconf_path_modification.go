@@ -20,15 +20,15 @@ import (
 type CustconfPathModification struct {
 
 	// case insensitive match
-	CaseInsensitiveMatch bool `json:"caseInsensitiveMatch,omitempty"`
+	CaseInsensitiveMatch bool `json:"caseInsensitiveMatch"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// Whether or not to escape the slash character in the regular expression.
 	// Turn this off if you will escape this character yourself in the regular
 	// expression below.
-	EscapeSLASHCharacter bool `json:"escapeSlashCharacter,omitempty"`
+	EscapeSLASHCharacter bool `json:"escapeSlashCharacter"`
 
 	// A regular expression that is matched against incoming request headers to
 	// determine which requests are targeted for rewriting. For example,
@@ -40,7 +40,7 @@ type CustconfPathModification struct {
 	ID string `json:"id,omitempty"`
 
 	// include q s param in path
-	IncludeQSParamInPath bool `json:"includeQSParamInPath,omitempty"`
+	IncludeQSParamInPath bool `json:"includeQSParamInPath"`
 
 	// A regular expression pattern used to identify a portion of the path that is
 	// targeted by this policy for replacement.  This should not include the

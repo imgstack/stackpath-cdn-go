@@ -16,10 +16,10 @@ import (
 type CustconfCookieBehavior struct {
 
 	// allow caching set cookie
-	AllowCachingSetCookie bool `json:"allowCachingSetCookie,omitempty"`
+	AllowCachingSetCookie bool `json:"allowCachingSetCookie"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`

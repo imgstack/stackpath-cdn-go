@@ -28,10 +28,10 @@ type CustconfOriginPullPolicy struct {
 	CachedHeadersOverride string `json:"cachedHeadersOverride,omitempty"`
 
 	// enable o p shield for no cache
-	EnableOPShieldForNoCache bool `json:"enableOPShieldForNoCache,omitempty"`
+	EnableOPShieldForNoCache bool `json:"enableOPShieldForNoCache"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expire policy
 	ExpirePolicy OriginPullPolicyExpirePolicyEnumWrapperValue `json:"expirePolicy,omitempty"`
@@ -50,34 +50,34 @@ type CustconfOriginPullPolicy struct {
 	// setting.  If bypass cache behavior is desired for all assets at a scope,
 	// Origin Pull Queue Behavior in the Origin Pull Settings also needs to be set
 	// to NOCACHE for that scope.
-	ForceBypassCache bool `json:"forceBypassCache,omitempty"`
+	ForceBypassCache bool `json:"forceBypassCache"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
 	// honor must revalidate
-	HonorMustRevalidate bool `json:"honorMustRevalidate,omitempty"`
+	HonorMustRevalidate bool `json:"honorMustRevalidate"`
 
 	// This enables the processing of no-cache HTTP Cache-Control directives on
 	// your container. By enabling this option, responses from your origin
 	// containing the no-cache directive force the CDN to submit every subsequent
 	// request to your origin for validation before serving the asset stored in
 	// the cache.
-	HonorNoCache bool `json:"honorNoCache,omitempty"`
+	HonorNoCache bool `json:"honorNoCache"`
 
 	// This enables the processing of no-store HTTP Cache-Control directives on
 	// your container. By enabling this option, responses from your origin
 	// containing the no-store directive are not cached.  Be aware that requests
 	// for non-cacheable assets are always forwarded to your origin and may impose
 	// a high request and bandwidth load on your origin.
-	HonorNoStore bool `json:"honorNoStore,omitempty"`
+	HonorNoStore bool `json:"honorNoStore"`
 
 	// This enables the processing of private HTTP Cache-Control directives on
 	// your container. By enabling this option, responses from your origin
 	// containing the private directive are not cached.  Be aware that requests
 	// for non-cacheable assets are always forwarded to your origin and may impose
 	// a high request and bandwidth load on your origin.
-	HonorPrivate bool `json:"honorPrivate,omitempty"`
+	HonorPrivate bool `json:"honorPrivate"`
 
 	// This enables the processing of s-maxage HTTP Cache-Control directives on
 	// your container. By enabling this option, the s-maxage HTTP Cache-Control
@@ -85,10 +85,10 @@ type CustconfOriginPullPolicy struct {
 	// max-age directive.  If both max-age and s-maxage need to be preserved in
 	// the client response, the Cache-Control header must be added to the "Http
 	// Header Caching" setting.
-	HonorSMaxAge bool `json:"honorSMaxAge,omitempty"`
+	HonorSMaxAge bool `json:"honorSMaxAge"`
 
 	// honor surrogate control
-	HonorSurrogateControl bool `json:"honorSurrogateControl,omitempty"`
+	HonorSurrogateControl bool `json:"honorSurrogateControl"`
 
 	// String of values deliminated by a ',' character. This is the list of your
 	// origin’s HTTP headers that you want the CDN to cache and deliver to end
@@ -100,14 +100,14 @@ type CustconfOriginPullPolicy struct {
 
 	// This enables the CDN to apply the no-cache behavior for assets delivered by
 	// your origin containing a max-age directive equal to zero.
-	MaxAgeZeroToNoCache bool `json:"maxAgeZeroToNoCache,omitempty"`
+	MaxAgeZeroToNoCache bool `json:"maxAgeZeroToNoCache"`
 
 	// String of values deliminated by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
 	// This enables the CDN to apply the no-cache behavior for assets delivered by
 	// your origin containing the must-revalidate directive.
-	MustRevalidateToNoCache bool `json:"mustRevalidateToNoCache,omitempty"`
+	MustRevalidateToNoCache bool `json:"mustRevalidateToNoCache"`
 
 	// no cache behavior
 	NoCacheBehavior OriginPullPolicyNoCacheBehaviorEnumWrapperValue `json:"noCacheBehavior,omitempty"`
@@ -122,7 +122,7 @@ type CustconfOriginPullPolicy struct {
 	StatusCodeMatch string `json:"statusCodeMatch,omitempty"`
 
 	// update Http headers on304 response
-	UpdateHTTPHeadersOn304Response bool `json:"updateHttpHeadersOn304Response,omitempty"`
+	UpdateHTTPHeadersOn304Response bool `json:"updateHttpHeadersOn304Response"`
 }
 
 // Validate validates this custconf origin pull policy

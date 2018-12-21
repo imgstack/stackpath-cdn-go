@@ -23,10 +23,10 @@ type CustconfAuthURLSignAKv2 struct {
 	ACLDelimiter string `json:"aclDelimiter,omitempty"`
 
 	// This allows you to enable the use of wildcard matches in your ACL list.
-	EnableACLWildcard bool `json:"enableACLWildcard,omitempty"`
+	EnableACLWildcard bool `json:"enableACLWildcard"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is the field delimiter used to separate the parts of your token.
 	FieldDelimiter string `json:"fieldDelimiter,omitempty"`
@@ -41,7 +41,7 @@ type CustconfAuthURLSignAKv2 struct {
 	ID string `json:"id,omitempty"`
 
 	// match URL
-	MatchURL bool `json:"matchURL,omitempty"`
+	MatchURL bool `json:"matchURL"`
 
 	// String of values deliminated by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`

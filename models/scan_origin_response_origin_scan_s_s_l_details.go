@@ -19,7 +19,7 @@ type ScanOriginResponseOriginScanSSLDetails struct {
 	Error string `json:"error,omitempty"`
 
 	// valid
-	Valid bool `json:"valid,omitempty"`
+	Valid bool `json:"valid"`
 }
 
 // Validate validates this scan origin response origin scan s s l details

@@ -16,7 +16,7 @@ import (
 type SchemacdnOrigin struct {
 
 	// Whether or not the origin is dedicated for a site. Dedicated origins cannot be used by any site other than that which it is dedicated for.
-	Dedicated bool `json:"dedicated,omitempty"`
+	Dedicated bool `json:"dedicated"`
 
 	// Origin hostname or IP address
 	Hostname string `json:"hostname,omitempty"`

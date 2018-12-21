@@ -19,7 +19,7 @@ import (
 type CustconfCacheControl struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`
@@ -32,7 +32,7 @@ type CustconfCacheControl struct {
 
 	// Selecting this option instructs the CDN caching servers to insert the
 	// must-revalidate directive on all HTTP responses sent to clients.
-	MustRevalidate bool `json:"mustRevalidate,omitempty"`
+	MustRevalidate bool `json:"mustRevalidate"`
 
 	// This allows you to specify a custom Cache-Control header to be used by the
 	// CDN on all HTTP responses targeted by this policy.  Note: Do not include
@@ -47,7 +47,7 @@ type CustconfCacheControl struct {
 	// sends to clients with the remaining TTL of the asset in the cache.  This
 	// allows assets to expire from the browser cache at the same time they expire
 	// from the CDN.
-	SynchronizeMaxAge bool `json:"synchronizeMaxAge,omitempty"`
+	SynchronizeMaxAge bool `json:"synchronizeMaxAge"`
 }
 
 // Validate validates this custconf cache control

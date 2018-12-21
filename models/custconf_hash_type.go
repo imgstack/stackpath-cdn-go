@@ -20,7 +20,7 @@ type CustconfHashType struct {
 	Class HashTypeClassEnumWrapperValue `json:"class,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`

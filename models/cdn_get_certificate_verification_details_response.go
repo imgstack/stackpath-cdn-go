@@ -19,7 +19,7 @@ import (
 type CdnGetCertificateVerificationDetailsResponse struct {
 
 	// manual verification required
-	ManualVerificationRequired bool `json:"manualVerificationRequired,omitempty"`
+	ManualVerificationRequired bool `json:"manualVerificationRequired"`
 
 	// verification requirements
 	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements"`

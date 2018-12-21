@@ -24,7 +24,7 @@ type CdnSite struct {
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// features
 	Features []CdnSiteFeature `json:"features"`

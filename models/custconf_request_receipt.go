@@ -21,7 +21,7 @@ type CustconfRequestReceipt struct {
 	// Client Request Access Log entry. This is not referring to the Receipt
 	// Access Log entry. If this feature is enabled, the customer must have access
 	// logging enabled (see the Customer conf type).
-	AddIDToAccessLog bool `json:"addIdToAccessLog,omitempty"`
+	AddIDToAccessLog bool `json:"addIdToAccessLog"`
 
 	// certificate c n
 	CertificateCN string `json:"certificateCN,omitempty"`
@@ -35,7 +35,7 @@ type CustconfRequestReceipt struct {
 	ClientResponseHeaderFilter string `json:"clientResponseHeaderFilter,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -70,7 +70,7 @@ type CustconfRequestReceipt struct {
 	URIFormat string `json:"uriFormat,omitempty"`
 
 	// Enable Cert Verification while doing SSL connection to Receipt Origin
-	VerifyCertificate bool `json:"verifyCertificate,omitempty"`
+	VerifyCertificate bool `json:"verifyCertificate"`
 }
 
 // Validate validates this custconf request receipt

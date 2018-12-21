@@ -17,10 +17,10 @@ import (
 type CustconfAccessLogger struct {
 
 	// enable compression
-	EnableCompression bool `json:"enableCompression,omitempty"`
+	EnableCompression bool `json:"enableCompression"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expire time h c s
 	ExpireTimeHCS int64 `json:"expireTimeHCS,omitempty"`
@@ -32,7 +32,7 @@ type CustconfAccessLogger struct {
 	ID string `json:"id,omitempty"`
 
 	// upload to h c s
-	UploadToHCS bool `json:"uploadToHCS,omitempty"`
+	UploadToHCS bool `json:"uploadToHCS"`
 }
 
 // Validate validates this custconf access logger

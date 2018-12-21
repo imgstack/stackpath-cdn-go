@@ -20,7 +20,7 @@ import (
 type CustconfClientResponseQueue struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -39,7 +39,7 @@ type CustconfClientResponseQueue struct {
 
 	// This value instructs the CDN to terminate the processing of the request on
 	// all script failures.
-	QuitOnError bool `json:"quitOnError,omitempty"`
+	QuitOnError bool `json:"quitOnError"`
 
 	// This is the path of the script on the CDN caching server.
 	ScriptPath string `json:"scriptPath,omitempty"`

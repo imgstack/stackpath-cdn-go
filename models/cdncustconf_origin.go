@@ -80,7 +80,7 @@ type CdncustconfOrigin struct {
 	ReadTimeoutSecs int64 `json:"readTimeoutSecs,omitempty"`
 
 	// Enable Cert Verification while doing SSL OriginPull
-	VerifyCertificate bool `json:"verifyCertificate,omitempty"`
+	VerifyCertificate bool `json:"verifyCertificate"`
 
 	// Overrides the default time to wait when writing/sending an origin request.
 	WriteTimeoutSecs int64 `json:"writeTimeoutSecs,omitempty"`

@@ -19,7 +19,7 @@ type CustconfAuthSignUrlsInPlaylist struct {
 	CookieName string `json:"cookieName,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// extend TTL
 	ExtendTTL int64 `json:"extendTTL,omitempty"`
@@ -31,7 +31,7 @@ type CustconfAuthSignUrlsInPlaylist struct {
 	ID string `json:"id,omitempty"`
 
 	// use cookie
-	UseCookie bool `json:"useCookie,omitempty"`
+	UseCookie bool `json:"useCookie"`
 }
 
 // Validate validates this custconf auth sign urls in playlist

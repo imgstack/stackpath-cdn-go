@@ -31,7 +31,7 @@ type CustconfClientResponseModification struct {
 	ClientResponseFilter []*CustconfResponseFilter `json:"clientResponseFilter"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// flow control
 	FlowControl CustconfClientResponseModificationFlowControlEnumWrapperValue `json:"flowControl,omitempty"`

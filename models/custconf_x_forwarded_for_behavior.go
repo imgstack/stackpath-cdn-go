@@ -16,10 +16,10 @@ import (
 type CustconfXForwardedForBehavior struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// follow Http spec
-	FollowHTTPSpec bool `json:"followHttpSpec,omitempty"`
+	FollowHTTPSpec bool `json:"followHttpSpec"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`

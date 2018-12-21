@@ -25,10 +25,10 @@ type CustconfCustomer struct {
 	AccessLogFields string `json:"accessLogFields,omitempty"`
 
 	// access logs
-	AccessLogs bool `json:"accessLogs,omitempty"`
+	AccessLogs bool `json:"accessLogs"`
 
 	// compress access logs
-	CompressAccessLogs bool `json:"compressAccessLogs,omitempty"`
+	CompressAccessLogs bool `json:"compressAccessLogs"`
 
 	// This is used by the API to perform conflict checking.
 	ID string `json:"id,omitempty"`
@@ -37,19 +37,19 @@ type CustconfCustomer struct {
 	OpLogFields string `json:"opLogFields,omitempty"`
 
 	// op logs
-	OpLogs bool `json:"opLogs,omitempty"`
+	OpLogs bool `json:"opLogs"`
 
 	// String of values deliminated by a ',' character.
 	ReceiptLogFields string `json:"receiptLogFields,omitempty"`
 
 	// receipt logs
-	ReceiptLogs bool `json:"receiptLogs,omitempty"`
+	ReceiptLogs bool `json:"receiptLogs"`
 
 	// suspended
-	Suspended bool `json:"suspended,omitempty"`
+	Suspended bool `json:"suspended"`
 
 	// upload access logs to h c s
-	UploadAccessLogsToHCS bool `json:"uploadAccessLogsToHCS,omitempty"`
+	UploadAccessLogsToHCS bool `json:"uploadAccessLogsToHCS"`
 }
 
 // Validate validates this custconf customer

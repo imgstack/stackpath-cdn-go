@@ -20,7 +20,7 @@ import (
 type CustconfOriginRequestQueue struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -42,7 +42,7 @@ type CustconfOriginRequestQueue struct {
 	// if a request failed to properly execute the script designated by this
 	// policy.  If this option is unselected, the caching server ignores the
 	// script errors and continues processing the request.
-	QuitOnError bool `json:"quitOnError,omitempty"`
+	QuitOnError bool `json:"quitOnError"`
 
 	// Integer that defines the maximum size in bytes of a Origin request's body
 	// that can be sent by the CDN Caching Server to the Script Engine when
@@ -54,7 +54,7 @@ type CustconfOriginRequestQueue struct {
 
 	// Boolean flag for indicating whether the CDN Caching Server needs to send
 	// the body of the Origin request to the Script Engine.
-	SendRequestBody bool `json:"sendRequestBody,omitempty"`
+	SendRequestBody bool `json:"sendRequestBody"`
 }
 
 // Validate validates this custconf origin request queue

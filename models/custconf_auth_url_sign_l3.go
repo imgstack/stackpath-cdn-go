@@ -25,7 +25,7 @@ type CustconfAuthURLSignL3 struct {
 	ClientIPAddressField string `json:"clientIPAddressField,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values deliminated by a ',' character. A list of patterns that
 	// are used to describe query string parameters that should be omitted from
@@ -53,15 +53,15 @@ type CustconfAuthURLSignL3 struct {
 
 	// Indicates whether or not to include the Host without the request Protocol
 	// when calculating the signature.
-	IncludeHostOnly bool `json:"includeHostOnly,omitempty"`
+	IncludeHostOnly bool `json:"includeHostOnly"`
 
 	// Indicates whether or not to include both the Protocol and Host when
 	// calculating the signature.
-	IncludeProtocolAndHost bool `json:"includeProtocolAndHost,omitempty"`
+	IncludeProtocolAndHost bool `json:"includeProtocolAndHost"`
 
 	// Indicates whether or not to include the Client's IP address when
 	// calculating the signature.
-	InjectClientIPAddress bool `json:"injectClientIPAddress,omitempty"`
+	InjectClientIPAddress bool `json:"injectClientIPAddress"`
 
 	// String of values deliminated by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`

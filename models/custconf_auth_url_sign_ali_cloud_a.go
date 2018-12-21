@@ -16,7 +16,7 @@ import (
 type CustconfAuthURLSignAliCloudA struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expiration extension
 	ExpirationExtension int64 `json:"expirationExtension,omitempty"`
@@ -28,7 +28,7 @@ type CustconfAuthURLSignAliCloudA struct {
 	ID string `json:"id,omitempty"`
 
 	// include params before token
-	IncludeParamsBeforeToken bool `json:"includeParamsBeforeToken,omitempty"`
+	IncludeParamsBeforeToken bool `json:"includeParamsBeforeToken"`
 
 	// String of values deliminated by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
