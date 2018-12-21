@@ -5777,6 +5777,7 @@
         },
         "authACL": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthACL"
           },
@@ -5784,6 +5785,7 @@
         },
         "authGeo": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthGeo"
           },
@@ -5800,6 +5802,7 @@
         },
         "authUrlSign": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSign"
           },
@@ -5807,36 +5810,42 @@
         },
         "authUrlSignAliCloudA": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudA"
           }
         },
         "authUrlSignAliCloudB": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudB"
           }
         },
         "authUrlSignAliCloudC": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudC"
           }
         },
         "authUrlSignHmacTlu": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignHmacTlu"
           }
         },
         "authUrlAsymmetricSignTlu": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlAsymmetricSignTlu"
           }
         },
         "authUrlSignL3": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignL3"
           },
@@ -5844,6 +5853,7 @@
         },
         "authUrlSignAKv1": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAKv1"
           },
@@ -5851,6 +5861,7 @@
         },
         "authUrlSignAKv2": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAKv2"
           },
@@ -5858,6 +5869,7 @@
         },
         "authUrlSignLMV": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignLMV"
           },
@@ -5883,6 +5895,7 @@
         },
         "cacheControl": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfCacheControl"
           },
@@ -5902,18 +5915,21 @@
         },
         "clientRequestModification": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfClientRequestModification"
           }
         },
         "clientResponseModification": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfClientResponseModification"
           }
         },
         "clientKeepAlive": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfClientKeepAlive"
           },
@@ -5924,6 +5940,7 @@
         },
         "consistentHashing": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfConsistentHashing"
           },
@@ -5934,6 +5951,7 @@
         },
         "contentDispositionByHeader": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfContentDispositionByHeader"
           },
@@ -5941,6 +5959,7 @@
         },
         "cookieBehavior": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfCookieBehavior"
           }
@@ -5965,6 +5984,7 @@
         },
         "customMimeType": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfCustomMimeType"
           },
@@ -5975,12 +5995,14 @@
         },
         "requestFilter": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRequestFilter"
           }
         },
         "responseFilter": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfResponseFilter"
           }
@@ -5993,6 +6015,7 @@
         },
         "dnsOverride": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfDnsOverride"
           }
@@ -6005,6 +6028,7 @@
         },
         "dynamicCacheRule": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfDynamicCacheRule"
           },
@@ -6012,6 +6036,7 @@
         },
         "dynamicContent": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfDynamicContent"
           },
@@ -6049,6 +6074,7 @@
         },
         "languageRedirect": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfLanguageRedirect"
           },
@@ -6059,12 +6085,14 @@
         },
         "liveStreaming": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfLiveStreaming"
           }
         },
         "midTierCaching": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfMidTierCaching"
           },
@@ -6075,6 +6103,7 @@
         },
         "origin": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdncustconfOrigin"
           }
@@ -6090,6 +6119,7 @@
         },
         "originPullHost": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginPullHost"
           }
@@ -6105,6 +6135,7 @@
         },
         "originPullPolicy": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginPullPolicy"
           },
@@ -6112,6 +6143,7 @@
         },
         "originPullPops": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginPullPops"
           }
@@ -6124,12 +6156,14 @@
         },
         "originRequestModification": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginRequestModification"
           }
         },
         "originResponseModification": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginResponseModification"
           }
@@ -6142,6 +6176,7 @@
         },
         "pathModification": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfPathModification"
           },
@@ -6164,6 +6199,7 @@
         },
         "redirectMappings": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRedirectMappings"
           },
@@ -6171,6 +6207,7 @@
         },
         "requestReceipt": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRequestReceipt"
           }
@@ -6180,6 +6217,7 @@
         },
         "requestReceiptServer": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRequestReceiptServer"
           }
@@ -6189,12 +6227,14 @@
         },
         "robotsTxt": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRobotsTxt"
           }
         },
         "awsSignedOriginPullV4": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAwsSignedOriginPullV4"
           }
@@ -6212,6 +6252,7 @@
         },
         "staticHeader": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfStaticHeader"
           },
@@ -6237,6 +6278,7 @@
         },
         "vHost": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfVHost"
           },
@@ -6244,12 +6286,14 @@
         },
         "waf": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfWaf"
           }
         },
         "wafClustersOverride": {
           "type": "array",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfWafClustersOverride"
           }
