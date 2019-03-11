@@ -58,9 +58,13 @@ func (m *APIStatus) UnmarshalJSON(raw []byte) error {
 		return err
 	}
 
-	propDetails, err := UnmarshalAPIStatusDetailSlice(bytes.NewBuffer(data.Details), runtime.JSONConsumer())
-	if err != nil && err != io.EOF {
-		return err
+	var propDetails []APIStatusDetail
+	if string(data.Details) != "null" {
+		details, err := UnmarshalAPIStatusDetailSlice(bytes.NewBuffer(data.Details), runtime.JSONConsumer())
+		if err != nil && err != io.EOF {
+			return err
+		}
+		propDetails = details
 	}
 
 	var result APIStatus
