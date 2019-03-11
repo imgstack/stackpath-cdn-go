@@ -6741,7 +6741,7 @@
         },
         "enable": {
           "type": "boolean",
-          "x-omitempty": false,
+          "x-omitempty": true,
           "format": "boolean"
         }
       }
@@ -7428,7 +7428,7 @@
         },
         "honorSurrogateControl": {
           "type": "boolean",
-          "x-omitempty": false,
+          "x-omitempty": true,
           "format": "boolean"
         },
         "noCacheBehavior": {
@@ -7448,7 +7448,7 @@
         },
         "enableOPShieldForNoCache": {
           "type": "boolean",
-          "x-omitempty": false,
+          "x-omitempty": true,
           "format": "boolean"
         },
         "bypassCacheIdentifier": {

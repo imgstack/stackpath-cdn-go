@@ -28,7 +28,7 @@ type CustconfOriginPullPolicy struct {
 	CachedHeadersOverride string `json:"cachedHeadersOverride,omitempty"`
 
 	// enable o p shield for no cache
-	EnableOPShieldForNoCache bool `json:"enableOPShieldForNoCache"`
+	EnableOPShieldForNoCache bool `json:"enableOPShieldForNoCache,omitempty"`
 
 	// enabled
 	Enabled bool `json:"enabled"`
@@ -88,7 +88,7 @@ type CustconfOriginPullPolicy struct {
 	HonorSMaxAge bool `json:"honorSMaxAge"`
 
 	// honor surrogate control
-	HonorSurrogateControl bool `json:"honorSurrogateControl"`
+	HonorSurrogateControl bool `json:"honorSurrogateControl,omitempty"`
 
 	// String of values deliminated by a ',' character. This is the list of your
 	// origin’s HTTP headers that you want the CDN to cache and deliver to end
