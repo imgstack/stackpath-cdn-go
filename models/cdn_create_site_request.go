@@ -25,7 +25,7 @@ type CdnCreateSiteRequest struct {
 	Domain string `json:"domain,omitempty"`
 
 	// The new CDN site's associated features
-	Features []CdnCreateSiteRequestFeature `json:"features"`
+	Features []CdnCreateSiteRequestFeature `json:"features,omitempty"`
 
 	// origin
 	Origin *CdnCreateSiteRequestOrigin `json:"origin,omitempty"`

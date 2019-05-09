@@ -22,7 +22,7 @@ type CdnGetCertificateSitesResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested CDN sites
-	Results []*CdnSite `json:"results"`
+	Results []*CdnSite `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get certificate sites response

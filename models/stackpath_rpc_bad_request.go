@@ -21,7 +21,7 @@ import (
 type StackpathRPCBadRequest struct {
 
 	// field violations
-	FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations"`
+	FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations,omitempty"`
 }
 
 // AtType gets the at type of this subtype
@@ -41,7 +41,7 @@ func (m *StackpathRPCBadRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
 
 		// field violations
-		FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations"`
+		FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations,omitempty"`
 	}
 	buf := bytes.NewBuffer(raw)
 	dec := json.NewDecoder(buf)
@@ -85,7 +85,7 @@ func (m StackpathRPCBadRequest) MarshalJSON() ([]byte, error) {
 	b1, err = json.Marshal(struct {
 
 		// field violations
-		FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations"`
+		FieldViolations []*StackpathRPCBadRequestFieldViolation `json:"fieldViolations,omitempty"`
 	}{
 
 		FieldViolations: m.FieldViolations,

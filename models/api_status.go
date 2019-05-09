@@ -46,7 +46,7 @@ func (m *APIStatus) UnmarshalJSON(raw []byte) error {
 	var data struct {
 		Code int32 `json:"code,omitempty"`
 
-		Details json.RawMessage `json:"details"`
+		Details json.RawMessage `json:"details,omitempty"`
 
 		Error string `json:"error,omitempty"`
 	}
@@ -102,7 +102,7 @@ func (m APIStatus) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	b2, err = json.Marshal(struct {
-		Details []APIStatusDetail `json:"details"`
+		Details []APIStatusDetail `json:"details,omitempty"`
 	}{
 
 		Details: m.detailsField,

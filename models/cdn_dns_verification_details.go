@@ -16,7 +16,7 @@ import (
 type CdnDNSVerificationDetails struct {
 
 	// A list of DNS records that will validate domain ownership
-	DNSRecords []string `json:"dnsRecords"`
+	DNSRecords []string `json:"dnsRecords,omitempty"`
 }
 
 // Validate validates this cdn Dns verification details

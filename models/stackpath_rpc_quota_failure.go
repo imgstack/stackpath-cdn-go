@@ -21,7 +21,7 @@ import (
 type StackpathRPCQuotaFailure struct {
 
 	// violations
-	Violations []*StackpathRPCQuotaFailureViolation `json:"violations"`
+	Violations []*StackpathRPCQuotaFailureViolation `json:"violations,omitempty"`
 }
 
 // AtType gets the at type of this subtype
@@ -41,7 +41,7 @@ func (m *StackpathRPCQuotaFailure) UnmarshalJSON(raw []byte) error {
 	var data struct {
 
 		// violations
-		Violations []*StackpathRPCQuotaFailureViolation `json:"violations"`
+		Violations []*StackpathRPCQuotaFailureViolation `json:"violations,omitempty"`
 	}
 	buf := bytes.NewBuffer(raw)
 	dec := json.NewDecoder(buf)
@@ -85,7 +85,7 @@ func (m StackpathRPCQuotaFailure) MarshalJSON() ([]byte, error) {
 	b1, err = json.Marshal(struct {
 
 		// violations
-		Violations []*StackpathRPCQuotaFailureViolation `json:"violations"`
+		Violations []*StackpathRPCQuotaFailureViolation `json:"violations,omitempty"`
 	}{
 
 		Violations: m.Violations,

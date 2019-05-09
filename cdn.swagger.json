@@ -3479,7 +3479,7 @@
       "properties": {
         "values": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "number",
             "format": "double"
@@ -3502,7 +3502,7 @@
         },
         "metrics": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -3510,7 +3510,7 @@
         },
         "samples": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/GetMetricsResponseMetricSample"
           },
@@ -3623,7 +3623,7 @@
         },
         "headers": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -3631,7 +3631,7 @@
         },
         "purgeSelector": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/PurgeContentRequestPurgeSelector"
           }
@@ -3723,7 +3723,7 @@
         },
         "details": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/apiStatusDetail"
           }
@@ -3787,7 +3787,7 @@
         },
         "subjectAlternativeNames": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4000,7 +4000,7 @@
         },
         "features": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnCreateSiteRequestFeature"
           },
@@ -4073,7 +4073,7 @@
         },
         "paths": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4096,7 +4096,7 @@
       "properties": {
         "dnsRecords": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4110,7 +4110,7 @@
       "properties": {
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4136,7 +4136,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnSite"
           },
@@ -4155,7 +4155,7 @@
         },
         "verificationRequirements": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnVerificationRequirements"
           },
@@ -4172,7 +4172,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnCertificate"
           },
@@ -4186,7 +4186,7 @@
       "properties": {
         "result": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnPopScanReport"
           },
@@ -4200,7 +4200,7 @@
       "properties": {
         "series": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/GetMetricsResponseMetricSeries"
           },
@@ -4226,7 +4226,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/schemacdnOrigin"
           },
@@ -4243,7 +4243,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnPop"
           },
@@ -4280,7 +4280,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnHostname"
           },
@@ -4297,7 +4297,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnScopeOrigin"
           },
@@ -4332,7 +4332,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnScopeRule"
           },
@@ -4349,7 +4349,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnSiteCertificate"
           },
@@ -4363,7 +4363,7 @@
       "properties": {
         "addresses": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4390,7 +4390,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnScope"
           },
@@ -4416,7 +4416,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnSiteScript"
           },
@@ -4433,7 +4433,7 @@
         },
         "results": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnSite"
           },
@@ -4522,7 +4522,7 @@
       "properties": {
         "items": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/PurgeContentRequestItem"
           },
@@ -4547,7 +4547,7 @@
       "properties": {
         "hosts": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4565,7 +4565,7 @@
         },
         "verificationRequirements": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnVerificationRequirements"
           },
@@ -4703,7 +4703,7 @@
         },
         "features": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdnSiteFeature"
           },
@@ -4778,7 +4778,7 @@
         },
         "paths": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4903,7 +4903,7 @@
       "properties": {
         "hosts": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -4922,7 +4922,7 @@
         },
         "paths": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "type": "string"
           },
@@ -5839,7 +5839,7 @@
         },
         "authACL": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthACL"
           },
@@ -5847,7 +5847,7 @@
         },
         "authGeo": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthGeo"
           },
@@ -5861,7 +5861,7 @@
         },
         "authUrlSign": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSign"
           },
@@ -5869,42 +5869,42 @@
         },
         "authUrlSignAliCloudA": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudA"
           }
         },
         "authUrlSignAliCloudB": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudB"
           }
         },
         "authUrlSignAliCloudC": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignAliCloudC"
           }
         },
         "authUrlSignHmacTlu": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignHmacTlu"
           }
         },
         "authUrlSignIq": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlSignIq"
           }
         },
         "authUrlAsymmetricSignTlu": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAuthUrlAsymmetricSignTlu"
           }
@@ -5920,7 +5920,7 @@
         },
         "cacheControl": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfCacheControl"
           },
@@ -5931,14 +5931,14 @@
         },
         "clientRequestModification": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfClientRequestModification"
           }
         },
         "clientResponseModification": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfClientResponseModification"
           }
@@ -5951,7 +5951,7 @@
         },
         "contentDispositionByHeader": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfContentDispositionByHeader"
           },
@@ -5965,7 +5965,7 @@
         },
         "customMimeType": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfCustomMimeType"
           },
@@ -5973,7 +5973,7 @@
         },
         "dynamicCacheRule": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfDynamicCacheRule"
           },
@@ -5981,7 +5981,7 @@
         },
         "dynamicContent": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfDynamicContent"
           },
@@ -6007,7 +6007,7 @@
         },
         "origin": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/cdncustconfOrigin"
           }
@@ -6023,7 +6023,7 @@
         },
         "originPullHost": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginPullHost"
           }
@@ -6039,7 +6039,7 @@
         },
         "originPullPolicy": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginPullPolicy"
           },
@@ -6047,14 +6047,14 @@
         },
         "originRequestModification": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginRequestModification"
           }
         },
         "originResponseModification": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfOriginResponseModification"
           }
@@ -6070,7 +6070,7 @@
         },
         "redirectMappings": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRedirectMappings"
           },
@@ -6081,28 +6081,28 @@
         },
         "robotsTxt": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfRobotsTxt"
           }
         },
         "awsSignedOriginPullV4": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAwsSignedOriginPullV4"
           }
         },
         "awsSignedS3PostV4": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfAwsSignedS3PostV4"
           }
         },
         "staticHeader": {
           "type": "array",
-          "x-omitempty": "true",
+          "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfStaticHeader"
           },
@@ -6116,7 +6116,6 @@
         },
         "vHost": {
           "type": "array",
-          "x-omitempty": "true",
           "x-omitempty": true,
           "items": {
             "$ref": "#/definitions/custconfVHost"
@@ -7199,7 +7198,7 @@
           "properties": {
             "fieldViolations": {
               "type": "array",
-              "x-omitempty": "true",
+              "x-omitempty": true,
               "items": {
                 "$ref": "#/definitions/stackpath.rpc.BadRequest.FieldViolation"
               }
@@ -7229,7 +7228,7 @@
           "properties": {
             "links": {
               "type": "array",
-              "x-omitempty": "true",
+              "x-omitempty": true,
               "items": {
                 "$ref": "#/definitions/stackpath.rpc.Help.Link"
               }
@@ -7277,7 +7276,7 @@
           "properties": {
             "violations": {
               "type": "array",
-              "x-omitempty": "true",
+              "x-omitempty": true,
               "items": {
                 "$ref": "#/definitions/stackpath.rpc.PreconditionFailure.Violation"
               }
@@ -7310,7 +7309,7 @@
           "properties": {
             "violations": {
               "type": "array",
-              "x-omitempty": "true",
+              "x-omitempty": true,
               "items": {
                 "$ref": "#/definitions/stackpath.rpc.QuotaFailure.Violation"
               }

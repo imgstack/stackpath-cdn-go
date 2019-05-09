@@ -22,7 +22,7 @@ type CdnGetCertificateVerificationDetailsResponse struct {
 	ManualVerificationRequired bool `json:"manualVerificationRequired,omitempty"`
 
 	// An SSL certificate's verification requirements
-	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements"`
+	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements,omitempty"`
 }
 
 // Validate validates this cdn get certificate verification details response

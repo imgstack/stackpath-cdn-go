@@ -22,7 +22,7 @@ type CdnGetSiteScriptsResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested EdgeEngine scripts
-	Results []*CdnSiteScript `json:"results"`
+	Results []*CdnSiteScript `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get site scripts response

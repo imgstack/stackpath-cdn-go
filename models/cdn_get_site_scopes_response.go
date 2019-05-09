@@ -22,7 +22,7 @@ type CdnGetSiteScopesResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested scopes
-	Results []*CdnScope `json:"results"`
+	Results []*CdnScope `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get site scopes response

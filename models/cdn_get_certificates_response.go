@@ -22,7 +22,7 @@ type CdnGetCertificatesResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested SSL certificates
-	Results []*CdnCertificate `json:"results"`
+	Results []*CdnCertificate `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get certificates response

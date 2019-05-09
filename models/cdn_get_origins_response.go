@@ -22,7 +22,7 @@ type CdnGetOriginsResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested origins
-	Results []*SchemacdnOrigin `json:"results"`
+	Results []*SchemacdnOrigin `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get origins response

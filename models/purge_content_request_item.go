@@ -19,7 +19,7 @@ import (
 type PurgeContentRequestItem struct {
 
 	// A list of HTTP response headers from the origin that should exist for its content to be purged
-	Headers []string `json:"headers"`
+	Headers []string `json:"headers,omitempty"`
 
 	// Whether or not to mark the asset as expired and re-validate instead of deleting
 	InvalidateOnly bool `json:"invalidateOnly,omitempty"`
@@ -30,7 +30,7 @@ type PurgeContentRequestItem struct {
 	PurgeAllDynamic bool `json:"purgeAllDynamic,omitempty"`
 
 	// purge selector
-	PurgeSelector []*PurgeContentRequestPurgeSelector `json:"purgeSelector"`
+	PurgeSelector []*PurgeContentRequestPurgeSelector `json:"purgeSelector,omitempty"`
 
 	// Whether or not to recursively delete content from the CDN
 	Recursive bool `json:"recursive,omitempty"`

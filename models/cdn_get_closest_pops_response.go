@@ -19,7 +19,7 @@ import (
 type CdnGetClosestPopsResponse struct {
 
 	// Results of the scan
-	Result []*CdnPopScanReport `json:"result"`
+	Result []*CdnPopScanReport `json:"result,omitempty"`
 }
 
 // Validate validates this cdn get closest pops response

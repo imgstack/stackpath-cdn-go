@@ -16,7 +16,7 @@ import (
 type CdnUpdateSiteCertificateHostsRequest struct {
 
 	// The SSL certificated common and SAN hosts
-	Hosts []string `json:"hosts"`
+	Hosts []string `json:"hosts,omitempty"`
 }
 
 // Validate validates this cdn update site certificate hosts request

@@ -22,7 +22,7 @@ type CdnRequestCertificateResponse struct {
 	Certificate *CdnCertificate `json:"certificate,omitempty"`
 
 	// The certificate's verification requirements
-	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements"`
+	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements,omitempty"`
 }
 
 // Validate validates this cdn request certificate response

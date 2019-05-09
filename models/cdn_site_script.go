@@ -36,7 +36,7 @@ type CdnSiteScript struct {
 	// The URL paths that incoming requests should answer with an EdgeEngine script
 	//
 	// Every EdgeEngine script needs at least one path, and paths must be unique.
-	Paths []string `json:"paths"`
+	Paths []string `json:"paths,omitempty"`
 
 	// The ID of the site to which an EdgeEngine script belongs
 	SiteID string `json:"siteId,omitempty"`

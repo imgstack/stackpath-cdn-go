@@ -18,7 +18,7 @@ type CdnGetSiteDNSTargetsResponse struct {
 	// The requested DNS CNAME targets
 	//
 	// A site's hostname should point to these CNAME targets in order for traffic to be sent through StackPath's edge nodes.
-	Addresses []string `json:"addresses"`
+	Addresses []string `json:"addresses,omitempty"`
 }
 
 // Validate validates this cdn get site Dns targets response

@@ -22,7 +22,7 @@ type CdnGetPopsResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested StackPath points of presence
-	Results []*CdnPop `json:"results"`
+	Results []*CdnPop `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get pops response

@@ -22,10 +22,10 @@ type GetMetricsResponseMetricSeries struct {
 	Key string `json:"key,omitempty"`
 
 	// Descriptions of the CDN metrics' samples
-	Metrics []string `json:"metrics"`
+	Metrics []string `json:"metrics,omitempty"`
 
 	// The CDN metrics' data points
-	Samples []*GetMetricsResponseMetricSample `json:"samples"`
+	Samples []*GetMetricsResponseMetricSample `json:"samples,omitempty"`
 
 	// The type of data in the analytics set
 	Type string `json:"type,omitempty"`

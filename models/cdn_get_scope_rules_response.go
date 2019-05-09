@@ -22,7 +22,7 @@ type CdnGetScopeRulesResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested EdgeRules
-	Results []*CdnScopeRule `json:"results"`
+	Results []*CdnScopeRule `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get scope rules response

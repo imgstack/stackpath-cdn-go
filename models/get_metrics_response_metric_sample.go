@@ -16,7 +16,7 @@ import (
 type GetMetricsResponseMetricSample struct {
 
 	// An individual data point
-	Values []float64 `json:"values"`
+	Values []float64 `json:"values,omitempty"`
 }
 
 // Validate validates this get metrics response metric sample

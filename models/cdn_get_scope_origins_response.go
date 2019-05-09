@@ -22,7 +22,7 @@ type CdnGetScopeOriginsResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested scope's origins
-	Results []*CdnScopeOrigin `json:"results"`
+	Results []*CdnScopeOrigin `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get scope origins response

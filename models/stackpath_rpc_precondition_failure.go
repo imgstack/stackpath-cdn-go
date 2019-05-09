@@ -21,7 +21,7 @@ import (
 type StackpathRPCPreconditionFailure struct {
 
 	// violations
-	Violations []*StackpathRPCPreconditionFailureViolation `json:"violations"`
+	Violations []*StackpathRPCPreconditionFailureViolation `json:"violations,omitempty"`
 }
 
 // AtType gets the at type of this subtype
@@ -41,7 +41,7 @@ func (m *StackpathRPCPreconditionFailure) UnmarshalJSON(raw []byte) error {
 	var data struct {
 
 		// violations
-		Violations []*StackpathRPCPreconditionFailureViolation `json:"violations"`
+		Violations []*StackpathRPCPreconditionFailureViolation `json:"violations,omitempty"`
 	}
 	buf := bytes.NewBuffer(raw)
 	dec := json.NewDecoder(buf)
@@ -85,7 +85,7 @@ func (m StackpathRPCPreconditionFailure) MarshalJSON() ([]byte, error) {
 	b1, err = json.Marshal(struct {
 
 		// violations
-		Violations []*StackpathRPCPreconditionFailureViolation `json:"violations"`
+		Violations []*StackpathRPCPreconditionFailureViolation `json:"violations,omitempty"`
 	}{
 
 		Violations: m.Violations,

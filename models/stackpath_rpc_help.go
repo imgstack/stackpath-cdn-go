@@ -21,7 +21,7 @@ import (
 type StackpathRPCHelp struct {
 
 	// links
-	Links []*StackpathRPCHelpLink `json:"links"`
+	Links []*StackpathRPCHelpLink `json:"links,omitempty"`
 }
 
 // AtType gets the at type of this subtype
@@ -41,7 +41,7 @@ func (m *StackpathRPCHelp) UnmarshalJSON(raw []byte) error {
 	var data struct {
 
 		// links
-		Links []*StackpathRPCHelpLink `json:"links"`
+		Links []*StackpathRPCHelpLink `json:"links,omitempty"`
 	}
 	buf := bytes.NewBuffer(raw)
 	dec := json.NewDecoder(buf)
@@ -85,7 +85,7 @@ func (m StackpathRPCHelp) MarshalJSON() ([]byte, error) {
 	b1, err = json.Marshal(struct {
 
 		// links
-		Links []*StackpathRPCHelpLink `json:"links"`
+		Links []*StackpathRPCHelpLink `json:"links,omitempty"`
 	}{
 
 		Links: m.Links,

@@ -19,7 +19,7 @@ import (
 type CdnGetMetricsResponse struct {
 
 	// The requested CDN metrics
-	Series []*GetMetricsResponseMetricSeries `json:"series"`
+	Series []*GetMetricsResponseMetricSeries `json:"series,omitempty"`
 }
 
 // Validate validates this cdn get metrics response

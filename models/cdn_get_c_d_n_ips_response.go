@@ -16,7 +16,7 @@ import (
 type CdnGetCDNIpsResponse struct {
 
 	// The requested IP addresses
-	Results []string `json:"results"`
+	Results []string `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get c d n ips response

@@ -22,7 +22,7 @@ type CdnGetScopeHostnamesResponse struct {
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
 	// The requested scope hostnames
-	Results []*CdnHostname `json:"results"`
+	Results []*CdnHostname `json:"results,omitempty"`
 }
 
 // Validate validates this cdn get scope hostnames response

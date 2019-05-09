@@ -24,7 +24,7 @@ type CdnCreateSiteScriptRequest struct {
 	Name string `json:"name,omitempty"`
 
 	// The HTTP request paths that are handled by the new EdgeEngine script
-	Paths []string `json:"paths"`
+	Paths []string `json:"paths,omitempty"`
 }
 
 // Validate validates this cdn create site script request

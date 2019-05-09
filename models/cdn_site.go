@@ -29,7 +29,7 @@ type CdnSite struct {
 	// A CDN site's associated features
 	//
 	// Features control how StackPath provisions and configures a site.
-	Features []CdnSiteFeature `json:"features"`
+	Features []CdnSiteFeature `json:"features,omitempty"`
 
 	// A CDN site's unique identifier
 	ID string `json:"id,omitempty"`

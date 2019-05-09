@@ -21,7 +21,7 @@ type CdnUpdateSiteScriptRequest struct {
 	Code strfmt.Base64 `json:"code,omitempty"`
 
 	// The HTTP request paths that are handled by the EdgeEngine script
-	Paths []string `json:"paths"`
+	Paths []string `json:"paths,omitempty"`
 }
 
 // Validate validates this cdn update site script request

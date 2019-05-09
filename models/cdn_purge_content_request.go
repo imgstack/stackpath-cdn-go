@@ -19,7 +19,7 @@ import (
 type CdnPurgeContentRequest struct {
 
 	// The items to purge from the CDN
-	Items []*PurgeContentRequestItem `json:"items"`
+	Items []*PurgeContentRequestItem `json:"items,omitempty"`
 }
 
 // Validate validates this cdn purge content request

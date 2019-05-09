@@ -49,7 +49,7 @@ type CdnCertificate struct {
 	// A list of Subject Alternative Names in the certificate
 	//
 	// Certificates for multiple domains define their domains in certificate's SAN list.
-	SubjectAlternativeNames []string `json:"subjectAlternativeNames"`
+	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty"`
 
 	// Whether or not the certificate's authority is trusted by a web browser
 	Trusted bool `json:"trusted,omitempty"`
