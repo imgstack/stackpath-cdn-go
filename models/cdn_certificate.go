@@ -41,7 +41,7 @@ type CdnCertificate struct {
 	Issuer string `json:"issuer,omitempty"`
 
 	// Whether a certificate is managed by StackPath or the end user
-	ProviderManaged bool `json:"providerManaged,omitempty"`
+	ProviderManaged bool `json:"providerManaged"`
 
 	// status
 	Status CdnCertificateStatus `json:"status,omitempty"`
@@ -52,7 +52,7 @@ type CdnCertificate struct {
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty"`
 
 	// Whether or not the certificate's authority is trusted by a web browser
-	Trusted bool `json:"trusted,omitempty"`
+	Trusted bool `json:"trusted"`
 
 	// The date an SSL certificate was last updated
 	// Format: date-time

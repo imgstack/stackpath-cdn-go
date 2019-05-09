@@ -19,7 +19,7 @@ type CustconfCustomMimeType struct {
 	Code string `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values delimited by a ',' character. This is a comma separated list of file extension and mime type pairs that describe the mime type mapping for the CDN caching servers. The file extension and mime type values should be delimited by a colon (:). For example, to map files ending with jpg to the image/jpeg mime type and files ending with png to image/png, set this value to: jpg:image/jpeg,png:image/png.
 	ExtensionMap string `json:"extensionMap,omitempty"`

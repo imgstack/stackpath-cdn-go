@@ -24,7 +24,7 @@ type CdnSite struct {
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// Whether or not a site's CDN service is enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// A CDN site's associated features
 	//

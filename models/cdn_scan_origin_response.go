@@ -17,7 +17,7 @@ import (
 type CdnScanOriginResponse struct {
 
 	// Whether or not the scanned domain is already in use on the StackPath platform
-	DomainInUse bool `json:"domainInUse,omitempty"`
+	DomainInUse bool `json:"domainInUse"`
 
 	// The hostname that was scanned
 	Hostname string `json:"hostname,omitempty"`

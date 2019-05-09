@@ -16,7 +16,7 @@ import (
 type CustconfAuthURLSignAliCloudB struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expiration extension
 	ExpirationExtension int64 `json:"expirationExtension,omitempty"`

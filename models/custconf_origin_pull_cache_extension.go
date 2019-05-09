@@ -16,7 +16,7 @@ import (
 type CustconfOriginPullCacheExtension struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is the number of seconds to extend an asset's TTL when the origin is unavailable. The CDN will continue to retry the origin up to the Origin Unavailable Max TTL.
 	ExpiredCacheExtension int32 `json:"expiredCacheExtension,omitempty"`

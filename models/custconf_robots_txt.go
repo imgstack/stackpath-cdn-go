@@ -19,7 +19,7 @@ type CustconfRobotsTxt struct {
 	CacheControlHeader string `json:"cacheControlHeader,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// file
 	File string `json:"file,omitempty"`

@@ -19,7 +19,7 @@ import (
 type CdnGetCertificateVerificationDetailsResponse struct {
 
 	// Whether or not the end user must provide their own certificate verification
-	ManualVerificationRequired bool `json:"manualVerificationRequired,omitempty"`
+	ManualVerificationRequired bool `json:"manualVerificationRequired"`
 
 	// An SSL certificate's verification requirements
 	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements,omitempty"`

@@ -19,7 +19,7 @@ type ScanOriginResponseOriginScanSSLDetails struct {
 	Error string `json:"error,omitempty"`
 
 	// Whether or not the scanned domain has a valid SSL certificate
-	Valid bool `json:"valid,omitempty"`
+	Valid bool `json:"valid"`
 }
 
 // Validate validates this scan origin response origin scan s s l details

@@ -16,7 +16,7 @@ import (
 type CustconfCacheControl struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
@@ -25,7 +25,7 @@ type CustconfCacheControl struct {
 	MaxAge int32 `json:"maxAge,omitempty"`
 
 	// Selecting this option instructs the CDN caching servers to insert the must-revalidate directive on all HTTP responses sent to clients.
-	MustRevalidate bool `json:"mustRevalidate,omitempty"`
+	MustRevalidate bool `json:"mustRevalidate"`
 
 	// This allows you to specify a custom Cache-Control header to be used by the CDN on all HTTP responses targeted by this policy. Note: Do not include the header name (Cache-Control) in this field. Only the value of the header should be specified.
 	Override string `json:"override,omitempty"`
@@ -34,7 +34,7 @@ type CustconfCacheControl struct {
 	StatusCodeMatch string `json:"statusCodeMatch,omitempty"`
 
 	// Selecting this option allows the CDN to synchronize the Max-Age header it sends to clients with the remaining TTL of the asset in the cache. This allows assets to expire from the browser cache at the same time they expire from the CDN.
-	SynchronizeMaxAge bool `json:"synchronizeMaxAge,omitempty"`
+	SynchronizeMaxAge bool `json:"synchronizeMaxAge"`
 }
 
 // Validate validates this custconf cache control

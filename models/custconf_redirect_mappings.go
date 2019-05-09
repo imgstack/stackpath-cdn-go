@@ -19,7 +19,7 @@ type CustconfRedirectMappings struct {
 	Code int64 `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`

@@ -3607,16 +3607,19 @@
         },
         "recursive": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not to recursively delete content from the CDN"
         },
         "invalidateOnly": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not to mark the asset as expired and re-validate instead of deleting"
         },
         "purgeAllDynamic": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This is ignored if recursive is true.",
           "title": "Whether or not to purge dynamic versions of assets"
@@ -3679,6 +3682,7 @@
       "properties": {
         "valid": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not the scanned domain has a valid SSL certificate"
         },
@@ -3767,6 +3771,7 @@
         },
         "trusted": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not the certificate's authority is trusted by a web browser"
         },
@@ -3799,6 +3804,7 @@
         },
         "providerManaged": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether a certificate is managed by StackPath or the end user"
         }
@@ -4150,6 +4156,7 @@
       "properties": {
         "manualVerificationRequired": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not the end user must provide their own certificate verification"
         },
@@ -4600,6 +4607,7 @@
         },
         "domainInUse": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not the scanned domain is already in use on the StackPath platform"
         }
@@ -4712,6 +4720,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not a site's CDN service is enabled"
         },
@@ -4726,6 +4735,7 @@
       "properties": {
         "valid": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "An SSL certificate is valid when a hostname associated with the site is covered by the certificate.",
           "title": "Whether or not a site's SSL certificate is valid"
@@ -4978,6 +4988,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -4996,6 +5007,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5027,6 +5039,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5058,6 +5071,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5085,6 +5099,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5103,6 +5118,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5141,6 +5157,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5179,6 +5196,7 @@
         },
         "ignoreFieldsAfterToken": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "Select this option if you want StackPath to exclude query string parameters specified after the passphrase in the validation process."
         },
@@ -5208,6 +5226,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5240,6 +5259,7 @@
         },
         "includeParamsBeforeToken": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "expirationExtension": {
@@ -5248,6 +5268,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5280,6 +5301,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5318,6 +5340,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5367,6 +5390,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5404,6 +5428,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5429,6 +5454,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "bucketIdentifier": {
@@ -5489,6 +5515,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "bucketIdentifier": {
@@ -5557,6 +5584,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5577,6 +5605,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5603,6 +5632,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5637,11 +5667,13 @@
         },
         "mustRevalidate": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "Selecting this option instructs the CDN caching servers to insert the must-revalidate directive on all HTTP responses sent to clients."
         },
         "synchronizeMaxAge": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "Selecting this option allows the CDN to synchronize the Max-Age header it sends to clients with the remaining TTL of the asset in the cache. This allows assets to expire from the browser cache at the same time they expire from the CDN."
         },
@@ -5651,6 +5683,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5665,11 +5698,13 @@
         },
         "normalizeKeyPathToLowerCase": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "When set, purges and requests for a file will be case insensitive. This setting is useful if you have a case insensitive origin server and would like to avoid duplicating assets."
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -5703,6 +5738,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5766,6 +5802,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -5823,6 +5860,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6144,11 +6182,13 @@
         },
         "overrideOriginHeader": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This setting allows you to force the Content-Disposition generated by the CDN for this policy to override the Content-Disposition header cached from your origin."
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6187,11 +6227,13 @@
         },
         "overrideOriginHeader": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This setting allows you to force the Content-Disposition generated by the CDN for this policy to override the Content-Disposition header cached from your origin."
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6214,6 +6256,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6236,6 +6279,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6292,6 +6336,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6326,6 +6371,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6352,6 +6398,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "statusCodeMatch": {
@@ -6373,6 +6420,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "thresholdBytes": {
@@ -6390,6 +6438,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "Flag for enabling the File Segmentation Feature."
         }
@@ -6411,6 +6460,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       }
@@ -6424,6 +6474,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "This enables support for compressed origin pull"
         }
@@ -6439,6 +6490,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Enable support of HTTP2"
         }
@@ -6458,6 +6510,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6482,6 +6535,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6499,6 +6553,7 @@
         },
         "noQSParams": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "GFS sends a path without any query string parameters when making external origin requests regardless if any parameters were sent by the User-Agent."
         },
@@ -6508,6 +6563,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6532,6 +6588,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6576,6 +6633,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6594,6 +6652,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6620,16 +6679,19 @@
         },
         "honorNoStore": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the processing of no-store HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the no-store directive are not cached. Be aware that requests for non-cacheable assets are always forwarded to your origin and may impose a high request and bandwidth load on your origin."
         },
         "honorNoCache": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the processing of no-cache HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the no-cache directive force the CDN to submit every subsequent request to your origin for validation before serving the asset stored in the cache."
         },
         "honorMustRevalidate": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "noCacheBehavior": {
@@ -6637,11 +6699,13 @@
         },
         "maxAgeZeroToNoCache": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the CDN to apply the no-cache behavior for assets delivered by your origin containing a max-age directive equal to zero."
         },
         "mustRevalidateToNoCache": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the CDN to apply the no-cache behavior for assets delivered by your origin containing the must-revalidate directive."
         },
@@ -6651,6 +6715,7 @@
         },
         "forceBypassCache": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This forces the CDN to not cache any asset pulled from your origin that would otherwise be stored at this location in the cache. Typically this policy is used to prevent 4XX and 5XX response codes from overwriting a file in the cache when used with corresponding Origin Status Code Match setting. If bypass cache behavior is desired for all assets at a scope, Origin Pull Queue Behavior in the Origin Pull Settings also needs to be set to NOCACHE for that scope."
         },
@@ -6660,20 +6725,24 @@
         },
         "honorPrivate": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the processing of private HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the private directive are not cached. Be aware that requests for non-cacheable assets are always forwarded to your origin and may impose a high request and bandwidth load on your origin."
         },
         "honorSMaxAge": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This enables the processing of s-maxage HTTP Cache-Control directives on your container. By enabling this option, the s-maxage HTTP Cache-Control directive in the responses from your origin takes precedence over the max-age directive. If both max-age and s-maxage need to be preserved in the client response, the Cache-Control header must be added to the \"Http Header Caching\" setting."
         },
         "updateHttpHeadersOn304Response": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6703,6 +6772,7 @@
         },
         "enableSNI": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This key allows you to configure the CDN caching servers to use SNI while making Secured Connection to Origin."
         }
@@ -6747,6 +6817,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6801,6 +6872,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6883,6 +6955,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6901,6 +6974,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6919,6 +6993,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -6946,6 +7021,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -6976,11 +7052,13 @@
         },
         "enableETag": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "This gives the ability to disable the ETag header on the response."
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -7002,6 +7080,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -7039,6 +7118,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         },
         "methodFilter": {
@@ -7073,6 +7153,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -7091,6 +7172,7 @@
         },
         "enabled": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean"
         }
       },
@@ -7105,11 +7187,13 @@
         },
         "hasPreviousPage": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not a previous page of data exists"
         },
         "hasNextPage": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "title": "Whether or not another page of data is available"
         },
@@ -7176,6 +7260,7 @@
         },
         "dedicated": {
           "type": "boolean",
+          "x-omitempty": false,
           "format": "boolean",
           "description": "Dedicated origins cannot be used by any site other than that to which it is dedicated.",
           "title": "Whether or not an origin is dedicated to a CDN site"

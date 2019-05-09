@@ -20,7 +20,7 @@ type SchemacdnOrigin struct {
 	// Whether or not an origin is dedicated to a CDN site
 	//
 	// Dedicated origins cannot be used by any site other than that to which it is dedicated.
-	Dedicated bool `json:"dedicated,omitempty"`
+	Dedicated bool `json:"dedicated"`
 
 	// An origin's hostname or IP address
 	Hostname string `json:"hostname,omitempty"`

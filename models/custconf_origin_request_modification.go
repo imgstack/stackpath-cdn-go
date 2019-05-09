@@ -19,7 +19,7 @@ type CustconfOriginRequestModification struct {
 	AddHeaders string `json:"addHeaders,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// flow control
 	FlowControl string `json:"flowControl,omitempty"`

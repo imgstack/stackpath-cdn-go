@@ -16,10 +16,10 @@ import (
 type CustconfResponseHeader struct {
 
 	// This gives the ability to disable the ETag header on the response.
-	EnableETag bool `json:"enableETag,omitempty"`
+	EnableETag bool `json:"enableETag"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// A pipe delimited list of rules that instructs the CDN caching servers to include a content-disposition header. The rules included in this setting must be entered in the following format: Content-Disposition:<User Agent>:<file extension 1>, <file extension 2>. For example, to send the Content-Disposition header for all Mozilla browsers on the delivery of mp3, exe, tar, zip, gz and rar files, you would enter the following in the field: Content-Disposition:Mozilla*:mp3,exe,tar,zip,gz,rar
 	HTTP string `json:"http,omitempty"`

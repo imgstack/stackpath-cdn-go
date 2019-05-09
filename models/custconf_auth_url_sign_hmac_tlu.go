@@ -26,7 +26,7 @@ type CustconfAuthURLSignHmacTlu struct {
 	DigestParameterName string `json:"digestParameterName,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expire parameter name
 	ExpireParameterName string `json:"expireParameterName,omitempty"`

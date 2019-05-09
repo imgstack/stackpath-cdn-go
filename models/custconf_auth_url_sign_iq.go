@@ -16,7 +16,7 @@ import (
 type CustconfAuthURLSignIq struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`

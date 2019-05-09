@@ -16,7 +16,7 @@ import (
 type CustconfAuthURLSign struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is the name of the query string parameter that contains the Epoch time after which the URL is considered invalid.
 	ExpiresField string `json:"expiresField,omitempty"`
@@ -28,7 +28,7 @@ type CustconfAuthURLSign struct {
 	ID string `json:"id,omitempty"`
 
 	// Select this option if you want StackPath to exclude query string parameters specified after the passphrase in the validation process.
-	IgnoreFieldsAfterToken bool `json:"ignoreFieldsAfterToken,omitempty"`
+	IgnoreFieldsAfterToken bool `json:"ignoreFieldsAfterToken"`
 
 	// This is a query string parameter that contains an IPv4 address to which the published URL will be restricted.
 	IPAddressField string `json:"ipAddressField,omitempty"`

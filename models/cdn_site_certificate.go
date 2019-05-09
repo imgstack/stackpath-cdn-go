@@ -22,7 +22,7 @@ type CdnSiteCertificate struct {
 	// Whether or not a site's SSL certificate is valid
 	//
 	// An SSL certificate is valid when a hostname associated with the site is covered by the certificate.
-	Valid bool `json:"valid,omitempty"`
+	Valid bool `json:"valid"`
 }
 
 // Validate validates this cdn site certificate

@@ -32,7 +32,7 @@ type CustconfAwsSignedS3PostV4 struct {
 	BucketIdentifier string `json:"bucketIdentifier,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// expire time seconds
 	ExpireTimeSeconds int64 `json:"expireTimeSeconds,omitempty"`

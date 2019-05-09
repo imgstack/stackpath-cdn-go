@@ -16,7 +16,7 @@ import (
 type CustconfDynamicContent struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values delimited by a ',' character. A comma-separated list of glob patterns that represent HTTP request headers you want included in the cache key generation. Via the use of a colon ':', users can define each glob pattern to match a header name only, or the pattern can be used to match both the header name and value. A pattern without a colon ':' is treated as a header name ONLY match. If the pattern matches the header, then all values are used as a part of the cache key. If the pattern contains a colon, the CDN uses the pattern on the left of the colon to match the header. The pattern to the right of the colon is used to match the value. The CDN only uses the header/value as a part of the cache key if both patterns result in a match. Note, no pattern after a colon indicates an empty header (no value).
 	// See the fnmatch manpage for acceptable glob patterns.

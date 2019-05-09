@@ -16,7 +16,7 @@ import (
 type CustconfCompression struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// String of values delimited by a ',' character. The list of file extensions you want the caching servers to use to identify the content you want compressed before delivering it to end users
 	Gzip string `json:"gzip,omitempty"`

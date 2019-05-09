@@ -21,10 +21,10 @@ type PaginationPageInfo struct {
 	EndCursor string `json:"endCursor,omitempty"`
 
 	// Whether or not another page of data is available
-	HasNextPage bool `json:"hasNextPage,omitempty"`
+	HasNextPage bool `json:"hasNextPage"`
 
 	// Whether or not a previous page of data exists
-	HasPreviousPage bool `json:"hasPreviousPage,omitempty"`
+	HasPreviousPage bool `json:"hasPreviousPage"`
 
 	// The cursor for the first item in the set of data returned
 	StartCursor string `json:"startCursor,omitempty"`

@@ -16,13 +16,13 @@ import (
 type CustconfCacheKeyModification struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
 	// When set, purges and requests for a file will be case insensitive. This setting is useful if you have a case insensitive origin server and would like to avoid duplicating assets.
-	NormalizeKeyPathToLowerCase bool `json:"normalizeKeyPathToLowerCase,omitempty"`
+	NormalizeKeyPathToLowerCase bool `json:"normalizeKeyPathToLowerCase"`
 }
 
 // Validate validates this custconf cache key modification

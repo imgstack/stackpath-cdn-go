@@ -17,13 +17,13 @@ import (
 type CustconfOriginPull struct {
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
 	// GFS sends a path without any query string parameters when making external origin requests regardless if any parameters were sent by the User-Agent.
-	NoQSParams bool `json:"noQSParams,omitempty"`
+	NoQSParams bool `json:"noQSParams"`
 
 	// redirect action
 	RedirectAction OriginPullRedirectActionEnumWrapperValue `json:"redirectAction,omitempty"`

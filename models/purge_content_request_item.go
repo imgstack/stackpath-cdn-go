@@ -22,18 +22,18 @@ type PurgeContentRequestItem struct {
 	Headers []string `json:"headers,omitempty"`
 
 	// Whether or not to mark the asset as expired and re-validate instead of deleting
-	InvalidateOnly bool `json:"invalidateOnly,omitempty"`
+	InvalidateOnly bool `json:"invalidateOnly"`
 
 	// Whether or not to purge dynamic versions of assets
 	//
 	// This is ignored if recursive is true.
-	PurgeAllDynamic bool `json:"purgeAllDynamic,omitempty"`
+	PurgeAllDynamic bool `json:"purgeAllDynamic"`
 
 	// purge selector
 	PurgeSelector []*PurgeContentRequestPurgeSelector `json:"purgeSelector,omitempty"`
 
 	// Whether or not to recursively delete content from the CDN
-	Recursive bool `json:"recursive,omitempty"`
+	Recursive bool `json:"recursive"`
 
 	// The URL at which to delete content
 	URL string `json:"url,omitempty"`
