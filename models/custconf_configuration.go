@@ -188,6 +188,9 @@ type CustconfConfiguration struct {
 
 	// A hostname policy allows you to specify an alternate domain name that you want to use to access content from your CDN container.
 	VHost []*CustconfVHost `json:"vHost,omitempty"`
+
+	// vary header field
+	VaryHeaderField *CustconfVaryHeaderField `json:"varyHeaderField,omitempty"`
 }
 
 // Validate validates this custconf configuration
@@ -419,6 +422,10 @@ func (m *CustconfConfiguration) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVHost(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVaryHeaderField(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1638,6 +1645,24 @@ func (m *CustconfConfiguration) validateVHost(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) validateVaryHeaderField(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.VaryHeaderField) { // not required
+		return nil
+	}
+
+	if m.VaryHeaderField != nil {
+		if err := m.VaryHeaderField.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("varyHeaderField")
+			}
+			return err
+		}
 	}
 
 	return nil

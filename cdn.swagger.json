@@ -6034,6 +6034,9 @@
         "fileSegmentation": {
           "$ref": "#/definitions/custconfFileSegmentation"
         },
+        "varyHeaderField": {
+          "$ref": "#/definitions/custconfVaryHeaderField"
+        },
         "flvPseudoStreaming": {
           "$ref": "#/definitions/custconfFlvPseudoStreaming"
         },
@@ -7178,6 +7181,26 @@
       },
       "description": "A hostname policy allows you to specify an alternate domain name that you want to use to access content from your CDN container."
     },
+    "custconfVaryHeaderField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "This is used by the API to perform conflict checking."
+        },
+        "valuesFilter": {
+          "type": "string",
+          "description": "String of values deliminated by a ',' character."
+        },
+        "enabled": {
+          "type": "boolean",
+          "x-omitempty": false,
+          "format": "boolean"
+        }
+      },
+      "description": "Policy for configuring how the CDN handles a Vary field header delivered from\nan origin."
+    },
+
     "paginationPageInfo": {
       "type": "object",
       "properties": {
