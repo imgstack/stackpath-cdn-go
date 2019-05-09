@@ -187,7 +187,7 @@ type CustconfConfiguration struct {
 	TimePseudoStreaming *CustconfTimePseudoStreaming `json:"timePseudoStreaming,omitempty"`
 
 	// A hostname policy allows you to specify an alternate domain name that you want to use to access content from your CDN container.
-	VHost []*CustconfVHost `json:"vHost"`
+	VHost []*CustconfVHost `json:"vHost,omitempty"`
 }
 
 // Validate validates this custconf configuration
