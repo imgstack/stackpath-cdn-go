@@ -11,43 +11,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfCacheControl The browser caching policy allows you to control the browser caching behavior
-// of your assets independently from the CDN cache.  For example, this policy
-// allows you to set lower or higher TTLs for the browser than those of the CDN
-// cache.
+// CustconfCacheControl The browser caching policy allows you to control the browser caching behavior of your assets independently from the CDN cache. For example, this policy allows you to set lower or higher TTLs for the browser than those of the CDN cache.
 // swagger:model custconfCacheControl
 type CustconfCacheControl struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// The client TTL controls the lifetime of the asset in the browser's cache.
-	// The value entered here will be sent to the browser in the Cache-Control
-	// max-age directive for HTTP 1.1 clients and the Expires header for HTTP 1.0
-	// clients.
+	// The client TTL controls the lifetime of the asset in the browser's cache. The value entered here will be sent to the browser in the Cache-Control max-age directive for HTTP 1.1 clients and the Expires header for HTTP 1.0 clients.
 	MaxAge int32 `json:"maxAge,omitempty"`
 
-	// Selecting this option instructs the CDN caching servers to insert the
-	// must-revalidate directive on all HTTP responses sent to clients.
-	MustRevalidate bool `json:"mustRevalidate"`
+	// Selecting this option instructs the CDN caching servers to insert the must-revalidate directive on all HTTP responses sent to clients.
+	MustRevalidate bool `json:"mustRevalidate,omitempty"`
 
-	// This allows you to specify a custom Cache-Control header to be used by the
-	// CDN on all HTTP responses targeted by this policy.  Note: Do not include
-	// the header name (Cache-Control) in this field. Only the value of the header
-	// should be specified.
+	// This allows you to specify a custom Cache-Control header to be used by the CDN on all HTTP responses targeted by this policy. Note: Do not include the header name (Cache-Control) in this field. Only the value of the header should be specified.
 	Override string `json:"override,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	StatusCodeMatch string `json:"statusCodeMatch,omitempty"`
 
-	// Selecting this option allows the CDN to synchronize the Max-Age header it
-	// sends to clients with the remaining TTL of the asset in the cache.  This
-	// allows assets to expire from the browser cache at the same time they expire
-	// from the CDN.
-	SynchronizeMaxAge bool `json:"synchronizeMaxAge"`
+	// Selecting this option allows the CDN to synchronize the Max-Age header it sends to clients with the remaining TTL of the asset in the cache. This allows assets to expire from the browser cache at the same time they expire from the CDN.
+	SynchronizeMaxAge bool `json:"synchronizeMaxAge,omitempty"`
 }
 
 // Validate validates this custconf cache control

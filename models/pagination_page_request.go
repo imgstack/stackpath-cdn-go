@@ -11,22 +11,22 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PaginationPageRequest PageRequest is provided to a call which accepts paginated requests.
-// This is modeled after the GraphQL Relay spec to support both cursor
-// based pagination and traditional offset based pagination.
+// PaginationPageRequest Pagination request information
+//
+// This is modeled after the GraphQL Relay spec to support both cursor based pagination and traditional offset based pagination.
 // swagger:model paginationPageRequest
 type PaginationPageRequest struct {
 
-	// after is the cursor value after which data will be returned
+	// The cursor value after which data will be returned
 	After string `json:"after,omitempty"`
 
-	// filter will accept sql style constraints
+	// SQL-style constraint filters
 	Filter string `json:"filter,omitempty"`
 
-	// first is the number of items desired
+	// The number of items desired
 	First string `json:"first,omitempty"`
 
-	// sort_by will sort the response by the given field
+	// Sort the response by the given field
 	SortBy string `json:"sortBy,omitempty"`
 }
 

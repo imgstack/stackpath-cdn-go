@@ -16,7 +16,7 @@ import (
 type CustconfAuthURLSignAliCloudC struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// expiration extension
 	ExpirationExtension int64 `json:"expirationExtension,omitempty"`
@@ -24,19 +24,19 @@ type CustconfAuthURLSignAliCloudC struct {
 	// expire field
 	ExpireField string `json:"expireField,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
 	// pass phrase
 	PassPhrase string `json:"passPhrase,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// token field

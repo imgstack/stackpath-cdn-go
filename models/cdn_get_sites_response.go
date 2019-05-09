@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSitesResponse cdn get sites response
+// CdnGetSitesResponse The response from a request to retrieve all CDN sites on a stack
 // swagger:model cdnGetSitesResponse
 type CdnGetSitesResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested CDN sites
 	Results []*CdnSite `json:"results"`
 }
 

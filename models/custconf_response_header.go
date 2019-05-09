@@ -11,28 +11,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfResponseHeader The custom HTTP response headers policy allows you to specify a list of HTTP
-// headers you want the CDN caching servers to include in the response to
-// clients.
+// CustconfResponseHeader The custom HTTP response headers policy allows you to specify a list of HTTP headers you want the CDN caching servers to include in the response to clients.
 // swagger:model custconfResponseHeader
 type CustconfResponseHeader struct {
 
 	// This gives the ability to disable the ETag header on the response.
-	EnableETag bool `json:"enableETag"`
+	EnableETag bool `json:"enableETag,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// A pipe delimited list of rules that instructs the CDN caching servers to
-	// include a content-disposition header. The rules included in this setting
-	// must be entered in the following format: Content-Disposition:<User
-	// Agent>:<file extension 1>, <file extension 2>.  For example, to send the
-	// Content-Disposition header for all Mozilla browsers on the delivery of mp3,
-	// exe, tar, zip, gz and rar files, you would enter the following in the
-	// field: Content-Disposition:Mozilla*:mp3,exe,tar,zip,gz,rar
+	// A pipe delimited list of rules that instructs the CDN caching servers to include a content-disposition header. The rules included in this setting must be entered in the following format: Content-Disposition:<User Agent>:<file extension 1>, <file extension 2>. For example, to send the Content-Disposition header for all Mozilla browsers on the delivery of mp3, exe, tar, zip, gz and rar files, you would enter the following in the field: Content-Disposition:Mozilla*:mp3,exe,tar,zip,gz,rar
 	HTTP string `json:"http,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 }
 

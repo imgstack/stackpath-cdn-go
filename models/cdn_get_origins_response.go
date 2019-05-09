@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetOriginsResponse cdn get origins response
+// CdnGetOriginsResponse The response from a request to retrieve all origins on a stack
 // swagger:model cdnGetOriginsResponse
 type CdnGetOriginsResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested origins
 	Results []*SchemacdnOrigin `json:"results"`
 }
 

@@ -14,24 +14,24 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateSiteRequest CreateSiteRequest will be used to create a site
+// CdnCreateSiteRequest A request to create a new CDN site
 // swagger:model cdnCreateSiteRequest
 type CdnCreateSiteRequest struct {
 
 	// configuration
 	Configuration *CustconfConfiguration `json:"configuration,omitempty"`
 
-	// domain
+	// The new CDN site's name, typically the domain name of the site
 	Domain string `json:"domain,omitempty"`
 
-	// features
+	// The new CDN site's associated features
 	Features []CdnCreateSiteRequestFeature `json:"features"`
 
 	// origin
 	Origin *CdnCreateSiteRequestOrigin `json:"origin,omitempty"`
 
 	// type
-	Type TypeEnum `json:"type,omitempty"`
+	Type CreateSiteRequestTypeEnum `json:"type,omitempty"`
 }
 
 // Validate validates this cdn create site request

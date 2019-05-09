@@ -16,19 +16,13 @@ import (
 // swagger:model custconfBandwidthRateLimit
 type CustconfBandwidthRateLimit struct {
 
-	// default initial burst
-	DefaultInitialBurst int64 `json:"defaultInitialBurst,omitempty"`
-
-	// default sustained rate
-	DefaultSustainedRate int64 `json:"defaultSustainedRate,omitempty"`
-
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
 	// initial burst name
@@ -37,10 +31,10 @@ type CustconfBandwidthRateLimit struct {
 	// initial burst units
 	InitialBurstUnits BandwidthRateLimitInitialBurstUnitsEnumWrapperValue `json:"initialBurstUnits,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// sustained rate name

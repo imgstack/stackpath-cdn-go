@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetCertificateVerificationDetailsResponse cdn get certificate verification details response
+// CdnGetCertificateVerificationDetailsResponse The response from a request to retrieve an SSL certificate's manual verification details
 // swagger:model cdnGetCertificateVerificationDetailsResponse
 type CdnGetCertificateVerificationDetailsResponse struct {
 
-	// manual verification required
-	ManualVerificationRequired bool `json:"manualVerificationRequired"`
+	// Whether or not the end user must provide their own certificate verification
+	ManualVerificationRequired bool `json:"manualVerificationRequired,omitempty"`
 
-	// verification requirements
+	// An SSL certificate's verification requirements
 	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements"`
 }
 

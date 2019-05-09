@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateScopeRuleConfigurationRequest cdn update scope rule configuration request
+// CdnUpdateScopeRuleConfigurationRequest A request to update an EdgeRule's configuration
 // swagger:model cdnUpdateScopeRuleConfigurationRequest
 type CdnUpdateScopeRuleConfigurationRequest struct {
 

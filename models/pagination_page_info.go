@@ -11,25 +11,25 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PaginationPageInfo PageInfo provides information about a paginated response.
-// This is modeleted after the GraphQL Relay spec to support both cursor
-// based pagination and traditional offset based pagination.
+// PaginationPageInfo Information about a paginated response
+//
+// This is modeled after the GraphQL Relay spec to support both cursor based pagination and traditional offset based pagination.
 // swagger:model paginationPageInfo
 type PaginationPageInfo struct {
 
-	// end_cursor will be the cursor for the last item in the set of data returned
+	// The cursor for the last item in the set of data returned
 	EndCursor string `json:"endCursor,omitempty"`
 
-	// has_next_page will be true when another page of data is available
-	HasNextPage bool `json:"hasNextPage"`
+	// Whether or not another page of data is available
+	HasNextPage bool `json:"hasNextPage,omitempty"`
 
-	// has_previous_page will be true when a previous page of data exists
-	HasPreviousPage bool `json:"hasPreviousPage"`
+	// Whether or not a previous page of data exists
+	HasPreviousPage bool `json:"hasPreviousPage,omitempty"`
 
-	// start_cursor will be the cursor for the first item in the set of data returned
+	// The cursor for the first item in the set of data returned
 	StartCursor string `json:"startCursor,omitempty"`
 
-	// total_count is the total number of items in the dataset
+	// The total number of items in the dataset
 	TotalCount string `json:"totalCount,omitempty"`
 }
 

@@ -16,13 +16,10 @@ import (
 type CustconfFlvPseudoStreaming struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
-
-	// initial byte size
-	InitialByteSize string `json:"initialByteSize,omitempty"`
 
 	// jump to byte initial bytes param
 	JumpToByteInitialBytesParam string `json:"jumpToByteInitialBytesParam,omitempty"`

@@ -11,39 +11,29 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfCustomMimeType The custom mime type policy allows you to map file extensions to specific
-// mime types for the CDN caching servers to use when delivering assets.  The
-// mime types you map using this policy may also be limited to specific response
-// codes to address scenarios in which the mime type changes based on the
-// response code.
+// CustconfCustomMimeType The custom mime type policy allows you to map file extensions to specific mime types for the CDN caching servers to use when delivering assets. The mime types you map using this policy may also be limited to specific response codes to address scenarios in which the mime type changes based on the response code.
 // swagger:model custconfCustomMimeType
 type CustconfCustomMimeType struct {
 
-	// String of values deliminated by a ',' character. A comma separated list of
-	// status codes that apply to this policy
+	// String of values delimited by a ',' character. A comma separated list of status codes that apply to this policy
 	Code string `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// String of values deliminated by a ',' character. This is a comma separated
-	// list of file extension and mime type pairs that describe the mime type
-	// mapping for the CDN caching servers.  The file extension and mime type
-	// values should be delimited by a colon (:). For example, to map files ending
-	// with jpg to the image/jpeg mime type and files ending with png to
-	// image/png, set this value to: jpg:image/jpeg,png:image/png.
+	// String of values delimited by a ',' character. This is a comma separated list of file extension and mime type pairs that describe the mime type mapping for the CDN caching servers. The file extension and mime type values should be delimited by a colon (:). For example, to map files ending with jpg to the image/jpeg mime type and files ending with png to image/png, set this value to: jpg:image/jpeg,png:image/png.
 	ExtensionMap string `json:"extensionMap,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 }
 

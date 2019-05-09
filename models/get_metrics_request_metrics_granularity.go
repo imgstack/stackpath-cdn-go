@@ -14,7 +14,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// GetMetricsRequestMetricsGranularity get metrics request metrics granularity
+// GetMetricsRequestMetricsGranularity The time intervals that metrics can be rounded to
+//
+// - AUTO: StackPath will choose the granularity based on start and end dates
+//  - P1M: Retrieve metrics per minute
+//  - PT5M: Retrieve metrics per five minute intervals
+//  - PT1H: Retrieve metrics per hour
+//  - P1D: Retrieve metrics per day
 // swagger:model GetMetricsRequestMetricsGranularity
 type GetMetricsRequestMetricsGranularity string
 

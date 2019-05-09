@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSiteScriptsResponse cdn get site scripts response
+// CdnGetSiteScriptsResponse The result from a request to retrieve all EdgeEngine scripts on a CDN site
 // swagger:model cdnGetSiteScriptsResponse
 type CdnGetSiteScriptsResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested EdgeEngine scripts
 	Results []*CdnSiteScript `json:"results"`
 }
 

@@ -11,11 +11,13 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSiteDNSTargetsResponse cdn get site Dns targets response
+// CdnGetSiteDNSTargetsResponse The response from a request to retrieve a CDN site's DNS CNAME targets
 // swagger:model cdnGetSiteDnsTargetsResponse
 type CdnGetSiteDNSTargetsResponse struct {
 
-	// addresses
+	// The requested DNS CNAME targets
+	//
+	// A site's hostname should point to these CNAME targets in order for traffic to be sent through StackPath's edge nodes.
 	Addresses []string `json:"addresses"`
 }
 

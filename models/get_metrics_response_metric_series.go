@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// GetMetricsResponseMetricSeries get metrics response metric series
+// GetMetricsResponseMetricSeries A series of analytics data suitable for a graph
 // swagger:model GetMetricsResponseMetricSeries
 type GetMetricsResponseMetricSeries struct {
 
-	// key
+	// A graphable key for the type of data in the analytics set
 	Key string `json:"key,omitempty"`
 
-	// metrics
+	// Descriptions of the CDN metrics' samples
 	Metrics []string `json:"metrics"`
 
-	// samples
+	// The CDN metrics' data points
 	Samples []*GetMetricsResponseMetricSample `json:"samples"`
 
-	// type
+	// The type of data in the analytics set
 	Type string `json:"type,omitempty"`
 }
 

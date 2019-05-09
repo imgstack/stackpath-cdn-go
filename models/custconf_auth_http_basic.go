@@ -11,34 +11,23 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfAuthHTTPBasic HTTP basic authentication policies allow you to control access to your
-// content by requiring the end user to enter a valid username and password
-// before gaining access to content.
+// CustconfAuthHTTPBasic HTTP basic authentication policies allow you to control access to your content by requiring the end user to enter a valid username and password before gaining access to content.
 // swagger:model custconfAuthHttpBasic
 type CustconfAuthHTTPBasic struct {
 
-	// This is a URL to a resource on the authentication server responsible for
-	// authentication of users.
+	// This is a URL to a resource on the authentication server responsible for authentication of users.
 	BindingPoint string `json:"bindingPoint,omitempty"`
 
-	// This is the maximum number of connections a server should make to the
-	// authentication binding point.
-	ConnectCount int64 `json:"connectCount,omitempty"`
-
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// This is the authentication realm given back to the user on requests which
-	// do not contain the authentication credentials. Browsers typically display
-	// this value to the user when the login credentials are requested.
+	// This is the authentication realm given back to the user on requests which do not contain the authentication credentials. Browsers typically display this value to the user when the login credentials are requested.
 	Realm string `json:"realm,omitempty"`
 
-	// This is the number of seconds the authentication session will be cached by
-	// the browsers. After this time, browsers will be asked to present the user
-	// credentials again for re-authentication.
+	// This is the number of seconds the authentication session will be cached by the browsers. After this time, browsers will be asked to present the user credentials again for re-authentication.
 	TTL int64 `json:"ttl,omitempty"`
 }
 

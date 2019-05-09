@@ -65,9 +65,15 @@ type UpdateOriginParams struct {
 
 	/*Body*/
 	Body *models.CdnUpdateOriginRequest
-	/*OriginID*/
+	/*OriginID
+	  The ID of the origin to update
+
+	*/
 	OriginID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the origin to update
+
+	*/
 	StackID string
 
 	timeout    time.Duration

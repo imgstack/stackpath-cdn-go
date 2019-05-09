@@ -11,21 +11,24 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateOriginRequest UpdateOriginRequest will update an origin with the specified settings.
-// To remove a port or secure_port, set their values to zero.
+// CdnUpdateOriginRequest A request to update an origin
 // swagger:model cdnUpdateOriginRequest
 type CdnUpdateOriginRequest struct {
 
-	// hostname
+	// The origin's new HTTP request hostname
 	Hostname string `json:"hostname,omitempty"`
 
-	// path
+	// The origin's new HTTP request path
 	Path string `json:"path,omitempty"`
 
-	// port
+	// The origin's new HTTP request port
+	//
+	// Set this to 0 to remove this value
 	Port int32 `json:"port,omitempty"`
 
-	// secure port
+	// The origin's new HTTPS request port
+	//
+	// Set this to 0 to remove this value
 	SecurePort int32 `json:"securePort,omitempty"`
 }
 

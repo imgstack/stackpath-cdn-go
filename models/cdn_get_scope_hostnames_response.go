@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetScopeHostnamesResponse cdn get scope hostnames response
+// CdnGetScopeHostnamesResponse The response from a request to retrieve a CDN site scope's associated hostnames
 // swagger:model cdnGetScopeHostnamesResponse
 type CdnGetScopeHostnamesResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested scope hostnames
 	Results []*CdnHostname `json:"results"`
 }
 

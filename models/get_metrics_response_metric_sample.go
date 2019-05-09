@@ -11,11 +11,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// GetMetricsResponseMetricSample get metrics response metric sample
+// GetMetricsResponseMetricSample The data points associated with a series of metrics
 // swagger:model GetMetricsResponseMetricSample
 type GetMetricsResponseMetricSample struct {
 
-	// values
+	// An individual data point
 	Values []float64 `json:"values"`
 }
 

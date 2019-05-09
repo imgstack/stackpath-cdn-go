@@ -62,31 +62,40 @@ for the get site scopes operation typically these are written to a http.Request
 */
 type GetSiteScopesParams struct {
 
-	/*DisableTransparentMode*/
+	/*DisableTransparentMode
+	  Whether or not to retrieve the site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+
+	*/
 	DisableTransparentMode *bool
 	/*PageRequestAfter
-	  after is the cursor value after which data will be returned.
+	  The cursor value after which data will be returned.
 
 	*/
 	PageRequestAfter *string
 	/*PageRequestFilter
-	  filter will accept sql style constraints.
+	  SQL-style constraint filters.
 
 	*/
 	PageRequestFilter *string
 	/*PageRequestFirst
-	  first is the number of items desired.
+	  The number of items desired.
 
 	*/
 	PageRequestFirst *string
 	/*PageRequestSortBy
-	  sort_by will sort the response by the given field.
+	  Sort the response by the given field.
 
 	*/
 	PageRequestSortBy *string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve scopes from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve scopes from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

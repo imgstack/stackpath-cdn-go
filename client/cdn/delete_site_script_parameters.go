@@ -61,11 +61,20 @@ for the delete site script operation typically these are written to a http.Reque
 */
 type DeleteSiteScriptParams struct {
 
-	/*ScriptID*/
+	/*ScriptID
+	  The ID of the EdgeEngine script to delete
+
+	*/
 	ScriptID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the CDN site to delete an EdgeEngine script from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to delete an EdgeEngine script from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

@@ -14,7 +14,12 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnCreateSiteRequestFeature cdn create site request feature
+// CdnCreateSiteRequestFeature The features available to the new CDN site
+//
+// Multiple products can served on a single CDN site. Features control how those products are managed on the StackPath backend.
+//
+//  - CDN: The site will have CDN caching abilities
+//  - WAF: The site is protected by the StackPath Web Application Firewall
 // swagger:model cdnCreateSiteRequestFeature
 type CdnCreateSiteRequestFeature string
 

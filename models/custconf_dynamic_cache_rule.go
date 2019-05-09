@@ -16,22 +16,21 @@ import (
 type CustconfDynamicCacheRule struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
-	// String of values deliminated by a '|' character. Pipe delimited ('|') list
-	// of headers to add to response
+	// String of values delimited by a '|' character. Pipe delimited ('|') list of headers to add to response
 	Headers string `json:"headers,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// Status code to return

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSiteResponse cdn get site response
+// CdnGetSiteResponse The response from a request to retrieve an individual CDN site
 // swagger:model cdnGetSiteResponse
 type CdnGetSiteResponse struct {
 

@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSiteCertificatesResponse cdn get site certificates response
+// CdnGetSiteCertificatesResponse The response from a request to retrieve a CDN site's SSL certificates
 // swagger:model cdnGetSiteCertificatesResponse
 type CdnGetSiteCertificatesResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested SSL certificates
 	Results []*CdnSiteCertificate `json:"results"`
 }
 

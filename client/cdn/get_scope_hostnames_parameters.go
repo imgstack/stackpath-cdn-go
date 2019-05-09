@@ -62,33 +62,45 @@ for the get scope hostnames operation typically these are written to a http.Requ
 */
 type GetScopeHostnamesParams struct {
 
-	/*DisableTransparentMode*/
+	/*DisableTransparentMode
+	  Whether or not to load hostnames from a CDN site's CDN scope or its WAF scope. When true, this call loads scope hostnames from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+
+	*/
 	DisableTransparentMode *bool
 	/*PageRequestAfter
-	  after is the cursor value after which data will be returned.
+	  The cursor value after which data will be returned.
 
 	*/
 	PageRequestAfter *string
 	/*PageRequestFilter
-	  filter will accept sql style constraints.
+	  SQL-style constraint filters.
 
 	*/
 	PageRequestFilter *string
 	/*PageRequestFirst
-	  first is the number of items desired.
+	  The number of items desired.
 
 	*/
 	PageRequestFirst *string
 	/*PageRequestSortBy
-	  sort_by will sort the response by the given field.
+	  Sort the response by the given field.
 
 	*/
 	PageRequestSortBy *string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to retrieve hostnames from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to retrieve hostnames from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to retrieve hostnames from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

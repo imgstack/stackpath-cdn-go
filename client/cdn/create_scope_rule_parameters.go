@@ -65,11 +65,20 @@ type CreateScopeRuleParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateScopeRuleRequest
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the CDN site scope to create an EdgeRule on
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to create an EdgeRule on
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to create an EdgeRule on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

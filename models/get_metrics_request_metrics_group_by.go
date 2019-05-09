@@ -14,7 +14,14 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// GetMetricsRequestMetricsGroupBy get metrics request metrics group by
+// GetMetricsRequestMetricsGroupBy Fields that metrics can be grouped to
+//
+// - NONE: Don't group metrics
+//  - ACCOUNT: Group metrics by StackPath account
+//  - SITE: Group metrics by site
+//  - PLATFORM: Group metrics by scope billing platform
+//  - POP: Group metrics by StackPath point of presence
+//  - REGION: Group metrics by geographical region
 // swagger:model GetMetricsRequestMetricsGroupBy
 type GetMetricsRequestMetricsGroupBy string
 

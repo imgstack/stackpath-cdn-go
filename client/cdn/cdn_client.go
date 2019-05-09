@@ -25,7 +25,9 @@ type Client struct {
 }
 
 /*
-ConnectScopeToOrigin connects scope to origin will connect a scope with an origin creating the origin if necessary when the request contains a priority which an origin already associated with the scope has set the existing origin will be disconnected the priority of an origin already associated with a scope can be modified via this endpoint
+ConnectScopeToOrigin connects an origin to a c d n site s scope
+
+The origin is automatically created if necessary. When the request contains a priority which an origin already associated with the scope has set, the existing origin is disconnected. The priority of an origin already associated with a scope can be modified via this endpoint.
 */
 func (a *Client) ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authInfo runtime.ClientAuthInfoWriter) (*ConnectScopeToOriginOK, error) {
 	// TODO: Validate the params before sending
@@ -54,7 +56,11 @@ func (a *Client) ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authIn
 }
 
 /*
-ConnectSiteToCertificate connects site to certificate will associate a site with a certificate without validating if the site has a hostname covered by the certificate this is useful for preparation work required for getting a site ready for traffic if a certificate is uploaded which contains hostnames for sites it will automatically be connected to those sites if a hostname is added to a site which is covered by an s s l certificate it will automatically be connected to the certificate
+ConnectSiteToCertificate associates a c d n site with an s s l certificate
+
+Association is performed without validating if the site has a hostname covered by the certificate. This is useful for preparation work required for getting a site ready for traffic.
+
+If a certificate is uploaded which contains hostnames for sites, it will automatically be connected to those sites. If a hostname is added to a site which is covered by an SSL certificate, it will automatically be connected to the certificate.
 */
 func (a *Client) ConnectSiteToCertificate(params *ConnectSiteToCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*ConnectSiteToCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +89,9 @@ func (a *Client) ConnectSiteToCertificate(params *ConnectSiteToCertificateParams
 }
 
 /*
-CreateCertificate creates certificate creates a certificate in the stack the certificate will automatically be associated with scope hostnames which are contained in either the subject or the alternative names in the certificate
+CreateCertificate adds an s s l certificate to a stack
+
+The certificate is automatically associated with CDN site scope hostnames that match either the certificate's subject or its alternative names.
 */
 func (a *Client) CreateCertificate(params *CreateCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*CreateCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -112,7 +120,7 @@ func (a *Client) CreateCertificate(params *CreateCertificateParams, authInfo run
 }
 
 /*
-CreateScope creates scope creates a new configuration scope
+CreateScope creates a new c d n site scope
 */
 func (a *Client) CreateScope(params *CreateScopeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeOK, error) {
 	// TODO: Validate the params before sending
@@ -141,7 +149,7 @@ func (a *Client) CreateScope(params *CreateScopeParams, authInfo runtime.ClientA
 }
 
 /*
-CreateScopeHostname creates scope hostname creates a hostname on a scope
+CreateScopeHostname adds a hostname to a c d n site s scope
 */
 func (a *Client) CreateScopeHostname(params *CreateScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeHostnameOK, error) {
 	// TODO: Validate the params before sending
@@ -170,7 +178,7 @@ func (a *Client) CreateScopeHostname(params *CreateScopeHostnameParams, authInfo
 }
 
 /*
-CreateScopeRule creates scope rule creates a new rule in a scope
+CreateScopeRule creates an edge rule on a c d n site scope
 */
 func (a *Client) CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -199,7 +207,7 @@ func (a *Client) CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime
 }
 
 /*
-CreateSite creates site will create a site
+CreateSite creates a new c d n site
 */
 func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteOK, error) {
 	// TODO: Validate the params before sending
@@ -228,7 +236,7 @@ func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAut
 }
 
 /*
-CreateSiteScript creates site script creates an edge script for a site
+CreateSiteScript creates an edge engine script
 */
 func (a *Client) CreateSiteScript(params *CreateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteScriptOK, error) {
 	// TODO: Validate the params before sending
@@ -257,7 +265,7 @@ func (a *Client) CreateSiteScript(params *CreateSiteScriptParams, authInfo runti
 }
 
 /*
-DeleteCertificate deletes certificate deletes a certificate from the stack
+DeleteCertificate deletes an s s l certificate
 */
 func (a *Client) DeleteCertificate(params *DeleteCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCertificateNoContent, error) {
 	// TODO: Validate the params before sending
@@ -286,7 +294,7 @@ func (a *Client) DeleteCertificate(params *DeleteCertificateParams, authInfo run
 }
 
 /*
-DeleteScope deletes scope deletes a scope
+DeleteScope deletes a c d n site scope
 */
 func (a *Client) DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeNoContent, error) {
 	// TODO: Validate the params before sending
@@ -315,7 +323,7 @@ func (a *Client) DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientA
 }
 
 /*
-DeleteScopeHostname deletes scope hostname deletes a hostname from a scope
+DeleteScopeHostname removes a hostname from a c d n site s scope
 */
 func (a *Client) DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeHostnameNoContent, error) {
 	// TODO: Validate the params before sending
@@ -344,7 +352,7 @@ func (a *Client) DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo
 }
 
 /*
-DeleteScopeRule deletes scope rule deletes a scope rule
+DeleteScopeRule deletes an edge rule
 */
 func (a *Client) DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeRuleNoContent, error) {
 	// TODO: Validate the params before sending
@@ -373,7 +381,7 @@ func (a *Client) DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime
 }
 
 /*
-DeleteSite deletes site will delete a site
+DeleteSite deletes a c d n site
 */
 func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -402,7 +410,7 @@ func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAut
 }
 
 /*
-DeleteSiteScript deletes site script delete an edge script for a site
+DeleteSiteScript deletes an edge engine script
 */
 func (a *Client) DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteScriptNoContent, error) {
 	// TODO: Validate the params before sending
@@ -431,7 +439,7 @@ func (a *Client) DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runti
 }
 
 /*
-DisableSite disables site disables site delivery can be reversed via a call to enable
+DisableSite disables a c d n site
 */
 func (a *Client) DisableSite(params *DisableSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DisableSiteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -460,7 +468,7 @@ func (a *Client) DisableSite(params *DisableSiteParams, authInfo runtime.ClientA
 }
 
 /*
-DisconnectScopeFromOrigin disconnects scope from origin will disconnect a scope from an origin
+DisconnectScopeFromOrigin disconnects an origin from c d n site s scope
 */
 func (a *Client) DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginParams, authInfo runtime.ClientAuthInfoWriter) (*DisconnectScopeFromOriginNoContent, error) {
 	// TODO: Validate the params before sending
@@ -489,7 +497,7 @@ func (a *Client) DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginPara
 }
 
 /*
-EnableSite enables site re enables delivery on a site
+EnableSite enables a c d n site
 */
 func (a *Client) EnableSite(params *EnableSiteParams, authInfo runtime.ClientAuthInfoWriter) (*EnableSiteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -518,7 +526,36 @@ func (a *Client) EnableSite(params *EnableSiteParams, authInfo runtime.ClientAut
 }
 
 /*
-GetCertificate gets certificate returns a certificate
+GetCDNIps retrieves a list of IP addresses used by the stack path edge network
+*/
+func (a *Client) GetCDNIps(params *GetCDNIpsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCDNIpsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCDNIpsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCDNIPs",
+		Method:             "GET",
+		PathPattern:        "/cdn/v1/ips",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCDNIpsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetCDNIpsOK), nil
+
+}
+
+/*
+GetCertificate retrieves an individual s s l certificate
 */
 func (a *Client) GetCertificate(params *GetCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -547,7 +584,7 @@ func (a *Client) GetCertificate(params *GetCertificateParams, authInfo runtime.C
 }
 
 /*
-GetCertificateSites gets certificate sites returns the sites which are implicitly associated with a certificate
+GetCertificateSites retrieves the c d n sites associated with an s s l certificate
 */
 func (a *Client) GetCertificateSites(params *GetCertificateSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateSitesOK, error) {
 	// TODO: Validate the params before sending
@@ -576,7 +613,7 @@ func (a *Client) GetCertificateSites(params *GetCertificateSitesParams, authInfo
 }
 
 /*
-GetCertificateVerificationDetails gets certificate verification details will return whether the requested certificate requires manual verification and the details necessary for providing that verification
+GetCertificateVerificationDetails retrieves a c d n site s s s l certificate manual verification details
 */
 func (a *Client) GetCertificateVerificationDetails(params *GetCertificateVerificationDetailsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateVerificationDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -605,7 +642,7 @@ func (a *Client) GetCertificateVerificationDetails(params *GetCertificateVerific
 }
 
 /*
-GetCertificates gets certificates returns certificates in the stack
+GetCertificates retrieves a stack s associated s s l certificates
 */
 func (a *Client) GetCertificates(params *GetCertificatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificatesOK, error) {
 	// TODO: Validate the params before sending
@@ -634,25 +671,25 @@ func (a *Client) GetCertificates(params *GetCertificatesParams, authInfo runtime
 }
 
 /*
-GetClosestPop gets pops returns the list of available pops
+GetClosestPops scans a URL from the stack path edge network and return a performance report
 
-Performs a scan and returns the Pop with the fastest response.
+Results are ordered with the fastest POP response first
 */
-func (a *Client) GetClosestPop(params *GetClosestPopParams, authInfo runtime.ClientAuthInfoWriter) (*GetClosestPopOK, error) {
+func (a *Client) GetClosestPops(params *GetClosestPopsParams, authInfo runtime.ClientAuthInfoWriter) (*GetClosestPopsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetClosestPopParams()
+		params = NewGetClosestPopsParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetClosestPop",
+		ID:                 "GetClosestPops",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/pops/closest",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetClosestPopReader{formats: a.formats},
+		Reader:             &GetClosestPopsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -660,12 +697,12 @@ func (a *Client) GetClosestPop(params *GetClosestPopParams, authInfo runtime.Cli
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetClosestPopOK), nil
+	return result.(*GetClosestPopsOK), nil
 
 }
 
 /*
-GetMetrics gets metrics returns metrics for sites in the stack
+GetMetrics retrieves request metrics for all c d n sites in a stack
 */
 func (a *Client) GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAuthInfoWriter) (*GetMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -694,7 +731,7 @@ func (a *Client) GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAut
 }
 
 /*
-GetOrigin gets origin returns an origin
+GetOrigin retrieves an individual origin
 */
 func (a *Client) GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthInfoWriter) (*GetOriginOK, error) {
 	// TODO: Validate the params before sending
@@ -723,7 +760,7 @@ func (a *Client) GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthI
 }
 
 /*
-GetOrigins gets origins returns the origins in the stack
+GetOrigins retrieves a stack s site origins
 */
 func (a *Client) GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAuthInfoWriter) (*GetOriginsOK, error) {
 	// TODO: Validate the params before sending
@@ -752,7 +789,7 @@ func (a *Client) GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAut
 }
 
 /*
-GetPops gets pops returns the list of available pops
+GetPops retrieves a list of all available stack path points of presence
 */
 func (a *Client) GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPopsOK, error) {
 	// TODO: Validate the params before sending
@@ -781,7 +818,7 @@ func (a *Client) GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-GetPurgeStatus gets purge status returns the status of a purge request
+GetPurgeStatus retrieves a purge request s status
 */
 func (a *Client) GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.ClientAuthInfoWriter) (*GetPurgeStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -810,7 +847,7 @@ func (a *Client) GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.C
 }
 
 /*
-GetScopeConfiguration gets scope configuration returns the configuration for a scope
+GetScopeConfiguration retrieves a c d n site s scope configuration
 */
 func (a *Client) GetScopeConfiguration(params *GetScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -839,7 +876,9 @@ func (a *Client) GetScopeConfiguration(params *GetScopeConfigurationParams, auth
 }
 
 /*
-GetScopeHostnames gets scope hostnames returns the hostnames configured for a scope these hostnames allow the c d n to recognize an HTTP request and associate it with a site
+GetScopeHostnames retrieves the hostnames configured on a c d n site s scope
+
+Hostnames allow the CDN to recognize an HTTP request and associate it with a CDN site.
 */
 func (a *Client) GetScopeHostnames(params *GetScopeHostnamesParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeHostnamesOK, error) {
 	// TODO: Validate the params before sending
@@ -868,7 +907,7 @@ func (a *Client) GetScopeHostnames(params *GetScopeHostnamesParams, authInfo run
 }
 
 /*
-GetScopeOrigins gets scope origins returns the origins associated with a scope
+GetScopeOrigins retrieves the origins behind a c d n site s scope
 */
 func (a *Client) GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeOriginsOK, error) {
 	// TODO: Validate the params before sending
@@ -897,7 +936,7 @@ func (a *Client) GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime
 }
 
 /*
-GetScopeRule gets scope rule returns a rule in a scope
+GetScopeRule retrieves an individual edge rule from a c d n site scope
 */
 func (a *Client) GetScopeRule(params *GetScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -926,7 +965,7 @@ func (a *Client) GetScopeRule(params *GetScopeRuleParams, authInfo runtime.Clien
 }
 
 /*
-GetScopeRuleConfiguration gets scope rule configuration returns the configuration for a scope rule
+GetScopeRuleConfiguration retrieves an edge rule s configuration
 */
 func (a *Client) GetScopeRuleConfiguration(params *GetScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRuleConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -955,7 +994,7 @@ func (a *Client) GetScopeRuleConfiguration(params *GetScopeRuleConfigurationPara
 }
 
 /*
-GetScopeRules gets scope rules returns the rules for a scope
+GetScopeRules retrieves all edge rules on a c d n site scope
 */
 func (a *Client) GetScopeRules(params *GetScopeRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -984,7 +1023,7 @@ func (a *Client) GetScopeRules(params *GetScopeRulesParams, authInfo runtime.Cli
 }
 
 /*
-GetSite gets site returns a site
+GetSite retrieves an individual c d n site
 */
 func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteOK, error) {
 	// TODO: Validate the params before sending
@@ -1013,7 +1052,7 @@ func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-GetSiteCertificates gets site certificates returns certificates which are implicity associated with a site
+GetSiteCertificates retrieves a site s s s l certificates
 */
 func (a *Client) GetSiteCertificates(params *GetSiteCertificatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteCertificatesOK, error) {
 	// TODO: Validate the params before sending
@@ -1042,7 +1081,9 @@ func (a *Client) GetSiteCertificates(params *GetSiteCertificatesParams, authInfo
 }
 
 /*
-GetSiteDNSTargets gets site Dns targets returns a set of DNS addresses that can be used for requests to the site
+GetSiteDNSTargets retrieves a c d n site s DNS c n a m e targets
+
+A site's hostname should point to these CNAME targets in order for traffic to be sent through StackPath's edge nodes.
 */
 func (a *Client) GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteDNSTargetsOK, error) {
 	// TODO: Validate the params before sending
@@ -1071,7 +1112,7 @@ func (a *Client) GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo run
 }
 
 /*
-GetSiteScopes gets site scopes returns the scopes for a site
+GetSiteScopes retrieves a c d n site s scopes
 */
 func (a *Client) GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScopesOK, error) {
 	// TODO: Validate the params before sending
@@ -1100,7 +1141,7 @@ func (a *Client) GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.Cli
 }
 
 /*
-GetSiteScript gets site script gets a single script for a site
+GetSiteScript retrieves an individual edge engine script
 */
 func (a *Client) GetSiteScript(params *GetSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScriptOK, error) {
 	// TODO: Validate the params before sending
@@ -1129,7 +1170,7 @@ func (a *Client) GetSiteScript(params *GetSiteScriptParams, authInfo runtime.Cli
 }
 
 /*
-GetSiteScript2 gets site script gets a single script for a site
+GetSiteScript2 retrieves an individual edge engine script
 */
 func (a *Client) GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScript2OK, error) {
 	// TODO: Validate the params before sending
@@ -1158,7 +1199,7 @@ func (a *Client) GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.C
 }
 
 /*
-GetSiteScripts gets site scripts gets a paginated list of scripts for a site
+GetSiteScripts retrieves all edge engine scripts associated with a c d n site
 */
 func (a *Client) GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScriptsOK, error) {
 	// TODO: Validate the params before sending
@@ -1187,7 +1228,7 @@ func (a *Client) GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.C
 }
 
 /*
-GetSites gets sites returns sites in the stack
+GetSites retrieves all c d n sites in a stack
 */
 func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSitesOK, error) {
 	// TODO: Validate the params before sending
@@ -1216,7 +1257,9 @@ func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-PurgeContent purges content purges content from the c d n a purge ID is returned which can be used in calls to get the purge status at cdn v1 stacks stack id purge purge id
+PurgeContent purges cached content for all c d n sites on a stack
+
+Content is re-cached on the CDN the next time it is requested. Use the returned purge ID to see the status of a purge request.
 */
 func (a *Client) PurgeContent(params *PurgeContentParams, authInfo runtime.ClientAuthInfoWriter) (*PurgeContentOK, error) {
 	// TODO: Validate the params before sending
@@ -1245,7 +1288,9 @@ func (a *Client) PurgeContent(params *PurgeContentParams, authInfo runtime.Clien
 }
 
 /*
-RenewCertificate renews certificate will start a certificate renewal process
+RenewCertificate issues a renewal for an s s l certificate
+
+StackPath automatically renews certificates that are 30 days from expiration. Call this to retry a renewal that previously failed.
 */
 func (a *Client) RenewCertificate(params *RenewCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*RenewCertificateNoContent, error) {
 	// TODO: Validate the params before sending
@@ -1274,7 +1319,9 @@ func (a *Client) RenewCertificate(params *RenewCertificateParams, authInfo runti
 }
 
 /*
-RequestCertificate requests certificate creates a new certificate for a site the optional list of hosts should be delivery domains for the site if no hosts parameter is provided all delivery domains for a site will be included in the s a n field if the hosts parameter is provided the first entry in the list will be used as the certificate common name
+RequestCertificate requests an s s l certificate for a c d n site
+
+The optional list of hosts should be delivery domains for the site. If no hosts parameter is provided, all delivery domains for a site will be included in the SAN field. If the hosts parameter is provided, then the first entry in the list will be used as the certificate's common name.
 */
 func (a *Client) RequestCertificate(params *RequestCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*RequestCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -1303,7 +1350,9 @@ func (a *Client) RequestCertificate(params *RequestCertificateParams, authInfo r
 }
 
 /*
-ScanOrigin scans origin returns information regarding an origin such as its IP address and whether or not it supports s s l
+ScanOrigin scans an origin from the c d n
+
+Retrieve information regarding an origin, such as its IP address and whether or not it supports SSL.
 */
 func (a *Client) ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAuthInfoWriter) (*ScanOriginOK, error) {
 	// TODO: Validate the params before sending
@@ -1332,7 +1381,7 @@ func (a *Client) ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAut
 }
 
 /*
-UpdateCertificate updates certificate updates a certificate this can be used for providing updated certificate or key information
+UpdateCertificate updates an s s l certificate
 */
 func (a *Client) UpdateCertificate(params *UpdateCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -1361,7 +1410,7 @@ func (a *Client) UpdateCertificate(params *UpdateCertificateParams, authInfo run
 }
 
 /*
-UpdateOrigin updates origin updates an origin allowing for changes to paths hostnames and ports
+UpdateOrigin updates an origin
 */
 func (a *Client) UpdateOrigin(params *UpdateOriginParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateOriginOK, error) {
 	// TODO: Validate the params before sending
@@ -1390,7 +1439,7 @@ func (a *Client) UpdateOrigin(params *UpdateOriginParams, authInfo runtime.Clien
 }
 
 /*
-UpdateScopeConfiguration updates scope configuration updates the configuration for a scope
+UpdateScopeConfiguration updates a c d n site s scope configuration
 */
 func (a *Client) UpdateScopeConfiguration(params *UpdateScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateScopeConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -1419,7 +1468,7 @@ func (a *Client) UpdateScopeConfiguration(params *UpdateScopeConfigurationParams
 }
 
 /*
-UpdateScopeRuleConfiguration updates scope rule configuration updates the configuration for a scope rule
+UpdateScopeRuleConfiguration updates an edge rule s configuration
 */
 func (a *Client) UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateScopeRuleConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -1448,7 +1497,38 @@ func (a *Client) UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurati
 }
 
 /*
-UpdateSiteScript updates site script updates the code or paths of a script if the code is changed a new version will be created
+UpdateSiteCertificateHosts updates an s s l certificate s hosts
+
+Updating hosts issues a new certificate.
+*/
+func (a *Client) UpdateSiteCertificateHosts(params *UpdateSiteCertificateHostsParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateSiteCertificateHostsNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSiteCertificateHostsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "UpdateSiteCertificateHosts",
+		Method:             "PUT",
+		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}/hosts",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSiteCertificateHostsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateSiteCertificateHostsNoContent), nil
+
+}
+
+/*
+UpdateSiteScript updates an edge engine script
 */
 func (a *Client) UpdateSiteScript(params *UpdateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateSiteScriptOK, error) {
 	// TODO: Validate the params before sending

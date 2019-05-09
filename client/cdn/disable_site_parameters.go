@@ -61,9 +61,15 @@ for the disable site operation typically these are written to a http.Request
 */
 type DisableSiteParams struct {
 
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to disable
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to disable
+
+	*/
 	StackID string
 
 	timeout    time.Duration

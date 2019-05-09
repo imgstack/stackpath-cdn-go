@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateScopeResponse cdn create scope response
+// CdnCreateScopeResponse The response from a request to create a CDN site scope
 // swagger:model cdnCreateScopeResponse
 type CdnCreateScopeResponse struct {
 

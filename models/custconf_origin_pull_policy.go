@@ -12,117 +12,69 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfOriginPullPolicy The CDN caching policy allows you to control how your origin's content is
-// cached on the CDN.
+// CustconfOriginPullPolicy The CDN caching policy allows you to control how your origin's content is cached on the CDN.
 // swagger:model custconfOriginPullPolicy
 type CustconfOriginPullPolicy struct {
 
-	// This allows you to define a custom directive that, when used by your origin
-	// in the Cache-Control response headers, forces the CDN to proxy the request
-	// to the end user without caching the result.
+	// This allows you to define a custom directive that, when used by your origin in the Cache-Control response headers, forces the CDN to proxy the request to the end user without caching the result.
 	BypassCacheIdentifier string `json:"bypassCacheIdentifier,omitempty"`
 
-	// String of values deliminated by a ',' character. Overrides the default
-	// setting and Origin/CachedHeadersOverride (if configured) for what headers
-	// to cache from an origin.
-	CachedHeadersOverride string `json:"cachedHeadersOverride,omitempty"`
-
-	// enable o p shield for no cache
-	EnableOPShieldForNoCache bool `json:"enableOPShieldForNoCache,omitempty"`
-
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// expire policy
 	ExpirePolicy OriginPullPolicyExpirePolicyEnumWrapperValue `json:"expirePolicy,omitempty"`
 
-	// This is the expiration time used for assets pulled from your origin.  When
-	// using Cache-Control headers expiration methods, this value is used if your
-	// origin doesn't return a max-age directive in the Cache-Control HTTP header.
-	// Please note that a value of 0 in this fields instructs the caching server
-	// to retain assets for as long as possible.
+	// This is the expiration time used for assets pulled from your origin. When using Cache-Control headers expiration methods, this value is used if your origin doesn't return a max-age directive in the Cache-Control HTTP header. Please note that a value of 0 in this fields instructs the caching server to retain assets for as long as possible.
 	ExpireSeconds int32 `json:"expireSeconds,omitempty"`
 
-	// This forces the CDN to not cache any asset pulled from your origin that
-	// would otherwise be stored at this location in the cache.  Typically this
-	// policy is used to prevent 4XX and 5XX response codes from overwriting a
-	// file in the cache when used with corresponding Origin Status Code Match
-	// setting.  If bypass cache behavior is desired for all assets at a scope,
-	// Origin Pull Queue Behavior in the Origin Pull Settings also needs to be set
-	// to NOCACHE for that scope.
-	ForceBypassCache bool `json:"forceBypassCache"`
+	// This forces the CDN to not cache any asset pulled from your origin that would otherwise be stored at this location in the cache. Typically this policy is used to prevent 4XX and 5XX response codes from overwriting a file in the cache when used with corresponding Origin Status Code Match setting. If bypass cache behavior is desired for all assets at a scope, Origin Pull Queue Behavior in the Origin Pull Settings also needs to be set to NOCACHE for that scope.
+	ForceBypassCache bool `json:"forceBypassCache,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
 	// honor must revalidate
-	HonorMustRevalidate bool `json:"honorMustRevalidate"`
+	HonorMustRevalidate bool `json:"honorMustRevalidate,omitempty"`
 
-	// This enables the processing of no-cache HTTP Cache-Control directives on
-	// your container. By enabling this option, responses from your origin
-	// containing the no-cache directive force the CDN to submit every subsequent
-	// request to your origin for validation before serving the asset stored in
-	// the cache.
-	HonorNoCache bool `json:"honorNoCache"`
+	// This enables the processing of no-cache HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the no-cache directive force the CDN to submit every subsequent request to your origin for validation before serving the asset stored in the cache.
+	HonorNoCache bool `json:"honorNoCache,omitempty"`
 
-	// This enables the processing of no-store HTTP Cache-Control directives on
-	// your container. By enabling this option, responses from your origin
-	// containing the no-store directive are not cached.  Be aware that requests
-	// for non-cacheable assets are always forwarded to your origin and may impose
-	// a high request and bandwidth load on your origin.
-	HonorNoStore bool `json:"honorNoStore"`
+	// This enables the processing of no-store HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the no-store directive are not cached. Be aware that requests for non-cacheable assets are always forwarded to your origin and may impose a high request and bandwidth load on your origin.
+	HonorNoStore bool `json:"honorNoStore,omitempty"`
 
-	// This enables the processing of private HTTP Cache-Control directives on
-	// your container. By enabling this option, responses from your origin
-	// containing the private directive are not cached.  Be aware that requests
-	// for non-cacheable assets are always forwarded to your origin and may impose
-	// a high request and bandwidth load on your origin.
-	HonorPrivate bool `json:"honorPrivate"`
+	// This enables the processing of private HTTP Cache-Control directives on your container. By enabling this option, responses from your origin containing the private directive are not cached. Be aware that requests for non-cacheable assets are always forwarded to your origin and may impose a high request and bandwidth load on your origin.
+	HonorPrivate bool `json:"honorPrivate,omitempty"`
 
-	// This enables the processing of s-maxage HTTP Cache-Control directives on
-	// your container. By enabling this option, the s-maxage HTTP Cache-Control
-	// directive in the responses from your origin takes precedence over the
-	// max-age directive.  If both max-age and s-maxage need to be preserved in
-	// the client response, the Cache-Control header must be added to the "Http
-	// Header Caching" setting.
-	HonorSMaxAge bool `json:"honorSMaxAge"`
+	// This enables the processing of s-maxage HTTP Cache-Control directives on your container. By enabling this option, the s-maxage HTTP Cache-Control directive in the responses from your origin takes precedence over the max-age directive. If both max-age and s-maxage need to be preserved in the client response, the Cache-Control header must be added to the "Http Header Caching" setting.
+	HonorSMaxAge bool `json:"honorSMaxAge,omitempty"`
 
-	// honor surrogate control
-	HonorSurrogateControl bool `json:"honorSurrogateControl,omitempty"`
-
-	// String of values deliminated by a ',' character. This is the list of your
-	// origin’s HTTP headers that you want the CDN to cache and deliver to end
-	// users.
+	// String of values delimited by a ',' character. This is the list of your origin's HTTP headers that you want the CDN to cache and deliver to end users.
 	HTTPHeaders string `json:"httpHeaders,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// This enables the CDN to apply the no-cache behavior for assets delivered by
-	// your origin containing a max-age directive equal to zero.
-	MaxAgeZeroToNoCache bool `json:"maxAgeZeroToNoCache"`
+	// This enables the CDN to apply the no-cache behavior for assets delivered by your origin containing a max-age directive equal to zero.
+	MaxAgeZeroToNoCache bool `json:"maxAgeZeroToNoCache,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// This enables the CDN to apply the no-cache behavior for assets delivered by
-	// your origin containing the must-revalidate directive.
-	MustRevalidateToNoCache bool `json:"mustRevalidateToNoCache"`
+	// This enables the CDN to apply the no-cache behavior for assets delivered by your origin containing the must-revalidate directive.
+	MustRevalidateToNoCache bool `json:"mustRevalidateToNoCache,omitempty"`
 
 	// no cache behavior
 	NoCacheBehavior OriginPullPolicyNoCacheBehaviorEnumWrapperValue `json:"noCacheBehavior,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
-	// String of values deliminated by a ',' character. This is a pattern match
-	// expression for each status code this policy applies to.  For example, 2*,
-	// 3* applies this policy to all 200 and 300 level HTTP responses from your
-	// origin.
+	// String of values delimited by a ',' character. This is a pattern match expression for each status code this policy applies to. For example, 2*, 3* applies this policy to all 200 and 300 level HTTP responses from your origin.
 	StatusCodeMatch string `json:"statusCodeMatch,omitempty"`
 
 	// update Http headers on304 response
-	UpdateHTTPHeadersOn304Response bool `json:"updateHttpHeadersOn304Response"`
+	UpdateHTTPHeadersOn304Response bool `json:"updateHttpHeadersOn304Response,omitempty"`
 }
 
 // Validate validates this custconf origin pull policy

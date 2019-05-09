@@ -14,11 +14,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnPurgeContentRequest cdn purge content request
+// CdnPurgeContentRequest A request to purge content from the CDN
 // swagger:model cdnPurgeContentRequest
 type CdnPurgeContentRequest struct {
 
-	// items
+	// The items to purge from the CDN
 	Items []*PurgeContentRequestItem `json:"items"`
 }
 

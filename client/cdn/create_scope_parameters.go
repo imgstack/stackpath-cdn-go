@@ -65,9 +65,15 @@ type CreateScopeParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateScopeRequest
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to create a scope on
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to create a scope on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetSiteScriptResponse cdn get site script response
+// CdnGetSiteScriptResponse The result from a request to retrieve an EdgeEngine script
 // swagger:model cdnGetSiteScriptResponse
 type CdnGetSiteScriptResponse struct {
 

@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetScopeOriginsResponse cdn get scope origins response
+// CdnGetScopeOriginsResponse The response from a request to retrieve a CDN site scope's origins
 // swagger:model cdnGetScopeOriginsResponse
 type CdnGetScopeOriginsResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested scope's origins
 	Results []*CdnScopeOrigin `json:"results"`
 }
 

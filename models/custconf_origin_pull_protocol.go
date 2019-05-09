@@ -12,16 +12,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfOriginPullProtocol The Origin Pull Protocol allows you to configure the CDN caching servers to
-// use secured or non-secured connection to Origin.
+// CustconfOriginPullProtocol The Origin Pull Protocol allows you to configure the CDN caching servers to use secured or non-secured connection to Origin.
 // swagger:model custconfOriginPullProtocol
 type CustconfOriginPullProtocol struct {
 
-	// This key allows you to configure the CDN caching servers to use SNI while
-	// making Secured Connection to Origin.
-	EnableSNI bool `json:"enableSNI"`
+	// This key allows you to configure the CDN caching servers to use SNI while making Secured Connection to Origin.
+	EnableSNI bool `json:"enableSNI,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
 	// protocol

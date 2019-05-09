@@ -11,23 +11,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfCustomHeader The X-Forwarded-For header policy allows you to override the name of the
-// X-Forwarded-For header the CDN sends to your origin.
+// CustconfCustomHeader The X-Forwarded-For header policy allows you to override the name of the X-Forwarded-For header the CDN sends to your origin.
 // swagger:model custconfCustomHeader
 type CustconfCustomHeader struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// This is the name of the X-Forwarded-For header you want the CDN to use when
-	// making requests to your basic authorization server.
+	// This is the name of the X-Forwarded-For header you want the CDN to use when making requests to your basic authorization server.
 	XForwardedForAuth string `json:"xForwardedForAuth,omitempty"`
 
-	// This is the name of the X-Forwarded-For header you want the CDN to use when
-	// making requests to your origin server.
+	// This is the name of the X-Forwarded-For header you want the CDN to use when making requests to your origin server.
 	XForwardedForOrigin string `json:"xForwardedForOrigin,omitempty"`
 }
 

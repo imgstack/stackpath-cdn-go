@@ -61,9 +61,15 @@ for the get certificate operation typically these are written to a http.Request
 */
 type GetCertificateParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the SSL certificate to retrieve
+
+	*/
 	CertificateID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the SSL certificate to retrieve
+
+	*/
 	StackID string
 
 	timeout    time.Duration

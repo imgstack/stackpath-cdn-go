@@ -11,27 +11,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfTimePseudoStreaming The HTTP pseduo-streaming policy enables Flash based video players to support
-// seeking to random locations within a MP4 or FLV file without having to
-// download the entire video. Flash players such as Flowplayer and JWPlayer can
-// be configured to send a query string parameter that indicates to the server
-// the time offset the user advanced the video to. Typically a query string
-// paramter called "start" is used by these players.
+// CustconfTimePseudoStreaming The HTTP pseudo-streaming policy enables Flash based video players to support seeking to random locations within a MP4 or FLV file without having to download the entire video. Flash players such as Flowplayer and JWPlayer can be configured to send a query string parameter that indicates to the server the time offset the user advanced the video to. Typically a query string parameter called "start" is used by these players.
 // swagger:model custconfTimePseudoStreaming
 type CustconfTimePseudoStreaming struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// The name of the query string parameter that indicates to the CDN the end
-	// time of the video that should be returned.
+	// The name of the query string parameter that indicates to the CDN the end time of the video that should be returned.
 	JumpToTimeEndParam string `json:"jumpToTimeEndParam,omitempty"`
 
-	// The name of the query string parameter that indicates to the CDN the
-	// specific time interval of the video that is being requested.
+	// The name of the query string parameter that indicates to the CDN the specific time interval of the video that is being requested.
 	JumpToTimeStartParam string `json:"jumpToTimeStartParam,omitempty"`
 }
 

@@ -11,17 +11,19 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateCertificateRequest cdn create certificate request
+// CdnCreateCertificateRequest A request to add an SSL certificate to a stack
 // swagger:model cdnCreateCertificateRequest
 type CdnCreateCertificateRequest struct {
 
-	// ca bundle
+	// A PEM PKCS #7 formatted certificate authority bundle
 	CaBundle string `json:"caBundle,omitempty"`
 
-	// certificate
+	// A PEM PKCS #7 formatted SSL certificate
 	Certificate string `json:"certificate,omitempty"`
 
-	// key
+	// A PEM PKCS #7 formatted private key
+	//
+	// Private keys are sent directly to the edge nodes and are not stored elsewhere on StackPath's systems.
 	Key string `json:"key,omitempty"`
 }
 

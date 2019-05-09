@@ -14,26 +14,28 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PurgeContentRequestItem purge content request item
+// PurgeContentRequestItem An individual item to purge from the CDN
 // swagger:model PurgeContentRequestItem
 type PurgeContentRequestItem struct {
 
-	// headers
+	// A list of HTTP response headers from the origin that should exist for its content to be purged
 	Headers []string `json:"headers"`
 
-	// invalidate only
-	InvalidateOnly bool `json:"invalidateOnly"`
+	// Whether or not to mark the asset as expired and re-validate instead of deleting
+	InvalidateOnly bool `json:"invalidateOnly,omitempty"`
 
-	// purge all dynamic
-	PurgeAllDynamic bool `json:"purgeAllDynamic"`
+	// Whether or not to purge dynamic versions of assets
+	//
+	// This is ignored if recursive is true.
+	PurgeAllDynamic bool `json:"purgeAllDynamic,omitempty"`
 
 	// purge selector
 	PurgeSelector []*PurgeContentRequestPurgeSelector `json:"purgeSelector"`
 
-	// recursive
-	Recursive bool `json:"recursive"`
+	// Whether or not to recursively delete content from the CDN
+	Recursive bool `json:"recursive,omitempty"`
 
-	// url
+	// The URL at which to delete content
 	URL string `json:"url,omitempty"`
 }
 

@@ -61,13 +61,25 @@ for the disconnect scope from origin operation typically these are written to a 
 */
 type DisconnectScopeFromOriginParams struct {
 
-	/*OriginID*/
+	/*OriginID
+	  The ID of the origin to remove from a scope
+
+	*/
 	OriginID string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to remove an origin from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to remove an origin from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to remove an origin from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

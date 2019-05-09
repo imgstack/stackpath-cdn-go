@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateSiteResponse CreateSiteResponse returns the created site
+// CdnCreateSiteResponse The response from a request to create a new CDN site
 // swagger:model cdnCreateSiteResponse
 type CdnCreateSiteResponse struct {
 

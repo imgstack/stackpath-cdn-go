@@ -12,17 +12,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateScopeRuleRequest cdn create scope rule request
+// CdnCreateScopeRuleRequest A request to create a new EdgeRule
 // swagger:model cdnCreateScopeRuleRequest
 type CdnCreateScopeRuleRequest struct {
 
 	// configuration
 	Configuration *CustconfConfiguration `json:"configuration,omitempty"`
 
-	// name
+	// The name of the new EdgeRule
 	Name string `json:"name,omitempty"`
 
-	// slug
+	// A programmatic name of the new EdgeRule
 	Slug string `json:"slug,omitempty"`
 }
 

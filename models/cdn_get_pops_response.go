@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetPopsResponse cdn get pops response
+// CdnGetPopsResponse The response from a request to retrieve the StackPath's points of presence
 // swagger:model cdnGetPopsResponse
 type CdnGetPopsResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested StackPath points of presence
 	Results []*CdnPop `json:"results"`
 }
 

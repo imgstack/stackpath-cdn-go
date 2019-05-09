@@ -11,25 +11,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfAuthReferer HTTP Referrer restriction policies allow you to limit access to your
-// published CDN URLs based on the HTTP Referrer header submitted by the
-// browser.  This restriction policy prevents your content from being easily
-// distributed on unauthorized websites (also known as hot linking or deep
-// linking). Once this policy is applied to your CDN container, websites that
-// are not listed in this policy will be denied access to the content cached at
-// this location.
+// CustconfAuthReferer HTTP Referrer restriction policies allow you to limit access to your published CDN URLs based on the HTTP Referrer header submitted by the browser. This restriction policy prevents your content from being easily distributed on unauthorized websites (also known as hot linking or deep linking). Once this policy is applied to your CDN container, websites that are not listed in this policy will be denied access to the content cached at this location.
 // swagger:model custconfAuthReferer
 type CustconfAuthReferer struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a '|' character. This is a list of domains
-	// authorized to access content from this path in the container.  You may use
-	// wildcards to specify multiple websites hosted on the same domain.
+	// String of values delimited by a '|' character. This is a list of domains authorized to access content from this path in the container. You may use wildcards to specify multiple websites hosted on the same domain.
 	Referer string `json:"referer,omitempty"`
 }
 

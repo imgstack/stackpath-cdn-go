@@ -65,11 +65,20 @@ type ConnectScopeToOriginParams struct {
 
 	/*Body*/
 	Body *models.CdnConnectScopeToOriginRequest
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to associate an origin with
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to associate an origin with
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to associate an origin with
+
+	*/
 	StackID string
 
 	timeout    time.Duration

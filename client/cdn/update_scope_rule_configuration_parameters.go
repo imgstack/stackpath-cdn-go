@@ -65,13 +65,25 @@ type UpdateScopeRuleConfigurationParams struct {
 
 	/*Body*/
 	Body *models.CdnUpdateScopeRuleConfigurationRequest
-	/*RuleID*/
+	/*RuleID
+	  The ID of the EdgeRule to update configuration for
+
+	*/
 	RuleID string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the CDN site scope to update an EdgeRule's configuration for
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to update an EdgeRule's configuration for
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to update an EdgeRule's configuration for
+
+	*/
 	StackID string
 
 	timeout    time.Duration

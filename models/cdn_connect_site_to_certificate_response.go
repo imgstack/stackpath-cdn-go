@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnConnectSiteToCertificateResponse cdn connect site to certificate response
+// CdnConnectSiteToCertificateResponse The response to a request to associate an SSL certificate with a CDN site
 // swagger:model cdnConnectSiteToCertificateResponse
 type CdnConnectSiteToCertificateResponse struct {
 

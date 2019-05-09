@@ -61,11 +61,20 @@ for the get scope configuration operation typically these are written to a http.
 */
 type GetScopeConfigurationParams struct {
 
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope whose configuration to retrieve
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve a scope configuration from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve a scope configuration from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

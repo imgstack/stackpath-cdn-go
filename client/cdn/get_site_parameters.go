@@ -61,9 +61,15 @@ for the get site operation typically these are written to a http.Request
 */
 type GetSiteParams struct {
 
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve
+
+	*/
 	StackID string
 
 	timeout    time.Duration

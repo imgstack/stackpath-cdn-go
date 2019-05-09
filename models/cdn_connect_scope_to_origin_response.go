@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnConnectScopeToOriginResponse cdn connect scope to origin response
+// CdnConnectScopeToOriginResponse The response from a request to associate an origin with a CDN site scope
 // swagger:model cdnConnectScopeToOriginResponse
 type CdnConnectScopeToOriginResponse struct {
 

@@ -11,11 +11,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetPurgeStatusResponse cdn get purge status response
+// CdnGetPurgeStatusResponse The response from a request to retrieve the status of a purge request
 // swagger:model cdnGetPurgeStatusResponse
 type CdnGetPurgeStatusResponse struct {
 
-	// progress
+	// The purge request's progress, ranging from 0.0 to 100.0
 	Progress float32 `json:"progress,omitempty"`
 }
 

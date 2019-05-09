@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateOriginResponse cdn update origin response
+// CdnUpdateOriginResponse The response from a request to update an origin
 // swagger:model cdnUpdateOriginResponse
 type CdnUpdateOriginResponse struct {
 

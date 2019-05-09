@@ -11,15 +11,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfOriginPersistentConnections The origin persistent connection settings are used to enable persistent
-// connections to origins
+// CustconfOriginPersistentConnections The origin persistent connection settings are used to enable persistent connections to origins
 // swagger:model custconfOriginPersistentConnections
 type CustconfOriginPersistentConnections struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 }
 

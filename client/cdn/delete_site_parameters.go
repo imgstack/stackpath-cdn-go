@@ -61,9 +61,15 @@ for the delete site operation typically these are written to a http.Request
 */
 type DeleteSiteParams struct {
 
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to delete
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to delete
+
+	*/
 	StackID string
 
 	timeout    time.Duration

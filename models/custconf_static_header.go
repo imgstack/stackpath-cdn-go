@@ -11,8 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfStaticHeader The static header injection policy allows you to insert headers into the CDN
-// request and response processor.
+// CustconfStaticHeader The static header injection policy allows you to insert headers into the CDN request and response processor.
 // swagger:model custconfStaticHeader
 type CustconfStaticHeader struct {
 
@@ -20,24 +19,24 @@ type CustconfStaticHeader struct {
 	ClientRequest string `json:"clientRequest,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
 	// This is the static HTTP header you want inserted into the CDN response.
 	HTTP string `json:"http,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
 	// This is the HTTP header you want inserted into the origin pull request.
 	OriginPull string `json:"originPull,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 }
 

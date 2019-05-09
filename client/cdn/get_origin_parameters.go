@@ -61,9 +61,15 @@ for the get origin operation typically these are written to a http.Request
 */
 type GetOriginParams struct {
 
-	/*OriginID*/
+	/*OriginID
+	  The ID of the origin to retrieve
+
+	*/
 	OriginID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack to retrieve an origin from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

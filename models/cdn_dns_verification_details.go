@@ -11,11 +11,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnDNSVerificationDetails cdn Dns verification details
+// CdnDNSVerificationDetails DNS-based domain ownership verification details
 // swagger:model cdnDnsVerificationDetails
 type CdnDNSVerificationDetails struct {
 
-	// dns records
+	// A list of DNS records that will validate domain ownership
 	DNSRecords []string `json:"dnsRecords"`
 }
 

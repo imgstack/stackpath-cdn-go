@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetScopeRulesResponse cdn get scope rules response
+// CdnGetScopeRulesResponse The response from request to retrieve the EdgeRules on a CDN site's scope
 // swagger:model cdnGetScopeRulesResponse
 type CdnGetScopeRulesResponse struct {
 
 	// page info
 	PageInfo *PaginationPageInfo `json:"pageInfo,omitempty"`
 
-	// results
+	// The requested EdgeRules
 	Results []*CdnScopeRule `json:"results"`
 }
 

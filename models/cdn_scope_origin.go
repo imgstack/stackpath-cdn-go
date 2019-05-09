@@ -12,14 +12,16 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnScopeOrigin cdn scope origin
+// CdnScopeOrigin A relationship between a CDN site's configuration scope and an origin
 // swagger:model cdnScopeOrigin
 type CdnScopeOrigin struct {
 
 	// origin
 	Origin *SchemacdnOrigin `json:"origin,omitempty"`
 
-	// priority
+	// An origin's priority to it's CDN site scope
+	//
+	// If a CDN scope is powered by more than one origin, then the one with the lower priority number takes higher precedence.
 	Priority int32 `json:"priority,omitempty"`
 }
 

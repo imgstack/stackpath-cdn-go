@@ -65,11 +65,20 @@ type UpdateSiteScriptParams struct {
 
 	/*Body*/
 	Body *models.CdnUpdateSiteScriptRequest
-	/*ScriptID*/
+	/*ScriptID
+	  The ID of the EdgeEngine script to update
+
+	*/
 	ScriptID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the CDN site to update an EdgeEngine script on
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to update an EdgeEngine script on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

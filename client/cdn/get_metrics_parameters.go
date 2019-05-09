@@ -21,12 +21,14 @@ import (
 // with the default values initialized.
 func NewGetMetricsParams() *GetMetricsParams {
 	var (
-		granularityDefault = string("AUTO")
-		groupByDefault     = string("NONE")
+		granularityDefault    = string("AUTO")
+		groupByDefault        = string("NONE")
+		siteTypeFilterDefault = string("ALL")
 	)
 	return &GetMetricsParams{
-		Granularity: &granularityDefault,
-		GroupBy:     &groupByDefault,
+		Granularity:    &granularityDefault,
+		GroupBy:        &groupByDefault,
+		SiteTypeFilter: &siteTypeFilterDefault,
 
 		timeout: cr.DefaultTimeout,
 	}
@@ -36,12 +38,14 @@ func NewGetMetricsParams() *GetMetricsParams {
 // with the default values initialized, and the ability to set a timeout on a request
 func NewGetMetricsParamsWithTimeout(timeout time.Duration) *GetMetricsParams {
 	var (
-		granularityDefault = string("AUTO")
-		groupByDefault     = string("NONE")
+		granularityDefault    = string("AUTO")
+		groupByDefault        = string("NONE")
+		siteTypeFilterDefault = string("ALL")
 	)
 	return &GetMetricsParams{
-		Granularity: &granularityDefault,
-		GroupBy:     &groupByDefault,
+		Granularity:    &granularityDefault,
+		GroupBy:        &groupByDefault,
+		SiteTypeFilter: &siteTypeFilterDefault,
 
 		timeout: timeout,
 	}
@@ -51,12 +55,14 @@ func NewGetMetricsParamsWithTimeout(timeout time.Duration) *GetMetricsParams {
 // with the default values initialized, and the ability to set a context for a request
 func NewGetMetricsParamsWithContext(ctx context.Context) *GetMetricsParams {
 	var (
-		granularityDefault = string("AUTO")
-		groupByDefault     = string("NONE")
+		granularityDefault    = string("AUTO")
+		groupByDefault        = string("NONE")
+		siteTypeFilterDefault = string("ALL")
 	)
 	return &GetMetricsParams{
-		Granularity: &granularityDefault,
-		GroupBy:     &groupByDefault,
+		Granularity:    &granularityDefault,
+		GroupBy:        &groupByDefault,
+		SiteTypeFilter: &siteTypeFilterDefault,
 
 		Context: ctx,
 	}
@@ -66,13 +72,15 @@ func NewGetMetricsParamsWithContext(ctx context.Context) *GetMetricsParams {
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetMetricsParamsWithHTTPClient(client *http.Client) *GetMetricsParams {
 	var (
-		granularityDefault = string("AUTO")
-		groupByDefault     = string("NONE")
+		granularityDefault    = string("AUTO")
+		groupByDefault        = string("NONE")
+		siteTypeFilterDefault = string("ALL")
 	)
 	return &GetMetricsParams{
-		Granularity: &granularityDefault,
-		GroupBy:     &groupByDefault,
-		HTTPClient:  client,
+		Granularity:    &granularityDefault,
+		GroupBy:        &groupByDefault,
+		SiteTypeFilter: &siteTypeFilterDefault,
+		HTTPClient:     client,
 	}
 }
 
@@ -81,23 +89,46 @@ for the get metrics operation typically these are written to a http.Request
 */
 type GetMetricsParams struct {
 
-	/*BillingRegions*/
+	/*BillingRegions
+	  A comma-separated list of billing regions to filter metrics for.
+
+	*/
 	BillingRegions *string
-	/*EndDate*/
+	/*EndDate
+	  The ending date to retrieve metrics for.
+
+	*/
 	EndDate *strfmt.DateTime
 	/*Granularity*/
 	Granularity *string
 	/*GroupBy*/
 	GroupBy *string
-	/*Platforms*/
+	/*Platforms
+	  A comma-separated list of billing platforms to filter metrics for.
+
+	*/
 	Platforms *string
-	/*Pops*/
+	/*Pops
+	  A comma-separated list of StackPath point of presence location codes to filter metrics for.
+
+	*/
 	Pops *string
-	/*Sites*/
+	/*SiteTypeFilter*/
+	SiteTypeFilter *string
+	/*Sites
+	  A comma-separated list of site IDs to filter metrics for.
+
+	*/
 	Sites *string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack to retrieve CDN metrics for
+
+	*/
 	StackID string
-	/*StartDate*/
+	/*StartDate
+	  The starting date to retrieve metrics for.
+
+	*/
 	StartDate *strfmt.DateTime
 
 	timeout    time.Duration
@@ -202,6 +233,17 @@ func (o *GetMetricsParams) WithPops(pops *string) *GetMetricsParams {
 // SetPops adds the pops to the get metrics params
 func (o *GetMetricsParams) SetPops(pops *string) {
 	o.Pops = pops
+}
+
+// WithSiteTypeFilter adds the siteTypeFilter to the get metrics params
+func (o *GetMetricsParams) WithSiteTypeFilter(siteTypeFilter *string) *GetMetricsParams {
+	o.SetSiteTypeFilter(siteTypeFilter)
+	return o
+}
+
+// SetSiteTypeFilter adds the siteTypeFilter to the get metrics params
+func (o *GetMetricsParams) SetSiteTypeFilter(siteTypeFilter *string) {
+	o.SiteTypeFilter = siteTypeFilter
 }
 
 // WithSites adds the sites to the get metrics params
@@ -335,6 +377,22 @@ func (o *GetMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		qPops := qrPops
 		if qPops != "" {
 			if err := r.SetQueryParam("pops", qPops); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.SiteTypeFilter != nil {
+
+		// query param site_type_filter
+		var qrSiteTypeFilter string
+		if o.SiteTypeFilter != nil {
+			qrSiteTypeFilter = *o.SiteTypeFilter
+		}
+		qSiteTypeFilter := qrSiteTypeFilter
+		if qSiteTypeFilter != "" {
+			if err := r.SetQueryParam("site_type_filter", qSiteTypeFilter); err != nil {
 				return err
 			}
 		}

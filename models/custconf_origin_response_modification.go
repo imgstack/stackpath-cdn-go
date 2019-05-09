@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -18,22 +16,16 @@ import (
 // swagger:model custconfOriginResponseModification
 type CustconfOriginResponseModification struct {
 
-	// String of values deliminated by a '|' character. This is the static HTTP
-	// header you want inserted into the CDN response. Start value with "append:"
-	// or "replace:" which defines if Header will be replace or added. Default is
-	// append.
+	// String of values delimited by a '|' character. This is the static HTTP header you want inserted into the CDN response. Start value with "append:", "replace:" or "create:" which defines if Header will be added, replaced or create if not exists. Default is append.
 	AddHeaders string `json:"addHeaders,omitempty"`
 
-	// client request filter
-	ClientRequestFilter []*CustconfRequestFilter `json:"clientRequestFilter"`
-
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// flow control
 	FlowControl CustconfOriginResponseModificationFlowControlEnumWrapperValue `json:"flowControl,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
 	// header pattern
@@ -42,16 +34,13 @@ type CustconfOriginResponseModification struct {
 	// header rewrite
 	HeaderRewrite string `json:"headerRewrite,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// origin response filter
-	OriginResponseFilter []*CustconfResponseFilter `json:"originResponseFilter"`
-
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// status code rewrite
@@ -62,46 +51,13 @@ type CustconfOriginResponseModification struct {
 func (m *CustconfOriginResponseModification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateClientRequestFilter(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateFlowControl(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateOriginResponseFilter(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *CustconfOriginResponseModification) validateClientRequestFilter(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ClientRequestFilter) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.ClientRequestFilter); i++ {
-		if swag.IsZero(m.ClientRequestFilter[i]) { // not required
-			continue
-		}
-
-		if m.ClientRequestFilter[i] != nil {
-			if err := m.ClientRequestFilter[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("clientRequestFilter" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -116,31 +72,6 @@ func (m *CustconfOriginResponseModification) validateFlowControl(formats strfmt.
 			return ve.ValidateName("flowControl")
 		}
 		return err
-	}
-
-	return nil
-}
-
-func (m *CustconfOriginResponseModification) validateOriginResponseFilter(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.OriginResponseFilter) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.OriginResponseFilter); i++ {
-		if swag.IsZero(m.OriginResponseFilter[i]) { // not required
-			continue
-		}
-
-		if m.OriginResponseFilter[i] != nil {
-			if err := m.OriginResponseFilter[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("originResponseFilter" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

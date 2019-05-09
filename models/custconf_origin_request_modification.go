@@ -6,11 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
@@ -18,22 +15,16 @@ import (
 // swagger:model custconfOriginRequestModification
 type CustconfOriginRequestModification struct {
 
-	// String of values deliminated by a '|' character. This is the static HTTP
-	// header you want inserted into the CDN request. Start value with "append:"
-	// or "replace:" which defines if Header will be replace or added. Default is
-	// append.
+	// String of values delimited by a '|' character. This is the static HTTP header you want inserted into the CDN request. Start value with "append:", "replace:" or "create:" which defines if Header will be added, replaced or create if not exists. Default is append.
 	AddHeaders string `json:"addHeaders,omitempty"`
 
-	// client request filter
-	ClientRequestFilter []*CustconfRequestFilter `json:"clientRequestFilter"`
-
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// flow control
 	FlowControl string `json:"flowControl,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
 	// header pattern
@@ -42,13 +33,13 @@ type CustconfOriginRequestModification struct {
 	// header rewrite
 	HeaderRewrite string `json:"headerRewrite,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// url pattern
@@ -60,40 +51,6 @@ type CustconfOriginRequestModification struct {
 
 // Validate validates this custconf origin request modification
 func (m *CustconfOriginRequestModification) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateClientRequestFilter(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *CustconfOriginRequestModification) validateClientRequestFilter(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ClientRequestFilter) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.ClientRequestFilter); i++ {
-		if swag.IsZero(m.ClientRequestFilter[i]) { // not required
-			continue
-		}
-
-		if m.ClientRequestFilter[i] != nil {
-			if err := m.ClientRequestFilter[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("clientRequestFilter" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 

@@ -11,23 +11,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfHTTPMethods The HTTP methods policy allows you to selectively enable additional HTTP
-// methods you want your CDN container to process.  A container automatically is
-// set up to process HTTP GET and HEAD commands, so they should not be
-// explicitly defined in this policy.  HTTP methods included in this policy are
-// proxied directly to your origin and not cached by the CDN.
+// CustconfHTTPMethods The HTTP methods policy allows you to selectively enable additional HTTP methods you want your CDN container to process. A container automatically is set up to process HTTP GET and HEAD commands, so they should not be explicitly defined in this policy. HTTP methods included in this policy are proxied directly to your origin and not cached by the CDN.
 // swagger:model custconfHttpMethods
 type CustconfHTTPMethods struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character. This is a comma separated
-	// list of HTTP methods you want the CDN to proxy to your origin. A wildcard
-	// can be entered to include all methods (excluding HEAD and GET).
+	// String of values delimited by a ',' character. This is a comma separated list of HTTP methods you want the CDN to proxy to your origin. A wildcard can be entered to include all methods (excluding HEAD and GET).
 	PassThru string `json:"passThru,omitempty"`
 }
 

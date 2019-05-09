@@ -65,7 +65,10 @@ type PurgeContentParams struct {
 
 	/*Body*/
 	Body *models.CdnPurgeContentRequest
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the sites to purge items from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

@@ -20,7 +20,7 @@ type CustconfAwsSignedOriginPullV4 struct {
 	AccessKeyID string `json:"accessKeyId,omitempty"`
 
 	// authentication type
-	AuthenticationType AwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue `json:"authenticationType,omitempty"`
+	AuthenticationType CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue `json:"authenticationType,omitempty"`
 
 	// aws region
 	AwsRegion string `json:"awsRegion,omitempty"`
@@ -32,27 +32,27 @@ type CustconfAwsSignedOriginPullV4 struct {
 	BucketIdentifier string `json:"bucketIdentifier,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
 	// expire time seconds
 	ExpireTimeSeconds int64 `json:"expireTimeSeconds,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// String of values delimited by a ',' character.
+	HeaderFilter string `json:"headerFilter,omitempty"`
+
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
-
-	// String of values deliminated by a ',' character.
-	PopFilter string `json:"popFilter,omitempty"`
 
 	// secret access key
 	SecretAccessKey string `json:"secretAccessKey,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	SignedHeaders string `json:"signedHeaders,omitempty"`
 }
 

@@ -65,11 +65,20 @@ type UpdateScopeConfigurationParams struct {
 
 	/*Body*/
 	Body *models.CdnUpdateScopeConfigurationRequest
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to update
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to update
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to update
+
+	*/
 	StackID string
 
 	timeout    time.Duration

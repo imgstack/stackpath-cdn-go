@@ -11,14 +11,16 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateScopeHostnameRequest cdn create scope hostname request
+// CdnCreateScopeHostnameRequest A request to add a hostname to a CDN site scope
 // swagger:model cdnCreateScopeHostnameRequest
 type CdnCreateScopeHostnameRequest struct {
 
-	// disable transparent mode
-	DisableTransparentMode bool `json:"disableTransparentMode"`
+	// Whether or not to add the hostname to a CDN site's CDN scope or its WAF scope
+	//
+	// When true, this call adds the hostname to a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+	DisableTransparentMode bool `json:"disableTransparentMode,omitempty"`
 
-	// domain
+	// The hostname to add to a scope
 	Domain string `json:"domain,omitempty"`
 }
 

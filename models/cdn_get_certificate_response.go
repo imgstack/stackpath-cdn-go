@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetCertificateResponse cdn get certificate response
+// CdnGetCertificateResponse The response from a request to retrieve an individual SSL certificate on a stack
 // swagger:model cdnGetCertificateResponse
 type CdnGetCertificateResponse struct {
 

@@ -16,16 +16,10 @@ import (
 type CustconfHttp2Support struct {
 
 	// Enable support of HTTP2
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
-
-	// String of values deliminated by a ',' character.
-	PopFilter string `json:"popFilter,omitempty"`
-
-	// String of values deliminated by a ',' character.
-	RegionFilter string `json:"regionFilter,omitempty"`
 }
 
 // Validate validates this custconf http2 support

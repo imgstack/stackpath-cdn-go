@@ -61,13 +61,25 @@ for the get site script operation typically these are written to a http.Request
 */
 type GetSiteScriptParams struct {
 
-	/*ScriptID*/
+	/*ScriptID
+	  The ID of the EdgeEngine script to retrieve
+
+	*/
 	ScriptID string
-	/*ScriptVersion*/
+	/*ScriptVersion
+	  The version of the EdgeEngine script to retrieve.
+
+	*/
 	ScriptVersion *string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the EdgeEngine script to retrieve
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site with the EdgeEngine script to retrieve
+
+	*/
 	StackID string
 
 	timeout    time.Duration

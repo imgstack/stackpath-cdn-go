@@ -11,20 +11,22 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnPop cdn pop
+// CdnPop A point of presence responsible for serving content to a geographic location
+//
+// POPs contain edge nodes responsible for CDN, WAF, monitoring, and all other StackPath product offerings.
 // swagger:model cdnPop
 type CdnPop struct {
 
-	// code
+	// A StackPath POP's IATA formatted location code
 	Code string `json:"code,omitempty"`
 
-	// latitude
+	// A StackPath POP's latitude coordinates
 	Latitude float32 `json:"latitude,omitempty"`
 
-	// longitude
+	// A StackPath POP's longitude coordinates
 	Longitude float32 `json:"longitude,omitempty"`
 
-	// name
+	// A StackPath POP's name
 	Name string `json:"name,omitempty"`
 }
 

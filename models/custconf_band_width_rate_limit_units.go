@@ -12,15 +12,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfBandWidthRateLimitUnits The Bandwidth Throttling Units policy allows you to override the default
-// units used by the CDN when processing the bandwidth throttling policies.
+// CustconfBandWidthRateLimitUnits The Bandwidth Throttling Units policy allows you to override the default units used by the CDN when processing the bandwidth throttling policies.
 // swagger:model custconfBandWidthRateLimitUnits
 type CustconfBandWidthRateLimitUnits struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
 	// initial

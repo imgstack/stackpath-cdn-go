@@ -61,13 +61,25 @@ for the get scope rule configuration operation typically these are written to a 
 */
 type GetScopeRuleConfigurationParams struct {
 
-	/*RuleID*/
+	/*RuleID
+	  The ID of the EdgeRule to retrieve configuration for
+
+	*/
 	RuleID string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the CDN site scope to retrieve an EdgeRule's configuration from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve an EdgeRule's configuration from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve an EdgeRule's configuration from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

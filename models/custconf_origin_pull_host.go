@@ -15,14 +15,23 @@ import (
 // swagger:model custconfOriginPullHost
 type CustconfOriginPullHost struct {
 
-	// This is used by the API to perform conflict checking.
+	// String of values delimited by a ',' character.
+	HeaderFilter string `json:"headerFilter,omitempty"`
+
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
+
+	// String of values delimited by a ',' character.
+	MethodFilter string `json:"methodFilter,omitempty"`
 
 	// origin Url
 	OriginURL string `json:"originUrl,omitempty"`
 
 	// password
 	Password string `json:"password,omitempty"`
+
+	// String of values delimited by a ',' character.
+	PathFilter string `json:"pathFilter,omitempty"`
 
 	// user name
 	UserName string `json:"userName,omitempty"`

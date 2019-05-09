@@ -15,41 +15,17 @@ import (
 // swagger:model custconfCustomer
 type CustconfCustomer struct {
 
-	// access log expire time h c s
-	AccessLogExpireTimeHCS int64 `json:"accessLogExpireTimeHCS,omitempty"`
-
-	// access log expire time local
-	AccessLogExpireTimeLocal int64 `json:"accessLogExpireTimeLocal,omitempty"`
-
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	AccessLogFields string `json:"accessLogFields,omitempty"`
 
-	// access logs
-	AccessLogs bool `json:"accessLogs"`
-
-	// compress access logs
-	CompressAccessLogs bool `json:"compressAccessLogs"`
-
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	OpLogFields string `json:"opLogFields,omitempty"`
 
-	// op logs
-	OpLogs bool `json:"opLogs"`
-
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	ReceiptLogFields string `json:"receiptLogFields,omitempty"`
-
-	// receipt logs
-	ReceiptLogs bool `json:"receiptLogs"`
-
-	// suspended
-	Suspended bool `json:"suspended"`
-
-	// upload access logs to h c s
-	UploadAccessLogsToHCS bool `json:"uploadAccessLogsToHCS"`
 }
 
 // Validate validates this custconf customer

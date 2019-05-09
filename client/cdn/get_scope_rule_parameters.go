@@ -61,13 +61,25 @@ for the get scope rule operation typically these are written to a http.Request
 */
 type GetScopeRuleParams struct {
 
-	/*RuleID*/
+	/*RuleID
+	  The ID of the EdgeRule to retrieve
+
+	*/
 	RuleID string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the CDN site scope to retrieve an EdgeRule from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve an EdgeRule from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve an EdgeRule from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

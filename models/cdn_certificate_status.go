@@ -14,13 +14,15 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnCertificateStatus  - UNKNOWN: UNKNOWN is the default value if no other value has been defined.
-//  - PENDING: PENDING is the initial value that a certificate request is created in before provisioning.
-//  - EXPIRED: EXPIRED is for a certificate that has exceeded its expiration date.
-//  - FAILED: FAILED is used for requested certificates that have had an error during provisioning.
-//  - PENDING_VERIFICATION: PENDING_VERIFICATION is used during a certificate request where verification of ownership of the requested domains is still pending.
-//  - ACTIVE: ACTIVE is for a certificate that is currently valid and in use by one or more hosts.
-//  - INACTIVE: INACTIVE is for a certificate that is currently valid but not in use by any hosts.
+// CdnCertificateStatus A StackPath-provided certificate's status
+//
+// - UNKNOWN: StackPath is unable to determine the certificate's status. This is the default status for end-user provided certificates.
+//  - PENDING: The certificate is provisioning
+//  - EXPIRED: The certificate has expired
+//  - FAILED: The certificate failed to provision
+//  - PENDING_VERIFICATION: The certificate is pending domain verification by the end user
+//  - ACTIVE: The certificate is valid and is in use by one or more hosts
+//  - INACTIVE: The certificate is valid but is not in use by any hosts
 // swagger:model cdnCertificateStatus
 type CdnCertificateStatus string
 

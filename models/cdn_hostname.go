@@ -11,11 +11,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnHostname cdn hostname
+// CdnHostname An individual hostname
 // swagger:model cdnHostname
 type CdnHostname struct {
 
-	// domain
+	// A host's domain name
 	Domain string `json:"domain,omitempty"`
 }
 

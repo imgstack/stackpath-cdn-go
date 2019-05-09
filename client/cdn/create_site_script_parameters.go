@@ -65,9 +65,15 @@ type CreateSiteScriptParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateSiteScriptRequest
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to create a new EdgeEngine script on
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to create a new EdgeEngine script on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

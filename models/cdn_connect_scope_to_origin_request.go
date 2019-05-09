@@ -12,17 +12,21 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnConnectScopeToOriginRequest cdn connect scope to origin request
+// CdnConnectScopeToOriginRequest A request to associate an origin with a CDN site scope
 // swagger:model cdnConnectScopeToOriginRequest
 type CdnConnectScopeToOriginRequest struct {
 
 	// origin
 	Origin *CdnConnectScopeToOriginRequestOrigin `json:"origin,omitempty"`
 
-	// origin Id
+	// The ID of an existing origin to associate with a scope
+	//
+	// This is useful for connecting to a shared origin.
 	OriginID string `json:"originId,omitempty"`
 
-	// priority
+	// The origin's priority to the scope
+	//
+	// If a CDN scope is powered by more than one origin, then the one with the lower priority number takes higher precedence.
 	Priority int32 `json:"priority,omitempty"`
 }
 

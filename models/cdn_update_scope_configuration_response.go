@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateScopeConfigurationResponse cdn update scope configuration response
+// CdnUpdateScopeConfigurationResponse The response from a request to update a CDN site scope's configuration
 // swagger:model cdnUpdateScopeConfigurationResponse
 type CdnUpdateScopeConfigurationResponse struct {
 

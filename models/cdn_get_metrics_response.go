@@ -14,11 +14,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetMetricsResponse cdn get metrics response
+// CdnGetMetricsResponse The response from a request to retrieve CDN metrics from a stack
 // swagger:model cdnGetMetricsResponse
 type CdnGetMetricsResponse struct {
 
-	// series
+	// The requested CDN metrics
 	Series []*GetMetricsResponseMetricSeries `json:"series"`
 }
 

@@ -11,29 +11,29 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnPopScanReport cdn pop scan report
+// CdnPopScanReport The result of a network scan from a StackPath point of presence to a origin
 // swagger:model cdnPopScanReport
 type CdnPopScanReport struct {
 
-	// connect ms
+	// The amount of time in milliseconds that a POP scan took to perform an initial connection handshake
 	ConnectMs float32 `json:"connectMs,omitempty"`
 
-	// dns ms
+	// The amount of time in milliseconds that a POP scan took to resolve the target's DNS entry
 	DNSMs float32 `json:"dnsMs,omitempty"`
 
-	// download ms
+	// The amount of time in milliseconds that a POP scan took to download the target's contents
 	DownloadMs float32 `json:"downloadMs,omitempty"`
 
-	// first byte ms
+	// The amount of time in milliseconds that a POP scan took from initial connection to starting to receive the target's contents
 	FirstByteMs float32 `json:"firstByteMs,omitempty"`
 
-	// pop code
+	// The IATA formatted location code of the StackPath POP that produced a scan report
 	PopCode string `json:"popCode,omitempty"`
 
-	// ssl ms
+	// The amount of time in milliseconds that a POP scan took to perform an SSL handshake
 	SslMs float32 `json:"sslMs,omitempty"`
 
-	// total ms
+	// The total amount of time in milliseconds that a POP scan took to complete
 	TotalMs float32 `json:"totalMs,omitempty"`
 }
 

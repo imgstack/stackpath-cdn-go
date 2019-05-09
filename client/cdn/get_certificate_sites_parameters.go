@@ -61,29 +61,35 @@ for the get certificate sites operation typically these are written to a http.Re
 */
 type GetCertificateSitesParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the SSL certificate to retrieve sites for
+
+	*/
 	CertificateID string
 	/*PageRequestAfter
-	  after is the cursor value after which data will be returned.
+	  The cursor value after which data will be returned.
 
 	*/
 	PageRequestAfter *string
 	/*PageRequestFilter
-	  filter will accept sql style constraints.
+	  SQL-style constraint filters.
 
 	*/
 	PageRequestFilter *string
 	/*PageRequestFirst
-	  first is the number of items desired.
+	  The number of items desired.
 
 	*/
 	PageRequestFirst *string
 	/*PageRequestSortBy
-	  sort_by will sort the response by the given field.
+	  Sort the response by the given field.
 
 	*/
 	PageRequestSortBy *string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the SSL certificate to retrieve CDN sites for
+
+	*/
 	StackID string
 
 	timeout    time.Duration

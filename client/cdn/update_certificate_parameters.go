@@ -65,9 +65,15 @@ type UpdateCertificateParams struct {
 
 	/*Body*/
 	Body *models.CdnUpdateCertificateRequest
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of SSL certificate to update
+
+	*/
 	CertificateID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the SSL certificate to update
+
+	*/
 	StackID string
 
 	timeout    time.Duration

@@ -65,7 +65,10 @@ type CreateSiteParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateSiteRequest
-	/*StackID*/
+	/*StackID
+	  The ID of the stack to create a new CDN site on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

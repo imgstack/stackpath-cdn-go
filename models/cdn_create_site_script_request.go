@@ -12,18 +12,18 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateSiteScriptRequest cdn create site script request
+// CdnCreateSiteScriptRequest A request to create a new EdgeEngine script
 // swagger:model cdnCreateSiteScriptRequest
 type CdnCreateSiteScriptRequest struct {
 
-	// code
+	// The contents of the new EdgeEngine script
 	// Format: byte
 	Code strfmt.Base64 `json:"code,omitempty"`
 
-	// name
+	// The name of the new EdgeEngine script
 	Name string `json:"name,omitempty"`
 
-	// paths
+	// The HTTP request paths that are handled by the new EdgeEngine script
 	Paths []string `json:"paths"`
 }
 

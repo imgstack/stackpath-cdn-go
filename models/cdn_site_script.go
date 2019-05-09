@@ -13,32 +13,44 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnSiteScript cdn site script
+// CdnSiteScript An EdgeEngine script
+//
+// EdgeEngine scripts are hosted and executed on StackPath's edge nodes.
 // swagger:model cdnSiteScript
 type CdnSiteScript struct {
 
-	// code
+	// The contents of an EdgeEngine script
 	// Format: byte
 	Code strfmt.Base64 `json:"code,omitempty"`
 
-	// created at
+	// The date an EdgeEngine script was created
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// id
+	// An EdgeEngine script's unique identifier
 	ID string `json:"id,omitempty"`
 
-	// name
+	// An EdgeEngine script's name
 	Name string `json:"name,omitempty"`
 
-	// paths
+	// The URL paths that incoming requests should answer with an EdgeEngine script
+	//
+	// Every EdgeEngine script needs at least one path, and paths must be unique.
 	Paths []string `json:"paths"`
 
-	// updated at
+	// The ID of the site to which an EdgeEngine script belongs
+	SiteID string `json:"siteId,omitempty"`
+
+	// The ID of the stack to which an EdgeEngine script's site belongs
+	StackID string `json:"stackId,omitempty"`
+
+	// The date an EdgeEngine script was last updated
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updatedAt,omitempty"`
 
-	// version
+	// An EdgeEngine script's version number
+	//
+	// Version numbers start at 1 and are incremented every time the script is updated.
 	Version string `json:"version,omitempty"`
 }
 

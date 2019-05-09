@@ -11,24 +11,18 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfVHost A hostname policy allows you to specify an alternate domain name that you
-// want to use to access content from your CDN container.
+// CustconfVHost A hostname policy allows you to specify an alternate domain name that you want to use to access content from your CDN container.
 // swagger:model custconfVHost
 type CustconfVHost struct {
 
-	// This is the hostname you want to enable in this policy.  Note: You must
-	// configure your container's CNAME record with your DNS provider to enable
-	// this hostname to deliver content.
+	// This is the hostname you want to enable in this policy. Note: You must configure your container's CNAME record with your DNS provider to enable this hostname to deliver content.
 	Domain string `json:"domain,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
-
-	// root
-	Root bool `json:"root"`
 }
 
 // Validate validates this custconf v host

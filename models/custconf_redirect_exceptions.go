@@ -11,24 +11,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfRedirectExceptions The redirect response codes policy allows you to specify the HTTP redirect
-// status code the CDN caching server should use when the CDN issues a redirect.
-// Using this policy, you can assign different redirect codes to user agents
-// requesting content.
+// CustconfRedirectExceptions The redirect response codes policy allows you to specify the HTTP redirect status code the CDN caching server should use when the CDN issues a redirect. Using this policy, you can assign different redirect codes to user agents requesting content.
 // swagger:model custconfRedirectExceptions
 type CustconfRedirectExceptions struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character. This is a comma separated
-	// list of user agents and redirect code pairs.  The user agent and redirect
-	// code values are separated by a colon (:), and you may use wildcards in the
-	// user agent field.  For example, to map assign a 307 status code to all
-	// Chrome browsers, you would specify: *chrome*:307.
+	// String of values delimited by a ',' character. This is a comma separated list of user agents and redirect code pairs. The user agent and redirect code values are separated by a colon (:), and you may use wildcards in the user agent field. For example, to map assign a 307 status code to all Chrome browsers, you would specify: *chrome*:307.
 	RedirectAgentCode string `json:"redirectAgentCode,omitempty"`
 }
 

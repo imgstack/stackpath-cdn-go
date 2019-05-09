@@ -61,9 +61,15 @@ for the renew certificate operation typically these are written to a http.Reques
 */
 type RenewCertificateParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the SSL certificate to renew
+
+	*/
 	CertificateID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the SSL certificate to renew
+
+	*/
 	StackID string
 
 	timeout    time.Duration

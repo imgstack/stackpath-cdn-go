@@ -61,9 +61,15 @@ for the delete certificate operation typically these are written to a http.Reque
 */
 type DeleteCertificateParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the SSL certificate to delete
+
+	*/
 	CertificateID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the SSL certificate to delete
+
+	*/
 	StackID string
 
 	timeout    time.Duration

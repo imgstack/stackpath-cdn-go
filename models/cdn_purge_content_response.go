@@ -11,11 +11,13 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnPurgeContentResponse cdn purge content response
+// CdnPurgeContentResponse The response from a request to purge content from the CDN
 // swagger:model cdnPurgeContentResponse
 type CdnPurgeContentResponse struct {
 
-	// id
+	// The purge request's ID
+	//
+	// Use this ID to request completion of the purge request.
 	ID string `json:"id,omitempty"`
 }
 

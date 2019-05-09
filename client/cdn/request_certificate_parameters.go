@@ -65,9 +65,15 @@ type RequestCertificateParams struct {
 
 	/*Body*/
 	Body *models.CdnRequestCertificateRequest
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to request an SSL certificate for
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to request an SSL certificate for
+
+	*/
 	StackID string
 
 	timeout    time.Duration

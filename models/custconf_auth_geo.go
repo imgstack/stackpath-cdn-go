@@ -12,12 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfAuthGeo Geographic restrictions allow you to restrict content to end users in
-// specific locations.  The IP address of incoming requests is checked against a
-// current list of IP allocations to countries and to states within the US. If
-// an end user’s IP address is not found in the list, they are allowed access
-// to the content by default. The feature has both an Include and an Exclude
-// list which are used to target the allowed audience.
+// CustconfAuthGeo Geographic restrictions allow you to restrict content to end users in specific locations. The IP address of incoming requests is checked against a current list of IP allocations to countries and to states within the US. If an end user's IP address is not found in the list, they are allowed access to the content by default. The feature has both an Include and an Exclude list which are used to target the allowed audience.
 // swagger:model custconfAuthGeo
 type CustconfAuthGeo struct {
 
@@ -25,14 +20,12 @@ type CustconfAuthGeo struct {
 	Code AuthGeoCodeEnumWrapperValue `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character. These are the region codes
-	// you are targeting for this policy.  The values that can be supplied within
-	// this field are those that are supported by the MaxMind® GeoIP database.
+	// String of values delimited by a ',' character. These are the region codes you are targeting for this policy. The values that can be supplied within this field are those that are supported by the MaxMind® GeoIP database.
 	Values string `json:"values,omitempty"`
 }
 

@@ -15,75 +15,17 @@ import (
 // swagger:model cdncustconfOrigin
 type CdncustconfOrigin struct {
 
-	// String of values deliminated by a ',' character. Overrides the default
-	// setting for what headers to cache from an origin unless an
-	// OriginPullPolicy/CachedHeadersOverride policy has been configured for the
-	// same or lower, applicable scope.
-	CachedHeadersOverride string `json:"cachedHeadersOverride,omitempty"`
-
-	// certificate c n
-	CertificateCN string `json:"certificateCN,omitempty"`
-
-	// Overrides the default time to wait when resolving this origin's hostname to
-	// an IP address.
-	DNSTimeoutSecs int64 `json:"dnsTimeoutSecs,omitempty"`
-
 	// host
 	Host string `json:"host,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// max connections
-	MaxConnections int64 `json:"maxConnections,omitempty"`
-
-	// max requests per connection
-	MaxRequestsPerConnection int64 `json:"maxRequestsPerConnection,omitempty"`
-
-	// maximum origin pull seconds
-	MaximumOriginPullSeconds int32 `json:"maximumOriginPullSeconds,omitempty"`
-
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	OriginCacheHeaders string `json:"originCacheHeaders,omitempty"`
 
-	// origin default keep alive
-	OriginDefaultKeepAlive int64 `json:"originDefaultKeepAlive,omitempty"`
-
-	// String of values deliminated by a '|' character.
+	// String of values delimited by a '|' character.
 	OriginPullHeaders string `json:"originPullHeaders,omitempty"`
-
-	// origin pull neg linger
-	OriginPullNegLinger int64 `json:"originPullNegLinger,omitempty"`
-
-	// origin pull retries
-	OriginPullRetries int64 `json:"originPullRetries,omitempty"`
-
-	// origin timeout duration
-	OriginTimeoutDuration int64 `json:"originTimeoutDuration,omitempty"`
-
-	// penalty box error count trigger
-	PenaltyBoxErrorCountTrigger int64 `json:"penaltyBoxErrorCountTrigger,omitempty"`
-
-	// penalty box error window seconds
-	PenaltyBoxErrorWindowSeconds int64 `json:"penaltyBoxErrorWindowSeconds,omitempty"`
-
-	// penalty box maximum response seconds
-	PenaltyBoxMaximumResponseSeconds int64 `json:"penaltyBoxMaximumResponseSeconds,omitempty"`
-
-	// String of values deliminated by a ',' character.
-	PenaltyBoxQualifyingStatusCodes string `json:"penaltyBoxQualifyingStatusCodes,omitempty"`
-
-	// penalty box test path override
-	PenaltyBoxTestPathOverride string `json:"penaltyBoxTestPathOverride,omitempty"`
-
-	// Overrides the default time to wait when reading an origin's response.
-	ReadTimeoutSecs int64 `json:"readTimeoutSecs,omitempty"`
-
-	// Enable Cert Verification while doing SSL OriginPull
-	VerifyCertificate bool `json:"verifyCertificate"`
-
-	// Overrides the default time to wait when writing/sending an origin request.
-	WriteTimeoutSecs int64 `json:"writeTimeoutSecs,omitempty"`
 }
 
 // Validate validates this cdncustconf origin

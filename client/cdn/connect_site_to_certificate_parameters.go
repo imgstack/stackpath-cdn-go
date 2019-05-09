@@ -61,11 +61,20 @@ for the connect site to certificate operation typically these are written to a h
 */
 type ConnectSiteToCertificateParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the SSL certificate to attach to a CDN site
+
+	*/
 	CertificateID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to attach an SSL certificate to
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to attach an SSL certificate to
+
+	*/
 	StackID string
 
 	timeout    time.Duration

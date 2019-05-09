@@ -61,9 +61,15 @@ for the get site Dns targets operation typically these are written to a http.Req
 */
 type GetSiteDNSTargetsParams struct {
 
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to retrieve DNS CNAME targets from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve DNS CNAME targets from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

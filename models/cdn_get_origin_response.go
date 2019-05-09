@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetOriginResponse cdn get origin response
+// CdnGetOriginResponse The response from a request to retrieve an individual origin
 // swagger:model cdnGetOriginResponse
 type CdnGetOriginResponse struct {
 

@@ -15,36 +15,42 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnSite cdn site
+// CdnSite A CDN site
 // swagger:model cdnSite
 type CdnSite struct {
 
-	// created at
+	// The date that a CDN site was created
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// enabled
-	Enabled bool `json:"enabled"`
+	// Whether or not a site's CDN service is enabled
+	Enabled bool `json:"enabled,omitempty"`
 
-	// features
+	// A CDN site's associated features
+	//
+	// Features control how StackPath provisions and configures a site.
 	Features []CdnSiteFeature `json:"features"`
 
-	// id
+	// A CDN site's unique identifier
 	ID string `json:"id,omitempty"`
 
-	// label
+	// A CDN site's name
+	//
+	// Site names correspond to their fully-qualified domain name.
 	Label string `json:"label,omitempty"`
 
-	// stack Id
+	// The ID of the stack to which a CDN site belongs
 	StackID string `json:"stackId,omitempty"`
 
-	// status
+	// A CDN site's internal state
+	//
+	// Site status is controlled by StackPath as sites are provisioned and managed by StackPath's accounting and security teams.
 	Status string `json:"status,omitempty"`
 
 	// type
 	Type SiteTypeValue `json:"type,omitempty"`
 
-	// updated at
+	// The date that a CDN site was last updated
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updatedAt,omitempty"`
 }

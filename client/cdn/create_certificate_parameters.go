@@ -65,7 +65,10 @@ type CreateCertificateParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateCertificateRequest
-	/*StackID*/
+	/*StackID
+	  The ID of the stack to create a certificate on
+
+	*/
 	StackID string
 
 	timeout    time.Duration

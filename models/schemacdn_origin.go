@@ -11,29 +11,35 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SchemacdnOrigin schemacdn origin
+// SchemacdnOrigin A CDN site's origin
+//
+// Origins are the original sources of the data that is cached by the CDN on request.
 // swagger:model schemacdnOrigin
 type SchemacdnOrigin struct {
 
-	// Whether or not the origin is dedicated for a site. Dedicated origins cannot be used by any site other than that which it is dedicated for.
-	Dedicated bool `json:"dedicated"`
+	// Whether or not an origin is dedicated to a CDN site
+	//
+	// Dedicated origins cannot be used by any site other than that to which it is dedicated.
+	Dedicated bool `json:"dedicated,omitempty"`
 
-	// Origin hostname or IP address
+	// An origin's hostname or IP address
 	Hostname string `json:"hostname,omitempty"`
 
-	// Origin ID
+	// An origin's unique identifier
 	ID string `json:"id,omitempty"`
 
-	// Path on the origin, defaults to /
+	// An origin's path
+	//
+	// Paths default to "/"
 	Path string `json:"path,omitempty"`
 
-	// The port to connect to for non-encrypted connections
+	// The HTTP port to connect to the origin
 	Port int32 `json:"port,omitempty"`
 
-	// The port to connect  to for encrypted connections
+	// The HTTPS port to connect to the origin
 	SecurePort int32 `json:"securePort,omitempty"`
 
-	// The site the origin is dedicated for
+	// The ID of the CDN site to which an origin is dedicated
 	SiteID string `json:"siteId,omitempty"`
 }
 

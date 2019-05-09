@@ -14,7 +14,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnSiteFeature cdn site feature
+// CdnSiteFeature The features available to CDN sites
+//
+// Multiple products can be served on a single CDN site. Features control how those products are managed on the StackPath backend.
+//
+//  - UNKNOWN: StackPath is unable to determine a site's feature
+//  - CDN: A site has CDN caching abilities
+//  - WAF: A site is protected by the StackPath Web Application Firewall
 // swagger:model cdnSiteFeature
 type CdnSiteFeature string
 

@@ -11,17 +11,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfGzipOriginPull The compressed origin pull policy allows you to enable the CDN caching
-// servers to request compressed assets from your origin.  By enabling this
-// policy, the CDN caching servers send your origin the HTTP Accept-Encoding
-// header with the gzip code (Accept-Encoding: gzip).
+// CustconfGzipOriginPull The compressed origin pull policy allows you to enable the CDN caching servers to request compressed assets from your origin. By enabling this policy, the CDN caching servers send your origin the HTTP Accept-Encoding header with the gzip code (Accept-Encoding: gzip).
 // swagger:model custconfGzipOriginPull
 type CustconfGzipOriginPull struct {
 
 	// This enables support for compressed origin pull
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 }
 

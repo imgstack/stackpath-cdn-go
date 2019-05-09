@@ -11,21 +11,18 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfCacheKeyModification The Cache Key Modification policy allows for manipulation of the way the
-// cache uniquely stores assets.
+// CustconfCacheKeyModification The Cache Key Modification policy allows for manipulation of the way the cache uniquely stores assets.
 // swagger:model custconfCacheKeyModification
 type CustconfCacheKeyModification struct {
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// When set, purges and requests for a file will be case insensitive. This
-	// setting is useful if you have a case insensitive origin server and would
-	// like to avoid duplicating assets.
-	NormalizeKeyPathToLowerCase bool `json:"normalizeKeyPathToLowerCase"`
+	// When set, purges and requests for a file will be case insensitive. This setting is useful if you have a case insensitive origin server and would like to avoid duplicating assets.
+	NormalizeKeyPathToLowerCase bool `json:"normalizeKeyPathToLowerCase,omitempty"`
 }
 
 // Validate validates this custconf cache key modification

@@ -62,30 +62,39 @@ for the get scope origins operation typically these are written to a http.Reques
 type GetScopeOriginsParams struct {
 
 	/*PageRequestAfter
-	  after is the cursor value after which data will be returned.
+	  The cursor value after which data will be returned.
 
 	*/
 	PageRequestAfter *string
 	/*PageRequestFilter
-	  filter will accept sql style constraints.
+	  SQL-style constraint filters.
 
 	*/
 	PageRequestFilter *string
 	/*PageRequestFirst
-	  first is the number of items desired.
+	  The number of items desired.
 
 	*/
 	PageRequestFirst *string
 	/*PageRequestSortBy
-	  sort_by will sort the response by the given field.
+	  Sort the response by the given field.
 
 	*/
 	PageRequestSortBy *string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to retrieve origins from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to retrieve origins from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to retrieve origins from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

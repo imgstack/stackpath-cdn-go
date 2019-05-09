@@ -8,58 +8,22 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
-// CustconfFileSegmentation Policy for configuring the feature for downloading and storing files in
-// segments rather than a whole entity.
+// CustconfFileSegmentation Policy for configuring the feature for downloading and storing files in segments rather than a whole entity.
 // swagger:model custconfFileSegmentation
 type CustconfFileSegmentation struct {
 
-	// custom segment size bytes
-	CustomSegmentSizeBytes int64 `json:"customSegmentSizeBytes,omitempty"`
-
 	// Flag for enabling the File Segmentation Feature.
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
-
-	// initial origin request behavior
-	InitialOriginRequestBehavior FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue `json:"initialOriginRequestBehavior,omitempty"`
-
-	// String of values deliminated by a ',' character.
-	InitialRangeRetryFilter string `json:"initialRangeRetryFilter,omitempty"`
 }
 
 // Validate validates this custconf file segmentation
 func (m *CustconfFileSegmentation) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateInitialOriginRequestBehavior(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *CustconfFileSegmentation) validateInitialOriginRequestBehavior(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.InitialOriginRequestBehavior) { // not required
-		return nil
-	}
-
-	if err := m.InitialOriginRequestBehavior.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("initialOriginRequestBehavior")
-		}
-		return err
-	}
-
 	return nil
 }
 

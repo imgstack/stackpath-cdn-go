@@ -14,7 +14,14 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SiteTypeValue site type value
+// SiteTypeValue A CDN site's type
+//
+// A site's type determines how StackPath delivers content to incoming HTTP(S) requests.
+//
+//  - UNKNOWN: StackPath is unable to determine a site's type
+//  - CDN: A site is CDN only site
+//  - WAF: A site is either a standalone WAF site or a WAF site with attached CDN service
+//  - API: A site is an API delivery site. API delivery sites are powered by both the WAF and CDN and have custom rulesets for each.
 // swagger:model SiteTypeValue
 type SiteTypeValue string
 

@@ -14,14 +14,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnRequestCertificateResponse cdn request certificate response
+// CdnRequestCertificateResponse The response from a request to provision an SSL certificate for a CDN site
 // swagger:model cdnRequestCertificateResponse
 type CdnRequestCertificateResponse struct {
 
 	// certificate
 	Certificate *CdnCertificate `json:"certificate,omitempty"`
 
-	// verification requirements
+	// The certificate's verification requirements
 	VerificationRequirements []*CdnVerificationRequirements `json:"verificationRequirements"`
 }
 

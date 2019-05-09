@@ -61,9 +61,15 @@ for the get purge status operation typically these are written to a http.Request
 */
 type GetPurgeStatusParams struct {
 
-	/*PurgeID*/
+	/*PurgeID
+	  The ID of the purge request to check the status of
+
+	*/
 	PurgeID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack the purge request was made against
+
+	*/
 	StackID string
 
 	timeout    time.Duration

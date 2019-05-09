@@ -12,15 +12,15 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateSiteScriptRequest cdn update site script request
+// CdnUpdateSiteScriptRequest A request to update an EdgeEngine script
 // swagger:model cdnUpdateSiteScriptRequest
 type CdnUpdateSiteScriptRequest struct {
 
-	// code
+	// The new contents of the EdgeEngine script
 	// Format: byte
 	Code strfmt.Base64 `json:"code,omitempty"`
 
-	// paths
+	// The HTTP request paths that are handled by the EdgeEngine script
 	Paths []string `json:"paths"`
 }
 

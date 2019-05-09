@@ -61,13 +61,25 @@ for the delete scope rule operation typically these are written to a http.Reques
 */
 type DeleteScopeRuleParams struct {
 
-	/*RuleID*/
+	/*RuleID
+	  The ID of the EdgeRule to delete
+
+	*/
 	RuleID string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the CDN site scope to delete an EdgeRule from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to delete an EdgeRule from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to delete an EdgeRule from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

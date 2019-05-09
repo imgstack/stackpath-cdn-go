@@ -12,16 +12,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnSiteCertificate cdn site certificate
+// CdnSiteCertificate An SSL certificate and its relationship with its associated site
 // swagger:model cdnSiteCertificate
 type CdnSiteCertificate struct {
 
 	// certificate
 	Certificate *CdnCertificate `json:"certificate,omitempty"`
 
-	// valid will be true when a hostname associated with the site is covered
-	// by the certificate, otherwise the value will be false.
-	Valid bool `json:"valid"`
+	// Whether or not a site's SSL certificate is valid
+	//
+	// An SSL certificate is valid when a hostname associated with the site is covered by the certificate.
+	Valid bool `json:"valid,omitempty"`
 }
 
 // Validate validates this cdn site certificate

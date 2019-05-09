@@ -12,17 +12,17 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnScanOriginResponse cdn scan origin response
+// CdnScanOriginResponse The response from a request to scan a URL from the StackPath edge network
 // swagger:model cdnScanOriginResponse
 type CdnScanOriginResponse struct {
 
-	// domain in use
-	DomainInUse bool `json:"domainInUse"`
+	// Whether or not the scanned domain is already in use on the StackPath platform
+	DomainInUse bool `json:"domainInUse,omitempty"`
 
-	// hostname
+	// The hostname that was scanned
 	Hostname string `json:"hostname,omitempty"`
 
-	// ip address
+	// The IP address that was scanned
 	IPAddress string `json:"ipAddress,omitempty"`
 
 	// ssl details

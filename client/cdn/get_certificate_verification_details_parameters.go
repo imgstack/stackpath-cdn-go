@@ -61,9 +61,15 @@ for the get certificate verification details operation typically these are writt
 */
 type GetCertificateVerificationDetailsParams struct {
 
-	/*CertificateID*/
+	/*CertificateID
+	  The ID of the site to retrieve SSL certificate verification details for
+
+	*/
 	CertificateID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to retrieve SSL certificate verification details for
+
+	*/
 	StackID string
 
 	timeout    time.Duration

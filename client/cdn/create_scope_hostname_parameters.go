@@ -65,11 +65,20 @@ type CreateScopeHostnameParams struct {
 
 	/*Body*/
 	Body *models.CdnCreateScopeHostnameRequest
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to add a hostname to
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to add a hostname to
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to add a hostname to
+
+	*/
 	StackID string
 
 	timeout    time.Duration

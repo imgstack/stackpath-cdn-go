@@ -61,9 +61,15 @@ for the enable site operation typically these are written to a http.Request
 */
 type EnableSiteParams struct {
 
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site to enable
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site to enable
+
+	*/
 	StackID string
 
 	timeout    time.Duration

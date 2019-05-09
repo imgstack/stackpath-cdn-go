@@ -13,24 +13,26 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnScopeRule cdn scope rule
+// CdnScopeRule A EdgeRule associated with a CDN site
+//
+// EdgeRules can modify incoming HTTP requests to a CDN site before they're sent to the origin.
 // swagger:model cdnScopeRule
 type CdnScopeRule struct {
 
-	// created at
+	// The date an EdgeRule was created
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// id
+	// An EdgeRule's unique identifier
 	ID string `json:"id,omitempty"`
 
-	// name
+	// An EdgeRule's name
 	Name string `json:"name,omitempty"`
 
-	// slug
+	// A human and machine readable name for an EdgeRule
 	Slug string `json:"slug,omitempty"`
 
-	// updated at
+	// The date an EdgeRule was last updated
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updatedAt,omitempty"`
 }

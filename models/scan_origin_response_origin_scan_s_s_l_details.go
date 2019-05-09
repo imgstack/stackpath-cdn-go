@@ -11,15 +11,15 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ScanOriginResponseOriginScanSSLDetails scan origin response origin scan s s l details
+// ScanOriginResponseOriginScanSSLDetails SSL details in an origin scan response
 // swagger:model ScanOriginResponseOriginScanSSLDetails
 type ScanOriginResponseOriginScanSSLDetails struct {
 
-	// error
+	// Errors encountered processing HTTPS requests to the scanned domain
 	Error string `json:"error,omitempty"`
 
-	// valid
-	Valid bool `json:"valid"`
+	// Whether or not the scanned domain has a valid SSL certificate
+	Valid bool `json:"valid,omitempty"`
 }
 
 // Validate validates this scan origin response origin scan s s l details

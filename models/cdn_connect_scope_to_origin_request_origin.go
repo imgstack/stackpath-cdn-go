@@ -11,20 +11,22 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnConnectScopeToOriginRequestOrigin cdn connect scope to origin request origin
+// CdnConnectScopeToOriginRequestOrigin A new origin
 // swagger:model cdnConnectScopeToOriginRequestOrigin
 type CdnConnectScopeToOriginRequestOrigin struct {
 
-	// hostname
+	// The origin's hostname or IP address
 	Hostname string `json:"hostname,omitempty"`
 
-	// path
+	// The origin's path
+	//
+	// Paths default to "/"
 	Path string `json:"path,omitempty"`
 
-	// port
+	// The HTTP port to connect to the origin
 	Port int32 `json:"port,omitempty"`
 
-	// secure port
+	// The HTTPS port to connect to the origin
 	SecurePort int32 `json:"securePort,omitempty"`
 }
 

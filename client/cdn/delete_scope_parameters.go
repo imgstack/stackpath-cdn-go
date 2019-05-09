@@ -61,11 +61,20 @@ for the delete scope operation typically these are written to a http.Request
 */
 type DeleteScopeParams struct {
 
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to delete
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to delete
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to delete
+
+	*/
 	StackID string
 
 	timeout    time.Duration

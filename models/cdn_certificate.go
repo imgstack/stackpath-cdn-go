@@ -13,46 +13,48 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CdnCertificate cdn certificate
+// CdnCertificate An SSL certificate
 // swagger:model cdnCertificate
 type CdnCertificate struct {
 
-	// ca bundle
+	// A PEM PKCS #7 formatted certificate authority bundle
 	CaBundle string `json:"caBundle,omitempty"`
 
-	// common name
+	// A certificate's common name, or the primary domain name the certificate is used for
 	CommonName string `json:"commonName,omitempty"`
 
-	// create date
+	// The date an SSL certificate was created
 	// Format: date-time
 	CreateDate strfmt.DateTime `json:"createDate,omitempty"`
 
-	// expiration date
+	// The date an SSL certificate will expire
 	// Format: date-time
 	ExpirationDate strfmt.DateTime `json:"expirationDate,omitempty"`
 
-	// fingerprint
+	// A unique hash of a certificate's contents
 	Fingerprint string `json:"fingerprint,omitempty"`
 
-	// id
+	// A certificate's unique ID
 	ID string `json:"id,omitempty"`
 
-	// issuer
+	// The name of the certificate's issuing certificate authority
 	Issuer string `json:"issuer,omitempty"`
 
 	// Whether a certificate is managed by StackPath or the end user
-	ProviderManaged bool `json:"providerManaged"`
+	ProviderManaged bool `json:"providerManaged,omitempty"`
 
 	// status
 	Status CdnCertificateStatus `json:"status,omitempty"`
 
-	// subject alternative names
+	// A list of Subject Alternative Names in the certificate
+	//
+	// Certificates for multiple domains define their domains in certificate's SAN list.
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames"`
 
-	// trusted
-	Trusted bool `json:"trusted"`
+	// Whether or not the certificate's authority is trusted by a web browser
+	Trusted bool `json:"trusted,omitempty"`
 
-	// update date
+	// The date an SSL certificate was last updated
 	// Format: date-time
 	UpdateDate strfmt.DateTime `json:"updateDate,omitempty"`
 }

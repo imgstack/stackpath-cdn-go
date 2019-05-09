@@ -11,14 +11,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnCreateScopeRequest cdn create scope request
+// CdnCreateScopeRequest A request to create a CDN site scope
 // swagger:model cdnCreateScopeRequest
 type CdnCreateScopeRequest struct {
 
-	// path
+	// The HTTP request path the scope should respond to
 	Path string `json:"path,omitempty"`
 
-	// platform
+	// The StackPath billing platform to create the scope on
 	Platform string `json:"platform,omitempty"`
 }
 

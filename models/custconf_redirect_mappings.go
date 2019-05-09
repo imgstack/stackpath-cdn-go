@@ -11,10 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfRedirectMappings The response code redirection policy allows you to map cache response codes
-// to an HTTP redirect response.  When this policy is applied to a host, the
-// caching servers will redirect clients to the URL specified in this policy
-// instead of delivering the response code you mapped in the policy.
+// CustconfRedirectMappings The response code redirection policy allows you to map cache response codes to an HTTP redirect response. When this policy is applied to a host, the caching servers will redirect clients to the URL specified in this policy instead of delivering the response code you mapped in the policy.
 // swagger:model custconfRedirectMappings
 type CustconfRedirectMappings struct {
 
@@ -22,26 +19,24 @@ type CustconfRedirectMappings struct {
 	Code int64 `json:"code,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	MethodFilter string `json:"methodFilter,omitempty"`
 
-	// String of values deliminated by a ',' character.
+	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
 
 	// The URL that clients would be redirected to when applying this policy.
 	RedirectURL string `json:"redirectURL,omitempty"`
 
-	// A token that will be replaced by the caching server with the URL of the
-	// request that triggered the policy.  This token can be positioned anywhere
-	// in the redirect URL.
+	// A token that will be replaced by the caching server with the URL of the request that triggered the policy. This token can be positioned anywhere in the redirect URL.
 	ReplacementToken string `json:"replacementToken,omitempty"`
 }
 

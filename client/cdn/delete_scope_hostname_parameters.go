@@ -62,15 +62,30 @@ for the delete scope hostname operation typically these are written to a http.Re
 */
 type DeleteScopeHostnameParams struct {
 
-	/*DisableTransparentMode*/
+	/*DisableTransparentMode
+	  Whether or not to remove the hostname from a CDN site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+
+	*/
 	DisableTransparentMode *bool
-	/*Domain*/
+	/*Domain
+	  The hostname to remove from a scope
+
+	*/
 	Domain string
-	/*ScopeID*/
+	/*ScopeID
+	  The ID of the scope to remove a hostname from
+
+	*/
 	ScopeID string
-	/*SiteID*/
+	/*SiteID
+	  The ID of the site containing the scope to remove a hostname from
+
+	*/
 	SiteID string
-	/*StackID*/
+	/*StackID
+	  The ID of the stack containing the site containing the scope to remove a hostname from
+
+	*/
 	StackID string
 
 	timeout    time.Duration

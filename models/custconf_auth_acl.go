@@ -12,9 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CustconfAuthACL IP address restrictions allow you to configure your CDN container to grant or
-// deny a specific IP addresses or range of IP addresses from accessing content
-// cached in a directory in your CDN container.
+// CustconfAuthACL IP address restrictions allow you to configure your CDN container to grant or deny a specific IP addresses or range of IP addresses from accessing content cached in a directory in your CDN container.
 // swagger:model custconfAuthACL
 type CustconfAuthACL struct {
 
@@ -25,17 +23,15 @@ type CustconfAuthACL struct {
 	ClientIPSrc AuthACLClientIPSrcEnumWrapperValue `json:"clientIPSrc,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 
-	// This allows you to specify the name of a HTTP request header which will
-	// contain the client IP address to use for this policy.
+	// This allows you to specify the name of a HTTP request header which will contain the client IP address to use for this policy.
 	Header string `json:"header,omitempty"`
 
-	// This is used by the API to perform conflict checking.
+	// This is used by the API to perform conflict checking
 	ID string `json:"id,omitempty"`
 
-	// String of values deliminated by a ',' character. This is a list of IP
-	// addresses considered for this policy.
+	// String of values delimited by a ',' character. This is a list of IP addresses considered for this policy.
 	IPList string `json:"ipList,omitempty"`
 
 	// protocol

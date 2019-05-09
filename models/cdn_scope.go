@@ -11,17 +11,21 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnScope cdn scope
+// CdnScope A CDN site scope
+//
+// Scopes hold a CDN site's configuration. Every site has at least one "root" scope that handles primary configuration.
 // swagger:model cdnScope
 type CdnScope struct {
 
-	// id
+	// A CDN site scope's unique identifier
 	ID string `json:"id,omitempty"`
 
-	// path
+	// The HTTP request path that is handled by a scope
 	Path string `json:"path,omitempty"`
 
-	// platform
+	// A CDN site scope's platform
+	//
+	// Scope platforms are used internally by StackPath for metrics collection and billing purposes. Typically, most site scope platforms have the value "CDS".
 	Platform string `json:"platform,omitempty"`
 }
 

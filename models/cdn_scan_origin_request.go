@@ -11,11 +11,11 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnScanOriginRequest cdn scan origin request
+// CdnScanOriginRequest A request to scan a URL from the StackPath edge network
 // swagger:model cdnScanOriginRequest
 type CdnScanOriginRequest struct {
 
-	// domain
+	// The URL to scan
 	Domain string `json:"domain,omitempty"`
 }
 

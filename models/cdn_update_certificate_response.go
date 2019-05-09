@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnUpdateCertificateResponse cdn update certificate response
+// CdnUpdateCertificateResponse The response from a request to update an SSL certificate
 // swagger:model cdnUpdateCertificateResponse
 type CdnUpdateCertificateResponse struct {
 

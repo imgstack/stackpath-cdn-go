@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnVerificationRequirements cdn verification requirements
+// CdnVerificationRequirements Conditions that must be met to verify ownership of a domain for SSL certificate provisioning
 // swagger:model cdnVerificationRequirements
 type CdnVerificationRequirements struct {
 

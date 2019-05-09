@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CdnGetScopeRuleConfigurationResponse cdn get scope rule configuration response
+// CdnGetScopeRuleConfigurationResponse The response from a request to retrieve an EdgeRule's configuration
 // swagger:model cdnGetScopeRuleConfigurationResponse
 type CdnGetScopeRuleConfigurationResponse struct {
 
