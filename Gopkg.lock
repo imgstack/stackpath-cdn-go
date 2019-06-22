@@ -80,7 +80,7 @@
   version = "v0.19.0"
 
 [[projects]]
-  digest = "1:11d97b8ba87bd5e88777494790e1a134147ea98604351e66e2c44f747e939a7a"
+  digest = "1:d3b9124667851d0c9d0cc1fdd2db1541a79feb15cd738a8c8e0a5256d877685d"
   name = "github.com/go-openapi/runtime"
   packages = [
     ".",
@@ -93,8 +93,8 @@
     "security",
   ]
   pruneopts = "UT"
-  revision = "109737172424d8a656fd1199e28c9f5cc89b0cca"
-  version = "v0.19.0"
+  revision = "1c4afa5263ac1b091911b4f2440b6ae406fc31e1"
+  version = "v0.19.2"
 
 [[projects]]
   digest = "1:34130204ce3bd3d32bd111e28d9155de1e78132dbf29b2c4cedeca510e954f3e"
