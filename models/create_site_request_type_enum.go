@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -21,6 +21,7 @@ import (
 //  - CDN: The site is a CDN only site
 //  - WAF: The site is either a standalone WAF site or a WAF site with attached CDN service
 //  - API: The site is an API delivery site. API delivery sites are powered by both the WAF and CDN and have custom rulesets for each.
+//
 // swagger:model CreateSiteRequestTypeEnum
 type CreateSiteRequestTypeEnum string
 
@@ -50,7 +51,7 @@ func init() {
 }
 
 func (m CreateSiteRequestTypeEnum) validateCreateSiteRequestTypeEnumEnum(path, location string, value CreateSiteRequestTypeEnum) error {
-	if err := validate.Enum(path, location, value, createSiteRequestTypeEnumEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, createSiteRequestTypeEnumEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -68,5 +69,10 @@ func (m CreateSiteRequestTypeEnum) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this create site request type enum based on context it is used
+func (m CreateSiteRequestTypeEnum) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

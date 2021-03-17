@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // MidTierCachingRequestFormatEnumWrapperValue mid tier caching request format enum wrapper value
+//
 // swagger:model MidTierCachingRequestFormatEnumWrapperValue
 type MidTierCachingRequestFormatEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m MidTierCachingRequestFormatEnumWrapperValue) validateMidTierCachingRequestFormatEnumWrapperValueEnum(path, location string, value MidTierCachingRequestFormatEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, midTierCachingRequestFormatEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, midTierCachingRequestFormatEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m MidTierCachingRequestFormatEnumWrapperValue) Validate(formats strfmt.Reg
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this mid tier caching request format enum wrapper value based on context it is used
+func (m MidTierCachingRequestFormatEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

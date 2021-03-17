@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteCertificateReader is a Reader for the DeleteCertificate structure.
@@ -24,28 +23,24 @@ type DeleteCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteCertificateNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteCertificateNoContent() *DeleteCertificateNoContent {
 	return &DeleteCertificateNoContent{}
 }
 
-/*DeleteCertificateNoContent handles this case with default header values.
+/* DeleteCertificateNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteCertificateUnauthorized() *DeleteCertificateUnauthorized {
 	return &DeleteCertificateUnauthorized{}
 }
 
-/*DeleteCertificateUnauthorized handles this case with default header values.
+/* DeleteCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteCertificateUnauthorized struct {
 
 func (o *DeleteCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] deleteCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteCertificateInternalServerError() *DeleteCertificateInternalServerE
 	return &DeleteCertificateInternalServerError{}
 }
 
-/*DeleteCertificateInternalServerError handles this case with default header values.
+/* DeleteCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteCertificateInternalServerError struct {
 
 func (o *DeleteCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] deleteCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteCertificateDefault(code int) *DeleteCertificateDefault {
 	}
 }
 
-/*DeleteCertificateDefault handles this case with default header values.
+/* DeleteCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteCertificateDefault) Code() int {
 
 func (o *DeleteCertificateDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] DeleteCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

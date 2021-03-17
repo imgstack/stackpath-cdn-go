@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfCacheControl The browser caching policy allows you to control the browser caching behavior of your assets independently from the CDN cache. For example, this policy allows you to set lower or higher TTLs for the browser than those of the CDN cache.
+//
 // swagger:model custconfCacheControl
 type CustconfCacheControl struct {
 
@@ -39,6 +41,11 @@ type CustconfCacheControl struct {
 
 // Validate validates this custconf cache control
 func (m *CustconfCacheControl) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf cache control based on context it is used
+func (m *CustconfCacheControl) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAuthReferer HTTP Referrer restriction policies allow you to limit access to your published CDN URLs based on the HTTP Referrer header submitted by the browser. This restriction policy prevents your content from being easily distributed on unauthorized websites (also known as hot linking or deep linking). Once this policy is applied to your CDN container, websites that are not listed in this policy will be denied access to the content cached at this location.
+//
 // swagger:model custconfAuthReferer
 type CustconfAuthReferer struct {
 
@@ -27,6 +29,11 @@ type CustconfAuthReferer struct {
 
 // Validate validates this custconf auth referer
 func (m *CustconfAuthReferer) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf auth referer based on context it is used
+func (m *CustconfAuthReferer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

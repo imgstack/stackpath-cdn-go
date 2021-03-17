@@ -13,73 +13,88 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteSiteScriptParams creates a new DeleteSiteScriptParams object
-// with the default values initialized.
+// NewDeleteSiteScriptParams creates a new DeleteSiteScriptParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteSiteScriptParams() *DeleteSiteScriptParams {
-	var ()
 	return &DeleteSiteScriptParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteSiteScriptParamsWithTimeout creates a new DeleteSiteScriptParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteSiteScriptParamsWithTimeout(timeout time.Duration) *DeleteSiteScriptParams {
-	var ()
 	return &DeleteSiteScriptParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteSiteScriptParamsWithContext creates a new DeleteSiteScriptParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteSiteScriptParamsWithContext(ctx context.Context) *DeleteSiteScriptParams {
-	var ()
 	return &DeleteSiteScriptParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteSiteScriptParamsWithHTTPClient creates a new DeleteSiteScriptParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteSiteScriptParamsWithHTTPClient(client *http.Client) *DeleteSiteScriptParams {
-	var ()
 	return &DeleteSiteScriptParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteSiteScriptParams contains all the parameters to send to the API endpoint
-for the delete site script operation typically these are written to a http.Request
+/* DeleteSiteScriptParams contains all the parameters to send to the API endpoint
+   for the delete site script operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteSiteScriptParams struct {
 
-	/*ScriptID
-	  The ID of the EdgeEngine script to delete
+	/* ScriptID.
 
+	   The ID of the EdgeEngine script to delete
 	*/
 	ScriptID string
-	/*SiteID
-	  The ID of the CDN site to delete an EdgeEngine script from
 
+	/* SiteID.
+
+	   The ID of the CDN site to delete an EdgeEngine script from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to delete an EdgeEngine script from
 
+	/* StackID.
+
+	   The ID of the stack containing the site to delete an EdgeEngine script from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete site script params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteSiteScriptParams) WithDefaults() *DeleteSiteScriptParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete site script params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteSiteScriptParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete site script params

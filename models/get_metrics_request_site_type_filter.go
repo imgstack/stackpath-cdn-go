@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -21,6 +21,7 @@ import (
 //  - WAF: Retrieve metrics for WAF sites only
 //  - API: Retrieve metrics for API sites only
 //  - EDGE_ENGINE: Retrieve metrics for sites with EdgeEngine scripts only
+//
 // swagger:model GetMetricsRequestSiteTypeFilter
 type GetMetricsRequestSiteTypeFilter string
 
@@ -56,7 +57,7 @@ func init() {
 }
 
 func (m GetMetricsRequestSiteTypeFilter) validateGetMetricsRequestSiteTypeFilterEnum(path, location string, value GetMetricsRequestSiteTypeFilter) error {
-	if err := validate.Enum(path, location, value, getMetricsRequestSiteTypeFilterEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, getMetricsRequestSiteTypeFilterEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -74,5 +75,10 @@ func (m GetMetricsRequestSiteTypeFilter) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this get metrics request site type filter based on context it is used
+func (m GetMetricsRequestSiteTypeFilter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

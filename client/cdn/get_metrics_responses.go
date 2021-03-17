@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetMetricsReader is a Reader for the GetMetrics structure.
@@ -24,28 +23,24 @@ type GetMetricsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetMetricsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetMetricsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetMetricsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetMetricsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetMetricsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetMetricsOK() *GetMetricsOK {
 	return &GetMetricsOK{}
 }
 
-/*GetMetricsOK handles this case with default header values.
+/* GetMetricsOK describes a response with status code 200, with default header values.
 
 GetMetricsOK get metrics o k
 */
@@ -73,6 +68,9 @@ type GetMetricsOK struct {
 
 func (o *GetMetricsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/metrics][%d] getMetricsOK  %+v", 200, o.Payload)
+}
+func (o *GetMetricsOK) GetPayload() *models.CdnGetMetricsResponse {
+	return o.Payload
 }
 
 func (o *GetMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetMetricsUnauthorized() *GetMetricsUnauthorized {
 	return &GetMetricsUnauthorized{}
 }
 
-/*GetMetricsUnauthorized handles this case with default header values.
+/* GetMetricsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetMetricsUnauthorized struct {
 
 func (o *GetMetricsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/metrics][%d] getMetricsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetMetricsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetMetricsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetMetricsInternalServerError() *GetMetricsInternalServerError {
 	return &GetMetricsInternalServerError{}
 }
 
-/*GetMetricsInternalServerError handles this case with default header values.
+/* GetMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetMetricsInternalServerError struct {
 
 func (o *GetMetricsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/metrics][%d] getMetricsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetMetricsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetMetricsDefault(code int) *GetMetricsDefault {
 	}
 }
 
-/*GetMetricsDefault handles this case with default header values.
+/* GetMetricsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetMetricsDefault) Code() int {
 
 func (o *GetMetricsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/metrics][%d] GetMetrics default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetMetricsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetMetricsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

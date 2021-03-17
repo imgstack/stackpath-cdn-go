@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteScopeHostnameReader is a Reader for the DeleteScopeHostname structure.
@@ -24,28 +23,24 @@ type DeleteScopeHostnameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteScopeHostnameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteScopeHostnameNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteScopeHostnameUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteScopeHostnameInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteScopeHostnameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteScopeHostnameNoContent() *DeleteScopeHostnameNoContent {
 	return &DeleteScopeHostnameNoContent{}
 }
 
-/*DeleteScopeHostnameNoContent handles this case with default header values.
+/* DeleteScopeHostnameNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteScopeHostnameUnauthorized() *DeleteScopeHostnameUnauthorized {
 	return &DeleteScopeHostnameUnauthorized{}
 }
 
-/*DeleteScopeHostnameUnauthorized handles this case with default header values.
+/* DeleteScopeHostnameUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteScopeHostnameUnauthorized struct {
 
 func (o *DeleteScopeHostnameUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames/{domain}][%d] deleteScopeHostnameUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteScopeHostnameUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeHostnameUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteScopeHostnameInternalServerError() *DeleteScopeHostnameInternalSer
 	return &DeleteScopeHostnameInternalServerError{}
 }
 
-/*DeleteScopeHostnameInternalServerError handles this case with default header values.
+/* DeleteScopeHostnameInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteScopeHostnameInternalServerError struct {
 
 func (o *DeleteScopeHostnameInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames/{domain}][%d] deleteScopeHostnameInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteScopeHostnameInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeHostnameInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteScopeHostnameDefault(code int) *DeleteScopeHostnameDefault {
 	}
 }
 
-/*DeleteScopeHostnameDefault handles this case with default header values.
+/* DeleteScopeHostnameDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteScopeHostnameDefault) Code() int {
 
 func (o *DeleteScopeHostnameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames/{domain}][%d] DeleteScopeHostname default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteScopeHostnameDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeHostnameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

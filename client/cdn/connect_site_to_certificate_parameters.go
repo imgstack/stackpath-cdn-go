@@ -13,73 +13,88 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewConnectSiteToCertificateParams creates a new ConnectSiteToCertificateParams object
-// with the default values initialized.
+// NewConnectSiteToCertificateParams creates a new ConnectSiteToCertificateParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewConnectSiteToCertificateParams() *ConnectSiteToCertificateParams {
-	var ()
 	return &ConnectSiteToCertificateParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewConnectSiteToCertificateParamsWithTimeout creates a new ConnectSiteToCertificateParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewConnectSiteToCertificateParamsWithTimeout(timeout time.Duration) *ConnectSiteToCertificateParams {
-	var ()
 	return &ConnectSiteToCertificateParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewConnectSiteToCertificateParamsWithContext creates a new ConnectSiteToCertificateParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewConnectSiteToCertificateParamsWithContext(ctx context.Context) *ConnectSiteToCertificateParams {
-	var ()
 	return &ConnectSiteToCertificateParams{
-
 		Context: ctx,
 	}
 }
 
 // NewConnectSiteToCertificateParamsWithHTTPClient creates a new ConnectSiteToCertificateParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewConnectSiteToCertificateParamsWithHTTPClient(client *http.Client) *ConnectSiteToCertificateParams {
-	var ()
 	return &ConnectSiteToCertificateParams{
 		HTTPClient: client,
 	}
 }
 
-/*ConnectSiteToCertificateParams contains all the parameters to send to the API endpoint
-for the connect site to certificate operation typically these are written to a http.Request
+/* ConnectSiteToCertificateParams contains all the parameters to send to the API endpoint
+   for the connect site to certificate operation.
+
+   Typically these are written to a http.Request.
 */
 type ConnectSiteToCertificateParams struct {
 
-	/*CertificateID
-	  The ID of the SSL certificate to attach to a CDN site
+	/* CertificateID.
 
+	   The ID of the SSL certificate to attach to a CDN site
 	*/
 	CertificateID string
-	/*SiteID
-	  The ID of the site to attach an SSL certificate to
 
+	/* SiteID.
+
+	   The ID of the site to attach an SSL certificate to
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to attach an SSL certificate to
 
+	/* StackID.
+
+	   The ID of the stack containing the site to attach an SSL certificate to
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the connect site to certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ConnectSiteToCertificateParams) WithDefaults() *ConnectSiteToCertificateParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the connect site to certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ConnectSiteToCertificateParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the connect site to certificate params

@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // UpdateSiteScriptReader is a Reader for the UpdateSiteScript structure.
@@ -24,28 +23,24 @@ type UpdateSiteScriptReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateSiteScriptReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateSiteScriptOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewUpdateSiteScriptUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewUpdateSiteScriptInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewUpdateSiteScriptDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewUpdateSiteScriptOK() *UpdateSiteScriptOK {
 	return &UpdateSiteScriptOK{}
 }
 
-/*UpdateSiteScriptOK handles this case with default header values.
+/* UpdateSiteScriptOK describes a response with status code 200, with default header values.
 
 UpdateSiteScriptOK update site script o k
 */
@@ -73,6 +68,9 @@ type UpdateSiteScriptOK struct {
 
 func (o *UpdateSiteScriptOK) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] updateSiteScriptOK  %+v", 200, o.Payload)
+}
+func (o *UpdateSiteScriptOK) GetPayload() *models.CdnUpdateSiteScriptResponse {
+	return o.Payload
 }
 
 func (o *UpdateSiteScriptOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewUpdateSiteScriptUnauthorized() *UpdateSiteScriptUnauthorized {
 	return &UpdateSiteScriptUnauthorized{}
 }
 
-/*UpdateSiteScriptUnauthorized handles this case with default header values.
+/* UpdateSiteScriptUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type UpdateSiteScriptUnauthorized struct {
 
 func (o *UpdateSiteScriptUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] updateSiteScriptUnauthorized  %+v", 401, o.Payload)
+}
+func (o *UpdateSiteScriptUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateSiteScriptUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewUpdateSiteScriptInternalServerError() *UpdateSiteScriptInternalServerErr
 	return &UpdateSiteScriptInternalServerError{}
 }
 
-/*UpdateSiteScriptInternalServerError handles this case with default header values.
+/* UpdateSiteScriptInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type UpdateSiteScriptInternalServerError struct {
 
 func (o *UpdateSiteScriptInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] updateSiteScriptInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateSiteScriptInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateSiteScriptInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewUpdateSiteScriptDefault(code int) *UpdateSiteScriptDefault {
 	}
 }
 
-/*UpdateSiteScriptDefault handles this case with default header values.
+/* UpdateSiteScriptDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *UpdateSiteScriptDefault) Code() int {
 
 func (o *UpdateSiteScriptDefault) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] UpdateSiteScript default  %+v", o._statusCode, o.Payload)
+}
+func (o *UpdateSiteScriptDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateSiteScriptDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

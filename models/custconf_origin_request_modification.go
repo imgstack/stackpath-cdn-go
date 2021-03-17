@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfOriginRequestModification custconf origin request modification
+//
 // swagger:model custconfOriginRequestModification
 type CustconfOriginRequestModification struct {
 
@@ -51,6 +53,11 @@ type CustconfOriginRequestModification struct {
 
 // Validate validates this custconf origin request modification
 func (m *CustconfOriginRequestModification) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf origin request modification based on context it is used
+func (m *CustconfOriginRequestModification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

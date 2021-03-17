@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetCertificateReader is a Reader for the GetCertificate structure.
@@ -24,28 +23,24 @@ type GetCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCertificateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetCertificateOK() *GetCertificateOK {
 	return &GetCertificateOK{}
 }
 
-/*GetCertificateOK handles this case with default header values.
+/* GetCertificateOK describes a response with status code 200, with default header values.
 
 GetCertificateOK get certificate o k
 */
@@ -73,6 +68,9 @@ type GetCertificateOK struct {
 
 func (o *GetCertificateOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] getCertificateOK  %+v", 200, o.Payload)
+}
+func (o *GetCertificateOK) GetPayload() *models.CdnGetCertificateResponse {
+	return o.Payload
 }
 
 func (o *GetCertificateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetCertificateUnauthorized() *GetCertificateUnauthorized {
 	return &GetCertificateUnauthorized{}
 }
 
-/*GetCertificateUnauthorized handles this case with default header values.
+/* GetCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetCertificateUnauthorized struct {
 
 func (o *GetCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] getCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetCertificateInternalServerError() *GetCertificateInternalServerError {
 	return &GetCertificateInternalServerError{}
 }
 
-/*GetCertificateInternalServerError handles this case with default header values.
+/* GetCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetCertificateInternalServerError struct {
 
 func (o *GetCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] getCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetCertificateDefault(code int) *GetCertificateDefault {
 	}
 }
 
-/*GetCertificateDefault handles this case with default header values.
+/* GetCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetCertificateDefault) Code() int {
 
 func (o *GetCertificateDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] GetCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

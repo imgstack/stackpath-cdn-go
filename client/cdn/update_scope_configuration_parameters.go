@@ -13,77 +13,93 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewUpdateScopeConfigurationParams creates a new UpdateScopeConfigurationParams object
-// with the default values initialized.
+// NewUpdateScopeConfigurationParams creates a new UpdateScopeConfigurationParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateScopeConfigurationParams() *UpdateScopeConfigurationParams {
-	var ()
 	return &UpdateScopeConfigurationParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateScopeConfigurationParamsWithTimeout creates a new UpdateScopeConfigurationParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateScopeConfigurationParamsWithTimeout(timeout time.Duration) *UpdateScopeConfigurationParams {
-	var ()
 	return &UpdateScopeConfigurationParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateScopeConfigurationParamsWithContext creates a new UpdateScopeConfigurationParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateScopeConfigurationParamsWithContext(ctx context.Context) *UpdateScopeConfigurationParams {
-	var ()
 	return &UpdateScopeConfigurationParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateScopeConfigurationParamsWithHTTPClient creates a new UpdateScopeConfigurationParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateScopeConfigurationParamsWithHTTPClient(client *http.Client) *UpdateScopeConfigurationParams {
-	var ()
 	return &UpdateScopeConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateScopeConfigurationParams contains all the parameters to send to the API endpoint
-for the update scope configuration operation typically these are written to a http.Request
+/* UpdateScopeConfigurationParams contains all the parameters to send to the API endpoint
+   for the update scope configuration operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateScopeConfigurationParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnUpdateScopeConfigurationRequest
-	/*ScopeID
-	  The ID of the scope to update
 
+	/* ScopeID.
+
+	   The ID of the scope to update
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site containing the scope to update
 
+	/* SiteID.
+
+	   The ID of the site containing the scope to update
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site containing the scope to update
 
+	/* StackID.
+
+	   The ID of the stack containing the site containing the scope to update
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update scope configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateScopeConfigurationParams) WithDefaults() *UpdateScopeConfigurationParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update scope configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateScopeConfigurationParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update scope configuration params
@@ -170,7 +186,6 @@ func (o *UpdateScopeConfigurationParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

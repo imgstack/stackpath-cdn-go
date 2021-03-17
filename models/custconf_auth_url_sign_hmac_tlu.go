@@ -6,18 +6,20 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAuthURLSignHmacTlu custconf auth Url sign hmac tlu
+//
 // swagger:model custconfAuthUrlSignHmacTlu
 type CustconfAuthURLSignHmacTlu struct {
 
 	// algorithm Id map
-	AlgorithmIDMap map[string]CustconfAuthURLSignHmacTluAlgorithmIDMapEnumWrapperValue `json:"algorithmIdMap,omitempty"`
+	AlgorithmIDMap map[string]*CustconfAuthURLSignHmacTluAlgorithmIDMapEnumWrapperValue `json:"algorithmIdMap,omitempty"`
 
 	// algorithm Id parameter name
 	AlgorithmIDParameterName string `json:"algorithmIdParameterName,omitempty"`
@@ -65,15 +67,46 @@ func (m *CustconfAuthURLSignHmacTlu) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfAuthURLSignHmacTlu) validateAlgorithmIDMap(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AlgorithmIDMap) { // not required
 		return nil
 	}
 
 	for k := range m.AlgorithmIDMap {
 
+		if swag.IsZero(m.AlgorithmIDMap[k]) { // not required
+			continue
+		}
 		if val, ok := m.AlgorithmIDMap[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf auth Url sign hmac tlu based on the context it is used
+func (m *CustconfAuthURLSignHmacTlu) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAlgorithmIDMap(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfAuthURLSignHmacTlu) contextValidateAlgorithmIDMap(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.AlgorithmIDMap {
+
+		if val, ok := m.AlgorithmIDMap[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}
 		}

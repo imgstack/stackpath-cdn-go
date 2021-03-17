@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue custconf aws signed s3 post v4 authentication type enum wrapper value
+//
 // swagger:model custconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue
 type CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue) validateCustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValueEnum(path, location string, value CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue) Validate(fo
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf aws signed s3 post v4 authentication type enum wrapper value based on context it is used
+func (m CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfAuthACLProtocolEnumWrapperValue custconf auth ACL protocol enum wrapper value
+//
 // swagger:model custconfAuthACLProtocolEnumWrapperValue
 type CustconfAuthACLProtocolEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m CustconfAuthACLProtocolEnumWrapperValue) validateCustconfAuthACLProtocolEnumWrapperValueEnum(path, location string, value CustconfAuthACLProtocolEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfAuthAclProtocolEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfAuthAclProtocolEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m CustconfAuthACLProtocolEnumWrapperValue) Validate(formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf auth ACL protocol enum wrapper value based on context it is used
+func (m CustconfAuthACLProtocolEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

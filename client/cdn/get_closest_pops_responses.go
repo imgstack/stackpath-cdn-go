@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetClosestPopsReader is a Reader for the GetClosestPops structure.
@@ -24,28 +23,24 @@ type GetClosestPopsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetClosestPopsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetClosestPopsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetClosestPopsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetClosestPopsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetClosestPopsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetClosestPopsOK() *GetClosestPopsOK {
 	return &GetClosestPopsOK{}
 }
 
-/*GetClosestPopsOK handles this case with default header values.
+/* GetClosestPopsOK describes a response with status code 200, with default header values.
 
 GetClosestPopsOK get closest pops o k
 */
@@ -73,6 +68,9 @@ type GetClosestPopsOK struct {
 
 func (o *GetClosestPopsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops/closest][%d] getClosestPopsOK  %+v", 200, o.Payload)
+}
+func (o *GetClosestPopsOK) GetPayload() *models.CdnGetClosestPopsResponse {
+	return o.Payload
 }
 
 func (o *GetClosestPopsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetClosestPopsUnauthorized() *GetClosestPopsUnauthorized {
 	return &GetClosestPopsUnauthorized{}
 }
 
-/*GetClosestPopsUnauthorized handles this case with default header values.
+/* GetClosestPopsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetClosestPopsUnauthorized struct {
 
 func (o *GetClosestPopsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops/closest][%d] getClosestPopsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetClosestPopsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetClosestPopsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetClosestPopsInternalServerError() *GetClosestPopsInternalServerError {
 	return &GetClosestPopsInternalServerError{}
 }
 
-/*GetClosestPopsInternalServerError handles this case with default header values.
+/* GetClosestPopsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetClosestPopsInternalServerError struct {
 
 func (o *GetClosestPopsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops/closest][%d] getClosestPopsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClosestPopsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetClosestPopsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetClosestPopsDefault(code int) *GetClosestPopsDefault {
 	}
 }
 
-/*GetClosestPopsDefault handles this case with default header values.
+/* GetClosestPopsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetClosestPopsDefault) Code() int {
 
 func (o *GetClosestPopsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops/closest][%d] GetClosestPops default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetClosestPopsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetClosestPopsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

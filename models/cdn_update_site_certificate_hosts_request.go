@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnUpdateSiteCertificateHostsRequest A request to update an SSL certificate's hosts
+//
 // swagger:model cdnUpdateSiteCertificateHostsRequest
 type CdnUpdateSiteCertificateHostsRequest struct {
 
@@ -21,6 +23,11 @@ type CdnUpdateSiteCertificateHostsRequest struct {
 
 // Validate validates this cdn update site certificate hosts request
 func (m *CdnUpdateSiteCertificateHostsRequest) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn update site certificate hosts request based on context it is used
+func (m *CdnUpdateSiteCertificateHostsRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

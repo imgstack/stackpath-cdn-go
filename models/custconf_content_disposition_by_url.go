@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfContentDispositionByURL The content disposition by URL policy allows you to control Content-Disposition HTTP header delivered by the CDN caching servers. The policy gives you control over each of the header directives and allows you to specify a URL pattern match for determining when to apply the policy. Please note this policy takes precedence over all the other content disposition policies.
+//
 // swagger:model custconfContentDispositionByURL
 type CustconfContentDispositionByURL struct {
 
@@ -36,6 +38,11 @@ type CustconfContentDispositionByURL struct {
 
 // Validate validates this custconf content disposition by URL
 func (m *CustconfContentDispositionByURL) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf content disposition by URL based on context it is used
+func (m *CustconfContentDispositionByURL) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

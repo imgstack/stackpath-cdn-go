@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -21,6 +21,7 @@ import (
 //  - PT5M: Retrieve metrics per five minute intervals
 //  - PT1H: Retrieve metrics per hour
 //  - P1D: Retrieve metrics per day
+//
 // swagger:model GetMetricsRequestMetricsGranularity
 type GetMetricsRequestMetricsGranularity string
 
@@ -56,7 +57,7 @@ func init() {
 }
 
 func (m GetMetricsRequestMetricsGranularity) validateGetMetricsRequestMetricsGranularityEnum(path, location string, value GetMetricsRequestMetricsGranularity) error {
-	if err := validate.Enum(path, location, value, getMetricsRequestMetricsGranularityEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, getMetricsRequestMetricsGranularityEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -74,5 +75,10 @@ func (m GetMetricsRequestMetricsGranularity) Validate(formats strfmt.Registry) e
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this get metrics request metrics granularity based on context it is used
+func (m GetMetricsRequestMetricsGranularity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

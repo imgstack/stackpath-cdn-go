@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetScopeRulesReader is a Reader for the GetScopeRules structure.
@@ -24,28 +23,24 @@ type GetScopeRulesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetScopeRulesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetScopeRulesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetScopeRulesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetScopeRulesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetScopeRulesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetScopeRulesOK() *GetScopeRulesOK {
 	return &GetScopeRulesOK{}
 }
 
-/*GetScopeRulesOK handles this case with default header values.
+/* GetScopeRulesOK describes a response with status code 200, with default header values.
 
 GetScopeRulesOK get scope rules o k
 */
@@ -73,6 +68,9 @@ type GetScopeRulesOK struct {
 
 func (o *GetScopeRulesOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules][%d] getScopeRulesOK  %+v", 200, o.Payload)
+}
+func (o *GetScopeRulesOK) GetPayload() *models.CdnGetScopeRulesResponse {
+	return o.Payload
 }
 
 func (o *GetScopeRulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetScopeRulesUnauthorized() *GetScopeRulesUnauthorized {
 	return &GetScopeRulesUnauthorized{}
 }
 
-/*GetScopeRulesUnauthorized handles this case with default header values.
+/* GetScopeRulesUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetScopeRulesUnauthorized struct {
 
 func (o *GetScopeRulesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules][%d] getScopeRulesUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetScopeRulesUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeRulesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetScopeRulesInternalServerError() *GetScopeRulesInternalServerError {
 	return &GetScopeRulesInternalServerError{}
 }
 
-/*GetScopeRulesInternalServerError handles this case with default header values.
+/* GetScopeRulesInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetScopeRulesInternalServerError struct {
 
 func (o *GetScopeRulesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules][%d] getScopeRulesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetScopeRulesInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeRulesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetScopeRulesDefault(code int) *GetScopeRulesDefault {
 	}
 }
 
-/*GetScopeRulesDefault handles this case with default header values.
+/* GetScopeRulesDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetScopeRulesDefault) Code() int {
 
 func (o *GetScopeRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules][%d] GetScopeRules default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetScopeRulesDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeRulesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

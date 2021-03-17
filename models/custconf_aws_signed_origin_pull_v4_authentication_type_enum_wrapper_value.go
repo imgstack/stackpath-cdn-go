@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue custconf aws signed origin pull v4 authentication type enum wrapper value
+//
 // swagger:model custconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue
 type CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue) validateCustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValueEnum(path, location string, value CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue) Validat
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf aws signed origin pull v4 authentication type enum wrapper value based on context it is used
+func (m CustconfAwsSignedOriginPullV4AuthenticationTypeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

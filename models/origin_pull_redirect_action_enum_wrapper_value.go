@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // OriginPullRedirectActionEnumWrapperValue origin pull redirect action enum wrapper value
+//
 // swagger:model OriginPullRedirectActionEnumWrapperValue
 type OriginPullRedirectActionEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m OriginPullRedirectActionEnumWrapperValue) validateOriginPullRedirectActionEnumWrapperValueEnum(path, location string, value OriginPullRedirectActionEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, originPullRedirectActionEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, originPullRedirectActionEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m OriginPullRedirectActionEnumWrapperValue) Validate(formats strfmt.Regist
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this origin pull redirect action enum wrapper value based on context it is used
+func (m OriginPullRedirectActionEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

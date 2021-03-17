@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetSiteCertificatesResponse The response from a request to retrieve a CDN site's SSL certificates
+//
 // swagger:model cdnGetSiteCertificatesResponse
 type CdnGetSiteCertificatesResponse struct {
 
@@ -44,7 +45,6 @@ func (m *CdnGetSiteCertificatesResponse) Validate(formats strfmt.Registry) error
 }
 
 func (m *CdnGetSiteCertificatesResponse) validatePageInfo(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.PageInfo) { // not required
 		return nil
 	}
@@ -62,7 +62,6 @@ func (m *CdnGetSiteCertificatesResponse) validatePageInfo(formats strfmt.Registr
 }
 
 func (m *CdnGetSiteCertificatesResponse) validateResults(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Results) { // not required
 		return nil
 	}
@@ -74,6 +73,56 @@ func (m *CdnGetSiteCertificatesResponse) validateResults(formats strfmt.Registry
 
 		if m.Results[i] != nil {
 			if err := m.Results[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("results" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn get site certificates response based on the context it is used
+func (m *CdnGetSiteCertificatesResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePageInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResults(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnGetSiteCertificatesResponse) contextValidatePageInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PageInfo != nil {
+		if err := m.PageInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pageInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CdnGetSiteCertificatesResponse) contextValidateResults(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Results); i++ {
+
+		if m.Results[i] != nil {
+			if err := m.Results[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("results" + "." + strconv.Itoa(i))
 				}

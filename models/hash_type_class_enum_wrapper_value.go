@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // HashTypeClassEnumWrapperValue hash type class enum wrapper value
+//
 // swagger:model HashTypeClassEnumWrapperValue
 type HashTypeClassEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m HashTypeClassEnumWrapperValue) validateHashTypeClassEnumWrapperValueEnum(path, location string, value HashTypeClassEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, hashTypeClassEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, hashTypeClassEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m HashTypeClassEnumWrapperValue) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this hash type class enum wrapper value based on context it is used
+func (m HashTypeClassEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnRequestCertificateResponse The response from a request to provision an SSL certificate for a CDN site
+//
 // swagger:model cdnRequestCertificateResponse
 type CdnRequestCertificateResponse struct {
 
@@ -44,7 +45,6 @@ func (m *CdnRequestCertificateResponse) Validate(formats strfmt.Registry) error 
 }
 
 func (m *CdnRequestCertificateResponse) validateCertificate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Certificate) { // not required
 		return nil
 	}
@@ -62,7 +62,6 @@ func (m *CdnRequestCertificateResponse) validateCertificate(formats strfmt.Regis
 }
 
 func (m *CdnRequestCertificateResponse) validateVerificationRequirements(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.VerificationRequirements) { // not required
 		return nil
 	}
@@ -74,6 +73,56 @@ func (m *CdnRequestCertificateResponse) validateVerificationRequirements(formats
 
 		if m.VerificationRequirements[i] != nil {
 			if err := m.VerificationRequirements[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("verificationRequirements" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn request certificate response based on the context it is used
+func (m *CdnRequestCertificateResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCertificate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVerificationRequirements(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnRequestCertificateResponse) contextValidateCertificate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Certificate != nil {
+		if err := m.Certificate.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificate")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CdnRequestCertificateResponse) contextValidateVerificationRequirements(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VerificationRequirements); i++ {
+
+		if m.VerificationRequirements[i] != nil {
+			if err := m.VerificationRequirements[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("verificationRequirements" + "." + strconv.Itoa(i))
 				}

@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateSiteRequest A request to create a new CDN site
+//
 // swagger:model cdnCreateSiteRequest
 type CdnCreateSiteRequest struct {
 
@@ -25,13 +26,13 @@ type CdnCreateSiteRequest struct {
 	Domain string `json:"domain,omitempty"`
 
 	// The new CDN site's associated features
-	Features []CdnCreateSiteRequestFeature `json:"features,omitempty"`
+	Features []*CdnCreateSiteRequestFeature `json:"features,omitempty"`
 
 	// origin
 	Origin *CdnCreateSiteRequestOrigin `json:"origin,omitempty"`
 
 	// type
-	Type CreateSiteRequestTypeEnum `json:"type,omitempty"`
+	Type *CreateSiteRequestTypeEnum `json:"type,omitempty"`
 }
 
 // Validate validates this cdn create site request
@@ -61,7 +62,6 @@ func (m *CdnCreateSiteRequest) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCreateSiteRequest) validateConfiguration(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Configuration) { // not required
 		return nil
 	}
@@ -79,18 +79,22 @@ func (m *CdnCreateSiteRequest) validateConfiguration(formats strfmt.Registry) er
 }
 
 func (m *CdnCreateSiteRequest) validateFeatures(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Features) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Features); i++ {
+		if swag.IsZero(m.Features[i]) { // not required
+			continue
+		}
 
-		if err := m.Features[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("features" + "." + strconv.Itoa(i))
+		if m.Features[i] != nil {
+			if err := m.Features[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -99,7 +103,6 @@ func (m *CdnCreateSiteRequest) validateFeatures(formats strfmt.Registry) error {
 }
 
 func (m *CdnCreateSiteRequest) validateOrigin(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Origin) { // not required
 		return nil
 	}
@@ -117,16 +120,103 @@ func (m *CdnCreateSiteRequest) validateOrigin(formats strfmt.Registry) error {
 }
 
 func (m *CdnCreateSiteRequest) validateType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
-	if err := m.Type.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("type")
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn create site request based on the context it is used
+func (m *CdnCreateSiteRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConfiguration(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFeatures(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrigin(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnCreateSiteRequest) contextValidateConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Configuration != nil {
+		if err := m.Configuration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CdnCreateSiteRequest) contextValidateFeatures(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Features); i++ {
+
+		if m.Features[i] != nil {
+			if err := m.Features[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CdnCreateSiteRequest) contextValidateOrigin(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Origin != nil {
+		if err := m.Origin.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("origin")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CdnCreateSiteRequest) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			}
+			return err
+		}
 	}
 
 	return nil

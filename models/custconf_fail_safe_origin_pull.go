@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfFailSafeOriginPull custconf fail safe origin pull
+//
 // swagger:model custconfFailSafeOriginPull
 type CustconfFailSafeOriginPull struct {
 
@@ -30,6 +32,11 @@ type CustconfFailSafeOriginPull struct {
 
 // Validate validates this custconf fail safe origin pull
 func (m *CustconfFailSafeOriginPull) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf fail safe origin pull based on context it is used
+func (m *CustconfFailSafeOriginPull) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfQueryStrParam The reserved query string parameters policy describes all the query string parameters the StackPath CDN caching server reserves for special processing of your requests.
+//
 // swagger:model custconfQueryStrParam
 type CustconfQueryStrParam struct {
 
@@ -51,6 +53,11 @@ type CustconfQueryStrParam struct {
 
 // Validate validates this custconf query str param
 func (m *CustconfQueryStrParam) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf query str param based on context it is used
+func (m *CustconfQueryStrParam) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

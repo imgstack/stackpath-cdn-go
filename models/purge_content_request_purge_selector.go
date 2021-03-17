@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PurgeContentRequestPurgeSelector purge content request purge selector
+//
 // swagger:model PurgeContentRequestPurgeSelector
 type PurgeContentRequestPurgeSelector struct {
 
@@ -20,7 +22,7 @@ type PurgeContentRequestPurgeSelector struct {
 	SelectorName string `json:"selectorName,omitempty"`
 
 	// selector type
-	SelectorType PurgeContentRequestPurgeSelectorType `json:"selectorType,omitempty"`
+	SelectorType *PurgeContentRequestPurgeSelectorType `json:"selectorType,omitempty"`
 
 	// selector value
 	SelectorValue string `json:"selectorValue,omitempty"`
@@ -44,16 +46,45 @@ func (m *PurgeContentRequestPurgeSelector) Validate(formats strfmt.Registry) err
 }
 
 func (m *PurgeContentRequestPurgeSelector) validateSelectorType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SelectorType) { // not required
 		return nil
 	}
 
-	if err := m.SelectorType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("selectorType")
+	if m.SelectorType != nil {
+		if err := m.SelectorType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("selectorType")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this purge content request purge selector based on the context it is used
+func (m *PurgeContentRequestPurgeSelector) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSelectorType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PurgeContentRequestPurgeSelector) contextValidateSelectorType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SelectorType != nil {
+		if err := m.SelectorType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("selectorType")
+			}
+			return err
+		}
 	}
 
 	return nil

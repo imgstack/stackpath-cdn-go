@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAuthHTTPBasic HTTP basic authentication policies allow you to control access to your content by requiring the end user to enter a valid username and password before gaining access to content.
+//
 // swagger:model custconfAuthHttpBasic
 type CustconfAuthHTTPBasic struct {
 
@@ -33,6 +35,11 @@ type CustconfAuthHTTPBasic struct {
 
 // Validate validates this custconf auth Http basic
 func (m *CustconfAuthHTTPBasic) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf auth Http basic based on context it is used
+func (m *CustconfAuthHTTPBasic) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

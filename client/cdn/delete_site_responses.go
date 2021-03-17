@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteSiteReader is a Reader for the DeleteSite structure.
@@ -24,28 +23,24 @@ type DeleteSiteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteSiteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteSiteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteSiteUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteSiteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteSiteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteSiteNoContent() *DeleteSiteNoContent {
 	return &DeleteSiteNoContent{}
 }
 
-/*DeleteSiteNoContent handles this case with default header values.
+/* DeleteSiteNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteSiteUnauthorized() *DeleteSiteUnauthorized {
 	return &DeleteSiteUnauthorized{}
 }
 
-/*DeleteSiteUnauthorized handles this case with default header values.
+/* DeleteSiteUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteSiteUnauthorized struct {
 
 func (o *DeleteSiteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] deleteSiteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteSiteUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteSiteInternalServerError() *DeleteSiteInternalServerError {
 	return &DeleteSiteInternalServerError{}
 }
 
-/*DeleteSiteInternalServerError handles this case with default header values.
+/* DeleteSiteInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteSiteInternalServerError struct {
 
 func (o *DeleteSiteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] deleteSiteInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteSiteInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteSiteDefault(code int) *DeleteSiteDefault {
 	}
 }
 
-/*DeleteSiteDefault handles this case with default header values.
+/* DeleteSiteDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteSiteDefault) Code() int {
 
 func (o *DeleteSiteDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] DeleteSite default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteSiteDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

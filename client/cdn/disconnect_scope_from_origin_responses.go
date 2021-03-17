@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DisconnectScopeFromOriginReader is a Reader for the DisconnectScopeFromOrigin structure.
@@ -24,28 +23,24 @@ type DisconnectScopeFromOriginReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DisconnectScopeFromOriginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDisconnectScopeFromOriginNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDisconnectScopeFromOriginUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDisconnectScopeFromOriginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDisconnectScopeFromOriginDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDisconnectScopeFromOriginNoContent() *DisconnectScopeFromOriginNoContent
 	return &DisconnectScopeFromOriginNoContent{}
 }
 
-/*DisconnectScopeFromOriginNoContent handles this case with default header values.
+/* DisconnectScopeFromOriginNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDisconnectScopeFromOriginUnauthorized() *DisconnectScopeFromOriginUnauth
 	return &DisconnectScopeFromOriginUnauthorized{}
 }
 
-/*DisconnectScopeFromOriginUnauthorized handles this case with default header values.
+/* DisconnectScopeFromOriginUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DisconnectScopeFromOriginUnauthorized struct {
 
 func (o *DisconnectScopeFromOriginUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins/{origin_id}][%d] disconnectScopeFromOriginUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DisconnectScopeFromOriginUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisconnectScopeFromOriginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDisconnectScopeFromOriginInternalServerError() *DisconnectScopeFromOrigi
 	return &DisconnectScopeFromOriginInternalServerError{}
 }
 
-/*DisconnectScopeFromOriginInternalServerError handles this case with default header values.
+/* DisconnectScopeFromOriginInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DisconnectScopeFromOriginInternalServerError struct {
 
 func (o *DisconnectScopeFromOriginInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins/{origin_id}][%d] disconnectScopeFromOriginInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DisconnectScopeFromOriginInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisconnectScopeFromOriginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDisconnectScopeFromOriginDefault(code int) *DisconnectScopeFromOriginDef
 	}
 }
 
-/*DisconnectScopeFromOriginDefault handles this case with default header values.
+/* DisconnectScopeFromOriginDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DisconnectScopeFromOriginDefault) Code() int {
 
 func (o *DisconnectScopeFromOriginDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins/{origin_id}][%d] DisconnectScopeFromOrigin default  %+v", o._statusCode, o.Payload)
+}
+func (o *DisconnectScopeFromOriginDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisconnectScopeFromOriginDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

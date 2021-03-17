@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // CdnSite A CDN site
+//
 // swagger:model cdnSite
 type CdnSite struct {
 
@@ -29,7 +30,7 @@ type CdnSite struct {
 	// A CDN site's associated features
 	//
 	// Features control how StackPath provisions and configures a site.
-	Features []CdnSiteFeature `json:"features,omitempty"`
+	Features []*CdnSiteFeature `json:"features,omitempty"`
 
 	// A CDN site's unique identifier
 	ID string `json:"id,omitempty"`
@@ -48,7 +49,7 @@ type CdnSite struct {
 	Status string `json:"status,omitempty"`
 
 	// type
-	Type SiteTypeValue `json:"type,omitempty"`
+	Type *SiteTypeValue `json:"type,omitempty"`
 
 	// The date that a CDN site was last updated
 	// Format: date-time
@@ -82,7 +83,6 @@ func (m *CdnSite) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnSite) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -95,18 +95,22 @@ func (m *CdnSite) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *CdnSite) validateFeatures(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Features) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Features); i++ {
+		if swag.IsZero(m.Features[i]) { // not required
+			continue
+		}
 
-		if err := m.Features[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("features" + "." + strconv.Itoa(i))
+		if m.Features[i] != nil {
+			if err := m.Features[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -115,29 +119,79 @@ func (m *CdnSite) validateFeatures(formats strfmt.Registry) error {
 }
 
 func (m *CdnSite) validateType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
-	if err := m.Type.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("type")
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
 }
 
 func (m *CdnSite) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("updatedAt", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn site based on the context it is used
+func (m *CdnSite) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFeatures(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnSite) contextValidateFeatures(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Features); i++ {
+
+		if m.Features[i] != nil {
+			if err := m.Features[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CdnSite) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetOriginsReader is a Reader for the GetOrigins structure.
@@ -24,28 +23,24 @@ type GetOriginsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetOriginsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetOriginsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetOriginsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetOriginsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetOriginsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetOriginsOK() *GetOriginsOK {
 	return &GetOriginsOK{}
 }
 
-/*GetOriginsOK handles this case with default header values.
+/* GetOriginsOK describes a response with status code 200, with default header values.
 
 GetOriginsOK get origins o k
 */
@@ -73,6 +68,9 @@ type GetOriginsOK struct {
 
 func (o *GetOriginsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/origins][%d] getOriginsOK  %+v", 200, o.Payload)
+}
+func (o *GetOriginsOK) GetPayload() *models.CdnGetOriginsResponse {
+	return o.Payload
 }
 
 func (o *GetOriginsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetOriginsUnauthorized() *GetOriginsUnauthorized {
 	return &GetOriginsUnauthorized{}
 }
 
-/*GetOriginsUnauthorized handles this case with default header values.
+/* GetOriginsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetOriginsUnauthorized struct {
 
 func (o *GetOriginsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/origins][%d] getOriginsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetOriginsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetOriginsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetOriginsInternalServerError() *GetOriginsInternalServerError {
 	return &GetOriginsInternalServerError{}
 }
 
-/*GetOriginsInternalServerError handles this case with default header values.
+/* GetOriginsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetOriginsInternalServerError struct {
 
 func (o *GetOriginsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/origins][%d] getOriginsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetOriginsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetOriginsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetOriginsDefault(code int) *GetOriginsDefault {
 	}
 }
 
-/*GetOriginsDefault handles this case with default header values.
+/* GetOriginsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetOriginsDefault) Code() int {
 
 func (o *GetOriginsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/origins][%d] GetOrigins default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetOriginsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetOriginsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

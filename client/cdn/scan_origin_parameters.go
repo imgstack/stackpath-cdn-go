@@ -13,62 +13,75 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewScanOriginParams creates a new ScanOriginParams object
-// with the default values initialized.
+// NewScanOriginParams creates a new ScanOriginParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewScanOriginParams() *ScanOriginParams {
-	var ()
 	return &ScanOriginParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewScanOriginParamsWithTimeout creates a new ScanOriginParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewScanOriginParamsWithTimeout(timeout time.Duration) *ScanOriginParams {
-	var ()
 	return &ScanOriginParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewScanOriginParamsWithContext creates a new ScanOriginParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewScanOriginParamsWithContext(ctx context.Context) *ScanOriginParams {
-	var ()
 	return &ScanOriginParams{
-
 		Context: ctx,
 	}
 }
 
 // NewScanOriginParamsWithHTTPClient creates a new ScanOriginParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewScanOriginParamsWithHTTPClient(client *http.Client) *ScanOriginParams {
-	var ()
 	return &ScanOriginParams{
 		HTTPClient: client,
 	}
 }
 
-/*ScanOriginParams contains all the parameters to send to the API endpoint
-for the scan origin operation typically these are written to a http.Request
+/* ScanOriginParams contains all the parameters to send to the API endpoint
+   for the scan origin operation.
+
+   Typically these are written to a http.Request.
 */
 type ScanOriginParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnScanOriginRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the scan origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ScanOriginParams) WithDefaults() *ScanOriginParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the scan origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ScanOriginParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the scan origin params
@@ -122,7 +135,6 @@ func (o *ScanOriginParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

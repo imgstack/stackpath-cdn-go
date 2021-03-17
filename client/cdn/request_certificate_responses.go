@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // RequestCertificateReader is a Reader for the RequestCertificate structure.
@@ -24,28 +23,24 @@ type RequestCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RequestCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewRequestCertificateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewRequestCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewRequestCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewRequestCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewRequestCertificateOK() *RequestCertificateOK {
 	return &RequestCertificateOK{}
 }
 
-/*RequestCertificateOK handles this case with default header values.
+/* RequestCertificateOK describes a response with status code 200, with default header values.
 
 RequestCertificateOK request certificate o k
 */
@@ -73,6 +68,9 @@ type RequestCertificateOK struct {
 
 func (o *RequestCertificateOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/request][%d] requestCertificateOK  %+v", 200, o.Payload)
+}
+func (o *RequestCertificateOK) GetPayload() *models.CdnRequestCertificateResponse {
+	return o.Payload
 }
 
 func (o *RequestCertificateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewRequestCertificateUnauthorized() *RequestCertificateUnauthorized {
 	return &RequestCertificateUnauthorized{}
 }
 
-/*RequestCertificateUnauthorized handles this case with default header values.
+/* RequestCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type RequestCertificateUnauthorized struct {
 
 func (o *RequestCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/request][%d] requestCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *RequestCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RequestCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewRequestCertificateInternalServerError() *RequestCertificateInternalServe
 	return &RequestCertificateInternalServerError{}
 }
 
-/*RequestCertificateInternalServerError handles this case with default header values.
+/* RequestCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type RequestCertificateInternalServerError struct {
 
 func (o *RequestCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/request][%d] requestCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RequestCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RequestCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewRequestCertificateDefault(code int) *RequestCertificateDefault {
 	}
 }
 
-/*RequestCertificateDefault handles this case with default header values.
+/* RequestCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *RequestCertificateDefault) Code() int {
 
 func (o *RequestCertificateDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/request][%d] RequestCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *RequestCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RequestCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

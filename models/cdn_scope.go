@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnScope A CDN site scope
 //
 // Scopes hold a CDN site's configuration. Every site has at least one "root" scope that handles primary configuration.
+//
 // swagger:model cdnScope
 type CdnScope struct {
 
@@ -31,6 +33,11 @@ type CdnScope struct {
 
 // Validate validates this cdn scope
 func (m *CdnScope) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn scope based on context it is used
+func (m *CdnScope) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

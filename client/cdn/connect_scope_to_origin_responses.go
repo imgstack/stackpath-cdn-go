@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // ConnectScopeToOriginReader is a Reader for the ConnectScopeToOrigin structure.
@@ -24,28 +23,24 @@ type ConnectScopeToOriginReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ConnectScopeToOriginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewConnectScopeToOriginOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewConnectScopeToOriginUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewConnectScopeToOriginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewConnectScopeToOriginDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewConnectScopeToOriginOK() *ConnectScopeToOriginOK {
 	return &ConnectScopeToOriginOK{}
 }
 
-/*ConnectScopeToOriginOK handles this case with default header values.
+/* ConnectScopeToOriginOK describes a response with status code 200, with default header values.
 
 ConnectScopeToOriginOK connect scope to origin o k
 */
@@ -73,6 +68,9 @@ type ConnectScopeToOriginOK struct {
 
 func (o *ConnectScopeToOriginOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] connectScopeToOriginOK  %+v", 200, o.Payload)
+}
+func (o *ConnectScopeToOriginOK) GetPayload() *models.CdnConnectScopeToOriginResponse {
+	return o.Payload
 }
 
 func (o *ConnectScopeToOriginOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewConnectScopeToOriginUnauthorized() *ConnectScopeToOriginUnauthorized {
 	return &ConnectScopeToOriginUnauthorized{}
 }
 
-/*ConnectScopeToOriginUnauthorized handles this case with default header values.
+/* ConnectScopeToOriginUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type ConnectScopeToOriginUnauthorized struct {
 
 func (o *ConnectScopeToOriginUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] connectScopeToOriginUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ConnectScopeToOriginUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectScopeToOriginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewConnectScopeToOriginInternalServerError() *ConnectScopeToOriginInternalS
 	return &ConnectScopeToOriginInternalServerError{}
 }
 
-/*ConnectScopeToOriginInternalServerError handles this case with default header values.
+/* ConnectScopeToOriginInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type ConnectScopeToOriginInternalServerError struct {
 
 func (o *ConnectScopeToOriginInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] connectScopeToOriginInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ConnectScopeToOriginInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectScopeToOriginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewConnectScopeToOriginDefault(code int) *ConnectScopeToOriginDefault {
 	}
 }
 
-/*ConnectScopeToOriginDefault handles this case with default header values.
+/* ConnectScopeToOriginDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *ConnectScopeToOriginDefault) Code() int {
 
 func (o *ConnectScopeToOriginDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] ConnectScopeToOrigin default  %+v", o._statusCode, o.Payload)
+}
+func (o *ConnectScopeToOriginDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectScopeToOriginDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

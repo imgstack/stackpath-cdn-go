@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetCertificateVerificationDetailsReader is a Reader for the GetCertificateVerificationDetails structure.
@@ -24,28 +23,24 @@ type GetCertificateVerificationDetailsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCertificateVerificationDetailsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCertificateVerificationDetailsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetCertificateVerificationDetailsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetCertificateVerificationDetailsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetCertificateVerificationDetailsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetCertificateVerificationDetailsOK() *GetCertificateVerificationDetails
 	return &GetCertificateVerificationDetailsOK{}
 }
 
-/*GetCertificateVerificationDetailsOK handles this case with default header values.
+/* GetCertificateVerificationDetailsOK describes a response with status code 200, with default header values.
 
 GetCertificateVerificationDetailsOK get certificate verification details o k
 */
@@ -73,6 +68,9 @@ type GetCertificateVerificationDetailsOK struct {
 
 func (o *GetCertificateVerificationDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/verification_details][%d] getCertificateVerificationDetailsOK  %+v", 200, o.Payload)
+}
+func (o *GetCertificateVerificationDetailsOK) GetPayload() *models.CdnGetCertificateVerificationDetailsResponse {
+	return o.Payload
 }
 
 func (o *GetCertificateVerificationDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetCertificateVerificationDetailsUnauthorized() *GetCertificateVerificat
 	return &GetCertificateVerificationDetailsUnauthorized{}
 }
 
-/*GetCertificateVerificationDetailsUnauthorized handles this case with default header values.
+/* GetCertificateVerificationDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetCertificateVerificationDetailsUnauthorized struct {
 
 func (o *GetCertificateVerificationDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/verification_details][%d] getCertificateVerificationDetailsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetCertificateVerificationDetailsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateVerificationDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetCertificateVerificationDetailsInternalServerError() *GetCertificateVe
 	return &GetCertificateVerificationDetailsInternalServerError{}
 }
 
-/*GetCertificateVerificationDetailsInternalServerError handles this case with default header values.
+/* GetCertificateVerificationDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetCertificateVerificationDetailsInternalServerError struct {
 
 func (o *GetCertificateVerificationDetailsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/verification_details][%d] getCertificateVerificationDetailsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetCertificateVerificationDetailsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateVerificationDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetCertificateVerificationDetailsDefault(code int) *GetCertificateVerifi
 	}
 }
 
-/*GetCertificateVerificationDetailsDefault handles this case with default header values.
+/* GetCertificateVerificationDetailsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetCertificateVerificationDetailsDefault) Code() int {
 
 func (o *GetCertificateVerificationDetailsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/verification_details][%d] GetCertificateVerificationDetails default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetCertificateVerificationDetailsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetCertificateVerificationDetailsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

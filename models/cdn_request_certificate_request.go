@@ -6,12 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
+	"encoding/json"
 
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CdnRequestCertificateRequest A request to provision an SSL certificate for a CDN site
+//
 // swagger:model cdnRequestCertificateRequest
 type CdnRequestCertificateRequest struct {
 
@@ -21,10 +26,70 @@ type CdnRequestCertificateRequest struct {
 	//
 	// All entries in the list are validated against the existing delivery domains for the provided site.
 	Hosts []string `json:"hosts,omitempty"`
+
+	// verification method
+	// Enum: [DNS HTTP]
+	VerificationMethod string `json:"verificationMethod,omitempty"`
 }
 
 // Validate validates this cdn request certificate request
 func (m *CdnRequestCertificateRequest) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVerificationMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var cdnRequestCertificateRequestTypeVerificationMethodPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["DNS","HTTP"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cdnRequestCertificateRequestTypeVerificationMethodPropEnum = append(cdnRequestCertificateRequestTypeVerificationMethodPropEnum, v)
+	}
+}
+
+const (
+
+	// CdnRequestCertificateRequestVerificationMethodDNS captures enum value "DNS"
+	CdnRequestCertificateRequestVerificationMethodDNS string = "DNS"
+
+	// CdnRequestCertificateRequestVerificationMethodHTTP captures enum value "HTTP"
+	CdnRequestCertificateRequestVerificationMethodHTTP string = "HTTP"
+)
+
+// prop value enum
+func (m *CdnRequestCertificateRequest) validateVerificationMethodEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, cdnRequestCertificateRequestTypeVerificationMethodPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CdnRequestCertificateRequest) validateVerificationMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.VerificationMethod) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateVerificationMethodEnum("verificationMethod", "body", m.VerificationMethod); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this cdn request certificate request based on context it is used
+func (m *CdnRequestCertificateRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

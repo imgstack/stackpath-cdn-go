@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteScopeRuleReader is a Reader for the DeleteScopeRule structure.
@@ -24,28 +23,24 @@ type DeleteScopeRuleReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteScopeRuleReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteScopeRuleNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteScopeRuleUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteScopeRuleInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteScopeRuleDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteScopeRuleNoContent() *DeleteScopeRuleNoContent {
 	return &DeleteScopeRuleNoContent{}
 }
 
-/*DeleteScopeRuleNoContent handles this case with default header values.
+/* DeleteScopeRuleNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteScopeRuleUnauthorized() *DeleteScopeRuleUnauthorized {
 	return &DeleteScopeRuleUnauthorized{}
 }
 
-/*DeleteScopeRuleUnauthorized handles this case with default header values.
+/* DeleteScopeRuleUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteScopeRuleUnauthorized struct {
 
 func (o *DeleteScopeRuleUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}][%d] deleteScopeRuleUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteScopeRuleUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeRuleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteScopeRuleInternalServerError() *DeleteScopeRuleInternalServerError
 	return &DeleteScopeRuleInternalServerError{}
 }
 
-/*DeleteScopeRuleInternalServerError handles this case with default header values.
+/* DeleteScopeRuleInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteScopeRuleInternalServerError struct {
 
 func (o *DeleteScopeRuleInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}][%d] deleteScopeRuleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteScopeRuleInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeRuleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteScopeRuleDefault(code int) *DeleteScopeRuleDefault {
 	}
 }
 
-/*DeleteScopeRuleDefault handles this case with default header values.
+/* DeleteScopeRuleDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteScopeRuleDefault) Code() int {
 
 func (o *DeleteScopeRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}][%d] DeleteScopeRule default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteScopeRuleDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

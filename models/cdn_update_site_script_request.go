@@ -6,13 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
-	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnUpdateSiteScriptRequest A request to update an EdgeEngine script
+//
 // swagger:model cdnUpdateSiteScriptRequest
 type CdnUpdateSiteScriptRequest struct {
 
@@ -26,26 +27,11 @@ type CdnUpdateSiteScriptRequest struct {
 
 // Validate validates this cdn update site script request
 func (m *CdnUpdateSiteScriptRequest) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateCode(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *CdnUpdateSiteScriptRequest) validateCode(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Code) { // not required
-		return nil
-	}
-
-	// Format "byte" (base64 string) is already validated when unmarshalled
-
+// ContextValidate validates this cdn update site script request based on context it is used
+func (m *CdnUpdateSiteScriptRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

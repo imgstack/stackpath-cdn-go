@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnConnectScopeToOriginResponse The response from a request to associate an origin with a CDN site scope
+//
 // swagger:model cdnConnectScopeToOriginResponse
 type CdnConnectScopeToOriginResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnConnectScopeToOriginResponse) Validate(formats strfmt.Registry) erro
 }
 
 func (m *CdnConnectScopeToOriginResponse) validateScopeOrigin(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ScopeOrigin) { // not required
 		return nil
 	}
 
 	if m.ScopeOrigin != nil {
 		if err := m.ScopeOrigin.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("scopeOrigin")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn connect scope to origin response based on the context it is used
+func (m *CdnConnectScopeToOriginResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateScopeOrigin(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnConnectScopeToOriginResponse) contextValidateScopeOrigin(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ScopeOrigin != nil {
+		if err := m.ScopeOrigin.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("scopeOrigin")
 			}

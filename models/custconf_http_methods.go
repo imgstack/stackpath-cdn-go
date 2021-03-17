@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfHTTPMethods The HTTP methods policy allows you to selectively enable additional HTTP methods you want your CDN container to process. A container automatically is set up to process HTTP GET and HEAD commands, so they should not be explicitly defined in this policy. HTTP methods included in this policy are proxied directly to your origin and not cached by the CDN.
+//
 // swagger:model custconfHttpMethods
 type CustconfHTTPMethods struct {
 
@@ -27,6 +29,11 @@ type CustconfHTTPMethods struct {
 
 // Validate validates this custconf Http methods
 func (m *CustconfHTTPMethods) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf Http methods based on context it is used
+func (m *CustconfHTTPMethods) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

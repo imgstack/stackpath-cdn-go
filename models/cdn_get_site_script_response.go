@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetSiteScriptResponse The result from a request to retrieve an EdgeEngine script
+//
 // swagger:model cdnGetSiteScriptResponse
 type CdnGetSiteScriptResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnGetSiteScriptResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnGetSiteScriptResponse) validateScript(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Script) { // not required
 		return nil
 	}
 
 	if m.Script != nil {
 		if err := m.Script.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("script")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn get site script response based on the context it is used
+func (m *CdnGetSiteScriptResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateScript(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnGetSiteScriptResponse) contextValidateScript(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Script != nil {
+		if err := m.Script.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("script")
 			}

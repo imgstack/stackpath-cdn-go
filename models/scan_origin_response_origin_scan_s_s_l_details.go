@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ScanOriginResponseOriginScanSSLDetails SSL details in an origin scan response
+//
 // swagger:model ScanOriginResponseOriginScanSSLDetails
 type ScanOriginResponseOriginScanSSLDetails struct {
 
@@ -24,6 +26,11 @@ type ScanOriginResponseOriginScanSSLDetails struct {
 
 // Validate validates this scan origin response origin scan s s l details
 func (m *ScanOriginResponseOriginScanSSLDetails) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this scan origin response origin scan s s l details based on context it is used
+func (m *ScanOriginResponseOriginScanSSLDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

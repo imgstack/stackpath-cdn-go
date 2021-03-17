@@ -7,15 +7,16 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StackpathRPCRetryInfo stackpath rpc retry info
+//
 // swagger:model stackpath.rpc.RetryInfo
 type StackpathRPCRetryInfo struct {
 
@@ -30,10 +31,7 @@ func (m *StackpathRPCRetryInfo) AtType() string {
 
 // SetAtType sets the at type of this subtype
 func (m *StackpathRPCRetryInfo) SetAtType(val string) {
-
 }
-
-// RetryDelay gets the retry delay of this subtype
 
 // UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
 func (m *StackpathRPCRetryInfo) UnmarshalJSON(raw []byte) error {
@@ -88,8 +86,7 @@ func (m StackpathRPCRetryInfo) MarshalJSON() ([]byte, error) {
 	}{
 
 		RetryDelay: m.RetryDelay,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -98,8 +95,7 @@ func (m StackpathRPCRetryInfo) MarshalJSON() ([]byte, error) {
 	}{
 
 		AtType: m.AtType(),
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -109,6 +105,16 @@ func (m StackpathRPCRetryInfo) MarshalJSON() ([]byte, error) {
 
 // Validate validates this stackpath rpc retry info
 func (m *StackpathRPCRetryInfo) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this stackpath rpc retry info based on the context it is used
+func (m *StackpathRPCRetryInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if len(res) > 0 {

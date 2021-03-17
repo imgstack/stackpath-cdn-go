@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnScanOriginRequest A request to scan a URL from the StackPath edge network
+//
 // swagger:model cdnScanOriginRequest
 type CdnScanOriginRequest struct {
 
@@ -21,6 +23,11 @@ type CdnScanOriginRequest struct {
 
 // Validate validates this cdn scan origin request
 func (m *CdnScanOriginRequest) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn scan origin request based on context it is used
+func (m *CdnScanOriginRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

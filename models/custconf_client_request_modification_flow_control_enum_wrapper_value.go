@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfClientRequestModificationFlowControlEnumWrapperValue custconf client request modification flow control enum wrapper value
+//
 // swagger:model custconfClientRequestModificationFlowControlEnumWrapperValue
 type CustconfClientRequestModificationFlowControlEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m CustconfClientRequestModificationFlowControlEnumWrapperValue) validateCustconfClientRequestModificationFlowControlEnumWrapperValueEnum(path, location string, value CustconfClientRequestModificationFlowControlEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfClientRequestModificationFlowControlEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfClientRequestModificationFlowControlEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m CustconfClientRequestModificationFlowControlEnumWrapperValue) Validate(f
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf client request modification flow control enum wrapper value based on context it is used
+func (m CustconfClientRequestModificationFlowControlEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

@@ -13,78 +13,94 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetSiteScript2Params creates a new GetSiteScript2Params object
-// with the default values initialized.
+// NewGetSiteScript2Params creates a new GetSiteScript2Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetSiteScript2Params() *GetSiteScript2Params {
-	var ()
 	return &GetSiteScript2Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetSiteScript2ParamsWithTimeout creates a new GetSiteScript2Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetSiteScript2ParamsWithTimeout(timeout time.Duration) *GetSiteScript2Params {
-	var ()
 	return &GetSiteScript2Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetSiteScript2ParamsWithContext creates a new GetSiteScript2Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetSiteScript2ParamsWithContext(ctx context.Context) *GetSiteScript2Params {
-	var ()
 	return &GetSiteScript2Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetSiteScript2ParamsWithHTTPClient creates a new GetSiteScript2Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetSiteScript2ParamsWithHTTPClient(client *http.Client) *GetSiteScript2Params {
-	var ()
 	return &GetSiteScript2Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetSiteScript2Params contains all the parameters to send to the API endpoint
-for the get site script2 operation typically these are written to a http.Request
+/* GetSiteScript2Params contains all the parameters to send to the API endpoint
+   for the get site script2 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetSiteScript2Params struct {
 
-	/*ScriptID
-	  The ID of the EdgeEngine script to retrieve
+	/* ScriptID.
 
+	   The ID of the EdgeEngine script to retrieve
 	*/
 	ScriptID string
-	/*ScriptVersion
-	  The version of the EdgeEngine script to retrieve
 
+	/* ScriptVersion.
+
+	   The version of the EdgeEngine script to retrieve
 	*/
 	ScriptVersion string
-	/*SiteID
-	  The ID of the site containing the EdgeEngine script to retrieve
 
+	/* SiteID.
+
+	   The ID of the site containing the EdgeEngine script to retrieve
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site with the EdgeEngine script to retrieve
 
+	/* StackID.
+
+	   The ID of the stack containing the site with the EdgeEngine script to retrieve
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get site script2 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetSiteScript2Params) WithDefaults() *GetSiteScript2Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get site script2 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetSiteScript2Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get site script2 params

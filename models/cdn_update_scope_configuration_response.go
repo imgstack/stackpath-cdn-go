@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnUpdateScopeConfigurationResponse The response from a request to update a CDN site scope's configuration
+//
 // swagger:model cdnUpdateScopeConfigurationResponse
 type CdnUpdateScopeConfigurationResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnUpdateScopeConfigurationResponse) Validate(formats strfmt.Registry) 
 }
 
 func (m *CdnUpdateScopeConfigurationResponse) validateConfiguration(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Configuration) { // not required
 		return nil
 	}
 
 	if m.Configuration != nil {
 		if err := m.Configuration.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn update scope configuration response based on the context it is used
+func (m *CdnUpdateScopeConfigurationResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConfiguration(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnUpdateScopeConfigurationResponse) contextValidateConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Configuration != nil {
+		if err := m.Configuration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("configuration")
 			}

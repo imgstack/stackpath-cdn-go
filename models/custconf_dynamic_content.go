@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfDynamicContent The dynamic content caching policy allows you to specify a set of query string and/or HTTP header key/value pairs that should create a unique cache entry for a given URL. This policy is useful when your origin returns unique content for the same URL based on a set of query string parameters provided in the request.
+//
 // swagger:model custconfDynamicContent
 type CustconfDynamicContent struct {
 
@@ -40,6 +42,11 @@ type CustconfDynamicContent struct {
 
 // Validate validates this custconf dynamic content
 func (m *CustconfDynamicContent) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf dynamic content based on context it is used
+func (m *CustconfDynamicContent) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

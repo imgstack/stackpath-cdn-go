@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateScopeResponse The response from a request to create a CDN site scope
+//
 // swagger:model cdnCreateScopeResponse
 type CdnCreateScopeResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnCreateScopeResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCreateScopeResponse) validateScope(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Scope) { // not required
 		return nil
 	}
 
 	if m.Scope != nil {
 		if err := m.Scope.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("scope")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn create scope response based on the context it is used
+func (m *CdnCreateScopeResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateScope(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnCreateScopeResponse) contextValidateScope(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Scope != nil {
+		if err := m.Scope.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("scope")
 			}

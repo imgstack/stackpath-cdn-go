@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateScopeHostnameRequest A request to add a hostname to a CDN site scope
+//
 // swagger:model cdnCreateScopeHostnameRequest
 type CdnCreateScopeHostnameRequest struct {
 
@@ -26,6 +28,11 @@ type CdnCreateScopeHostnameRequest struct {
 
 // Validate validates this cdn create scope hostname request
 func (m *CdnCreateScopeHostnameRequest) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn create scope hostname request based on context it is used
+func (m *CdnCreateScopeHostnameRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

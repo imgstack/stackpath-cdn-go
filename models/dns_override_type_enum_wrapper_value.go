@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // DNSOverrideTypeEnumWrapperValue Dns override type enum wrapper value
+//
 // swagger:model DnsOverrideTypeEnumWrapperValue
 type DNSOverrideTypeEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m DNSOverrideTypeEnumWrapperValue) validateDNSOverrideTypeEnumWrapperValueEnum(path, location string, value DNSOverrideTypeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, dnsOverrideTypeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, dnsOverrideTypeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m DNSOverrideTypeEnumWrapperValue) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this Dns override type enum wrapper value based on context it is used
+func (m DNSOverrideTypeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

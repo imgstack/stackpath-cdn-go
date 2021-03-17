@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // OriginPullPolicyNoCacheBehaviorEnumWrapperValue origin pull policy no cache behavior enum wrapper value
+//
 // swagger:model OriginPullPolicyNoCacheBehaviorEnumWrapperValue
 type OriginPullPolicyNoCacheBehaviorEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m OriginPullPolicyNoCacheBehaviorEnumWrapperValue) validateOriginPullPolicyNoCacheBehaviorEnumWrapperValueEnum(path, location string, value OriginPullPolicyNoCacheBehaviorEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, originPullPolicyNoCacheBehaviorEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, originPullPolicyNoCacheBehaviorEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m OriginPullPolicyNoCacheBehaviorEnumWrapperValue) Validate(formats strfmt
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this origin pull policy no cache behavior enum wrapper value based on context it is used
+func (m OriginPullPolicyNoCacheBehaviorEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

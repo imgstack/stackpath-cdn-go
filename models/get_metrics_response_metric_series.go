@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // GetMetricsResponseMetricSeries A series of analytics data suitable for a graph
+//
 // swagger:model GetMetricsResponseMetricSeries
 type GetMetricsResponseMetricSeries struct {
 
@@ -46,7 +47,6 @@ func (m *GetMetricsResponseMetricSeries) Validate(formats strfmt.Registry) error
 }
 
 func (m *GetMetricsResponseMetricSeries) validateSamples(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Samples) { // not required
 		return nil
 	}
@@ -58,6 +58,38 @@ func (m *GetMetricsResponseMetricSeries) validateSamples(formats strfmt.Registry
 
 		if m.Samples[i] != nil {
 			if err := m.Samples[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("samples" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get metrics response metric series based on the context it is used
+func (m *GetMetricsResponseMetricSeries) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSamples(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GetMetricsResponseMetricSeries) contextValidateSamples(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Samples); i++ {
+
+		if m.Samples[i] != nil {
+			if err := m.Samples[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("samples" + "." + strconv.Itoa(i))
 				}

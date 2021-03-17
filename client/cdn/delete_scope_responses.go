@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteScopeReader is a Reader for the DeleteScope structure.
@@ -24,28 +23,24 @@ type DeleteScopeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteScopeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteScopeNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteScopeUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteScopeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteScopeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteScopeNoContent() *DeleteScopeNoContent {
 	return &DeleteScopeNoContent{}
 }
 
-/*DeleteScopeNoContent handles this case with default header values.
+/* DeleteScopeNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteScopeUnauthorized() *DeleteScopeUnauthorized {
 	return &DeleteScopeUnauthorized{}
 }
 
-/*DeleteScopeUnauthorized handles this case with default header values.
+/* DeleteScopeUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteScopeUnauthorized struct {
 
 func (o *DeleteScopeUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}][%d] deleteScopeUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteScopeUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteScopeInternalServerError() *DeleteScopeInternalServerError {
 	return &DeleteScopeInternalServerError{}
 }
 
-/*DeleteScopeInternalServerError handles this case with default header values.
+/* DeleteScopeInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteScopeInternalServerError struct {
 
 func (o *DeleteScopeInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}][%d] deleteScopeInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteScopeInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteScopeDefault(code int) *DeleteScopeDefault {
 	}
 }
 
-/*DeleteScopeDefault handles this case with default header values.
+/* DeleteScopeDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteScopeDefault) Code() int {
 
 func (o *DeleteScopeDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}][%d] DeleteScope default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteScopeDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteScopeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

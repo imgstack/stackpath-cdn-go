@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // EnableSiteReader is a Reader for the EnableSite structure.
@@ -24,28 +23,24 @@ type EnableSiteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *EnableSiteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewEnableSiteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewEnableSiteUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewEnableSiteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewEnableSiteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewEnableSiteNoContent() *EnableSiteNoContent {
 	return &EnableSiteNoContent{}
 }
 
-/*EnableSiteNoContent handles this case with default header values.
+/* EnableSiteNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewEnableSiteUnauthorized() *EnableSiteUnauthorized {
 	return &EnableSiteUnauthorized{}
 }
 
-/*EnableSiteUnauthorized handles this case with default header values.
+/* EnableSiteUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type EnableSiteUnauthorized struct {
 
 func (o *EnableSiteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/enable][%d] enableSiteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *EnableSiteUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *EnableSiteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewEnableSiteInternalServerError() *EnableSiteInternalServerError {
 	return &EnableSiteInternalServerError{}
 }
 
-/*EnableSiteInternalServerError handles this case with default header values.
+/* EnableSiteInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type EnableSiteInternalServerError struct {
 
 func (o *EnableSiteInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/enable][%d] enableSiteInternalServerError  %+v", 500, o.Payload)
+}
+func (o *EnableSiteInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *EnableSiteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewEnableSiteDefault(code int) *EnableSiteDefault {
 	}
 }
 
-/*EnableSiteDefault handles this case with default header values.
+/* EnableSiteDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *EnableSiteDefault) Code() int {
 
 func (o *EnableSiteDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/enable][%d] EnableSite default  %+v", o._statusCode, o.Payload)
+}
+func (o *EnableSiteDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *EnableSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

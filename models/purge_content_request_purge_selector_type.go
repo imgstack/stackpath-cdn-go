@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // PurgeContentRequestPurgeSelectorType purge content request purge selector type
+//
 // swagger:model PurgeContentRequestPurgeSelectorType
 type PurgeContentRequestPurgeSelectorType string
 
@@ -41,7 +42,7 @@ func init() {
 }
 
 func (m PurgeContentRequestPurgeSelectorType) validatePurgeContentRequestPurgeSelectorTypeEnum(path, location string, value PurgeContentRequestPurgeSelectorType) error {
-	if err := validate.Enum(path, location, value, purgeContentRequestPurgeSelectorTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, purgeContentRequestPurgeSelectorTypeEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -59,5 +60,10 @@ func (m PurgeContentRequestPurgeSelectorType) Validate(formats strfmt.Registry) 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this purge content request purge selector type based on context it is used
+func (m PurgeContentRequestPurgeSelectorType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

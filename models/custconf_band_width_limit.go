@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfBandWidthLimit The pattern based bandwidth throttling policy allows you to limit the transfer rate of assets to end users based on a set of rules matching the request's HTTP User-Agent and/or the path. Each rule must be expressed in the following format: <User-Agent Pattern>:<path pattern 1, path pattern 2>. For example, the pattern:  "Mozilla*:*.mp3,*dir*.exe|*IE*:*.jpg,*.zip|*ios 6*:* " will match all MP3 files and EXE files containing the substring "dir" that are requested by a User-Agent containing the substring "Mozilla," all JPG and ZIP files requested by a User-Agent containing the substring "IE," and all requests made by User-Agents containing the substring "ios 6."
+//
 // swagger:model custconfBandWidthLimit
 type CustconfBandWidthLimit struct {
 
@@ -30,6 +32,11 @@ type CustconfBandWidthLimit struct {
 
 // Validate validates this custconf band width limit
 func (m *CustconfBandWidthLimit) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf band width limit based on context it is used
+func (m *CustconfBandWidthLimit) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

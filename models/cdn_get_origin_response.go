@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetOriginResponse The response from a request to retrieve an individual origin
+//
 // swagger:model cdnGetOriginResponse
 type CdnGetOriginResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnGetOriginResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnGetOriginResponse) validateOrigin(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Origin) { // not required
 		return nil
 	}
 
 	if m.Origin != nil {
 		if err := m.Origin.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("origin")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn get origin response based on the context it is used
+func (m *CdnGetOriginResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateOrigin(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnGetOriginResponse) contextValidateOrigin(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Origin != nil {
+		if err := m.Origin.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("origin")
 			}

@@ -13,88 +13,106 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCertificateSitesParams creates a new GetCertificateSitesParams object
-// with the default values initialized.
+// NewGetCertificateSitesParams creates a new GetCertificateSitesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCertificateSitesParams() *GetCertificateSitesParams {
-	var ()
 	return &GetCertificateSitesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCertificateSitesParamsWithTimeout creates a new GetCertificateSitesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCertificateSitesParamsWithTimeout(timeout time.Duration) *GetCertificateSitesParams {
-	var ()
 	return &GetCertificateSitesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCertificateSitesParamsWithContext creates a new GetCertificateSitesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCertificateSitesParamsWithContext(ctx context.Context) *GetCertificateSitesParams {
-	var ()
 	return &GetCertificateSitesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCertificateSitesParamsWithHTTPClient creates a new GetCertificateSitesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCertificateSitesParamsWithHTTPClient(client *http.Client) *GetCertificateSitesParams {
-	var ()
 	return &GetCertificateSitesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCertificateSitesParams contains all the parameters to send to the API endpoint
-for the get certificate sites operation typically these are written to a http.Request
+/* GetCertificateSitesParams contains all the parameters to send to the API endpoint
+   for the get certificate sites operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCertificateSitesParams struct {
 
-	/*CertificateID
-	  The ID of the SSL certificate to retrieve sites for
+	/* CertificateID.
 
+	   The ID of the SSL certificate to retrieve sites for
 	*/
 	CertificateID string
-	/*PageRequestAfter
-	  The cursor value after which data will be returned.
 
+	/* PageRequestAfter.
+
+	   The cursor value after which data will be returned.
 	*/
 	PageRequestAfter *string
-	/*PageRequestFilter
-	  SQL-style constraint filters.
 
+	/* PageRequestFilter.
+
+	   SQL-style constraint filters.
 	*/
 	PageRequestFilter *string
-	/*PageRequestFirst
-	  The number of items desired.
 
+	/* PageRequestFirst.
+
+	   The number of items desired.
 	*/
 	PageRequestFirst *string
-	/*PageRequestSortBy
-	  Sort the response by the given field.
 
+	/* PageRequestSortBy.
+
+	   Sort the response by the given field.
 	*/
 	PageRequestSortBy *string
-	/*StackID
-	  The ID of the stack containing the SSL certificate to retrieve CDN sites for
 
+	/* StackID.
+
+	   The ID of the stack containing the SSL certificate to retrieve CDN sites for
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get certificate sites params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCertificateSitesParams) WithDefaults() *GetCertificateSitesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get certificate sites params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCertificateSitesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get certificate sites params
@@ -213,64 +231,68 @@ func (o *GetCertificateSitesParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param page_request.after
 		var qrPageRequestAfter string
+
 		if o.PageRequestAfter != nil {
 			qrPageRequestAfter = *o.PageRequestAfter
 		}
 		qPageRequestAfter := qrPageRequestAfter
 		if qPageRequestAfter != "" {
+
 			if err := r.SetQueryParam("page_request.after", qPageRequestAfter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestFilter != nil {
 
 		// query param page_request.filter
 		var qrPageRequestFilter string
+
 		if o.PageRequestFilter != nil {
 			qrPageRequestFilter = *o.PageRequestFilter
 		}
 		qPageRequestFilter := qrPageRequestFilter
 		if qPageRequestFilter != "" {
+
 			if err := r.SetQueryParam("page_request.filter", qPageRequestFilter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestFirst != nil {
 
 		// query param page_request.first
 		var qrPageRequestFirst string
+
 		if o.PageRequestFirst != nil {
 			qrPageRequestFirst = *o.PageRequestFirst
 		}
 		qPageRequestFirst := qrPageRequestFirst
 		if qPageRequestFirst != "" {
+
 			if err := r.SetQueryParam("page_request.first", qPageRequestFirst); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestSortBy != nil {
 
 		// query param page_request.sort_by
 		var qrPageRequestSortBy string
+
 		if o.PageRequestSortBy != nil {
 			qrPageRequestSortBy = *o.PageRequestSortBy
 		}
 		qPageRequestSortBy := qrPageRequestSortBy
 		if qPageRequestSortBy != "" {
+
 			if err := r.SetQueryParam("page_request.sort_by", qPageRequestSortBy); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param stack_id

@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfOriginPullPolicy The CDN caching policy allows you to control how your origin's content is cached on the CDN.
+//
 // swagger:model custconfOriginPullPolicy
 type CustconfOriginPullPolicy struct {
 
@@ -23,7 +25,7 @@ type CustconfOriginPullPolicy struct {
 	Enabled bool `json:"enabled"`
 
 	// expire policy
-	ExpirePolicy OriginPullPolicyExpirePolicyEnumWrapperValue `json:"expirePolicy,omitempty"`
+	ExpirePolicy *OriginPullPolicyExpirePolicyEnumWrapperValue `json:"expirePolicy,omitempty"`
 
 	// This is the expiration time used for assets pulled from your origin. When using Cache-Control headers expiration methods, this value is used if your origin doesn't return a max-age directive in the Cache-Control HTTP header. Please note that a value of 0 in this fields instructs the caching server to retain assets for as long as possible.
 	ExpireSeconds int32 `json:"expireSeconds,omitempty"`
@@ -65,7 +67,7 @@ type CustconfOriginPullPolicy struct {
 	MustRevalidateToNoCache bool `json:"mustRevalidateToNoCache"`
 
 	// no cache behavior
-	NoCacheBehavior OriginPullPolicyNoCacheBehaviorEnumWrapperValue `json:"noCacheBehavior,omitempty"`
+	NoCacheBehavior *OriginPullPolicyNoCacheBehaviorEnumWrapperValue `json:"noCacheBehavior,omitempty"`
 
 	// String of values delimited by a ',' character.
 	PathFilter string `json:"pathFilter,omitempty"`
@@ -96,32 +98,80 @@ func (m *CustconfOriginPullPolicy) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfOriginPullPolicy) validateExpirePolicy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExpirePolicy) { // not required
 		return nil
 	}
 
-	if err := m.ExpirePolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("expirePolicy")
+	if m.ExpirePolicy != nil {
+		if err := m.ExpirePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("expirePolicy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
 }
 
 func (m *CustconfOriginPullPolicy) validateNoCacheBehavior(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.NoCacheBehavior) { // not required
 		return nil
 	}
 
-	if err := m.NoCacheBehavior.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("noCacheBehavior")
+	if m.NoCacheBehavior != nil {
+		if err := m.NoCacheBehavior.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("noCacheBehavior")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf origin pull policy based on the context it is used
+func (m *CustconfOriginPullPolicy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateExpirePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNoCacheBehavior(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfOriginPullPolicy) contextValidateExpirePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ExpirePolicy != nil {
+		if err := m.ExpirePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("expirePolicy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfOriginPullPolicy) contextValidateNoCacheBehavior(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NoCacheBehavior != nil {
+		if err := m.NoCacheBehavior.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("noCacheBehavior")
+			}
+			return err
+		}
 	}
 
 	return nil

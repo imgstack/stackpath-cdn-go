@@ -13,77 +13,93 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewCreateScopeHostnameParams creates a new CreateScopeHostnameParams object
-// with the default values initialized.
+// NewCreateScopeHostnameParams creates a new CreateScopeHostnameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateScopeHostnameParams() *CreateScopeHostnameParams {
-	var ()
 	return &CreateScopeHostnameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateScopeHostnameParamsWithTimeout creates a new CreateScopeHostnameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateScopeHostnameParamsWithTimeout(timeout time.Duration) *CreateScopeHostnameParams {
-	var ()
 	return &CreateScopeHostnameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateScopeHostnameParamsWithContext creates a new CreateScopeHostnameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateScopeHostnameParamsWithContext(ctx context.Context) *CreateScopeHostnameParams {
-	var ()
 	return &CreateScopeHostnameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateScopeHostnameParamsWithHTTPClient creates a new CreateScopeHostnameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateScopeHostnameParamsWithHTTPClient(client *http.Client) *CreateScopeHostnameParams {
-	var ()
 	return &CreateScopeHostnameParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateScopeHostnameParams contains all the parameters to send to the API endpoint
-for the create scope hostname operation typically these are written to a http.Request
+/* CreateScopeHostnameParams contains all the parameters to send to the API endpoint
+   for the create scope hostname operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateScopeHostnameParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnCreateScopeHostnameRequest
-	/*ScopeID
-	  The ID of the scope to add a hostname to
 
+	/* ScopeID.
+
+	   The ID of the scope to add a hostname to
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site containing the scope to add a hostname to
 
+	/* SiteID.
+
+	   The ID of the site containing the scope to add a hostname to
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site containing the scope to add a hostname to
 
+	/* StackID.
+
+	   The ID of the stack containing the site containing the scope to add a hostname to
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create scope hostname params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateScopeHostnameParams) WithDefaults() *CreateScopeHostnameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create scope hostname params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateScopeHostnameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create scope hostname params
@@ -170,7 +186,6 @@ func (o *CreateScopeHostnameParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

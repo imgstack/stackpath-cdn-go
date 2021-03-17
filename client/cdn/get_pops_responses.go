@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetPopsReader is a Reader for the GetPops structure.
@@ -24,28 +23,24 @@ type GetPopsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetPopsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetPopsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetPopsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetPopsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetPopsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetPopsOK() *GetPopsOK {
 	return &GetPopsOK{}
 }
 
-/*GetPopsOK handles this case with default header values.
+/* GetPopsOK describes a response with status code 200, with default header values.
 
 GetPopsOK get pops o k
 */
@@ -73,6 +68,9 @@ type GetPopsOK struct {
 
 func (o *GetPopsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops][%d] getPopsOK  %+v", 200, o.Payload)
+}
+func (o *GetPopsOK) GetPayload() *models.CdnGetPopsResponse {
+	return o.Payload
 }
 
 func (o *GetPopsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetPopsUnauthorized() *GetPopsUnauthorized {
 	return &GetPopsUnauthorized{}
 }
 
-/*GetPopsUnauthorized handles this case with default header values.
+/* GetPopsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetPopsUnauthorized struct {
 
 func (o *GetPopsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops][%d] getPopsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetPopsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPopsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetPopsInternalServerError() *GetPopsInternalServerError {
 	return &GetPopsInternalServerError{}
 }
 
-/*GetPopsInternalServerError handles this case with default header values.
+/* GetPopsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetPopsInternalServerError struct {
 
 func (o *GetPopsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops][%d] getPopsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetPopsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPopsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetPopsDefault(code int) *GetPopsDefault {
 	}
 }
 
-/*GetPopsDefault handles this case with default header values.
+/* GetPopsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetPopsDefault) Code() int {
 
 func (o *GetPopsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/pops][%d] GetPops default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetPopsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPopsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

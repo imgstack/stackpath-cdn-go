@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // ConnectSiteToCertificateReader is a Reader for the ConnectSiteToCertificate structure.
@@ -24,28 +23,24 @@ type ConnectSiteToCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ConnectSiteToCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewConnectSiteToCertificateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewConnectSiteToCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewConnectSiteToCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewConnectSiteToCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewConnectSiteToCertificateOK() *ConnectSiteToCertificateOK {
 	return &ConnectSiteToCertificateOK{}
 }
 
-/*ConnectSiteToCertificateOK handles this case with default header values.
+/* ConnectSiteToCertificateOK describes a response with status code 200, with default header values.
 
 ConnectSiteToCertificateOK connect site to certificate o k
 */
@@ -73,6 +68,9 @@ type ConnectSiteToCertificateOK struct {
 
 func (o *ConnectSiteToCertificateOK) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}][%d] connectSiteToCertificateOK  %+v", 200, o.Payload)
+}
+func (o *ConnectSiteToCertificateOK) GetPayload() *models.CdnConnectSiteToCertificateResponse {
+	return o.Payload
 }
 
 func (o *ConnectSiteToCertificateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewConnectSiteToCertificateUnauthorized() *ConnectSiteToCertificateUnauthor
 	return &ConnectSiteToCertificateUnauthorized{}
 }
 
-/*ConnectSiteToCertificateUnauthorized handles this case with default header values.
+/* ConnectSiteToCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type ConnectSiteToCertificateUnauthorized struct {
 
 func (o *ConnectSiteToCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}][%d] connectSiteToCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ConnectSiteToCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectSiteToCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewConnectSiteToCertificateInternalServerError() *ConnectSiteToCertificateI
 	return &ConnectSiteToCertificateInternalServerError{}
 }
 
-/*ConnectSiteToCertificateInternalServerError handles this case with default header values.
+/* ConnectSiteToCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type ConnectSiteToCertificateInternalServerError struct {
 
 func (o *ConnectSiteToCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}][%d] connectSiteToCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ConnectSiteToCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectSiteToCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewConnectSiteToCertificateDefault(code int) *ConnectSiteToCertificateDefau
 	}
 }
 
-/*ConnectSiteToCertificateDefault handles this case with default header values.
+/* ConnectSiteToCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *ConnectSiteToCertificateDefault) Code() int {
 
 func (o *ConnectSiteToCertificateDefault) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}][%d] ConnectSiteToCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *ConnectSiteToCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ConnectSiteToCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

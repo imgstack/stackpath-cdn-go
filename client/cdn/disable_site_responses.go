@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DisableSiteReader is a Reader for the DisableSite structure.
@@ -24,28 +23,24 @@ type DisableSiteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DisableSiteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDisableSiteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDisableSiteUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDisableSiteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDisableSiteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDisableSiteNoContent() *DisableSiteNoContent {
 	return &DisableSiteNoContent{}
 }
 
-/*DisableSiteNoContent handles this case with default header values.
+/* DisableSiteNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDisableSiteUnauthorized() *DisableSiteUnauthorized {
 	return &DisableSiteUnauthorized{}
 }
 
-/*DisableSiteUnauthorized handles this case with default header values.
+/* DisableSiteUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DisableSiteUnauthorized struct {
 
 func (o *DisableSiteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/disable][%d] disableSiteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DisableSiteUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisableSiteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDisableSiteInternalServerError() *DisableSiteInternalServerError {
 	return &DisableSiteInternalServerError{}
 }
 
-/*DisableSiteInternalServerError handles this case with default header values.
+/* DisableSiteInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DisableSiteInternalServerError struct {
 
 func (o *DisableSiteInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/disable][%d] disableSiteInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DisableSiteInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisableSiteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDisableSiteDefault(code int) *DisableSiteDefault {
 	}
 }
 
-/*DisableSiteDefault handles this case with default header values.
+/* DisableSiteDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DisableSiteDefault) Code() int {
 
 func (o *DisableSiteDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/disable][%d] DisableSite default  %+v", o._statusCode, o.Payload)
+}
+func (o *DisableSiteDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DisableSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

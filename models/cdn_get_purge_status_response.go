@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetPurgeStatusResponse The response from a request to retrieve the status of a purge request
+//
 // swagger:model cdnGetPurgeStatusResponse
 type CdnGetPurgeStatusResponse struct {
 
@@ -21,6 +23,11 @@ type CdnGetPurgeStatusResponse struct {
 
 // Validate validates this cdn get purge status response
 func (m *CdnGetPurgeStatusResponse) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn get purge status response based on context it is used
+func (m *CdnGetPurgeStatusResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfCompression The compression policy allows you to provide a list of file extensions you want the CDN caching servers to automatically compress before delivering content to end users. This policy is typically used when your origin server does not support compression or you are unable to configure your origin to compress your files. If your origin is configured to already compress files, you should consider adding the Compressed Origin Pull policy to your host, which will enable the CDN caching server to request compressed (gzip) version of your assets. The compressed origin pull policy can be found in the Origin Pull policies list. Please note that our caching servers schedule the compression of files, and typically you do not see the compressed delivery until the file has been requested several times. Typically, this list is comprised of text files like javascript, html and CSS files. You should not include file extensions that match media files (images, videos, or audio files) or any other file format that includes a built in compression algorithm. Attempting to further compress these types of files usually results in a larger file being delivered to end users.
+//
 // swagger:model custconfCompression
 type CustconfCompression struct {
 
@@ -33,6 +35,11 @@ type CustconfCompression struct {
 
 // Validate validates this custconf compression
 func (m *CustconfCompression) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf compression based on context it is used
+func (m *CustconfCompression) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

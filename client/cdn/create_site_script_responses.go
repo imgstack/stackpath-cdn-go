@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // CreateSiteScriptReader is a Reader for the CreateSiteScript structure.
@@ -24,28 +23,24 @@ type CreateSiteScriptReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateSiteScriptReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateSiteScriptOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateSiteScriptUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewCreateSiteScriptInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewCreateSiteScriptDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewCreateSiteScriptOK() *CreateSiteScriptOK {
 	return &CreateSiteScriptOK{}
 }
 
-/*CreateSiteScriptOK handles this case with default header values.
+/* CreateSiteScriptOK describes a response with status code 200, with default header values.
 
 CreateSiteScriptOK create site script o k
 */
@@ -73,6 +68,9 @@ type CreateSiteScriptOK struct {
 
 func (o *CreateSiteScriptOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] createSiteScriptOK  %+v", 200, o.Payload)
+}
+func (o *CreateSiteScriptOK) GetPayload() *models.CdnCreateSiteScriptResponse {
+	return o.Payload
 }
 
 func (o *CreateSiteScriptOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewCreateSiteScriptUnauthorized() *CreateSiteScriptUnauthorized {
 	return &CreateSiteScriptUnauthorized{}
 }
 
-/*CreateSiteScriptUnauthorized handles this case with default header values.
+/* CreateSiteScriptUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type CreateSiteScriptUnauthorized struct {
 
 func (o *CreateSiteScriptUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] createSiteScriptUnauthorized  %+v", 401, o.Payload)
+}
+func (o *CreateSiteScriptUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteScriptUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewCreateSiteScriptInternalServerError() *CreateSiteScriptInternalServerErr
 	return &CreateSiteScriptInternalServerError{}
 }
 
-/*CreateSiteScriptInternalServerError handles this case with default header values.
+/* CreateSiteScriptInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type CreateSiteScriptInternalServerError struct {
 
 func (o *CreateSiteScriptInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] createSiteScriptInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateSiteScriptInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteScriptInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewCreateSiteScriptDefault(code int) *CreateSiteScriptDefault {
 	}
 }
 
-/*CreateSiteScriptDefault handles this case with default header values.
+/* CreateSiteScriptDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *CreateSiteScriptDefault) Code() int {
 
 func (o *CreateSiteScriptDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] CreateSiteScript default  %+v", o._statusCode, o.Payload)
+}
+func (o *CreateSiteScriptDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteScriptDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

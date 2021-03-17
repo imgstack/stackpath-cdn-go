@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetSiteReader is a Reader for the GetSite structure.
@@ -24,28 +23,24 @@ type GetSiteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSiteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSiteOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetSiteUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetSiteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetSiteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetSiteOK() *GetSiteOK {
 	return &GetSiteOK{}
 }
 
-/*GetSiteOK handles this case with default header values.
+/* GetSiteOK describes a response with status code 200, with default header values.
 
 GetSiteOK get site o k
 */
@@ -73,6 +68,9 @@ type GetSiteOK struct {
 
 func (o *GetSiteOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] getSiteOK  %+v", 200, o.Payload)
+}
+func (o *GetSiteOK) GetPayload() *models.CdnGetSiteResponse {
+	return o.Payload
 }
 
 func (o *GetSiteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetSiteUnauthorized() *GetSiteUnauthorized {
 	return &GetSiteUnauthorized{}
 }
 
-/*GetSiteUnauthorized handles this case with default header values.
+/* GetSiteUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetSiteUnauthorized struct {
 
 func (o *GetSiteUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] getSiteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetSiteUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetSiteInternalServerError() *GetSiteInternalServerError {
 	return &GetSiteInternalServerError{}
 }
 
-/*GetSiteInternalServerError handles this case with default header values.
+/* GetSiteInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetSiteInternalServerError struct {
 
 func (o *GetSiteInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] getSiteInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSiteInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetSiteDefault(code int) *GetSiteDefault {
 	}
 }
 
-/*GetSiteDefault handles this case with default header values.
+/* GetSiteDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetSiteDefault) Code() int {
 
 func (o *GetSiteDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}][%d] GetSite default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetSiteDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

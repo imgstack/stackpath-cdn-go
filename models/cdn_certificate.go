@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // CdnCertificate An SSL certificate
+//
 // swagger:model cdnCertificate
 type CdnCertificate struct {
 
@@ -44,7 +46,7 @@ type CdnCertificate struct {
 	ProviderManaged bool `json:"providerManaged"`
 
 	// status
-	Status CdnCertificateStatus `json:"status,omitempty"`
+	Status *CdnCertificateStatus `json:"status,omitempty"`
 
 	// A list of Subject Alternative Names in the certificate
 	//
@@ -86,7 +88,6 @@ func (m *CdnCertificate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCertificate) validateCreateDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreateDate) { // not required
 		return nil
 	}
@@ -99,7 +100,6 @@ func (m *CdnCertificate) validateCreateDate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCertificate) validateExpirationDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExpirationDate) { // not required
 		return nil
 	}
@@ -112,29 +112,57 @@ func (m *CdnCertificate) validateExpirationDate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCertificate) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
-	if err := m.Status.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("status")
+	if m.Status != nil {
+		if err := m.Status.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
 }
 
 func (m *CdnCertificate) validateUpdateDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdateDate) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("updateDate", "body", "date-time", m.UpdateDate.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn certificate based on the context it is used
+func (m *CdnCertificate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnCertificate) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Status != nil {
+		if err := m.Status.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			}
+			return err
+		}
 	}
 
 	return nil

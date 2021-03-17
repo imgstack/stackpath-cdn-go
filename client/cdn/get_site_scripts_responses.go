@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetSiteScriptsReader is a Reader for the GetSiteScripts structure.
@@ -24,28 +23,24 @@ type GetSiteScriptsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSiteScriptsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSiteScriptsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetSiteScriptsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetSiteScriptsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetSiteScriptsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetSiteScriptsOK() *GetSiteScriptsOK {
 	return &GetSiteScriptsOK{}
 }
 
-/*GetSiteScriptsOK handles this case with default header values.
+/* GetSiteScriptsOK describes a response with status code 200, with default header values.
 
 GetSiteScriptsOK get site scripts o k
 */
@@ -73,6 +68,9 @@ type GetSiteScriptsOK struct {
 
 func (o *GetSiteScriptsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] getSiteScriptsOK  %+v", 200, o.Payload)
+}
+func (o *GetSiteScriptsOK) GetPayload() *models.CdnGetSiteScriptsResponse {
+	return o.Payload
 }
 
 func (o *GetSiteScriptsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetSiteScriptsUnauthorized() *GetSiteScriptsUnauthorized {
 	return &GetSiteScriptsUnauthorized{}
 }
 
-/*GetSiteScriptsUnauthorized handles this case with default header values.
+/* GetSiteScriptsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetSiteScriptsUnauthorized struct {
 
 func (o *GetSiteScriptsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] getSiteScriptsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetSiteScriptsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScriptsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetSiteScriptsInternalServerError() *GetSiteScriptsInternalServerError {
 	return &GetSiteScriptsInternalServerError{}
 }
 
-/*GetSiteScriptsInternalServerError handles this case with default header values.
+/* GetSiteScriptsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetSiteScriptsInternalServerError struct {
 
 func (o *GetSiteScriptsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] getSiteScriptsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSiteScriptsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScriptsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetSiteScriptsDefault(code int) *GetSiteScriptsDefault {
 	}
 }
 
-/*GetSiteScriptsDefault handles this case with default header values.
+/* GetSiteScriptsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetSiteScriptsDefault) Code() int {
 
 func (o *GetSiteScriptsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts][%d] GetSiteScripts default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetSiteScriptsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScriptsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

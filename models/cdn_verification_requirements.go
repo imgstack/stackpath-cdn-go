@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnVerificationRequirements Conditions that must be met to verify ownership of a domain for SSL certificate provisioning
+//
 // swagger:model cdnVerificationRequirements
 type CdnVerificationRequirements struct {
 
@@ -35,13 +37,40 @@ func (m *CdnVerificationRequirements) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnVerificationRequirements) validateDNSVerificationDetails(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DNSVerificationDetails) { // not required
 		return nil
 	}
 
 	if m.DNSVerificationDetails != nil {
 		if err := m.DNSVerificationDetails.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dnsVerificationDetails")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn verification requirements based on the context it is used
+func (m *CdnVerificationRequirements) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDNSVerificationDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnVerificationRequirements) contextValidateDNSVerificationDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DNSVerificationDetails != nil {
+		if err := m.DNSVerificationDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dnsVerificationDetails")
 			}

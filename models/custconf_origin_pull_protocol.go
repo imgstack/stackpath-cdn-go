@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfOriginPullProtocol The Origin Pull Protocol allows you to configure the CDN caching servers to use secured or non-secured connection to Origin.
+//
 // swagger:model custconfOriginPullProtocol
 type CustconfOriginPullProtocol struct {
 
@@ -23,7 +25,7 @@ type CustconfOriginPullProtocol struct {
 	ID string `json:"id,omitempty"`
 
 	// protocol
-	Protocol CustconfOriginPullProtocolProtocolEnumWrapperValue `json:"protocol,omitempty"`
+	Protocol *CustconfOriginPullProtocolProtocolEnumWrapperValue `json:"protocol,omitempty"`
 }
 
 // Validate validates this custconf origin pull protocol
@@ -41,16 +43,45 @@ func (m *CustconfOriginPullProtocol) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfOriginPullProtocol) validateProtocol(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Protocol) { // not required
 		return nil
 	}
 
-	if err := m.Protocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("protocol")
+	if m.Protocol != nil {
+		if err := m.Protocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("protocol")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf origin pull protocol based on the context it is used
+func (m *CustconfOriginPullProtocol) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProtocol(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfOriginPullProtocol) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Protocol != nil {
+		if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("protocol")
+			}
+			return err
+		}
 	}
 
 	return nil

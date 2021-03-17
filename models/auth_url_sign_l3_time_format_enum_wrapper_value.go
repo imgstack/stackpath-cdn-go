@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AuthURLSignL3TimeFormatEnumWrapperValue auth Url sign l3 time format enum wrapper value
+//
 // swagger:model AuthUrlSignL3TimeFormatEnumWrapperValue
 type AuthURLSignL3TimeFormatEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m AuthURLSignL3TimeFormatEnumWrapperValue) validateAuthURLSignL3TimeFormatEnumWrapperValueEnum(path, location string, value AuthURLSignL3TimeFormatEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, authUrlSignL3TimeFormatEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, authUrlSignL3TimeFormatEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m AuthURLSignL3TimeFormatEnumWrapperValue) Validate(formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this auth Url sign l3 time format enum wrapper value based on context it is used
+func (m AuthURLSignL3TimeFormatEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

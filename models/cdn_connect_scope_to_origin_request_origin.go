@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnConnectScopeToOriginRequestOrigin A new origin
+//
 // swagger:model cdnConnectScopeToOriginRequestOrigin
 type CdnConnectScopeToOriginRequestOrigin struct {
 
@@ -32,6 +34,11 @@ type CdnConnectScopeToOriginRequestOrigin struct {
 
 // Validate validates this cdn connect scope to origin request origin
 func (m *CdnConnectScopeToOriginRequestOrigin) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn connect scope to origin request origin based on context it is used
+func (m *CdnConnectScopeToOriginRequestOrigin) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

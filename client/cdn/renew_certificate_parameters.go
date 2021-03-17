@@ -13,68 +13,82 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewRenewCertificateParams creates a new RenewCertificateParams object
-// with the default values initialized.
+// NewRenewCertificateParams creates a new RenewCertificateParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewRenewCertificateParams() *RenewCertificateParams {
-	var ()
 	return &RenewCertificateParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewRenewCertificateParamsWithTimeout creates a new RenewCertificateParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewRenewCertificateParamsWithTimeout(timeout time.Duration) *RenewCertificateParams {
-	var ()
 	return &RenewCertificateParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewRenewCertificateParamsWithContext creates a new RenewCertificateParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewRenewCertificateParamsWithContext(ctx context.Context) *RenewCertificateParams {
-	var ()
 	return &RenewCertificateParams{
-
 		Context: ctx,
 	}
 }
 
 // NewRenewCertificateParamsWithHTTPClient creates a new RenewCertificateParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewRenewCertificateParamsWithHTTPClient(client *http.Client) *RenewCertificateParams {
-	var ()
 	return &RenewCertificateParams{
 		HTTPClient: client,
 	}
 }
 
-/*RenewCertificateParams contains all the parameters to send to the API endpoint
-for the renew certificate operation typically these are written to a http.Request
+/* RenewCertificateParams contains all the parameters to send to the API endpoint
+   for the renew certificate operation.
+
+   Typically these are written to a http.Request.
 */
 type RenewCertificateParams struct {
 
-	/*CertificateID
-	  The ID of the SSL certificate to renew
+	/* CertificateID.
 
+	   The ID of the SSL certificate to renew
 	*/
 	CertificateID string
-	/*StackID
-	  The ID of the stack containing the SSL certificate to renew
 
+	/* StackID.
+
+	   The ID of the stack containing the SSL certificate to renew
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the renew certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RenewCertificateParams) WithDefaults() *RenewCertificateParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the renew certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RenewCertificateParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the renew certificate params

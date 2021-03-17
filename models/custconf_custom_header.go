@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfCustomHeader The X-Forwarded-For header policy allows you to override the name of the X-Forwarded-For header the CDN sends to your origin.
+//
 // swagger:model custconfCustomHeader
 type CustconfCustomHeader struct {
 
@@ -30,6 +32,11 @@ type CustconfCustomHeader struct {
 
 // Validate validates this custconf custom header
 func (m *CustconfCustomHeader) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf custom header based on context it is used
+func (m *CustconfCustomHeader) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

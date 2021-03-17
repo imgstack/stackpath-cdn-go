@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // CreateScopeReader is a Reader for the CreateScope structure.
@@ -24,28 +23,24 @@ type CreateScopeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateScopeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateScopeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateScopeUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewCreateScopeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewCreateScopeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewCreateScopeOK() *CreateScopeOK {
 	return &CreateScopeOK{}
 }
 
-/*CreateScopeOK handles this case with default header values.
+/* CreateScopeOK describes a response with status code 200, with default header values.
 
 CreateScopeOK create scope o k
 */
@@ -73,6 +68,9 @@ type CreateScopeOK struct {
 
 func (o *CreateScopeOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] createScopeOK  %+v", 200, o.Payload)
+}
+func (o *CreateScopeOK) GetPayload() *models.CdnCreateScopeResponse {
+	return o.Payload
 }
 
 func (o *CreateScopeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewCreateScopeUnauthorized() *CreateScopeUnauthorized {
 	return &CreateScopeUnauthorized{}
 }
 
-/*CreateScopeUnauthorized handles this case with default header values.
+/* CreateScopeUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type CreateScopeUnauthorized struct {
 
 func (o *CreateScopeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] createScopeUnauthorized  %+v", 401, o.Payload)
+}
+func (o *CreateScopeUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewCreateScopeInternalServerError() *CreateScopeInternalServerError {
 	return &CreateScopeInternalServerError{}
 }
 
-/*CreateScopeInternalServerError handles this case with default header values.
+/* CreateScopeInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type CreateScopeInternalServerError struct {
 
 func (o *CreateScopeInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] createScopeInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateScopeInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewCreateScopeDefault(code int) *CreateScopeDefault {
 	}
 }
 
-/*CreateScopeDefault handles this case with default header values.
+/* CreateScopeDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *CreateScopeDefault) Code() int {
 
 func (o *CreateScopeDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] CreateScope default  %+v", o._statusCode, o.Payload)
+}
+func (o *CreateScopeDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

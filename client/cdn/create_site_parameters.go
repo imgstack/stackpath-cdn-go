@@ -13,67 +13,81 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewCreateSiteParams creates a new CreateSiteParams object
-// with the default values initialized.
+// NewCreateSiteParams creates a new CreateSiteParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateSiteParams() *CreateSiteParams {
-	var ()
 	return &CreateSiteParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateSiteParamsWithTimeout creates a new CreateSiteParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateSiteParamsWithTimeout(timeout time.Duration) *CreateSiteParams {
-	var ()
 	return &CreateSiteParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateSiteParamsWithContext creates a new CreateSiteParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateSiteParamsWithContext(ctx context.Context) *CreateSiteParams {
-	var ()
 	return &CreateSiteParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateSiteParamsWithHTTPClient creates a new CreateSiteParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateSiteParamsWithHTTPClient(client *http.Client) *CreateSiteParams {
-	var ()
 	return &CreateSiteParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateSiteParams contains all the parameters to send to the API endpoint
-for the create site operation typically these are written to a http.Request
+/* CreateSiteParams contains all the parameters to send to the API endpoint
+   for the create site operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateSiteParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnCreateSiteRequest
-	/*StackID
-	  The ID of the stack to create a new CDN site on
 
+	/* StackID.
+
+	   The ID of the stack to create a new CDN site on
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create site params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateSiteParams) WithDefaults() *CreateSiteParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create site params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateSiteParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create site params
@@ -138,7 +152,6 @@ func (o *CreateSiteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

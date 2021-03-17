@@ -13,73 +13,88 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetScopeConfigurationParams creates a new GetScopeConfigurationParams object
-// with the default values initialized.
+// NewGetScopeConfigurationParams creates a new GetScopeConfigurationParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetScopeConfigurationParams() *GetScopeConfigurationParams {
-	var ()
 	return &GetScopeConfigurationParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetScopeConfigurationParamsWithTimeout creates a new GetScopeConfigurationParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetScopeConfigurationParamsWithTimeout(timeout time.Duration) *GetScopeConfigurationParams {
-	var ()
 	return &GetScopeConfigurationParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetScopeConfigurationParamsWithContext creates a new GetScopeConfigurationParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetScopeConfigurationParamsWithContext(ctx context.Context) *GetScopeConfigurationParams {
-	var ()
 	return &GetScopeConfigurationParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetScopeConfigurationParamsWithHTTPClient creates a new GetScopeConfigurationParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetScopeConfigurationParamsWithHTTPClient(client *http.Client) *GetScopeConfigurationParams {
-	var ()
 	return &GetScopeConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetScopeConfigurationParams contains all the parameters to send to the API endpoint
-for the get scope configuration operation typically these are written to a http.Request
+/* GetScopeConfigurationParams contains all the parameters to send to the API endpoint
+   for the get scope configuration operation.
+
+   Typically these are written to a http.Request.
 */
 type GetScopeConfigurationParams struct {
 
-	/*ScopeID
-	  The ID of the scope whose configuration to retrieve
+	/* ScopeID.
 
+	   The ID of the scope whose configuration to retrieve
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site to retrieve a scope configuration from
 
+	/* SiteID.
+
+	   The ID of the site to retrieve a scope configuration from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to retrieve a scope configuration from
 
+	/* StackID.
+
+	   The ID of the stack containing the site to retrieve a scope configuration from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get scope configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeConfigurationParams) WithDefaults() *GetScopeConfigurationParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get scope configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeConfigurationParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get scope configuration params

@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetSiteScopesReader is a Reader for the GetSiteScopes structure.
@@ -24,28 +23,24 @@ type GetSiteScopesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSiteScopesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSiteScopesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetSiteScopesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetSiteScopesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetSiteScopesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetSiteScopesOK() *GetSiteScopesOK {
 	return &GetSiteScopesOK{}
 }
 
-/*GetSiteScopesOK handles this case with default header values.
+/* GetSiteScopesOK describes a response with status code 200, with default header values.
 
 GetSiteScopesOK get site scopes o k
 */
@@ -73,6 +68,9 @@ type GetSiteScopesOK struct {
 
 func (o *GetSiteScopesOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] getSiteScopesOK  %+v", 200, o.Payload)
+}
+func (o *GetSiteScopesOK) GetPayload() *models.CdnGetSiteScopesResponse {
+	return o.Payload
 }
 
 func (o *GetSiteScopesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetSiteScopesUnauthorized() *GetSiteScopesUnauthorized {
 	return &GetSiteScopesUnauthorized{}
 }
 
-/*GetSiteScopesUnauthorized handles this case with default header values.
+/* GetSiteScopesUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetSiteScopesUnauthorized struct {
 
 func (o *GetSiteScopesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] getSiteScopesUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetSiteScopesUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScopesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetSiteScopesInternalServerError() *GetSiteScopesInternalServerError {
 	return &GetSiteScopesInternalServerError{}
 }
 
-/*GetSiteScopesInternalServerError handles this case with default header values.
+/* GetSiteScopesInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetSiteScopesInternalServerError struct {
 
 func (o *GetSiteScopesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] getSiteScopesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSiteScopesInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScopesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetSiteScopesDefault(code int) *GetSiteScopesDefault {
 	}
 }
 
-/*GetSiteScopesDefault handles this case with default header values.
+/* GetSiteScopesDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetSiteScopesDefault) Code() int {
 
 func (o *GetSiteScopesDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes][%d] GetSiteScopes default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetSiteScopesDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteScopesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

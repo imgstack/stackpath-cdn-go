@@ -7,18 +7,19 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"io"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // APIStatus api status
+//
 // swagger:model apiStatus
 type APIStatus struct {
 
@@ -96,8 +97,7 @@ func (m APIStatus) MarshalJSON() ([]byte, error) {
 		Code: m.Code,
 
 		Error: m.Error,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -106,8 +106,7 @@ func (m APIStatus) MarshalJSON() ([]byte, error) {
 	}{
 
 		Details: m.detailsField,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -130,7 +129,6 @@ func (m *APIStatus) Validate(formats strfmt.Registry) error {
 }
 
 func (m *APIStatus) validateDetails(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Details()) { // not required
 		return nil
 	}
@@ -138,6 +136,36 @@ func (m *APIStatus) validateDetails(formats strfmt.Registry) error {
 	for i := 0; i < len(m.Details()); i++ {
 
 		if err := m.detailsField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("details" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this api status based on the context it is used
+func (m *APIStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *APIStatus) contextValidateDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Details()); i++ {
+
+		if err := m.detailsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("details" + "." + strconv.Itoa(i))
 			}

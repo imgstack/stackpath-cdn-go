@@ -7,16 +7,17 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StackpathRPCQuotaFailure stackpath rpc quota failure
+//
 // swagger:model stackpath.rpc.QuotaFailure
 type StackpathRPCQuotaFailure struct {
 
@@ -31,10 +32,7 @@ func (m *StackpathRPCQuotaFailure) AtType() string {
 
 // SetAtType sets the at type of this subtype
 func (m *StackpathRPCQuotaFailure) SetAtType(val string) {
-
 }
-
-// Violations gets the violations of this subtype
 
 // UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
 func (m *StackpathRPCQuotaFailure) UnmarshalJSON(raw []byte) error {
@@ -89,8 +87,7 @@ func (m StackpathRPCQuotaFailure) MarshalJSON() ([]byte, error) {
 	}{
 
 		Violations: m.Violations,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -99,8 +96,7 @@ func (m StackpathRPCQuotaFailure) MarshalJSON() ([]byte, error) {
 	}{
 
 		AtType: m.AtType(),
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -135,6 +131,38 @@ func (m *StackpathRPCQuotaFailure) validateViolations(formats strfmt.Registry) e
 
 		if m.Violations[i] != nil {
 			if err := m.Violations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("violations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this stackpath rpc quota failure based on the context it is used
+func (m *StackpathRPCQuotaFailure) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateViolations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StackpathRPCQuotaFailure) contextValidateViolations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Violations); i++ {
+
+		if m.Violations[i] != nil {
+			if err := m.Violations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("violations" + "." + strconv.Itoa(i))
 				}

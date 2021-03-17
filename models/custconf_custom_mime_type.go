@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfCustomMimeType The custom mime type policy allows you to map file extensions to specific mime types for the CDN caching servers to use when delivering assets. The mime types you map using this policy may also be limited to specific response codes to address scenarios in which the mime type changes based on the response code.
+//
 // swagger:model custconfCustomMimeType
 type CustconfCustomMimeType struct {
 
@@ -39,6 +41,11 @@ type CustconfCustomMimeType struct {
 
 // Validate validates this custconf custom mime type
 func (m *CustconfCustomMimeType) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf custom mime type based on context it is used
+func (m *CustconfCustomMimeType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

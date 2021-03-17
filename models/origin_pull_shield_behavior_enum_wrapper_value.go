@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // OriginPullShieldBehaviorEnumWrapperValue origin pull shield behavior enum wrapper value
+//
 // swagger:model OriginPullShieldBehaviorEnumWrapperValue
 type OriginPullShieldBehaviorEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m OriginPullShieldBehaviorEnumWrapperValue) validateOriginPullShieldBehaviorEnumWrapperValueEnum(path, location string, value OriginPullShieldBehaviorEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, originPullShieldBehaviorEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, originPullShieldBehaviorEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m OriginPullShieldBehaviorEnumWrapperValue) Validate(formats strfmt.Regist
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this origin pull shield behavior enum wrapper value based on context it is used
+func (m OriginPullShieldBehaviorEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

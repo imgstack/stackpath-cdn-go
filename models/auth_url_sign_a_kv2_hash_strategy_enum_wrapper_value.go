@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AuthURLSignAKv2HashStrategyEnumWrapperValue auth Url sign a kv2 hash strategy enum wrapper value
+//
 // swagger:model AuthUrlSignAKv2HashStrategyEnumWrapperValue
 type AuthURLSignAKv2HashStrategyEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m AuthURLSignAKv2HashStrategyEnumWrapperValue) validateAuthURLSignAKv2HashStrategyEnumWrapperValueEnum(path, location string, value AuthURLSignAKv2HashStrategyEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, authUrlSignAKv2HashStrategyEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, authUrlSignAKv2HashStrategyEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m AuthURLSignAKv2HashStrategyEnumWrapperValue) Validate(formats strfmt.Reg
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this auth Url sign a kv2 hash strategy enum wrapper value based on context it is used
+func (m AuthURLSignAKv2HashStrategyEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

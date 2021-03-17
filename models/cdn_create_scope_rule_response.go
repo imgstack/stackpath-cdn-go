@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateScopeRuleResponse The response from a request to create a new EdgeRule
+//
 // swagger:model cdnCreateScopeRuleResponse
 type CdnCreateScopeRuleResponse struct {
 
@@ -42,7 +44,6 @@ func (m *CdnCreateScopeRuleResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnCreateScopeRuleResponse) validateConfiguration(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Configuration) { // not required
 		return nil
 	}
@@ -60,13 +61,58 @@ func (m *CdnCreateScopeRuleResponse) validateConfiguration(formats strfmt.Regist
 }
 
 func (m *CdnCreateScopeRuleResponse) validateRule(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Rule) { // not required
 		return nil
 	}
 
 	if m.Rule != nil {
 		if err := m.Rule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn create scope rule response based on the context it is used
+func (m *CdnCreateScopeRuleResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConfiguration(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnCreateScopeRuleResponse) contextValidateConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Configuration != nil {
+		if err := m.Configuration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CdnCreateScopeRuleResponse) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Rule != nil {
+		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rule")
 			}

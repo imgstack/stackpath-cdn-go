@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAwsSignedS3PostV4 custconf aws signed s3 post v4
+//
 // swagger:model custconfAwsSignedS3PostV4
 type CustconfAwsSignedS3PostV4 struct {
 
@@ -20,7 +22,7 @@ type CustconfAwsSignedS3PostV4 struct {
 	AccessKeyID string `json:"accessKeyId,omitempty"`
 
 	// authentication type
-	AuthenticationType CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue `json:"authenticationType,omitempty"`
+	AuthenticationType *CustconfAwsSignedS3PostV4AuthenticationTypeEnumWrapperValue `json:"authenticationType,omitempty"`
 
 	// aws region
 	AwsRegion string `json:"awsRegion,omitempty"`
@@ -71,16 +73,45 @@ func (m *CustconfAwsSignedS3PostV4) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfAwsSignedS3PostV4) validateAuthenticationType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthenticationType) { // not required
 		return nil
 	}
 
-	if err := m.AuthenticationType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("authenticationType")
+	if m.AuthenticationType != nil {
+		if err := m.AuthenticationType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("authenticationType")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf aws signed s3 post v4 based on the context it is used
+func (m *CustconfAwsSignedS3PostV4) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAuthenticationType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfAwsSignedS3PostV4) contextValidateAuthenticationType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AuthenticationType != nil {
+		if err := m.AuthenticationType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("authenticationType")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateScopeHostnameResponse The response from a request to add a hostname to a CDN site scope
+//
 // swagger:model cdnCreateScopeHostnameResponse
 type CdnCreateScopeHostnameResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnCreateScopeHostnameResponse) Validate(formats strfmt.Registry) error
 }
 
 func (m *CdnCreateScopeHostnameResponse) validateHostname(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Hostname) { // not required
 		return nil
 	}
 
 	if m.Hostname != nil {
 		if err := m.Hostname.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hostname")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn create scope hostname response based on the context it is used
+func (m *CdnCreateScopeHostnameResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHostname(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnCreateScopeHostnameResponse) contextValidateHostname(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Hostname != nil {
+		if err := m.Hostname.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hostname")
 			}

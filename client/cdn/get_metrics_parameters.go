@@ -13,127 +13,148 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetMetricsParams creates a new GetMetricsParams object
-// with the default values initialized.
+// NewGetMetricsParams creates a new GetMetricsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetMetricsParams() *GetMetricsParams {
-	var (
-		granularityDefault    = string("AUTO")
-		groupByDefault        = string("NONE")
-		siteTypeFilterDefault = string("ALL")
-	)
 	return &GetMetricsParams{
-		Granularity:    &granularityDefault,
-		GroupBy:        &groupByDefault,
-		SiteTypeFilter: &siteTypeFilterDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetMetricsParamsWithTimeout creates a new GetMetricsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetMetricsParamsWithTimeout(timeout time.Duration) *GetMetricsParams {
-	var (
-		granularityDefault    = string("AUTO")
-		groupByDefault        = string("NONE")
-		siteTypeFilterDefault = string("ALL")
-	)
 	return &GetMetricsParams{
-		Granularity:    &granularityDefault,
-		GroupBy:        &groupByDefault,
-		SiteTypeFilter: &siteTypeFilterDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewGetMetricsParamsWithContext creates a new GetMetricsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetMetricsParamsWithContext(ctx context.Context) *GetMetricsParams {
-	var (
-		granularityDefault    = string("AUTO")
-		groupByDefault        = string("NONE")
-		siteTypeFilterDefault = string("ALL")
-	)
 	return &GetMetricsParams{
-		Granularity:    &granularityDefault,
-		GroupBy:        &groupByDefault,
-		SiteTypeFilter: &siteTypeFilterDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewGetMetricsParamsWithHTTPClient creates a new GetMetricsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetMetricsParamsWithHTTPClient(client *http.Client) *GetMetricsParams {
-	var (
-		granularityDefault    = string("AUTO")
-		groupByDefault        = string("NONE")
-		siteTypeFilterDefault = string("ALL")
-	)
 	return &GetMetricsParams{
-		Granularity:    &granularityDefault,
-		GroupBy:        &groupByDefault,
-		SiteTypeFilter: &siteTypeFilterDefault,
-		HTTPClient:     client,
+		HTTPClient: client,
 	}
 }
 
-/*GetMetricsParams contains all the parameters to send to the API endpoint
-for the get metrics operation typically these are written to a http.Request
+/* GetMetricsParams contains all the parameters to send to the API endpoint
+   for the get metrics operation.
+
+   Typically these are written to a http.Request.
 */
 type GetMetricsParams struct {
 
-	/*BillingRegions
-	  A comma-separated list of billing regions to filter metrics for.
+	/* BillingRegions.
 
+	   A comma-separated list of billing regions to filter metrics for.
 	*/
 	BillingRegions *string
-	/*EndDate
-	  The ending date to retrieve metrics for.
 
+	/* EndDate.
+
+	   The ending date to retrieve metrics for.
+
+	   Format: date-time
 	*/
 	EndDate *strfmt.DateTime
-	/*Granularity*/
-	Granularity *string
-	/*GroupBy*/
-	GroupBy *string
-	/*Platforms
-	  A comma-separated list of billing platforms to filter metrics for.
 
+	// Granularity.
+	//
+	// Default: "AUTO"
+	Granularity *string
+
+	// GroupBy.
+	//
+	// Default: "NONE"
+	GroupBy *string
+
+	/* Platforms.
+
+	   A comma-separated list of billing platforms to filter metrics for.
 	*/
 	Platforms *string
-	/*Pops
-	  A comma-separated list of StackPath point of presence location codes to filter metrics for.
 
+	/* Pops.
+
+	   A comma-separated list of StackPath point of presence location codes to filter metrics for.
 	*/
 	Pops *string
-	/*SiteTypeFilter*/
-	SiteTypeFilter *string
-	/*Sites
-	  A comma-separated list of site IDs to filter metrics for.
 
+	// SiteTypeFilter.
+	//
+	// Default: "ALL"
+	SiteTypeFilter *string
+
+	/* Sites.
+
+	   A comma-separated list of site IDs to filter metrics for.
 	*/
 	Sites *string
-	/*StackID
-	  The ID of the stack to retrieve CDN metrics for
 
+	/* StackID.
+
+	   The ID of the stack to retrieve CDN metrics for
 	*/
 	StackID string
-	/*StartDate
-	  The starting date to retrieve metrics for.
 
+	/* StartDate.
+
+	   The starting date to retrieve metrics for.
+
+	   Format: date-time
 	*/
 	StartDate *strfmt.DateTime
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get metrics params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMetricsParams) WithDefaults() *GetMetricsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get metrics params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMetricsParams) SetDefaults() {
+	var (
+		granularityDefault = string("AUTO")
+
+		groupByDefault = string("NONE")
+
+		siteTypeFilterDefault = string("ALL")
+	)
+
+	val := GetMetricsParams{
+		Granularity:    &granularityDefault,
+		GroupBy:        &groupByDefault,
+		SiteTypeFilter: &siteTypeFilterDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get metrics params
@@ -291,128 +312,136 @@ func (o *GetMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// query param billing_regions
 		var qrBillingRegions string
+
 		if o.BillingRegions != nil {
 			qrBillingRegions = *o.BillingRegions
 		}
 		qBillingRegions := qrBillingRegions
 		if qBillingRegions != "" {
+
 			if err := r.SetQueryParam("billing_regions", qBillingRegions); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.EndDate != nil {
 
 		// query param end_date
 		var qrEndDate strfmt.DateTime
+
 		if o.EndDate != nil {
 			qrEndDate = *o.EndDate
 		}
 		qEndDate := qrEndDate.String()
 		if qEndDate != "" {
+
 			if err := r.SetQueryParam("end_date", qEndDate); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Granularity != nil {
 
 		// query param granularity
 		var qrGranularity string
+
 		if o.Granularity != nil {
 			qrGranularity = *o.Granularity
 		}
 		qGranularity := qrGranularity
 		if qGranularity != "" {
+
 			if err := r.SetQueryParam("granularity", qGranularity); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.GroupBy != nil {
 
 		// query param group_by
 		var qrGroupBy string
+
 		if o.GroupBy != nil {
 			qrGroupBy = *o.GroupBy
 		}
 		qGroupBy := qrGroupBy
 		if qGroupBy != "" {
+
 			if err := r.SetQueryParam("group_by", qGroupBy); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Platforms != nil {
 
 		// query param platforms
 		var qrPlatforms string
+
 		if o.Platforms != nil {
 			qrPlatforms = *o.Platforms
 		}
 		qPlatforms := qrPlatforms
 		if qPlatforms != "" {
+
 			if err := r.SetQueryParam("platforms", qPlatforms); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Pops != nil {
 
 		// query param pops
 		var qrPops string
+
 		if o.Pops != nil {
 			qrPops = *o.Pops
 		}
 		qPops := qrPops
 		if qPops != "" {
+
 			if err := r.SetQueryParam("pops", qPops); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.SiteTypeFilter != nil {
 
 		// query param site_type_filter
 		var qrSiteTypeFilter string
+
 		if o.SiteTypeFilter != nil {
 			qrSiteTypeFilter = *o.SiteTypeFilter
 		}
 		qSiteTypeFilter := qrSiteTypeFilter
 		if qSiteTypeFilter != "" {
+
 			if err := r.SetQueryParam("site_type_filter", qSiteTypeFilter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Sites != nil {
 
 		// query param sites
 		var qrSites string
+
 		if o.Sites != nil {
 			qrSites = *o.Sites
 		}
 		qSites := qrSites
 		if qSites != "" {
+
 			if err := r.SetQueryParam("sites", qSites); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param stack_id
@@ -424,16 +453,17 @@ func (o *GetMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// query param start_date
 		var qrStartDate strfmt.DateTime
+
 		if o.StartDate != nil {
 			qrStartDate = *o.StartDate
 		}
 		qStartDate := qrStartDate.String()
 		if qStartDate != "" {
+
 			if err := r.SetQueryParam("start_date", qStartDate); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

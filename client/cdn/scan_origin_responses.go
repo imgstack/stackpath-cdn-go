@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // ScanOriginReader is a Reader for the ScanOrigin structure.
@@ -24,28 +23,24 @@ type ScanOriginReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ScanOriginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewScanOriginOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewScanOriginUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewScanOriginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewScanOriginDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewScanOriginOK() *ScanOriginOK {
 	return &ScanOriginOK{}
 }
 
-/*ScanOriginOK handles this case with default header values.
+/* ScanOriginOK describes a response with status code 200, with default header values.
 
 ScanOriginOK scan origin o k
 */
@@ -73,6 +68,9 @@ type ScanOriginOK struct {
 
 func (o *ScanOriginOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/origins/scan][%d] scanOriginOK  %+v", 200, o.Payload)
+}
+func (o *ScanOriginOK) GetPayload() *models.CdnScanOriginResponse {
+	return o.Payload
 }
 
 func (o *ScanOriginOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewScanOriginUnauthorized() *ScanOriginUnauthorized {
 	return &ScanOriginUnauthorized{}
 }
 
-/*ScanOriginUnauthorized handles this case with default header values.
+/* ScanOriginUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type ScanOriginUnauthorized struct {
 
 func (o *ScanOriginUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/origins/scan][%d] scanOriginUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ScanOriginUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ScanOriginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewScanOriginInternalServerError() *ScanOriginInternalServerError {
 	return &ScanOriginInternalServerError{}
 }
 
-/*ScanOriginInternalServerError handles this case with default header values.
+/* ScanOriginInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type ScanOriginInternalServerError struct {
 
 func (o *ScanOriginInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/origins/scan][%d] scanOriginInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ScanOriginInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ScanOriginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewScanOriginDefault(code int) *ScanOriginDefault {
 	}
 }
 
-/*ScanOriginDefault handles this case with default header values.
+/* ScanOriginDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *ScanOriginDefault) Code() int {
 
 func (o *ScanOriginDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/origins/scan][%d] ScanOrigin default  %+v", o._statusCode, o.Payload)
+}
+func (o *ScanOriginDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *ScanOriginDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

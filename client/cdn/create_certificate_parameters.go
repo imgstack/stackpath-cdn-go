@@ -13,67 +13,81 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewCreateCertificateParams creates a new CreateCertificateParams object
-// with the default values initialized.
+// NewCreateCertificateParams creates a new CreateCertificateParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateCertificateParams() *CreateCertificateParams {
-	var ()
 	return &CreateCertificateParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateCertificateParamsWithTimeout creates a new CreateCertificateParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateCertificateParamsWithTimeout(timeout time.Duration) *CreateCertificateParams {
-	var ()
 	return &CreateCertificateParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateCertificateParamsWithContext creates a new CreateCertificateParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateCertificateParamsWithContext(ctx context.Context) *CreateCertificateParams {
-	var ()
 	return &CreateCertificateParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateCertificateParamsWithHTTPClient creates a new CreateCertificateParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateCertificateParamsWithHTTPClient(client *http.Client) *CreateCertificateParams {
-	var ()
 	return &CreateCertificateParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateCertificateParams contains all the parameters to send to the API endpoint
-for the create certificate operation typically these are written to a http.Request
+/* CreateCertificateParams contains all the parameters to send to the API endpoint
+   for the create certificate operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateCertificateParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnCreateCertificateRequest
-	/*StackID
-	  The ID of the stack to create a certificate on
 
+	/* StackID.
+
+	   The ID of the stack to create a certificate on
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateCertificateParams) WithDefaults() *CreateCertificateParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateCertificateParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create certificate params
@@ -138,7 +152,6 @@ func (o *CreateCertificateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

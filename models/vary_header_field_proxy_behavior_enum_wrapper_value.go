@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // VaryHeaderFieldProxyBehaviorEnumWrapperValue vary header field proxy behavior enum wrapper value
+//
 // swagger:model VaryHeaderFieldProxyBehaviorEnumWrapperValue
 type VaryHeaderFieldProxyBehaviorEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m VaryHeaderFieldProxyBehaviorEnumWrapperValue) validateVaryHeaderFieldProxyBehaviorEnumWrapperValueEnum(path, location string, value VaryHeaderFieldProxyBehaviorEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, varyHeaderFieldProxyBehaviorEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, varyHeaderFieldProxyBehaviorEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m VaryHeaderFieldProxyBehaviorEnumWrapperValue) Validate(formats strfmt.Re
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this vary header field proxy behavior enum wrapper value based on context it is used
+func (m VaryHeaderFieldProxyBehaviorEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

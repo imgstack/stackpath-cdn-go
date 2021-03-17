@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // DeleteSiteScriptReader is a Reader for the DeleteSiteScript structure.
@@ -24,28 +23,24 @@ type DeleteSiteScriptReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteSiteScriptReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteSiteScriptNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteSiteScriptUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewDeleteSiteScriptInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewDeleteSiteScriptDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewDeleteSiteScriptNoContent() *DeleteSiteScriptNoContent {
 	return &DeleteSiteScriptNoContent{}
 }
 
-/*DeleteSiteScriptNoContent handles this case with default header values.
+/* DeleteSiteScriptNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewDeleteSiteScriptUnauthorized() *DeleteSiteScriptUnauthorized {
 	return &DeleteSiteScriptUnauthorized{}
 }
 
-/*DeleteSiteScriptUnauthorized handles this case with default header values.
+/* DeleteSiteScriptUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type DeleteSiteScriptUnauthorized struct {
 
 func (o *DeleteSiteScriptUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] deleteSiteScriptUnauthorized  %+v", 401, o.Payload)
+}
+func (o *DeleteSiteScriptUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteScriptUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewDeleteSiteScriptInternalServerError() *DeleteSiteScriptInternalServerErr
 	return &DeleteSiteScriptInternalServerError{}
 }
 
-/*DeleteSiteScriptInternalServerError handles this case with default header values.
+/* DeleteSiteScriptInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type DeleteSiteScriptInternalServerError struct {
 
 func (o *DeleteSiteScriptInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] deleteSiteScriptInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteSiteScriptInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteScriptInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewDeleteSiteScriptDefault(code int) *DeleteSiteScriptDefault {
 	}
 }
 
-/*DeleteSiteScriptDefault handles this case with default header values.
+/* DeleteSiteScriptDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *DeleteSiteScriptDefault) Code() int {
 
 func (o *DeleteSiteScriptDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}][%d] DeleteSiteScript default  %+v", o._statusCode, o.Payload)
+}
+func (o *DeleteSiteScriptDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *DeleteSiteScriptDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

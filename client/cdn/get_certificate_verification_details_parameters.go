@@ -13,68 +13,82 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCertificateVerificationDetailsParams creates a new GetCertificateVerificationDetailsParams object
-// with the default values initialized.
+// NewGetCertificateVerificationDetailsParams creates a new GetCertificateVerificationDetailsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCertificateVerificationDetailsParams() *GetCertificateVerificationDetailsParams {
-	var ()
 	return &GetCertificateVerificationDetailsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCertificateVerificationDetailsParamsWithTimeout creates a new GetCertificateVerificationDetailsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCertificateVerificationDetailsParamsWithTimeout(timeout time.Duration) *GetCertificateVerificationDetailsParams {
-	var ()
 	return &GetCertificateVerificationDetailsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCertificateVerificationDetailsParamsWithContext creates a new GetCertificateVerificationDetailsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCertificateVerificationDetailsParamsWithContext(ctx context.Context) *GetCertificateVerificationDetailsParams {
-	var ()
 	return &GetCertificateVerificationDetailsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCertificateVerificationDetailsParamsWithHTTPClient creates a new GetCertificateVerificationDetailsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCertificateVerificationDetailsParamsWithHTTPClient(client *http.Client) *GetCertificateVerificationDetailsParams {
-	var ()
 	return &GetCertificateVerificationDetailsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCertificateVerificationDetailsParams contains all the parameters to send to the API endpoint
-for the get certificate verification details operation typically these are written to a http.Request
+/* GetCertificateVerificationDetailsParams contains all the parameters to send to the API endpoint
+   for the get certificate verification details operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCertificateVerificationDetailsParams struct {
 
-	/*CertificateID
-	  The ID of the site to retrieve SSL certificate verification details for
+	/* CertificateID.
 
+	   The ID of the site to retrieve SSL certificate verification details for
 	*/
 	CertificateID string
-	/*StackID
-	  The ID of the stack containing the site to retrieve SSL certificate verification details for
 
+	/* StackID.
+
+	   The ID of the stack containing the site to retrieve SSL certificate verification details for
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get certificate verification details params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCertificateVerificationDetailsParams) WithDefaults() *GetCertificateVerificationDetailsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get certificate verification details params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCertificateVerificationDetailsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get certificate verification details params

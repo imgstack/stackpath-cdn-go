@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfRedirectExceptions The redirect response codes policy allows you to specify the HTTP redirect status code the CDN caching server should use when the CDN issues a redirect. Using this policy, you can assign different redirect codes to user agents requesting content.
+//
 // swagger:model custconfRedirectExceptions
 type CustconfRedirectExceptions struct {
 
@@ -27,6 +29,11 @@ type CustconfRedirectExceptions struct {
 
 // Validate validates this custconf redirect exceptions
 func (m *CustconfRedirectExceptions) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf redirect exceptions based on context it is used
+func (m *CustconfRedirectExceptions) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

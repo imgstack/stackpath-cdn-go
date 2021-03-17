@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfFlvPseudoStreaming custconf flv pseudo streaming
+//
 // swagger:model custconfFlvPseudoStreaming
 type CustconfFlvPseudoStreaming struct {
 
@@ -30,6 +32,11 @@ type CustconfFlvPseudoStreaming struct {
 
 // Validate validates this custconf flv pseudo streaming
 func (m *CustconfFlvPseudoStreaming) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf flv pseudo streaming based on context it is used
+func (m *CustconfFlvPseudoStreaming) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

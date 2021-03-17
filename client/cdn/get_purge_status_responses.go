@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetPurgeStatusReader is a Reader for the GetPurgeStatus structure.
@@ -24,28 +23,24 @@ type GetPurgeStatusReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetPurgeStatusReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetPurgeStatusOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetPurgeStatusUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetPurgeStatusInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetPurgeStatusDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetPurgeStatusOK() *GetPurgeStatusOK {
 	return &GetPurgeStatusOK{}
 }
 
-/*GetPurgeStatusOK handles this case with default header values.
+/* GetPurgeStatusOK describes a response with status code 200, with default header values.
 
 GetPurgeStatusOK get purge status o k
 */
@@ -73,6 +68,9 @@ type GetPurgeStatusOK struct {
 
 func (o *GetPurgeStatusOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/purge/{purge_id}][%d] getPurgeStatusOK  %+v", 200, o.Payload)
+}
+func (o *GetPurgeStatusOK) GetPayload() *models.CdnGetPurgeStatusResponse {
+	return o.Payload
 }
 
 func (o *GetPurgeStatusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetPurgeStatusUnauthorized() *GetPurgeStatusUnauthorized {
 	return &GetPurgeStatusUnauthorized{}
 }
 
-/*GetPurgeStatusUnauthorized handles this case with default header values.
+/* GetPurgeStatusUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetPurgeStatusUnauthorized struct {
 
 func (o *GetPurgeStatusUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/purge/{purge_id}][%d] getPurgeStatusUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetPurgeStatusUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPurgeStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetPurgeStatusInternalServerError() *GetPurgeStatusInternalServerError {
 	return &GetPurgeStatusInternalServerError{}
 }
 
-/*GetPurgeStatusInternalServerError handles this case with default header values.
+/* GetPurgeStatusInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetPurgeStatusInternalServerError struct {
 
 func (o *GetPurgeStatusInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/purge/{purge_id}][%d] getPurgeStatusInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetPurgeStatusInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPurgeStatusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetPurgeStatusDefault(code int) *GetPurgeStatusDefault {
 	}
 }
 
-/*GetPurgeStatusDefault handles this case with default header values.
+/* GetPurgeStatusDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetPurgeStatusDefault) Code() int {
 
 func (o *GetPurgeStatusDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/purge/{purge_id}][%d] GetPurgeStatus default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetPurgeStatusDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetPurgeStatusDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

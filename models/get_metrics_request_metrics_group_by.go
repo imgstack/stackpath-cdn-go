@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -22,6 +22,7 @@ import (
 //  - PLATFORM: Group metrics by scope billing platform
 //  - POP: Group metrics by StackPath point of presence
 //  - REGION: Group metrics by geographical region
+//
 // swagger:model GetMetricsRequestMetricsGroupBy
 type GetMetricsRequestMetricsGroupBy string
 
@@ -60,7 +61,7 @@ func init() {
 }
 
 func (m GetMetricsRequestMetricsGroupBy) validateGetMetricsRequestMetricsGroupByEnum(path, location string, value GetMetricsRequestMetricsGroupBy) error {
-	if err := validate.Enum(path, location, value, getMetricsRequestMetricsGroupByEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, getMetricsRequestMetricsGroupByEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -78,5 +79,10 @@ func (m GetMetricsRequestMetricsGroupBy) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this get metrics request metrics group by based on context it is used
+func (m GetMetricsRequestMetricsGroupBy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

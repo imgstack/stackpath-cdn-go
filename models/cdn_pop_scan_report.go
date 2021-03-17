@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnPopScanReport The result of a network scan from a StackPath point of presence to a origin
+//
 // swagger:model cdnPopScanReport
 type CdnPopScanReport struct {
 
@@ -39,6 +41,11 @@ type CdnPopScanReport struct {
 
 // Validate validates this cdn pop scan report
 func (m *CdnPopScanReport) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn pop scan report based on context it is used
+func (m *CdnPopScanReport) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

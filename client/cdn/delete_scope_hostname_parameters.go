@@ -13,84 +13,103 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteScopeHostnameParams creates a new DeleteScopeHostnameParams object
-// with the default values initialized.
+// NewDeleteScopeHostnameParams creates a new DeleteScopeHostnameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteScopeHostnameParams() *DeleteScopeHostnameParams {
-	var ()
 	return &DeleteScopeHostnameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteScopeHostnameParamsWithTimeout creates a new DeleteScopeHostnameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteScopeHostnameParamsWithTimeout(timeout time.Duration) *DeleteScopeHostnameParams {
-	var ()
 	return &DeleteScopeHostnameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteScopeHostnameParamsWithContext creates a new DeleteScopeHostnameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteScopeHostnameParamsWithContext(ctx context.Context) *DeleteScopeHostnameParams {
-	var ()
 	return &DeleteScopeHostnameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteScopeHostnameParamsWithHTTPClient creates a new DeleteScopeHostnameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteScopeHostnameParamsWithHTTPClient(client *http.Client) *DeleteScopeHostnameParams {
-	var ()
 	return &DeleteScopeHostnameParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteScopeHostnameParams contains all the parameters to send to the API endpoint
-for the delete scope hostname operation typically these are written to a http.Request
+/* DeleteScopeHostnameParams contains all the parameters to send to the API endpoint
+   for the delete scope hostname operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteScopeHostnameParams struct {
 
-	/*DisableTransparentMode
-	  Whether or not to remove the hostname from a CDN site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+	/* DisableTransparentMode.
 
+	   Whether or not to remove the hostname from a CDN site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+
+	   Format: boolean
 	*/
 	DisableTransparentMode *bool
-	/*Domain
-	  The hostname to remove from a scope
 
+	/* Domain.
+
+	   The hostname to remove from a scope
 	*/
 	Domain string
-	/*ScopeID
-	  The ID of the scope to remove a hostname from
 
+	/* ScopeID.
+
+	   The ID of the scope to remove a hostname from
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site containing the scope to remove a hostname from
 
+	/* SiteID.
+
+	   The ID of the site containing the scope to remove a hostname from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site containing the scope to remove a hostname from
 
+	/* StackID.
+
+	   The ID of the stack containing the site containing the scope to remove a hostname from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete scope hostname params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteScopeHostnameParams) WithDefaults() *DeleteScopeHostnameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete scope hostname params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteScopeHostnameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete scope hostname params
@@ -193,16 +212,17 @@ func (o *DeleteScopeHostnameParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param disable_transparent_mode
 		var qrDisableTransparentMode bool
+
 		if o.DisableTransparentMode != nil {
 			qrDisableTransparentMode = *o.DisableTransparentMode
 		}
 		qDisableTransparentMode := swag.FormatBool(qrDisableTransparentMode)
 		if qDisableTransparentMode != "" {
+
 			if err := r.SetQueryParam("disable_transparent_mode", qDisableTransparentMode); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param domain

@@ -13,78 +13,94 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetScopeRuleParams creates a new GetScopeRuleParams object
-// with the default values initialized.
+// NewGetScopeRuleParams creates a new GetScopeRuleParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetScopeRuleParams() *GetScopeRuleParams {
-	var ()
 	return &GetScopeRuleParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetScopeRuleParamsWithTimeout creates a new GetScopeRuleParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetScopeRuleParamsWithTimeout(timeout time.Duration) *GetScopeRuleParams {
-	var ()
 	return &GetScopeRuleParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetScopeRuleParamsWithContext creates a new GetScopeRuleParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetScopeRuleParamsWithContext(ctx context.Context) *GetScopeRuleParams {
-	var ()
 	return &GetScopeRuleParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetScopeRuleParamsWithHTTPClient creates a new GetScopeRuleParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetScopeRuleParamsWithHTTPClient(client *http.Client) *GetScopeRuleParams {
-	var ()
 	return &GetScopeRuleParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetScopeRuleParams contains all the parameters to send to the API endpoint
-for the get scope rule operation typically these are written to a http.Request
+/* GetScopeRuleParams contains all the parameters to send to the API endpoint
+   for the get scope rule operation.
+
+   Typically these are written to a http.Request.
 */
 type GetScopeRuleParams struct {
 
-	/*RuleID
-	  The ID of the EdgeRule to retrieve
+	/* RuleID.
 
+	   The ID of the EdgeRule to retrieve
 	*/
 	RuleID string
-	/*ScopeID
-	  The ID of the CDN site scope to retrieve an EdgeRule from
 
+	/* ScopeID.
+
+	   The ID of the CDN site scope to retrieve an EdgeRule from
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site to retrieve an EdgeRule from
 
+	/* SiteID.
+
+	   The ID of the site to retrieve an EdgeRule from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to retrieve an EdgeRule from
 
+	/* StackID.
+
+	   The ID of the stack containing the site to retrieve an EdgeRule from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get scope rule params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeRuleParams) WithDefaults() *GetScopeRuleParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get scope rule params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeRuleParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get scope rule params

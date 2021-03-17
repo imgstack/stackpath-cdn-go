@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfVHost A hostname policy allows you to specify an alternate domain name that you want to use to access content from your CDN container.
+//
 // swagger:model custconfVHost
 type CustconfVHost struct {
 
@@ -27,6 +29,11 @@ type CustconfVHost struct {
 
 // Validate validates this custconf v host
 func (m *CustconfVHost) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf v host based on context it is used
+func (m *CustconfVHost) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

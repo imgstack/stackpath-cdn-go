@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -21,6 +21,7 @@ import (
 //  - UNKNOWN: StackPath is unable to determine a site's feature
 //  - CDN: A site has CDN caching abilities
 //  - WAF: A site is protected by the StackPath Web Application Firewall
+//
 // swagger:model cdnSiteFeature
 type CdnSiteFeature string
 
@@ -50,7 +51,7 @@ func init() {
 }
 
 func (m CdnSiteFeature) validateCdnSiteFeatureEnum(path, location string, value CdnSiteFeature) error {
-	if err := validate.Enum(path, location, value, cdnSiteFeatureEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, cdnSiteFeatureEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -68,5 +69,10 @@ func (m CdnSiteFeature) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this cdn site feature based on context it is used
+func (m CdnSiteFeature) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

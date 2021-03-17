@@ -6,18 +6,20 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAuthGeo Geographic restrictions allow you to restrict content to end users in specific locations. The IP address of incoming requests is checked against a current list of IP allocations to countries and to states within the US. If an end user's IP address is not found in the list, they are allowed access to the content by default. The feature has both an Include and an Exclude list which are used to target the allowed audience.
+//
 // swagger:model custconfAuthGeo
 type CustconfAuthGeo struct {
 
 	// code
-	Code AuthGeoCodeEnumWrapperValue `json:"code,omitempty"`
+	Code *AuthGeoCodeEnumWrapperValue `json:"code,omitempty"`
 
 	// enabled
 	Enabled bool `json:"enabled"`
@@ -44,16 +46,45 @@ func (m *CustconfAuthGeo) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfAuthGeo) validateCode(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Code) { // not required
 		return nil
 	}
 
-	if err := m.Code.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("code")
+	if m.Code != nil {
+		if err := m.Code.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("code")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf auth geo based on the context it is used
+func (m *CustconfAuthGeo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfAuthGeo) contextValidateCode(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Code != nil {
+		if err := m.Code.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("code")
+			}
+			return err
+		}
 	}
 
 	return nil

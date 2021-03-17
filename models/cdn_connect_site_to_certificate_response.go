@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnConnectSiteToCertificateResponse The response to a request to associate an SSL certificate with a CDN site
+//
 // swagger:model cdnConnectSiteToCertificateResponse
 type CdnConnectSiteToCertificateResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnConnectSiteToCertificateResponse) Validate(formats strfmt.Registry) 
 }
 
 func (m *CdnConnectSiteToCertificateResponse) validateSiteCertificate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SiteCertificate) { // not required
 		return nil
 	}
 
 	if m.SiteCertificate != nil {
 		if err := m.SiteCertificate.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("siteCertificate")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn connect site to certificate response based on the context it is used
+func (m *CdnConnectSiteToCertificateResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSiteCertificate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnConnectSiteToCertificateResponse) contextValidateSiteCertificate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SiteCertificate != nil {
+		if err := m.SiteCertificate.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("siteCertificate")
 			}

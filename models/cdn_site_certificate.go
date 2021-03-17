@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnSiteCertificate An SSL certificate and its relationship with its associated site
+//
 // swagger:model cdnSiteCertificate
 type CdnSiteCertificate struct {
 
@@ -40,13 +42,40 @@ func (m *CdnSiteCertificate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnSiteCertificate) validateCertificate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Certificate) { // not required
 		return nil
 	}
 
 	if m.Certificate != nil {
 		if err := m.Certificate.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificate")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn site certificate based on the context it is used
+func (m *CdnSiteCertificate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCertificate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnSiteCertificate) contextValidateCertificate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Certificate != nil {
+		if err := m.Certificate.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("certificate")
 			}

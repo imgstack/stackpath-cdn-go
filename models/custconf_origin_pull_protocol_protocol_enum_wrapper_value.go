@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfOriginPullProtocolProtocolEnumWrapperValue custconf origin pull protocol protocol enum wrapper value
+//
 // swagger:model custconfOriginPullProtocolProtocolEnumWrapperValue
 type CustconfOriginPullProtocolProtocolEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m CustconfOriginPullProtocolProtocolEnumWrapperValue) validateCustconfOriginPullProtocolProtocolEnumWrapperValueEnum(path, location string, value CustconfOriginPullProtocolProtocolEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfOriginPullProtocolProtocolEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfOriginPullProtocolProtocolEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m CustconfOriginPullProtocolProtocolEnumWrapperValue) Validate(formats str
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf origin pull protocol protocol enum wrapper value based on context it is used
+func (m CustconfOriginPullProtocolProtocolEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

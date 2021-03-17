@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AuthACLClientIPSrcEnumWrapperValue auth ACL client IP src enum wrapper value
+//
 // swagger:model AuthACLClientIPSrcEnumWrapperValue
 type AuthACLClientIPSrcEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m AuthACLClientIPSrcEnumWrapperValue) validateAuthACLClientIPSrcEnumWrapperValueEnum(path, location string, value AuthACLClientIPSrcEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, authAclClientIpSrcEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, authAclClientIpSrcEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m AuthACLClientIPSrcEnumWrapperValue) Validate(formats strfmt.Registry) er
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this auth ACL client IP src enum wrapper value based on context it is used
+func (m AuthACLClientIPSrcEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

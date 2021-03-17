@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // CreateScopeHostnameReader is a Reader for the CreateScopeHostname structure.
@@ -24,28 +23,24 @@ type CreateScopeHostnameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateScopeHostnameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateScopeHostnameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateScopeHostnameUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewCreateScopeHostnameInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewCreateScopeHostnameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewCreateScopeHostnameOK() *CreateScopeHostnameOK {
 	return &CreateScopeHostnameOK{}
 }
 
-/*CreateScopeHostnameOK handles this case with default header values.
+/* CreateScopeHostnameOK describes a response with status code 200, with default header values.
 
 CreateScopeHostnameOK create scope hostname o k
 */
@@ -73,6 +68,9 @@ type CreateScopeHostnameOK struct {
 
 func (o *CreateScopeHostnameOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] createScopeHostnameOK  %+v", 200, o.Payload)
+}
+func (o *CreateScopeHostnameOK) GetPayload() *models.CdnCreateScopeHostnameResponse {
+	return o.Payload
 }
 
 func (o *CreateScopeHostnameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewCreateScopeHostnameUnauthorized() *CreateScopeHostnameUnauthorized {
 	return &CreateScopeHostnameUnauthorized{}
 }
 
-/*CreateScopeHostnameUnauthorized handles this case with default header values.
+/* CreateScopeHostnameUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type CreateScopeHostnameUnauthorized struct {
 
 func (o *CreateScopeHostnameUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] createScopeHostnameUnauthorized  %+v", 401, o.Payload)
+}
+func (o *CreateScopeHostnameUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeHostnameUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewCreateScopeHostnameInternalServerError() *CreateScopeHostnameInternalSer
 	return &CreateScopeHostnameInternalServerError{}
 }
 
-/*CreateScopeHostnameInternalServerError handles this case with default header values.
+/* CreateScopeHostnameInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type CreateScopeHostnameInternalServerError struct {
 
 func (o *CreateScopeHostnameInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] createScopeHostnameInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateScopeHostnameInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeHostnameInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewCreateScopeHostnameDefault(code int) *CreateScopeHostnameDefault {
 	}
 }
 
-/*CreateScopeHostnameDefault handles this case with default header values.
+/* CreateScopeHostnameDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *CreateScopeHostnameDefault) Code() int {
 
 func (o *CreateScopeHostnameDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] CreateScopeHostname default  %+v", o._statusCode, o.Payload)
+}
+func (o *CreateScopeHostnameDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateScopeHostnameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PaginationPageRequest Pagination request information
 //
 // This is modeled after the GraphQL Relay spec to support both cursor based pagination and traditional offset based pagination.
+//
 // swagger:model paginationPageRequest
 type PaginationPageRequest struct {
 
@@ -32,6 +34,11 @@ type PaginationPageRequest struct {
 
 // Validate validates this pagination page request
 func (m *PaginationPageRequest) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pagination page request based on context it is used
+func (m *PaginationPageRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

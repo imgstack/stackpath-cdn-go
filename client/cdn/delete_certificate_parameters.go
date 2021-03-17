@@ -13,68 +13,82 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteCertificateParams creates a new DeleteCertificateParams object
-// with the default values initialized.
+// NewDeleteCertificateParams creates a new DeleteCertificateParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteCertificateParams() *DeleteCertificateParams {
-	var ()
 	return &DeleteCertificateParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteCertificateParamsWithTimeout creates a new DeleteCertificateParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteCertificateParamsWithTimeout(timeout time.Duration) *DeleteCertificateParams {
-	var ()
 	return &DeleteCertificateParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteCertificateParamsWithContext creates a new DeleteCertificateParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteCertificateParamsWithContext(ctx context.Context) *DeleteCertificateParams {
-	var ()
 	return &DeleteCertificateParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteCertificateParamsWithHTTPClient creates a new DeleteCertificateParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteCertificateParamsWithHTTPClient(client *http.Client) *DeleteCertificateParams {
-	var ()
 	return &DeleteCertificateParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteCertificateParams contains all the parameters to send to the API endpoint
-for the delete certificate operation typically these are written to a http.Request
+/* DeleteCertificateParams contains all the parameters to send to the API endpoint
+   for the delete certificate operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteCertificateParams struct {
 
-	/*CertificateID
-	  The ID of the SSL certificate to delete
+	/* CertificateID.
 
+	   The ID of the SSL certificate to delete
 	*/
 	CertificateID string
-	/*StackID
-	  The ID of the stack containing the SSL certificate to delete
 
+	/* StackID.
+
+	   The ID of the stack containing the SSL certificate to delete
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCertificateParams) WithDefaults() *DeleteCertificateParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete certificate params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCertificateParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete certificate params

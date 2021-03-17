@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfOriginPull The origin pull settings policy contains a list of settings that control the behavior of origin pull requests.
+//
 // swagger:model custconfOriginPull
 type CustconfOriginPull struct {
 
@@ -26,7 +28,7 @@ type CustconfOriginPull struct {
 	NoQSParams bool `json:"noQSParams"`
 
 	// redirect action
-	RedirectAction OriginPullRedirectActionEnumWrapperValue `json:"redirectAction,omitempty"`
+	RedirectAction *OriginPullRedirectActionEnumWrapperValue `json:"redirectAction,omitempty"`
 
 	// String of values delimited by a ',' character. List of HTTP Methods that define types of origin pull requests that can be retried if a failure occurs after sending a previous request.
 	RetryMethods string `json:"retryMethods,omitempty"`
@@ -47,16 +49,45 @@ func (m *CustconfOriginPull) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfOriginPull) validateRedirectAction(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RedirectAction) { // not required
 		return nil
 	}
 
-	if err := m.RedirectAction.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("redirectAction")
+	if m.RedirectAction != nil {
+		if err := m.RedirectAction.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("redirectAction")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf origin pull based on the context it is used
+func (m *CustconfOriginPull) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRedirectAction(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfOriginPull) contextValidateRedirectAction(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RedirectAction != nil {
+		if err := m.RedirectAction.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("redirectAction")
+			}
+			return err
+		}
 	}
 
 	return nil

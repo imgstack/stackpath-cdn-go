@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // RenewCertificateReader is a Reader for the RenewCertificate structure.
@@ -24,28 +23,24 @@ type RenewCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RenewCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewRenewCertificateNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewRenewCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewRenewCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewRenewCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewRenewCertificateNoContent() *RenewCertificateNoContent {
 	return &RenewCertificateNoContent{}
 }
 
-/*RenewCertificateNoContent handles this case with default header values.
+/* RenewCertificateNoContent describes a response with status code 204, with default header values.
 
 No content
 */
@@ -84,7 +79,7 @@ func NewRenewCertificateUnauthorized() *RenewCertificateUnauthorized {
 	return &RenewCertificateUnauthorized{}
 }
 
-/*RenewCertificateUnauthorized handles this case with default header values.
+/* RenewCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -94,6 +89,9 @@ type RenewCertificateUnauthorized struct {
 
 func (o *RenewCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/renew][%d] renewCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *RenewCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RenewCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +111,7 @@ func NewRenewCertificateInternalServerError() *RenewCertificateInternalServerErr
 	return &RenewCertificateInternalServerError{}
 }
 
-/*RenewCertificateInternalServerError handles this case with default header values.
+/* RenewCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -123,6 +121,9 @@ type RenewCertificateInternalServerError struct {
 
 func (o *RenewCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/renew][%d] renewCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RenewCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RenewCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +145,7 @@ func NewRenewCertificateDefault(code int) *RenewCertificateDefault {
 	}
 }
 
-/*RenewCertificateDefault handles this case with default header values.
+/* RenewCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -161,6 +162,9 @@ func (o *RenewCertificateDefault) Code() int {
 
 func (o *RenewCertificateDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/renew][%d] RenewCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *RenewCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *RenewCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

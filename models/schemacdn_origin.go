@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // SchemacdnOrigin A CDN site's origin
 //
 // Origins are the original sources of the data that is cached by the CDN on request.
+//
 // swagger:model schemacdnOrigin
 type SchemacdnOrigin struct {
 
@@ -45,6 +47,11 @@ type SchemacdnOrigin struct {
 
 // Validate validates this schemacdn origin
 func (m *SchemacdnOrigin) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this schemacdn origin based on context it is used
+func (m *SchemacdnOrigin) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

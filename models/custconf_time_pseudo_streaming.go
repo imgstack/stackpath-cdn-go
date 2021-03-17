@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfTimePseudoStreaming The HTTP pseudo-streaming policy enables Flash based video players to support seeking to random locations within a MP4 or FLV file without having to download the entire video. Flash players such as Flowplayer and JWPlayer can be configured to send a query string parameter that indicates to the server the time offset the user advanced the video to. Typically a query string parameter called "start" is used by these players.
+//
 // swagger:model custconfTimePseudoStreaming
 type CustconfTimePseudoStreaming struct {
 
@@ -30,6 +32,11 @@ type CustconfTimePseudoStreaming struct {
 
 // Validate validates this custconf time pseudo streaming
 func (m *CustconfTimePseudoStreaming) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf time pseudo streaming based on context it is used
+func (m *CustconfTimePseudoStreaming) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,9 +6,10 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -16,6 +17,7 @@ import (
 // CdnSiteScript An EdgeEngine script
 //
 // EdgeEngine scripts are hosted and executed on StackPath's edge nodes.
+//
 // swagger:model cdnSiteScript
 type CdnSiteScript struct {
 
@@ -58,10 +60,6 @@ type CdnSiteScript struct {
 func (m *CdnSiteScript) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCode(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -76,19 +74,7 @@ func (m *CdnSiteScript) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *CdnSiteScript) validateCode(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Code) { // not required
-		return nil
-	}
-
-	// Format "byte" (base64 string) is already validated when unmarshalled
-
-	return nil
-}
-
 func (m *CdnSiteScript) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -101,7 +87,6 @@ func (m *CdnSiteScript) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *CdnSiteScript) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -110,6 +95,11 @@ func (m *CdnSiteScript) validateUpdatedAt(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this cdn site script based on context it is used
+func (m *CdnSiteScript) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

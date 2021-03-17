@@ -6,11 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -23,6 +23,7 @@ import (
 //  - PENDING_VERIFICATION: The certificate is pending domain verification by the end user
 //  - ACTIVE: The certificate is valid and is in use by one or more hosts
 //  - INACTIVE: The certificate is valid but is not in use by any hosts
+//
 // swagger:model cdnCertificateStatus
 type CdnCertificateStatus string
 
@@ -64,7 +65,7 @@ func init() {
 }
 
 func (m CdnCertificateStatus) validateCdnCertificateStatusEnum(path, location string, value CdnCertificateStatus) error {
-	if err := validate.Enum(path, location, value, cdnCertificateStatusEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, cdnCertificateStatusEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -82,5 +83,10 @@ func (m CdnCertificateStatus) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this cdn certificate status based on context it is used
+func (m CdnCertificateStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

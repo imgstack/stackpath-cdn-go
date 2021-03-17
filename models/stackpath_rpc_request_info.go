@@ -7,15 +7,16 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StackpathRPCRequestInfo stackpath rpc request info
+//
 // swagger:model stackpath.rpc.RequestInfo
 type StackpathRPCRequestInfo struct {
 
@@ -33,12 +34,7 @@ func (m *StackpathRPCRequestInfo) AtType() string {
 
 // SetAtType sets the at type of this subtype
 func (m *StackpathRPCRequestInfo) SetAtType(val string) {
-
 }
-
-// RequestID gets the request Id of this subtype
-
-// ServingData gets the serving data of this subtype
 
 // UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
 func (m *StackpathRPCRequestInfo) UnmarshalJSON(raw []byte) error {
@@ -79,7 +75,6 @@ func (m *StackpathRPCRequestInfo) UnmarshalJSON(raw []byte) error {
 	}
 
 	result.RequestID = data.RequestID
-
 	result.ServingData = data.ServingData
 
 	*m = result
@@ -103,8 +98,7 @@ func (m StackpathRPCRequestInfo) MarshalJSON() ([]byte, error) {
 		RequestID: m.RequestID,
 
 		ServingData: m.ServingData,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -113,8 +107,7 @@ func (m StackpathRPCRequestInfo) MarshalJSON() ([]byte, error) {
 	}{
 
 		AtType: m.AtType(),
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -124,6 +117,16 @@ func (m StackpathRPCRequestInfo) MarshalJSON() ([]byte, error) {
 
 // Validate validates this stackpath rpc request info
 func (m *StackpathRPCRequestInfo) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this stackpath rpc request info based on the context it is used
+func (m *StackpathRPCRequestInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if len(res) > 0 {

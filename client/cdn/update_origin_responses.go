@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // UpdateOriginReader is a Reader for the UpdateOrigin structure.
@@ -24,28 +23,24 @@ type UpdateOriginReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateOriginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateOriginOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewUpdateOriginUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewUpdateOriginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewUpdateOriginDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewUpdateOriginOK() *UpdateOriginOK {
 	return &UpdateOriginOK{}
 }
 
-/*UpdateOriginOK handles this case with default header values.
+/* UpdateOriginOK describes a response with status code 200, with default header values.
 
 UpdateOriginOK update origin o k
 */
@@ -73,6 +68,9 @@ type UpdateOriginOK struct {
 
 func (o *UpdateOriginOK) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/origins/{origin_id}][%d] updateOriginOK  %+v", 200, o.Payload)
+}
+func (o *UpdateOriginOK) GetPayload() *models.CdnUpdateOriginResponse {
+	return o.Payload
 }
 
 func (o *UpdateOriginOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewUpdateOriginUnauthorized() *UpdateOriginUnauthorized {
 	return &UpdateOriginUnauthorized{}
 }
 
-/*UpdateOriginUnauthorized handles this case with default header values.
+/* UpdateOriginUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type UpdateOriginUnauthorized struct {
 
 func (o *UpdateOriginUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/origins/{origin_id}][%d] updateOriginUnauthorized  %+v", 401, o.Payload)
+}
+func (o *UpdateOriginUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateOriginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewUpdateOriginInternalServerError() *UpdateOriginInternalServerError {
 	return &UpdateOriginInternalServerError{}
 }
 
-/*UpdateOriginInternalServerError handles this case with default header values.
+/* UpdateOriginInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type UpdateOriginInternalServerError struct {
 
 func (o *UpdateOriginInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/origins/{origin_id}][%d] updateOriginInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateOriginInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateOriginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewUpdateOriginDefault(code int) *UpdateOriginDefault {
 	}
 }
 
-/*UpdateOriginDefault handles this case with default header values.
+/* UpdateOriginDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *UpdateOriginDefault) Code() int {
 
 func (o *UpdateOriginDefault) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/origins/{origin_id}][%d] UpdateOrigin default  %+v", o._statusCode, o.Payload)
+}
+func (o *UpdateOriginDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateOriginDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

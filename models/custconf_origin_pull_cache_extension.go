@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfOriginPullCacheExtension The cache extension policy allows you to define cache revalidation exceptions on expired content. This policy is applied by the CDN caching servers when they are are unable to revalidate an expired asset with your origin due to network connectivity issues or unresponsiveness from your origin.
+//
 // swagger:model custconfOriginPullCacheExtension
 type CustconfOriginPullCacheExtension struct {
 
@@ -30,6 +32,11 @@ type CustconfOriginPullCacheExtension struct {
 
 // Validate validates this custconf origin pull cache extension
 func (m *CustconfOriginPullCacheExtension) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf origin pull cache extension based on context it is used
+func (m *CustconfOriginPullCacheExtension) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

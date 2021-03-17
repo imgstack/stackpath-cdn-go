@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnCreateSiteRequestOrigin The new site's origin
+//
 // swagger:model cdnCreateSiteRequestOrigin
 type CdnCreateSiteRequestOrigin struct {
 
@@ -32,6 +34,11 @@ type CdnCreateSiteRequestOrigin struct {
 
 // Validate validates this cdn create site request origin
 func (m *CdnCreateSiteRequestOrigin) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn create site request origin based on context it is used
+func (m *CdnCreateSiteRequestOrigin) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetSiteCertificatesReader is a Reader for the GetSiteCertificates structure.
@@ -24,28 +23,24 @@ type GetSiteCertificatesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSiteCertificatesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSiteCertificatesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetSiteCertificatesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetSiteCertificatesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetSiteCertificatesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetSiteCertificatesOK() *GetSiteCertificatesOK {
 	return &GetSiteCertificatesOK{}
 }
 
-/*GetSiteCertificatesOK handles this case with default header values.
+/* GetSiteCertificatesOK describes a response with status code 200, with default header values.
 
 GetSiteCertificatesOK get site certificates o k
 */
@@ -73,6 +68,9 @@ type GetSiteCertificatesOK struct {
 
 func (o *GetSiteCertificatesOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates][%d] getSiteCertificatesOK  %+v", 200, o.Payload)
+}
+func (o *GetSiteCertificatesOK) GetPayload() *models.CdnGetSiteCertificatesResponse {
+	return o.Payload
 }
 
 func (o *GetSiteCertificatesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetSiteCertificatesUnauthorized() *GetSiteCertificatesUnauthorized {
 	return &GetSiteCertificatesUnauthorized{}
 }
 
-/*GetSiteCertificatesUnauthorized handles this case with default header values.
+/* GetSiteCertificatesUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetSiteCertificatesUnauthorized struct {
 
 func (o *GetSiteCertificatesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates][%d] getSiteCertificatesUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetSiteCertificatesUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteCertificatesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetSiteCertificatesInternalServerError() *GetSiteCertificatesInternalSer
 	return &GetSiteCertificatesInternalServerError{}
 }
 
-/*GetSiteCertificatesInternalServerError handles this case with default header values.
+/* GetSiteCertificatesInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetSiteCertificatesInternalServerError struct {
 
 func (o *GetSiteCertificatesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates][%d] getSiteCertificatesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSiteCertificatesInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteCertificatesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetSiteCertificatesDefault(code int) *GetSiteCertificatesDefault {
 	}
 }
 
-/*GetSiteCertificatesDefault handles this case with default header values.
+/* GetSiteCertificatesDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetSiteCertificatesDefault) Code() int {
 
 func (o *GetSiteCertificatesDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates][%d] GetSiteCertificates default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetSiteCertificatesDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteCertificatesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

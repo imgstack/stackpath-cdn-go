@@ -13,94 +13,115 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetSiteScopesParams creates a new GetSiteScopesParams object
-// with the default values initialized.
+// NewGetSiteScopesParams creates a new GetSiteScopesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetSiteScopesParams() *GetSiteScopesParams {
-	var ()
 	return &GetSiteScopesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetSiteScopesParamsWithTimeout creates a new GetSiteScopesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetSiteScopesParamsWithTimeout(timeout time.Duration) *GetSiteScopesParams {
-	var ()
 	return &GetSiteScopesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetSiteScopesParamsWithContext creates a new GetSiteScopesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetSiteScopesParamsWithContext(ctx context.Context) *GetSiteScopesParams {
-	var ()
 	return &GetSiteScopesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetSiteScopesParamsWithHTTPClient creates a new GetSiteScopesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetSiteScopesParamsWithHTTPClient(client *http.Client) *GetSiteScopesParams {
-	var ()
 	return &GetSiteScopesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetSiteScopesParams contains all the parameters to send to the API endpoint
-for the get site scopes operation typically these are written to a http.Request
+/* GetSiteScopesParams contains all the parameters to send to the API endpoint
+   for the get site scopes operation.
+
+   Typically these are written to a http.Request.
 */
 type GetSiteScopesParams struct {
 
-	/*DisableTransparentMode
-	  Whether or not to retrieve the site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+	/* DisableTransparentMode.
 
+	   Whether or not to retrieve the site's CDN scope or its WAF scope. When true, this call removes the hostname from a CDN site's scope instead of loading from a CDN site's WAF scope, if the site has WAF service.
+
+	   Format: boolean
 	*/
 	DisableTransparentMode *bool
-	/*PageRequestAfter
-	  The cursor value after which data will be returned.
 
+	/* PageRequestAfter.
+
+	   The cursor value after which data will be returned.
 	*/
 	PageRequestAfter *string
-	/*PageRequestFilter
-	  SQL-style constraint filters.
 
+	/* PageRequestFilter.
+
+	   SQL-style constraint filters.
 	*/
 	PageRequestFilter *string
-	/*PageRequestFirst
-	  The number of items desired.
 
+	/* PageRequestFirst.
+
+	   The number of items desired.
 	*/
 	PageRequestFirst *string
-	/*PageRequestSortBy
-	  Sort the response by the given field.
 
+	/* PageRequestSortBy.
+
+	   Sort the response by the given field.
 	*/
 	PageRequestSortBy *string
-	/*SiteID
-	  The ID of the site to retrieve scopes from
 
+	/* SiteID.
+
+	   The ID of the site to retrieve scopes from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to retrieve scopes from
 
+	/* StackID.
+
+	   The ID of the stack containing the site to retrieve scopes from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get site scopes params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetSiteScopesParams) WithDefaults() *GetSiteScopesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get site scopes params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetSiteScopesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get site scopes params
@@ -225,80 +246,85 @@ func (o *GetSiteScopesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param disable_transparent_mode
 		var qrDisableTransparentMode bool
+
 		if o.DisableTransparentMode != nil {
 			qrDisableTransparentMode = *o.DisableTransparentMode
 		}
 		qDisableTransparentMode := swag.FormatBool(qrDisableTransparentMode)
 		if qDisableTransparentMode != "" {
+
 			if err := r.SetQueryParam("disable_transparent_mode", qDisableTransparentMode); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestAfter != nil {
 
 		// query param page_request.after
 		var qrPageRequestAfter string
+
 		if o.PageRequestAfter != nil {
 			qrPageRequestAfter = *o.PageRequestAfter
 		}
 		qPageRequestAfter := qrPageRequestAfter
 		if qPageRequestAfter != "" {
+
 			if err := r.SetQueryParam("page_request.after", qPageRequestAfter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestFilter != nil {
 
 		// query param page_request.filter
 		var qrPageRequestFilter string
+
 		if o.PageRequestFilter != nil {
 			qrPageRequestFilter = *o.PageRequestFilter
 		}
 		qPageRequestFilter := qrPageRequestFilter
 		if qPageRequestFilter != "" {
+
 			if err := r.SetQueryParam("page_request.filter", qPageRequestFilter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestFirst != nil {
 
 		// query param page_request.first
 		var qrPageRequestFirst string
+
 		if o.PageRequestFirst != nil {
 			qrPageRequestFirst = *o.PageRequestFirst
 		}
 		qPageRequestFirst := qrPageRequestFirst
 		if qPageRequestFirst != "" {
+
 			if err := r.SetQueryParam("page_request.first", qPageRequestFirst); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PageRequestSortBy != nil {
 
 		// query param page_request.sort_by
 		var qrPageRequestSortBy string
+
 		if o.PageRequestSortBy != nil {
 			qrPageRequestSortBy = *o.PageRequestSortBy
 		}
 		qPageRequestSortBy := qrPageRequestSortBy
 		if qPageRequestSortBy != "" {
+
 			if err := r.SetQueryParam("page_request.sort_by", qPageRequestSortBy); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param site_id

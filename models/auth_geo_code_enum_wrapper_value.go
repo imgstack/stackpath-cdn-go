@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AuthGeoCodeEnumWrapperValue auth geo code enum wrapper value
+//
 // swagger:model AuthGeoCodeEnumWrapperValue
 type AuthGeoCodeEnumWrapperValue string
 
@@ -65,7 +66,7 @@ func init() {
 }
 
 func (m AuthGeoCodeEnumWrapperValue) validateAuthGeoCodeEnumWrapperValueEnum(path, location string, value AuthGeoCodeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, authGeoCodeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, authGeoCodeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -83,5 +84,10 @@ func (m AuthGeoCodeEnumWrapperValue) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this auth geo code enum wrapper value based on context it is used
+func (m AuthGeoCodeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

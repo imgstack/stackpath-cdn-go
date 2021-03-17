@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetClosestPopsResponse The response from a request to scan a URL from the StackPath edge network
+//
 // swagger:model cdnGetClosestPopsResponse
 type CdnGetClosestPopsResponse struct {
 
@@ -37,7 +38,6 @@ func (m *CdnGetClosestPopsResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnGetClosestPopsResponse) validateResult(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -49,6 +49,38 @@ func (m *CdnGetClosestPopsResponse) validateResult(formats strfmt.Registry) erro
 
 		if m.Result[i] != nil {
 			if err := m.Result[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("result" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn get closest pops response based on the context it is used
+func (m *CdnGetClosestPopsResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateResult(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnGetClosestPopsResponse) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Result); i++ {
+
+		if m.Result[i] != nil {
+			if err := m.Result[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + strconv.Itoa(i))
 				}

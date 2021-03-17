@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // GetMetricsResponseMetricSample The data points associated with a series of metrics
+//
 // swagger:model GetMetricsResponseMetricSample
 type GetMetricsResponseMetricSample struct {
 
@@ -21,6 +23,11 @@ type GetMetricsResponseMetricSample struct {
 
 // Validate validates this get metrics response metric sample
 func (m *GetMetricsResponseMetricSample) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this get metrics response metric sample based on context it is used
+func (m *GetMetricsResponseMetricSample) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

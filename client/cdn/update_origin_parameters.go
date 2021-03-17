@@ -13,72 +13,87 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewUpdateOriginParams creates a new UpdateOriginParams object
-// with the default values initialized.
+// NewUpdateOriginParams creates a new UpdateOriginParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateOriginParams() *UpdateOriginParams {
-	var ()
 	return &UpdateOriginParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateOriginParamsWithTimeout creates a new UpdateOriginParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateOriginParamsWithTimeout(timeout time.Duration) *UpdateOriginParams {
-	var ()
 	return &UpdateOriginParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateOriginParamsWithContext creates a new UpdateOriginParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateOriginParamsWithContext(ctx context.Context) *UpdateOriginParams {
-	var ()
 	return &UpdateOriginParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateOriginParamsWithHTTPClient creates a new UpdateOriginParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateOriginParamsWithHTTPClient(client *http.Client) *UpdateOriginParams {
-	var ()
 	return &UpdateOriginParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateOriginParams contains all the parameters to send to the API endpoint
-for the update origin operation typically these are written to a http.Request
+/* UpdateOriginParams contains all the parameters to send to the API endpoint
+   for the update origin operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateOriginParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnUpdateOriginRequest
-	/*OriginID
-	  The ID of the origin to update
 
+	/* OriginID.
+
+	   The ID of the origin to update
 	*/
 	OriginID string
-	/*StackID
-	  The ID of the stack containing the origin to update
 
+	/* StackID.
+
+	   The ID of the stack containing the origin to update
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateOriginParams) WithDefaults() *UpdateOriginParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateOriginParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update origin params
@@ -154,7 +169,6 @@ func (o *UpdateOriginParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

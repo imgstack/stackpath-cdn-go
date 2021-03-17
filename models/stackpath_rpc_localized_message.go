@@ -7,15 +7,16 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StackpathRPCLocalizedMessage stackpath rpc localized message
+//
 // swagger:model stackpath.rpc.LocalizedMessage
 type StackpathRPCLocalizedMessage struct {
 
@@ -33,12 +34,7 @@ func (m *StackpathRPCLocalizedMessage) AtType() string {
 
 // SetAtType sets the at type of this subtype
 func (m *StackpathRPCLocalizedMessage) SetAtType(val string) {
-
 }
-
-// Locale gets the locale of this subtype
-
-// Message gets the message of this subtype
 
 // UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
 func (m *StackpathRPCLocalizedMessage) UnmarshalJSON(raw []byte) error {
@@ -79,7 +75,6 @@ func (m *StackpathRPCLocalizedMessage) UnmarshalJSON(raw []byte) error {
 	}
 
 	result.Locale = data.Locale
-
 	result.Message = data.Message
 
 	*m = result
@@ -103,8 +98,7 @@ func (m StackpathRPCLocalizedMessage) MarshalJSON() ([]byte, error) {
 		Locale: m.Locale,
 
 		Message: m.Message,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -113,8 +107,7 @@ func (m StackpathRPCLocalizedMessage) MarshalJSON() ([]byte, error) {
 	}{
 
 		AtType: m.AtType(),
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -124,6 +117,16 @@ func (m StackpathRPCLocalizedMessage) MarshalJSON() ([]byte, error) {
 
 // Validate validates this stackpath rpc localized message
 func (m *StackpathRPCLocalizedMessage) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this stackpath rpc localized message based on the context it is used
+func (m *StackpathRPCLocalizedMessage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if len(res) > 0 {

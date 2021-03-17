@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AuthACLAccessCodeEnumWrapperValue auth ACL access code enum wrapper value
+//
 // swagger:model AuthACLAccessCodeEnumWrapperValue
 type AuthACLAccessCodeEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m AuthACLAccessCodeEnumWrapperValue) validateAuthACLAccessCodeEnumWrapperValueEnum(path, location string, value AuthACLAccessCodeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, authAclAccessCodeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, authAclAccessCodeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m AuthACLAccessCodeEnumWrapperValue) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this auth ACL access code enum wrapper value based on context it is used
+func (m AuthACLAccessCodeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

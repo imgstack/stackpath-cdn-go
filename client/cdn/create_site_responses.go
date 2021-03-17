@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // CreateSiteReader is a Reader for the CreateSite structure.
@@ -24,28 +23,24 @@ type CreateSiteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateSiteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateSiteOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateSiteUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewCreateSiteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewCreateSiteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewCreateSiteOK() *CreateSiteOK {
 	return &CreateSiteOK{}
 }
 
-/*CreateSiteOK handles this case with default header values.
+/* CreateSiteOK describes a response with status code 200, with default header values.
 
 CreateSiteOK create site o k
 */
@@ -73,6 +68,9 @@ type CreateSiteOK struct {
 
 func (o *CreateSiteOK) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites][%d] createSiteOK  %+v", 200, o.Payload)
+}
+func (o *CreateSiteOK) GetPayload() *models.CdnCreateSiteResponse {
+	return o.Payload
 }
 
 func (o *CreateSiteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewCreateSiteUnauthorized() *CreateSiteUnauthorized {
 	return &CreateSiteUnauthorized{}
 }
 
-/*CreateSiteUnauthorized handles this case with default header values.
+/* CreateSiteUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type CreateSiteUnauthorized struct {
 
 func (o *CreateSiteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites][%d] createSiteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *CreateSiteUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewCreateSiteInternalServerError() *CreateSiteInternalServerError {
 	return &CreateSiteInternalServerError{}
 }
 
-/*CreateSiteInternalServerError handles this case with default header values.
+/* CreateSiteInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type CreateSiteInternalServerError struct {
 
 func (o *CreateSiteInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites][%d] createSiteInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateSiteInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewCreateSiteDefault(code int) *CreateSiteDefault {
 	}
 }
 
-/*CreateSiteDefault handles this case with default header values.
+/* CreateSiteDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *CreateSiteDefault) Code() int {
 
 func (o *CreateSiteDefault) Error() string {
 	return fmt.Sprintf("[POST /cdn/v1/stacks/{stack_id}/sites][%d] CreateSite default  %+v", o._statusCode, o.Payload)
+}
+func (o *CreateSiteDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *CreateSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

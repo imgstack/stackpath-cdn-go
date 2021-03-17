@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfClientRequestModification custconf client request modification
+//
 // swagger:model custconfClientRequestModification
 type CustconfClientRequestModification struct {
 
@@ -23,7 +25,7 @@ type CustconfClientRequestModification struct {
 	Enabled bool `json:"enabled"`
 
 	// flow control
-	FlowControl CustconfClientRequestModificationFlowControlEnumWrapperValue `json:"flowControl,omitempty"`
+	FlowControl *CustconfClientRequestModificationFlowControlEnumWrapperValue `json:"flowControl,omitempty"`
 
 	// String of values delimited by a ',' character.
 	HeaderFilter string `json:"headerFilter,omitempty"`
@@ -65,16 +67,45 @@ func (m *CustconfClientRequestModification) Validate(formats strfmt.Registry) er
 }
 
 func (m *CustconfClientRequestModification) validateFlowControl(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FlowControl) { // not required
 		return nil
 	}
 
-	if err := m.FlowControl.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("flowControl")
+	if m.FlowControl != nil {
+		if err := m.FlowControl.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("flowControl")
+			}
+			return err
 		}
-		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf client request modification based on the context it is used
+func (m *CustconfClientRequestModification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFlowControl(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfClientRequestModification) contextValidateFlowControl(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FlowControl != nil {
+		if err := m.FlowControl.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("flowControl")
+			}
+			return err
+		}
 	}
 
 	return nil

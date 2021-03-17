@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfFarAheadRangeProxy custconf far ahead range proxy
+//
 // swagger:model custconfFarAheadRangeProxy
 type CustconfFarAheadRangeProxy struct {
 
@@ -27,6 +29,11 @@ type CustconfFarAheadRangeProxy struct {
 
 // Validate validates this custconf far ahead range proxy
 func (m *CustconfFarAheadRangeProxy) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf far ahead range proxy based on context it is used
+func (m *CustconfFarAheadRangeProxy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

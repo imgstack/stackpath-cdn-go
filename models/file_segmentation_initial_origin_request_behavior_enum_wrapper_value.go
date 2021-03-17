@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue file segmentation initial origin request behavior enum wrapper value
+//
 // swagger:model FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue
 type FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue) validateFileSegmentationInitialOriginRequestBehaviorEnumWrapperValueEnum(path, location string, value FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, fileSegmentationInitialOriginRequestBehaviorEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, fileSegmentationInitialOriginRequestBehaviorEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue) Validate(f
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this file segmentation initial origin request behavior enum wrapper value based on context it is used
+func (m FileSegmentationInitialOriginRequestBehaviorEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfOriginRequestQueueLogLevelEnumWrapperValue custconf origin request queue log level enum wrapper value
+//
 // swagger:model custconfOriginRequestQueueLogLevelEnumWrapperValue
 type CustconfOriginRequestQueueLogLevelEnumWrapperValue string
 
@@ -53,7 +54,7 @@ func init() {
 }
 
 func (m CustconfOriginRequestQueueLogLevelEnumWrapperValue) validateCustconfOriginRequestQueueLogLevelEnumWrapperValueEnum(path, location string, value CustconfOriginRequestQueueLogLevelEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfOriginRequestQueueLogLevelEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfOriginRequestQueueLogLevelEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -71,5 +72,10 @@ func (m CustconfOriginRequestQueueLogLevelEnumWrapperValue) Validate(formats str
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf origin request queue log level enum wrapper value based on context it is used
+func (m CustconfOriginRequestQueueLogLevelEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

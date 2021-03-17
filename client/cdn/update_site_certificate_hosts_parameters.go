@@ -13,77 +13,93 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewUpdateSiteCertificateHostsParams creates a new UpdateSiteCertificateHostsParams object
-// with the default values initialized.
+// NewUpdateSiteCertificateHostsParams creates a new UpdateSiteCertificateHostsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateSiteCertificateHostsParams() *UpdateSiteCertificateHostsParams {
-	var ()
 	return &UpdateSiteCertificateHostsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateSiteCertificateHostsParamsWithTimeout creates a new UpdateSiteCertificateHostsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateSiteCertificateHostsParamsWithTimeout(timeout time.Duration) *UpdateSiteCertificateHostsParams {
-	var ()
 	return &UpdateSiteCertificateHostsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateSiteCertificateHostsParamsWithContext creates a new UpdateSiteCertificateHostsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateSiteCertificateHostsParamsWithContext(ctx context.Context) *UpdateSiteCertificateHostsParams {
-	var ()
 	return &UpdateSiteCertificateHostsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateSiteCertificateHostsParamsWithHTTPClient creates a new UpdateSiteCertificateHostsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateSiteCertificateHostsParamsWithHTTPClient(client *http.Client) *UpdateSiteCertificateHostsParams {
-	var ()
 	return &UpdateSiteCertificateHostsParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateSiteCertificateHostsParams contains all the parameters to send to the API endpoint
-for the update site certificate hosts operation typically these are written to a http.Request
+/* UpdateSiteCertificateHostsParams contains all the parameters to send to the API endpoint
+   for the update site certificate hosts operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateSiteCertificateHostsParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnUpdateSiteCertificateHostsRequest
-	/*CertificateID
-	  The ID of the SSL certificate to update hosts on
 
+	/* CertificateID.
+
+	   The ID of the SSL certificate to update hosts on
 	*/
 	CertificateID string
-	/*SiteID
-	  The ID of the site containing the SSL certificate to update hosts on
 
+	/* SiteID.
+
+	   The ID of the site containing the SSL certificate to update hosts on
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the SSL certificate to update hosts on
 
+	/* StackID.
+
+	   The ID of the stack containing the SSL certificate to update hosts on
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update site certificate hosts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateSiteCertificateHostsParams) WithDefaults() *UpdateSiteCertificateHostsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update site certificate hosts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateSiteCertificateHostsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update site certificate hosts params
@@ -170,7 +186,6 @@ func (o *UpdateSiteCertificateHostsParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

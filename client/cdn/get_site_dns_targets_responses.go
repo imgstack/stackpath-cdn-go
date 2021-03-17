@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetSiteDNSTargetsReader is a Reader for the GetSiteDNSTargets structure.
@@ -24,28 +23,24 @@ type GetSiteDNSTargetsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSiteDNSTargetsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSiteDNSTargetsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetSiteDNSTargetsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetSiteDNSTargetsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetSiteDNSTargetsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetSiteDNSTargetsOK() *GetSiteDNSTargetsOK {
 	return &GetSiteDNSTargetsOK{}
 }
 
-/*GetSiteDNSTargetsOK handles this case with default header values.
+/* GetSiteDNSTargetsOK describes a response with status code 200, with default header values.
 
 GetSiteDNSTargetsOK get site Dns targets o k
 */
@@ -73,6 +68,9 @@ type GetSiteDNSTargetsOK struct {
 
 func (o *GetSiteDNSTargetsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/dns/targets][%d] getSiteDnsTargetsOK  %+v", 200, o.Payload)
+}
+func (o *GetSiteDNSTargetsOK) GetPayload() *models.CdnGetSiteDNSTargetsResponse {
+	return o.Payload
 }
 
 func (o *GetSiteDNSTargetsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetSiteDNSTargetsUnauthorized() *GetSiteDNSTargetsUnauthorized {
 	return &GetSiteDNSTargetsUnauthorized{}
 }
 
-/*GetSiteDNSTargetsUnauthorized handles this case with default header values.
+/* GetSiteDNSTargetsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetSiteDNSTargetsUnauthorized struct {
 
 func (o *GetSiteDNSTargetsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/dns/targets][%d] getSiteDnsTargetsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetSiteDNSTargetsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteDNSTargetsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetSiteDNSTargetsInternalServerError() *GetSiteDNSTargetsInternalServerE
 	return &GetSiteDNSTargetsInternalServerError{}
 }
 
-/*GetSiteDNSTargetsInternalServerError handles this case with default header values.
+/* GetSiteDNSTargetsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetSiteDNSTargetsInternalServerError struct {
 
 func (o *GetSiteDNSTargetsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/dns/targets][%d] getSiteDnsTargetsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSiteDNSTargetsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteDNSTargetsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetSiteDNSTargetsDefault(code int) *GetSiteDNSTargetsDefault {
 	}
 }
 
-/*GetSiteDNSTargetsDefault handles this case with default header values.
+/* GetSiteDNSTargetsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetSiteDNSTargetsDefault) Code() int {
 
 func (o *GetSiteDNSTargetsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/dns/targets][%d] GetSiteDnsTargets default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetSiteDNSTargetsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetSiteDNSTargetsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue origin pull shield permissible shield internal errors enum wrapper value
+//
 // swagger:model OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue
 type OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue string
 
@@ -53,7 +54,7 @@ func init() {
 }
 
 func (m OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue) validateOriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValueEnum(path, location string, value OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, originPullShieldPermissibleShieldInternalErrorsEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, originPullShieldPermissibleShieldInternalErrorsEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -71,5 +72,10 @@ func (m OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue) Validat
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this origin pull shield permissible shield internal errors enum wrapper value based on context it is used
+func (m OriginPullShieldPermissibleShieldInternalErrorsEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

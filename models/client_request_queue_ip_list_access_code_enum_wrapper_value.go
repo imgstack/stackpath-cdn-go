@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // ClientRequestQueueIPListAccessCodeEnumWrapperValue client request queue Ip list access code enum wrapper value
+//
 // swagger:model ClientRequestQueueIpListAccessCodeEnumWrapperValue
 type ClientRequestQueueIPListAccessCodeEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m ClientRequestQueueIPListAccessCodeEnumWrapperValue) validateClientRequestQueueIPListAccessCodeEnumWrapperValueEnum(path, location string, value ClientRequestQueueIPListAccessCodeEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, clientRequestQueueIpListAccessCodeEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, clientRequestQueueIpListAccessCodeEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m ClientRequestQueueIPListAccessCodeEnumWrapperValue) Validate(formats str
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this client request queue Ip list access code enum wrapper value based on context it is used
+func (m ClientRequestQueueIPListAccessCodeEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

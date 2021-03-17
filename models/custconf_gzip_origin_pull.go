@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfGzipOriginPull The compressed origin pull policy allows you to enable the CDN caching servers to request compressed assets from your origin. By enabling this policy, the CDN caching servers send your origin the HTTP Accept-Encoding header with the gzip code (Accept-Encoding: gzip).
+//
 // swagger:model custconfGzipOriginPull
 type CustconfGzipOriginPull struct {
 
@@ -24,6 +26,11 @@ type CustconfGzipOriginPull struct {
 
 // Validate validates this custconf gzip origin pull
 func (m *CustconfGzipOriginPull) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf gzip origin pull based on context it is used
+func (m *CustconfGzipOriginPull) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

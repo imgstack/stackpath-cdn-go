@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfConfiguration custconf configuration
+//
 // swagger:model custconfConfiguration
 type CustconfConfiguration struct {
 
@@ -436,7 +437,6 @@ func (m *CustconfConfiguration) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CustconfConfiguration) validateAccessLogs(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccessLogs) { // not required
 		return nil
 	}
@@ -454,7 +454,6 @@ func (m *CustconfConfiguration) validateAccessLogs(formats strfmt.Registry) erro
 }
 
 func (m *CustconfConfiguration) validateAccessLogsConfig(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccessLogsConfig) { // not required
 		return nil
 	}
@@ -472,7 +471,6 @@ func (m *CustconfConfiguration) validateAccessLogsConfig(formats strfmt.Registry
 }
 
 func (m *CustconfConfiguration) validateAuthACL(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthACL) { // not required
 		return nil
 	}
@@ -497,7 +495,6 @@ func (m *CustconfConfiguration) validateAuthACL(formats strfmt.Registry) error {
 }
 
 func (m *CustconfConfiguration) validateAuthGeo(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthGeo) { // not required
 		return nil
 	}
@@ -522,7 +519,6 @@ func (m *CustconfConfiguration) validateAuthGeo(formats strfmt.Registry) error {
 }
 
 func (m *CustconfConfiguration) validateAuthHTTPBasic(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthHTTPBasic) { // not required
 		return nil
 	}
@@ -540,7 +536,6 @@ func (m *CustconfConfiguration) validateAuthHTTPBasic(formats strfmt.Registry) e
 }
 
 func (m *CustconfConfiguration) validateAuthReferer(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthReferer) { // not required
 		return nil
 	}
@@ -558,7 +553,6 @@ func (m *CustconfConfiguration) validateAuthReferer(formats strfmt.Registry) err
 }
 
 func (m *CustconfConfiguration) validateAuthURLAsymmetricSignTlu(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLAsymmetricSignTlu) { // not required
 		return nil
 	}
@@ -583,7 +577,6 @@ func (m *CustconfConfiguration) validateAuthURLAsymmetricSignTlu(formats strfmt.
 }
 
 func (m *CustconfConfiguration) validateAuthURLSign(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSign) { // not required
 		return nil
 	}
@@ -608,7 +601,6 @@ func (m *CustconfConfiguration) validateAuthURLSign(formats strfmt.Registry) err
 }
 
 func (m *CustconfConfiguration) validateAuthURLSignAliCloudA(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSignAliCloudA) { // not required
 		return nil
 	}
@@ -633,7 +625,6 @@ func (m *CustconfConfiguration) validateAuthURLSignAliCloudA(formats strfmt.Regi
 }
 
 func (m *CustconfConfiguration) validateAuthURLSignAliCloudB(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSignAliCloudB) { // not required
 		return nil
 	}
@@ -658,7 +649,6 @@ func (m *CustconfConfiguration) validateAuthURLSignAliCloudB(formats strfmt.Regi
 }
 
 func (m *CustconfConfiguration) validateAuthURLSignAliCloudC(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSignAliCloudC) { // not required
 		return nil
 	}
@@ -683,7 +673,6 @@ func (m *CustconfConfiguration) validateAuthURLSignAliCloudC(formats strfmt.Regi
 }
 
 func (m *CustconfConfiguration) validateAuthURLSignHmacTlu(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSignHmacTlu) { // not required
 		return nil
 	}
@@ -708,7 +697,6 @@ func (m *CustconfConfiguration) validateAuthURLSignHmacTlu(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateAuthURLSignIq(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AuthURLSignIq) { // not required
 		return nil
 	}
@@ -733,7 +721,6 @@ func (m *CustconfConfiguration) validateAuthURLSignIq(formats strfmt.Registry) e
 }
 
 func (m *CustconfConfiguration) validateAwsSignedOriginPullV4(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AwsSignedOriginPullV4) { // not required
 		return nil
 	}
@@ -758,7 +745,6 @@ func (m *CustconfConfiguration) validateAwsSignedOriginPullV4(formats strfmt.Reg
 }
 
 func (m *CustconfConfiguration) validateAwsSignedS3PostV4(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AwsSignedS3PostV4) { // not required
 		return nil
 	}
@@ -783,7 +769,6 @@ func (m *CustconfConfiguration) validateAwsSignedS3PostV4(formats strfmt.Registr
 }
 
 func (m *CustconfConfiguration) validateBandWidthLimit(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BandWidthLimit) { // not required
 		return nil
 	}
@@ -801,7 +786,6 @@ func (m *CustconfConfiguration) validateBandWidthLimit(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateBandWidthRateLimitUnits(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BandWidthRateLimitUnits) { // not required
 		return nil
 	}
@@ -819,7 +803,6 @@ func (m *CustconfConfiguration) validateBandWidthRateLimitUnits(formats strfmt.R
 }
 
 func (m *CustconfConfiguration) validateBandwidthRateLimit(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BandwidthRateLimit) { // not required
 		return nil
 	}
@@ -837,7 +820,6 @@ func (m *CustconfConfiguration) validateBandwidthRateLimit(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateCacheControl(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CacheControl) { // not required
 		return nil
 	}
@@ -862,7 +844,6 @@ func (m *CustconfConfiguration) validateCacheControl(formats strfmt.Registry) er
 }
 
 func (m *CustconfConfiguration) validateCacheKeyModification(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CacheKeyModification) { // not required
 		return nil
 	}
@@ -880,7 +861,6 @@ func (m *CustconfConfiguration) validateCacheKeyModification(formats strfmt.Regi
 }
 
 func (m *CustconfConfiguration) validateClientRequestModification(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ClientRequestModification) { // not required
 		return nil
 	}
@@ -905,7 +885,6 @@ func (m *CustconfConfiguration) validateClientRequestModification(formats strfmt
 }
 
 func (m *CustconfConfiguration) validateClientResponseModification(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ClientResponseModification) { // not required
 		return nil
 	}
@@ -930,7 +909,6 @@ func (m *CustconfConfiguration) validateClientResponseModification(formats strfm
 }
 
 func (m *CustconfConfiguration) validateCompression(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Compression) { // not required
 		return nil
 	}
@@ -948,7 +926,6 @@ func (m *CustconfConfiguration) validateCompression(formats strfmt.Registry) err
 }
 
 func (m *CustconfConfiguration) validateContentDispositionByHeader(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentDispositionByHeader) { // not required
 		return nil
 	}
@@ -973,7 +950,6 @@ func (m *CustconfConfiguration) validateContentDispositionByHeader(formats strfm
 }
 
 func (m *CustconfConfiguration) validateContentDispositionByURL(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentDispositionByURL) { // not required
 		return nil
 	}
@@ -991,7 +967,6 @@ func (m *CustconfConfiguration) validateContentDispositionByURL(formats strfmt.R
 }
 
 func (m *CustconfConfiguration) validateCustomHeader(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CustomHeader) { // not required
 		return nil
 	}
@@ -1009,7 +984,6 @@ func (m *CustconfConfiguration) validateCustomHeader(formats strfmt.Registry) er
 }
 
 func (m *CustconfConfiguration) validateCustomMimeType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CustomMimeType) { // not required
 		return nil
 	}
@@ -1034,7 +1008,6 @@ func (m *CustconfConfiguration) validateCustomMimeType(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateCustomer(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Customer) { // not required
 		return nil
 	}
@@ -1052,7 +1025,6 @@ func (m *CustconfConfiguration) validateCustomer(formats strfmt.Registry) error 
 }
 
 func (m *CustconfConfiguration) validateDynamicCacheRule(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DynamicCacheRule) { // not required
 		return nil
 	}
@@ -1077,7 +1049,6 @@ func (m *CustconfConfiguration) validateDynamicCacheRule(formats strfmt.Registry
 }
 
 func (m *CustconfConfiguration) validateDynamicContent(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DynamicContent) { // not required
 		return nil
 	}
@@ -1102,7 +1073,6 @@ func (m *CustconfConfiguration) validateDynamicContent(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateFailSafeOriginPull(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FailSafeOriginPull) { // not required
 		return nil
 	}
@@ -1120,7 +1090,6 @@ func (m *CustconfConfiguration) validateFailSafeOriginPull(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateFarAheadRangeProxy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FarAheadRangeProxy) { // not required
 		return nil
 	}
@@ -1138,7 +1107,6 @@ func (m *CustconfConfiguration) validateFarAheadRangeProxy(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateFileSegmentation(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FileSegmentation) { // not required
 		return nil
 	}
@@ -1156,7 +1124,6 @@ func (m *CustconfConfiguration) validateFileSegmentation(formats strfmt.Registry
 }
 
 func (m *CustconfConfiguration) validateFlvPseudoStreaming(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FlvPseudoStreaming) { // not required
 		return nil
 	}
@@ -1174,7 +1141,6 @@ func (m *CustconfConfiguration) validateFlvPseudoStreaming(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateGzipOriginPull(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.GzipOriginPull) { // not required
 		return nil
 	}
@@ -1192,7 +1158,6 @@ func (m *CustconfConfiguration) validateGzipOriginPull(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateHttp2Support(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Http2Support) { // not required
 		return nil
 	}
@@ -1210,7 +1175,6 @@ func (m *CustconfConfiguration) validateHttp2Support(formats strfmt.Registry) er
 }
 
 func (m *CustconfConfiguration) validateHTTPMethods(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPMethods) { // not required
 		return nil
 	}
@@ -1228,7 +1192,6 @@ func (m *CustconfConfiguration) validateHTTPMethods(formats strfmt.Registry) err
 }
 
 func (m *CustconfConfiguration) validateOrigin(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Origin) { // not required
 		return nil
 	}
@@ -1253,7 +1216,6 @@ func (m *CustconfConfiguration) validateOrigin(formats strfmt.Registry) error {
 }
 
 func (m *CustconfConfiguration) validateOriginPersistentConnections(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPersistentConnections) { // not required
 		return nil
 	}
@@ -1271,7 +1233,6 @@ func (m *CustconfConfiguration) validateOriginPersistentConnections(formats strf
 }
 
 func (m *CustconfConfiguration) validateOriginPull(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPull) { // not required
 		return nil
 	}
@@ -1289,7 +1250,6 @@ func (m *CustconfConfiguration) validateOriginPull(formats strfmt.Registry) erro
 }
 
 func (m *CustconfConfiguration) validateOriginPullCacheExtension(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullCacheExtension) { // not required
 		return nil
 	}
@@ -1307,7 +1267,6 @@ func (m *CustconfConfiguration) validateOriginPullCacheExtension(formats strfmt.
 }
 
 func (m *CustconfConfiguration) validateOriginPullHost(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullHost) { // not required
 		return nil
 	}
@@ -1332,7 +1291,6 @@ func (m *CustconfConfiguration) validateOriginPullHost(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateOriginPullLogs(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullLogs) { // not required
 		return nil
 	}
@@ -1350,7 +1308,6 @@ func (m *CustconfConfiguration) validateOriginPullLogs(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateOriginPullLogsConfig(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullLogsConfig) { // not required
 		return nil
 	}
@@ -1368,7 +1325,6 @@ func (m *CustconfConfiguration) validateOriginPullLogsConfig(formats strfmt.Regi
 }
 
 func (m *CustconfConfiguration) validateOriginPullPolicy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullPolicy) { // not required
 		return nil
 	}
@@ -1393,7 +1349,6 @@ func (m *CustconfConfiguration) validateOriginPullPolicy(formats strfmt.Registry
 }
 
 func (m *CustconfConfiguration) validateOriginPullProtocol(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginPullProtocol) { // not required
 		return nil
 	}
@@ -1411,7 +1366,6 @@ func (m *CustconfConfiguration) validateOriginPullProtocol(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateOriginRequestModification(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginRequestModification) { // not required
 		return nil
 	}
@@ -1436,7 +1390,6 @@ func (m *CustconfConfiguration) validateOriginRequestModification(formats strfmt
 }
 
 func (m *CustconfConfiguration) validateOriginResponseModification(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OriginResponseModification) { // not required
 		return nil
 	}
@@ -1461,7 +1414,6 @@ func (m *CustconfConfiguration) validateOriginResponseModification(formats strfm
 }
 
 func (m *CustconfConfiguration) validateQueryStrParam(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.QueryStrParam) { // not required
 		return nil
 	}
@@ -1479,7 +1431,6 @@ func (m *CustconfConfiguration) validateQueryStrParam(formats strfmt.Registry) e
 }
 
 func (m *CustconfConfiguration) validateReceiptLogsConfig(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ReceiptLogsConfig) { // not required
 		return nil
 	}
@@ -1497,7 +1448,6 @@ func (m *CustconfConfiguration) validateReceiptLogsConfig(formats strfmt.Registr
 }
 
 func (m *CustconfConfiguration) validateRedirectExceptions(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RedirectExceptions) { // not required
 		return nil
 	}
@@ -1515,7 +1465,6 @@ func (m *CustconfConfiguration) validateRedirectExceptions(formats strfmt.Regist
 }
 
 func (m *CustconfConfiguration) validateRedirectMappings(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RedirectMappings) { // not required
 		return nil
 	}
@@ -1540,7 +1489,6 @@ func (m *CustconfConfiguration) validateRedirectMappings(formats strfmt.Registry
 }
 
 func (m *CustconfConfiguration) validateResponseHeader(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ResponseHeader) { // not required
 		return nil
 	}
@@ -1558,7 +1506,6 @@ func (m *CustconfConfiguration) validateResponseHeader(formats strfmt.Registry) 
 }
 
 func (m *CustconfConfiguration) validateRobotsTxt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RobotsTxt) { // not required
 		return nil
 	}
@@ -1583,7 +1530,6 @@ func (m *CustconfConfiguration) validateRobotsTxt(formats strfmt.Registry) error
 }
 
 func (m *CustconfConfiguration) validateStaticHeader(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.StaticHeader) { // not required
 		return nil
 	}
@@ -1608,7 +1554,6 @@ func (m *CustconfConfiguration) validateStaticHeader(formats strfmt.Registry) er
 }
 
 func (m *CustconfConfiguration) validateTimePseudoStreaming(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TimePseudoStreaming) { // not required
 		return nil
 	}
@@ -1626,7 +1571,6 @@ func (m *CustconfConfiguration) validateTimePseudoStreaming(formats strfmt.Regis
 }
 
 func (m *CustconfConfiguration) validateVHost(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.VHost) { // not required
 		return nil
 	}
@@ -1651,13 +1595,1174 @@ func (m *CustconfConfiguration) validateVHost(formats strfmt.Registry) error {
 }
 
 func (m *CustconfConfiguration) validateVaryHeaderField(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.VaryHeaderField) { // not required
 		return nil
 	}
 
 	if m.VaryHeaderField != nil {
 		if err := m.VaryHeaderField.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("varyHeaderField")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this custconf configuration based on the context it is used
+func (m *CustconfConfiguration) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAccessLogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAccessLogsConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthACL(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthGeo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthHTTPBasic(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthReferer(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLAsymmetricSignTlu(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSign(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSignAliCloudA(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSignAliCloudB(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSignAliCloudC(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSignHmacTlu(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAuthURLSignIq(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAwsSignedOriginPullV4(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAwsSignedS3PostV4(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBandWidthLimit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBandWidthRateLimitUnits(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBandwidthRateLimit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCacheControl(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCacheKeyModification(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClientRequestModification(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClientResponseModification(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCompression(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentDispositionByHeader(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentDispositionByURL(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCustomHeader(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCustomMimeType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCustomer(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDynamicCacheRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDynamicContent(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFailSafeOriginPull(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFarAheadRangeProxy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFileSegmentation(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlvPseudoStreaming(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGzipOriginPull(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHttp2Support(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHTTPMethods(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrigin(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPersistentConnections(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPull(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullCacheExtension(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullHost(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullLogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullLogsConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginPullProtocol(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginRequestModification(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginResponseModification(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQueryStrParam(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateReceiptLogsConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRedirectExceptions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRedirectMappings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResponseHeader(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRobotsTxt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStaticHeader(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTimePseudoStreaming(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVHost(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVaryHeaderField(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAccessLogs(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AccessLogs != nil {
+		if err := m.AccessLogs.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("accessLogs")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAccessLogsConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AccessLogsConfig != nil {
+		if err := m.AccessLogsConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("accessLogsConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthACL(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthACL); i++ {
+
+		if m.AuthACL[i] != nil {
+			if err := m.AuthACL[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authACL" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthGeo(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthGeo); i++ {
+
+		if m.AuthGeo[i] != nil {
+			if err := m.AuthGeo[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authGeo" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthHTTPBasic(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AuthHTTPBasic != nil {
+		if err := m.AuthHTTPBasic.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("authHttpBasic")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthReferer(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AuthReferer != nil {
+		if err := m.AuthReferer.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("authReferer")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLAsymmetricSignTlu(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLAsymmetricSignTlu); i++ {
+
+		if m.AuthURLAsymmetricSignTlu[i] != nil {
+			if err := m.AuthURLAsymmetricSignTlu[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlAsymmetricSignTlu" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSign(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSign); i++ {
+
+		if m.AuthURLSign[i] != nil {
+			if err := m.AuthURLSign[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSign" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSignAliCloudA(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSignAliCloudA); i++ {
+
+		if m.AuthURLSignAliCloudA[i] != nil {
+			if err := m.AuthURLSignAliCloudA[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSignAliCloudA" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSignAliCloudB(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSignAliCloudB); i++ {
+
+		if m.AuthURLSignAliCloudB[i] != nil {
+			if err := m.AuthURLSignAliCloudB[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSignAliCloudB" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSignAliCloudC(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSignAliCloudC); i++ {
+
+		if m.AuthURLSignAliCloudC[i] != nil {
+			if err := m.AuthURLSignAliCloudC[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSignAliCloudC" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSignHmacTlu(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSignHmacTlu); i++ {
+
+		if m.AuthURLSignHmacTlu[i] != nil {
+			if err := m.AuthURLSignHmacTlu[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSignHmacTlu" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAuthURLSignIq(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AuthURLSignIq); i++ {
+
+		if m.AuthURLSignIq[i] != nil {
+			if err := m.AuthURLSignIq[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("authUrlSignIq" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAwsSignedOriginPullV4(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AwsSignedOriginPullV4); i++ {
+
+		if m.AwsSignedOriginPullV4[i] != nil {
+			if err := m.AwsSignedOriginPullV4[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsSignedOriginPullV4" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateAwsSignedS3PostV4(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AwsSignedS3PostV4); i++ {
+
+		if m.AwsSignedS3PostV4[i] != nil {
+			if err := m.AwsSignedS3PostV4[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsSignedS3PostV4" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateBandWidthLimit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BandWidthLimit != nil {
+		if err := m.BandWidthLimit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bandWidthLimit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateBandWidthRateLimitUnits(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BandWidthRateLimitUnits != nil {
+		if err := m.BandWidthRateLimitUnits.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bandWidthRateLimitUnits")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateBandwidthRateLimit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BandwidthRateLimit != nil {
+		if err := m.BandwidthRateLimit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bandwidthRateLimit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCacheControl(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CacheControl); i++ {
+
+		if m.CacheControl[i] != nil {
+			if err := m.CacheControl[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cacheControl" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCacheKeyModification(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CacheKeyModification != nil {
+		if err := m.CacheKeyModification.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cacheKeyModification")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateClientRequestModification(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ClientRequestModification); i++ {
+
+		if m.ClientRequestModification[i] != nil {
+			if err := m.ClientRequestModification[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("clientRequestModification" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateClientResponseModification(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ClientResponseModification); i++ {
+
+		if m.ClientResponseModification[i] != nil {
+			if err := m.ClientResponseModification[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("clientResponseModification" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCompression(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Compression != nil {
+		if err := m.Compression.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("compression")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateContentDispositionByHeader(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ContentDispositionByHeader); i++ {
+
+		if m.ContentDispositionByHeader[i] != nil {
+			if err := m.ContentDispositionByHeader[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("contentDispositionByHeader" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateContentDispositionByURL(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentDispositionByURL != nil {
+		if err := m.ContentDispositionByURL.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("contentDispositionByURL")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCustomHeader(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CustomHeader != nil {
+		if err := m.CustomHeader.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("customHeader")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCustomMimeType(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CustomMimeType); i++ {
+
+		if m.CustomMimeType[i] != nil {
+			if err := m.CustomMimeType[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("customMimeType" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateCustomer(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Customer != nil {
+		if err := m.Customer.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("customer")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateDynamicCacheRule(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DynamicCacheRule); i++ {
+
+		if m.DynamicCacheRule[i] != nil {
+			if err := m.DynamicCacheRule[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicCacheRule" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateDynamicContent(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DynamicContent); i++ {
+
+		if m.DynamicContent[i] != nil {
+			if err := m.DynamicContent[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dynamicContent" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateFailSafeOriginPull(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FailSafeOriginPull != nil {
+		if err := m.FailSafeOriginPull.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("failSafeOriginPull")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateFarAheadRangeProxy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FarAheadRangeProxy != nil {
+		if err := m.FarAheadRangeProxy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("farAheadRangeProxy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateFileSegmentation(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FileSegmentation != nil {
+		if err := m.FileSegmentation.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fileSegmentation")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateFlvPseudoStreaming(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FlvPseudoStreaming != nil {
+		if err := m.FlvPseudoStreaming.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("flvPseudoStreaming")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateGzipOriginPull(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GzipOriginPull != nil {
+		if err := m.GzipOriginPull.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gzipOriginPull")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateHttp2Support(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Http2Support != nil {
+		if err := m.Http2Support.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("http2Support")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateHTTPMethods(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HTTPMethods != nil {
+		if err := m.HTTPMethods.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("httpMethods")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOrigin(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Origin); i++ {
+
+		if m.Origin[i] != nil {
+			if err := m.Origin[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("origin" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPersistentConnections(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPersistentConnections != nil {
+		if err := m.OriginPersistentConnections.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPersistentConnections")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPull(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPull != nil {
+		if err := m.OriginPull.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPull")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullCacheExtension(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPullCacheExtension != nil {
+		if err := m.OriginPullCacheExtension.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPullCacheExtension")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullHost(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OriginPullHost); i++ {
+
+		if m.OriginPullHost[i] != nil {
+			if err := m.OriginPullHost[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("originPullHost" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullLogs(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPullLogs != nil {
+		if err := m.OriginPullLogs.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPullLogs")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullLogsConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPullLogsConfig != nil {
+		if err := m.OriginPullLogsConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPullLogsConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OriginPullPolicy); i++ {
+
+		if m.OriginPullPolicy[i] != nil {
+			if err := m.OriginPullPolicy[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("originPullPolicy" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginPullProtocol(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OriginPullProtocol != nil {
+		if err := m.OriginPullProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originPullProtocol")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginRequestModification(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OriginRequestModification); i++ {
+
+		if m.OriginRequestModification[i] != nil {
+			if err := m.OriginRequestModification[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("originRequestModification" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateOriginResponseModification(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OriginResponseModification); i++ {
+
+		if m.OriginResponseModification[i] != nil {
+			if err := m.OriginResponseModification[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("originResponseModification" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateQueryStrParam(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.QueryStrParam != nil {
+		if err := m.QueryStrParam.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("queryStrParam")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateReceiptLogsConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ReceiptLogsConfig != nil {
+		if err := m.ReceiptLogsConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("receiptLogsConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateRedirectExceptions(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RedirectExceptions != nil {
+		if err := m.RedirectExceptions.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("redirectExceptions")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateRedirectMappings(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.RedirectMappings); i++ {
+
+		if m.RedirectMappings[i] != nil {
+			if err := m.RedirectMappings[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("redirectMappings" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateResponseHeader(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResponseHeader != nil {
+		if err := m.ResponseHeader.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("responseHeader")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateRobotsTxt(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.RobotsTxt); i++ {
+
+		if m.RobotsTxt[i] != nil {
+			if err := m.RobotsTxt[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("robotsTxt" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateStaticHeader(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StaticHeader); i++ {
+
+		if m.StaticHeader[i] != nil {
+			if err := m.StaticHeader[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("staticHeader" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateTimePseudoStreaming(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TimePseudoStreaming != nil {
+		if err := m.TimePseudoStreaming.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("timePseudoStreaming")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateVHost(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VHost); i++ {
+
+		if m.VHost[i] != nil {
+			if err := m.VHost[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vHost" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CustconfConfiguration) contextValidateVaryHeaderField(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VaryHeaderField != nil {
+		if err := m.VaryHeaderField.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("varyHeaderField")
 			}

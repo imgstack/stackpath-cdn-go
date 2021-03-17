@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // BandWidthRateLimitUnitsSustainedEnumWrapperValue band width rate limit units sustained enum wrapper value
+//
 // swagger:model BandWidthRateLimitUnitsSustainedEnumWrapperValue
 type BandWidthRateLimitUnitsSustainedEnumWrapperValue string
 
@@ -44,7 +45,7 @@ func init() {
 }
 
 func (m BandWidthRateLimitUnitsSustainedEnumWrapperValue) validateBandWidthRateLimitUnitsSustainedEnumWrapperValueEnum(path, location string, value BandWidthRateLimitUnitsSustainedEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, bandWidthRateLimitUnitsSustainedEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, bandWidthRateLimitUnitsSustainedEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -62,5 +63,10 @@ func (m BandWidthRateLimitUnitsSustainedEnumWrapperValue) Validate(formats strfm
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this band width rate limit units sustained enum wrapper value based on context it is used
+func (m BandWidthRateLimitUnitsSustainedEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

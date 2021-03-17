@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // RequestFilterURLInputEnumWrapperValue request filter Url input enum wrapper value
+//
 // swagger:model RequestFilterUrlInputEnumWrapperValue
 type RequestFilterURLInputEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m RequestFilterURLInputEnumWrapperValue) validateRequestFilterURLInputEnumWrapperValueEnum(path, location string, value RequestFilterURLInputEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, requestFilterUrlInputEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, requestFilterUrlInputEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m RequestFilterURLInputEnumWrapperValue) Validate(formats strfmt.Registry)
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this request filter Url input enum wrapper value based on context it is used
+func (m RequestFilterURLInputEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

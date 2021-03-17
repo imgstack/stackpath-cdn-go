@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfAuthURLSignAliCloudC custconf auth Url sign ali cloud c
+//
 // swagger:model custconfAuthUrlSignAliCloudC
 type CustconfAuthURLSignAliCloudC struct {
 
@@ -45,6 +47,11 @@ type CustconfAuthURLSignAliCloudC struct {
 
 // Validate validates this custconf auth Url sign ali cloud c
 func (m *CustconfAuthURLSignAliCloudC) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf auth Url sign ali cloud c based on context it is used
+func (m *CustconfAuthURLSignAliCloudC) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

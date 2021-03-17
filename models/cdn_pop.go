@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnPop A point of presence responsible for serving content to a geographic location
 //
 // POPs contain edge nodes responsible for CDN, WAF, monitoring, and all other StackPath product offerings.
+//
 // swagger:model cdnPop
 type CdnPop struct {
 
@@ -32,6 +34,11 @@ type CdnPop struct {
 
 // Validate validates this cdn pop
 func (m *CdnPop) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cdn pop based on context it is used
+func (m *CdnPop) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

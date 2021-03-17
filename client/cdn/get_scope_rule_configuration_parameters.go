@@ -13,78 +13,94 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetScopeRuleConfigurationParams creates a new GetScopeRuleConfigurationParams object
-// with the default values initialized.
+// NewGetScopeRuleConfigurationParams creates a new GetScopeRuleConfigurationParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetScopeRuleConfigurationParams() *GetScopeRuleConfigurationParams {
-	var ()
 	return &GetScopeRuleConfigurationParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetScopeRuleConfigurationParamsWithTimeout creates a new GetScopeRuleConfigurationParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetScopeRuleConfigurationParamsWithTimeout(timeout time.Duration) *GetScopeRuleConfigurationParams {
-	var ()
 	return &GetScopeRuleConfigurationParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetScopeRuleConfigurationParamsWithContext creates a new GetScopeRuleConfigurationParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetScopeRuleConfigurationParamsWithContext(ctx context.Context) *GetScopeRuleConfigurationParams {
-	var ()
 	return &GetScopeRuleConfigurationParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetScopeRuleConfigurationParamsWithHTTPClient creates a new GetScopeRuleConfigurationParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetScopeRuleConfigurationParamsWithHTTPClient(client *http.Client) *GetScopeRuleConfigurationParams {
-	var ()
 	return &GetScopeRuleConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetScopeRuleConfigurationParams contains all the parameters to send to the API endpoint
-for the get scope rule configuration operation typically these are written to a http.Request
+/* GetScopeRuleConfigurationParams contains all the parameters to send to the API endpoint
+   for the get scope rule configuration operation.
+
+   Typically these are written to a http.Request.
 */
 type GetScopeRuleConfigurationParams struct {
 
-	/*RuleID
-	  The ID of the EdgeRule to retrieve configuration for
+	/* RuleID.
 
+	   The ID of the EdgeRule to retrieve configuration for
 	*/
 	RuleID string
-	/*ScopeID
-	  The ID of the CDN site scope to retrieve an EdgeRule's configuration from
 
+	/* ScopeID.
+
+	   The ID of the CDN site scope to retrieve an EdgeRule's configuration from
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site to retrieve an EdgeRule's configuration from
 
+	/* SiteID.
+
+	   The ID of the site to retrieve an EdgeRule's configuration from
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site to retrieve an EdgeRule's configuration from
 
+	/* StackID.
+
+	   The ID of the stack containing the site to retrieve an EdgeRule's configuration from
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get scope rule configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeRuleConfigurationParams) WithDefaults() *GetScopeRuleConfigurationParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get scope rule configuration params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetScopeRuleConfigurationParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get scope rule configuration params

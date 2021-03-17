@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetScopeOriginsReader is a Reader for the GetScopeOrigins structure.
@@ -24,28 +23,24 @@ type GetScopeOriginsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetScopeOriginsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetScopeOriginsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetScopeOriginsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetScopeOriginsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetScopeOriginsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetScopeOriginsOK() *GetScopeOriginsOK {
 	return &GetScopeOriginsOK{}
 }
 
-/*GetScopeOriginsOK handles this case with default header values.
+/* GetScopeOriginsOK describes a response with status code 200, with default header values.
 
 GetScopeOriginsOK get scope origins o k
 */
@@ -73,6 +68,9 @@ type GetScopeOriginsOK struct {
 
 func (o *GetScopeOriginsOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] getScopeOriginsOK  %+v", 200, o.Payload)
+}
+func (o *GetScopeOriginsOK) GetPayload() *models.CdnGetScopeOriginsResponse {
+	return o.Payload
 }
 
 func (o *GetScopeOriginsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetScopeOriginsUnauthorized() *GetScopeOriginsUnauthorized {
 	return &GetScopeOriginsUnauthorized{}
 }
 
-/*GetScopeOriginsUnauthorized handles this case with default header values.
+/* GetScopeOriginsUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetScopeOriginsUnauthorized struct {
 
 func (o *GetScopeOriginsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] getScopeOriginsUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetScopeOriginsUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeOriginsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetScopeOriginsInternalServerError() *GetScopeOriginsInternalServerError
 	return &GetScopeOriginsInternalServerError{}
 }
 
-/*GetScopeOriginsInternalServerError handles this case with default header values.
+/* GetScopeOriginsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetScopeOriginsInternalServerError struct {
 
 func (o *GetScopeOriginsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] getScopeOriginsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetScopeOriginsInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeOriginsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetScopeOriginsDefault(code int) *GetScopeOriginsDefault {
 	}
 }
 
-/*GetScopeOriginsDefault handles this case with default header values.
+/* GetScopeOriginsDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetScopeOriginsDefault) Code() int {
 
 func (o *GetScopeOriginsDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins][%d] GetScopeOrigins default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetScopeOriginsDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeOriginsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

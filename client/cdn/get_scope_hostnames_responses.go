@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // GetScopeHostnamesReader is a Reader for the GetScopeHostnames structure.
@@ -24,28 +23,24 @@ type GetScopeHostnamesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetScopeHostnamesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetScopeHostnamesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetScopeHostnamesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewGetScopeHostnamesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewGetScopeHostnamesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewGetScopeHostnamesOK() *GetScopeHostnamesOK {
 	return &GetScopeHostnamesOK{}
 }
 
-/*GetScopeHostnamesOK handles this case with default header values.
+/* GetScopeHostnamesOK describes a response with status code 200, with default header values.
 
 GetScopeHostnamesOK get scope hostnames o k
 */
@@ -73,6 +68,9 @@ type GetScopeHostnamesOK struct {
 
 func (o *GetScopeHostnamesOK) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] getScopeHostnamesOK  %+v", 200, o.Payload)
+}
+func (o *GetScopeHostnamesOK) GetPayload() *models.CdnGetScopeHostnamesResponse {
+	return o.Payload
 }
 
 func (o *GetScopeHostnamesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewGetScopeHostnamesUnauthorized() *GetScopeHostnamesUnauthorized {
 	return &GetScopeHostnamesUnauthorized{}
 }
 
-/*GetScopeHostnamesUnauthorized handles this case with default header values.
+/* GetScopeHostnamesUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type GetScopeHostnamesUnauthorized struct {
 
 func (o *GetScopeHostnamesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] getScopeHostnamesUnauthorized  %+v", 401, o.Payload)
+}
+func (o *GetScopeHostnamesUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeHostnamesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewGetScopeHostnamesInternalServerError() *GetScopeHostnamesInternalServerE
 	return &GetScopeHostnamesInternalServerError{}
 }
 
-/*GetScopeHostnamesInternalServerError handles this case with default header values.
+/* GetScopeHostnamesInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type GetScopeHostnamesInternalServerError struct {
 
 func (o *GetScopeHostnamesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] getScopeHostnamesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetScopeHostnamesInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeHostnamesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewGetScopeHostnamesDefault(code int) *GetScopeHostnamesDefault {
 	}
 }
 
-/*GetScopeHostnamesDefault handles this case with default header values.
+/* GetScopeHostnamesDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *GetScopeHostnamesDefault) Code() int {
 
 func (o *GetScopeHostnamesDefault) Error() string {
 	return fmt.Sprintf("[GET /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames][%d] GetScopeHostnames default  %+v", o._statusCode, o.Payload)
+}
+func (o *GetScopeHostnamesDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *GetScopeHostnamesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

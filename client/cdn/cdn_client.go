@@ -7,12 +7,11 @@ package cdn
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new cdn API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,18 +23,129 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-ConnectScopeToOrigin connects an origin to a c d n site s scope
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
 
-The origin is automatically created if necessary. When the request contains a priority which an origin already associated with the scope has set, the existing origin is disconnected. The priority of an origin already associated with a scope can be modified via this endpoint.
+// ClientService is the interface for Client methods
+type ClientService interface {
+	ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectScopeToOriginOK, error)
+
+	ConnectSiteToCertificate(params *ConnectSiteToCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectSiteToCertificateOK, error)
+
+	CreateCertificate(params *CreateCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCertificateOK, error)
+
+	CreateScope(params *CreateScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeOK, error)
+
+	CreateScopeHostname(params *CreateScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeHostnameOK, error)
+
+	CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeRuleOK, error)
+
+	CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteOK, error)
+
+	CreateSiteScript(params *CreateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteScriptOK, error)
+
+	DeleteCertificate(params *DeleteCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCertificateNoContent, error)
+
+	DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeNoContent, error)
+
+	DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeHostnameNoContent, error)
+
+	DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeRuleNoContent, error)
+
+	DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteNoContent, error)
+
+	DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteScriptNoContent, error)
+
+	DisableSite(params *DisableSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DisableSiteNoContent, error)
+
+	DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DisconnectScopeFromOriginNoContent, error)
+
+	EnableSite(params *EnableSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*EnableSiteNoContent, error)
+
+	GetCDNIPs(params *GetCDNIPsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCDNIPsOK, error)
+
+	GetCertificate(params *GetCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateOK, error)
+
+	GetCertificateSites(params *GetCertificateSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateSitesOK, error)
+
+	GetCertificateVerificationDetails(params *GetCertificateVerificationDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateVerificationDetailsOK, error)
+
+	GetCertificates(params *GetCertificatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificatesOK, error)
+
+	GetClosestPops(params *GetClosestPopsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClosestPopsOK, error)
+
+	GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMetricsOK, error)
+
+	GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOriginOK, error)
+
+	GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOriginsOK, error)
+
+	GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPopsOK, error)
+
+	GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPurgeStatusOK, error)
+
+	GetScopeConfiguration(params *GetScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeConfigurationOK, error)
+
+	GetScopeHostnames(params *GetScopeHostnamesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeHostnamesOK, error)
+
+	GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeOriginsOK, error)
+
+	GetScopeRule(params *GetScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRuleOK, error)
+
+	GetScopeRuleConfiguration(params *GetScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRuleConfigurationOK, error)
+
+	GetScopeRules(params *GetScopeRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRulesOK, error)
+
+	GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteOK, error)
+
+	GetSiteCertificates(params *GetSiteCertificatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteCertificatesOK, error)
+
+	GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteDNSTargetsOK, error)
+
+	GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScopesOK, error)
+
+	GetSiteScript(params *GetSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScriptOK, error)
+
+	GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScript2OK, error)
+
+	GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScriptsOK, error)
+
+	GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSitesOK, error)
+
+	PurgeContent(params *PurgeContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PurgeContentOK, error)
+
+	RenewCertificate(params *RenewCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RenewCertificateNoContent, error)
+
+	RequestCertificate(params *RequestCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestCertificateOK, error)
+
+	ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ScanOriginOK, error)
+
+	UpdateCertificate(params *UpdateCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCertificateOK, error)
+
+	UpdateOrigin(params *UpdateOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateOriginOK, error)
+
+	UpdateScopeConfiguration(params *UpdateScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScopeConfigurationOK, error)
+
+	UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScopeRuleConfigurationOK, error)
+
+	UpdateSiteCertificateHosts(params *UpdateSiteCertificateHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSiteCertificateHostsNoContent, error)
+
+	UpdateSiteScript(params *UpdateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSiteScriptOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  ConnectScopeToOrigin connects an origin to a c d n site s scope
+
+  The origin is automatically created if necessary. When the request contains a priority which an origin already associated with the scope has set, the existing origin is disconnected. The priority of an origin already associated with a scope can be modified via this endpoint.
 */
-func (a *Client) ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authInfo runtime.ClientAuthInfoWriter) (*ConnectScopeToOriginOK, error) {
+func (a *Client) ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectScopeToOriginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewConnectScopeToOriginParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "ConnectScopeToOrigin",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins",
@@ -47,28 +157,37 @@ func (a *Client) ConnectScopeToOrigin(params *ConnectScopeToOriginParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ConnectScopeToOriginOK), nil
-
+	success, ok := result.(*ConnectScopeToOriginOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*ConnectScopeToOriginDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-ConnectSiteToCertificate associates a c d n site with an s s l certificate
+  ConnectSiteToCertificate associates a c d n site with an s s l certificate
 
-Association is performed without validating if the site has a hostname covered by the certificate. This is useful for preparation work required for getting a site ready for traffic.
+  Association is performed without validating if the site has a hostname covered by the certificate. This is useful for preparation work required for getting a site ready for traffic.
 
 If a certificate is uploaded which contains hostnames for sites, it will automatically be connected to those sites. If a hostname is added to a site which is covered by an SSL certificate, it will automatically be connected to the certificate.
 */
-func (a *Client) ConnectSiteToCertificate(params *ConnectSiteToCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*ConnectSiteToCertificateOK, error) {
+func (a *Client) ConnectSiteToCertificate(params *ConnectSiteToCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectSiteToCertificateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewConnectSiteToCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "ConnectSiteToCertificate",
 		Method:             "PUT",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}",
@@ -80,26 +199,35 @@ func (a *Client) ConnectSiteToCertificate(params *ConnectSiteToCertificateParams
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ConnectSiteToCertificateOK), nil
-
+	success, ok := result.(*ConnectSiteToCertificateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*ConnectSiteToCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateCertificate adds an s s l certificate to a stack
+  CreateCertificate adds an s s l certificate to a stack
 
-The certificate is automatically associated with CDN site scope hostnames that match either the certificate's subject or its alternative names.
+  The certificate is automatically associated with CDN site scope hostnames that match either the certificate's subject or its alternative names.
 */
-func (a *Client) CreateCertificate(params *CreateCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*CreateCertificateOK, error) {
+func (a *Client) CreateCertificate(params *CreateCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCertificateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateCertificate",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates",
@@ -111,24 +239,33 @@ func (a *Client) CreateCertificate(params *CreateCertificateParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCertificateOK), nil
-
+	success, ok := result.(*CreateCertificateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateScope creates a new c d n site scope
+  CreateScope creates a new c d n site scope
 */
-func (a *Client) CreateScope(params *CreateScopeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeOK, error) {
+func (a *Client) CreateScope(params *CreateScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateScopeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateScope",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes",
@@ -140,24 +277,33 @@ func (a *Client) CreateScope(params *CreateScopeParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateScopeOK), nil
-
+	success, ok := result.(*CreateScopeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateScopeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateScopeHostname adds a hostname to a c d n site s scope
+  CreateScopeHostname adds a hostname to a c d n site s scope
 */
-func (a *Client) CreateScopeHostname(params *CreateScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeHostnameOK, error) {
+func (a *Client) CreateScopeHostname(params *CreateScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeHostnameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateScopeHostnameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateScopeHostname",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames",
@@ -169,24 +315,33 @@ func (a *Client) CreateScopeHostname(params *CreateScopeHostnameParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateScopeHostnameOK), nil
-
+	success, ok := result.(*CreateScopeHostnameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateScopeHostnameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateScopeRule creates an edge rule on a c d n site scope
+  CreateScopeRule creates an edge rule on a c d n site scope
 */
-func (a *Client) CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateScopeRuleOK, error) {
+func (a *Client) CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScopeRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateScopeRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateScopeRule",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules",
@@ -198,24 +353,33 @@ func (a *Client) CreateScopeRule(params *CreateScopeRuleParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateScopeRuleOK), nil
-
+	success, ok := result.(*CreateScopeRuleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateScopeRuleDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateSite creates a new c d n site
+  CreateSite creates a new c d n site
 */
-func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteOK, error) {
+func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSiteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateSite",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites",
@@ -227,24 +391,33 @@ func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateSiteOK), nil
-
+	success, ok := result.(*CreateSiteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateSiteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-CreateSiteScript creates an edge engine script
+  CreateSiteScript creates an edge engine script
 */
-func (a *Client) CreateSiteScript(params *CreateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteScriptOK, error) {
+func (a *Client) CreateSiteScript(params *CreateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteScriptOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSiteScriptParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "CreateSiteScript",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts",
@@ -256,24 +429,33 @@ func (a *Client) CreateSiteScript(params *CreateSiteScriptParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateSiteScriptOK), nil
-
+	success, ok := result.(*CreateSiteScriptOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateSiteScriptDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteCertificate deletes an s s l certificate
+  DeleteCertificate deletes an s s l certificate
 */
-func (a *Client) DeleteCertificate(params *DeleteCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCertificateNoContent, error) {
+func (a *Client) DeleteCertificate(params *DeleteCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCertificateNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCertificate",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}",
@@ -285,24 +467,33 @@ func (a *Client) DeleteCertificate(params *DeleteCertificateParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteCertificateNoContent), nil
-
+	success, ok := result.(*DeleteCertificateNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteScope deletes a c d n site scope
+  DeleteScope deletes a c d n site scope
 */
-func (a *Client) DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeNoContent, error) {
+func (a *Client) DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteScopeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteScope",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}",
@@ -314,24 +505,33 @@ func (a *Client) DeleteScope(params *DeleteScopeParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteScopeNoContent), nil
-
+	success, ok := result.(*DeleteScopeNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteScopeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteScopeHostname removes a hostname from a c d n site s scope
+  DeleteScopeHostname removes a hostname from a c d n site s scope
 */
-func (a *Client) DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeHostnameNoContent, error) {
+func (a *Client) DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeHostnameNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteScopeHostnameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteScopeHostname",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames/{domain}",
@@ -343,24 +543,33 @@ func (a *Client) DeleteScopeHostname(params *DeleteScopeHostnameParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteScopeHostnameNoContent), nil
-
+	success, ok := result.(*DeleteScopeHostnameNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteScopeHostnameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteScopeRule deletes an edge rule
+  DeleteScopeRule deletes an edge rule
 */
-func (a *Client) DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteScopeRuleNoContent, error) {
+func (a *Client) DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScopeRuleNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteScopeRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteScopeRule",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}",
@@ -372,24 +581,33 @@ func (a *Client) DeleteScopeRule(params *DeleteScopeRuleParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteScopeRuleNoContent), nil
-
+	success, ok := result.(*DeleteScopeRuleNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteScopeRuleDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteSite deletes a c d n site
+  DeleteSite deletes a c d n site
 */
-func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteNoContent, error) {
+func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSiteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteSite",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}",
@@ -401,24 +619,33 @@ func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteSiteNoContent), nil
-
+	success, ok := result.(*DeleteSiteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteSiteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DeleteSiteScript deletes an edge engine script
+  DeleteSiteScript deletes an edge engine script
 */
-func (a *Client) DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteScriptNoContent, error) {
+func (a *Client) DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteScriptNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSiteScriptParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteSiteScript",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}",
@@ -430,24 +657,33 @@ func (a *Client) DeleteSiteScript(params *DeleteSiteScriptParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteSiteScriptNoContent), nil
-
+	success, ok := result.(*DeleteSiteScriptNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteSiteScriptDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DisableSite disables a c d n site
+  DisableSite disables a c d n site
 */
-func (a *Client) DisableSite(params *DisableSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DisableSiteNoContent, error) {
+func (a *Client) DisableSite(params *DisableSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DisableSiteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDisableSiteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DisableSite",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/disable",
@@ -459,24 +695,33 @@ func (a *Client) DisableSite(params *DisableSiteParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DisableSiteNoContent), nil
-
+	success, ok := result.(*DisableSiteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DisableSiteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-DisconnectScopeFromOrigin disconnects an origin from c d n site s scope
+  DisconnectScopeFromOrigin disconnects an origin from c d n site s scope
 */
-func (a *Client) DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginParams, authInfo runtime.ClientAuthInfoWriter) (*DisconnectScopeFromOriginNoContent, error) {
+func (a *Client) DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DisconnectScopeFromOriginNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDisconnectScopeFromOriginParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DisconnectScopeFromOrigin",
 		Method:             "DELETE",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins/{origin_id}",
@@ -488,24 +733,33 @@ func (a *Client) DisconnectScopeFromOrigin(params *DisconnectScopeFromOriginPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DisconnectScopeFromOriginNoContent), nil
-
+	success, ok := result.(*DisconnectScopeFromOriginNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DisconnectScopeFromOriginDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-EnableSite enables a c d n site
+  EnableSite enables a c d n site
 */
-func (a *Client) EnableSite(params *EnableSiteParams, authInfo runtime.ClientAuthInfoWriter) (*EnableSiteNoContent, error) {
+func (a *Client) EnableSite(params *EnableSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*EnableSiteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnableSiteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "EnableSite",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/enable",
@@ -517,24 +771,33 @@ func (a *Client) EnableSite(params *EnableSiteParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnableSiteNoContent), nil
-
+	success, ok := result.(*EnableSiteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*EnableSiteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCDNIps retrieves a list of IP addresses used by the stack path edge network
+  GetCDNIPs retrieves a list of IP addresses used by the stack path edge network
 */
-func (a *Client) GetCDNIps(params *GetCDNIpsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCDNIpsOK, error) {
+func (a *Client) GetCDNIPs(params *GetCDNIPsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCDNIPsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCDNIpsParams()
+		params = NewGetCDNIPsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCDNIPs",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/ips",
@@ -542,28 +805,37 @@ func (a *Client) GetCDNIps(params *GetCDNIpsParams, authInfo runtime.ClientAuthI
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCDNIpsReader{formats: a.formats},
+		Reader:             &GetCDNIPsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCDNIpsOK), nil
-
+	success, ok := result.(*GetCDNIPsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCDNIPsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCertificate retrieves an individual s s l certificate
+  GetCertificate retrieves an individual s s l certificate
 */
-func (a *Client) GetCertificate(params *GetCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateOK, error) {
+func (a *Client) GetCertificate(params *GetCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCertificate",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}",
@@ -575,24 +847,33 @@ func (a *Client) GetCertificate(params *GetCertificateParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCertificateOK), nil
-
+	success, ok := result.(*GetCertificateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCertificateSites retrieves the c d n sites associated with an s s l certificate
+  GetCertificateSites retrieves the c d n sites associated with an s s l certificate
 */
-func (a *Client) GetCertificateSites(params *GetCertificateSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateSitesOK, error) {
+func (a *Client) GetCertificateSites(params *GetCertificateSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateSitesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCertificateSitesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCertificateSites",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/sites",
@@ -604,24 +885,33 @@ func (a *Client) GetCertificateSites(params *GetCertificateSitesParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCertificateSitesOK), nil
-
+	success, ok := result.(*GetCertificateSitesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCertificateSitesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCertificateVerificationDetails retrieves a c d n site s s s l certificate manual verification details
+  GetCertificateVerificationDetails retrieves a c d n site s s s l certificate manual verification details
 */
-func (a *Client) GetCertificateVerificationDetails(params *GetCertificateVerificationDetailsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificateVerificationDetailsOK, error) {
+func (a *Client) GetCertificateVerificationDetails(params *GetCertificateVerificationDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificateVerificationDetailsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCertificateVerificationDetailsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCertificateVerificationDetails",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/verification_details",
@@ -633,24 +923,33 @@ func (a *Client) GetCertificateVerificationDetails(params *GetCertificateVerific
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCertificateVerificationDetailsOK), nil
-
+	success, ok := result.(*GetCertificateVerificationDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCertificateVerificationDetailsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetCertificates retrieves a stack s associated s s l certificates
+  GetCertificates retrieves a stack s associated s s l certificates
 */
-func (a *Client) GetCertificates(params *GetCertificatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCertificatesOK, error) {
+func (a *Client) GetCertificates(params *GetCertificatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCertificatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCertificatesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCertificates",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates",
@@ -662,26 +961,35 @@ func (a *Client) GetCertificates(params *GetCertificatesParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCertificatesOK), nil
-
+	success, ok := result.(*GetCertificatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCertificatesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetClosestPops scans a URL from the stack path edge network and return a performance report
+  GetClosestPops scans a URL from the stack path edge network and return a performance report
 
-Results are ordered with the fastest POP response first
+  Results are ordered with the fastest POP response first
 */
-func (a *Client) GetClosestPops(params *GetClosestPopsParams, authInfo runtime.ClientAuthInfoWriter) (*GetClosestPopsOK, error) {
+func (a *Client) GetClosestPops(params *GetClosestPopsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClosestPopsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClosestPopsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetClosestPops",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/pops/closest",
@@ -693,24 +1001,33 @@ func (a *Client) GetClosestPops(params *GetClosestPopsParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetClosestPopsOK), nil
-
+	success, ok := result.(*GetClosestPopsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetClosestPopsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetMetrics retrieves request metrics for all c d n sites in a stack
+  GetMetrics retrieves request metrics for all c d n sites in a stack
 */
-func (a *Client) GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAuthInfoWriter) (*GetMetricsOK, error) {
+func (a *Client) GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMetricsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMetricsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetMetrics",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/metrics",
@@ -722,24 +1039,33 @@ func (a *Client) GetMetrics(params *GetMetricsParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetMetricsOK), nil
-
+	success, ok := result.(*GetMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetMetricsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetOrigin retrieves an individual origin
+  GetOrigin retrieves an individual origin
 */
-func (a *Client) GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthInfoWriter) (*GetOriginOK, error) {
+func (a *Client) GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOriginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOriginParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetOrigin",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/origins/{origin_id}",
@@ -751,24 +1077,33 @@ func (a *Client) GetOrigin(params *GetOriginParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetOriginOK), nil
-
+	success, ok := result.(*GetOriginOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetOriginDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetOrigins retrieves a stack s site origins
+  GetOrigins retrieves a stack s site origins
 */
-func (a *Client) GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAuthInfoWriter) (*GetOriginsOK, error) {
+func (a *Client) GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOriginsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOriginsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetOrigins",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/origins",
@@ -780,24 +1115,33 @@ func (a *Client) GetOrigins(params *GetOriginsParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetOriginsOK), nil
-
+	success, ok := result.(*GetOriginsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetOriginsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetPops retrieves a list of all available stack path points of presence
+  GetPops retrieves a list of all available stack path points of presence
 */
-func (a *Client) GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPopsOK, error) {
+func (a *Client) GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPopsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPopsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPops",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/pops",
@@ -809,24 +1153,33 @@ func (a *Client) GetPops(params *GetPopsParams, authInfo runtime.ClientAuthInfoW
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPopsOK), nil
-
+	success, ok := result.(*GetPopsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPopsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetPurgeStatus retrieves a purge request s status
+  GetPurgeStatus retrieves a purge request s status
 */
-func (a *Client) GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.ClientAuthInfoWriter) (*GetPurgeStatusOK, error) {
+func (a *Client) GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPurgeStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPurgeStatusParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPurgeStatus",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/purge/{purge_id}",
@@ -838,24 +1191,33 @@ func (a *Client) GetPurgeStatus(params *GetPurgeStatusParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPurgeStatusOK), nil
-
+	success, ok := result.(*GetPurgeStatusOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPurgeStatusDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeConfiguration retrieves a c d n site s scope configuration
+  GetScopeConfiguration retrieves a c d n site s scope configuration
 */
-func (a *Client) GetScopeConfiguration(params *GetScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeConfigurationOK, error) {
+func (a *Client) GetScopeConfiguration(params *GetScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeConfigurationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeConfiguration",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/configuration",
@@ -867,26 +1229,35 @@ func (a *Client) GetScopeConfiguration(params *GetScopeConfigurationParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeConfigurationOK), nil
-
+	success, ok := result.(*GetScopeConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeConfigurationDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeHostnames retrieves the hostnames configured on a c d n site s scope
+  GetScopeHostnames retrieves the hostnames configured on a c d n site s scope
 
-Hostnames allow the CDN to recognize an HTTP request and associate it with a CDN site.
+  Hostnames allow the CDN to recognize an HTTP request and associate it with a CDN site.
 */
-func (a *Client) GetScopeHostnames(params *GetScopeHostnamesParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeHostnamesOK, error) {
+func (a *Client) GetScopeHostnames(params *GetScopeHostnamesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeHostnamesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeHostnamesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeHostnames",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/hostnames",
@@ -898,24 +1269,33 @@ func (a *Client) GetScopeHostnames(params *GetScopeHostnamesParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeHostnamesOK), nil
-
+	success, ok := result.(*GetScopeHostnamesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeHostnamesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeOrigins retrieves the origins behind a c d n site s scope
+  GetScopeOrigins retrieves the origins behind a c d n site s scope
 */
-func (a *Client) GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeOriginsOK, error) {
+func (a *Client) GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeOriginsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeOriginsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeOrigins",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/origins",
@@ -927,24 +1307,33 @@ func (a *Client) GetScopeOrigins(params *GetScopeOriginsParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeOriginsOK), nil
-
+	success, ok := result.(*GetScopeOriginsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeOriginsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeRule retrieves an individual edge rule from a c d n site scope
+  GetScopeRule retrieves an individual edge rule from a c d n site scope
 */
-func (a *Client) GetScopeRule(params *GetScopeRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRuleOK, error) {
+func (a *Client) GetScopeRule(params *GetScopeRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeRule",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}",
@@ -956,24 +1345,33 @@ func (a *Client) GetScopeRule(params *GetScopeRuleParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeRuleOK), nil
-
+	success, ok := result.(*GetScopeRuleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeRuleDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeRuleConfiguration retrieves an edge rule s configuration
+  GetScopeRuleConfiguration retrieves an edge rule s configuration
 */
-func (a *Client) GetScopeRuleConfiguration(params *GetScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRuleConfigurationOK, error) {
+func (a *Client) GetScopeRuleConfiguration(params *GetScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRuleConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeRuleConfigurationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeRuleConfiguration",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration",
@@ -985,24 +1383,33 @@ func (a *Client) GetScopeRuleConfiguration(params *GetScopeRuleConfigurationPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeRuleConfigurationOK), nil
-
+	success, ok := result.(*GetScopeRuleConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeRuleConfigurationDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetScopeRules retrieves all edge rules on a c d n site scope
+  GetScopeRules retrieves all edge rules on a c d n site scope
 */
-func (a *Client) GetScopeRules(params *GetScopeRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetScopeRulesOK, error) {
+func (a *Client) GetScopeRules(params *GetScopeRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScopeRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScopeRulesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetScopeRules",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules",
@@ -1014,24 +1421,33 @@ func (a *Client) GetScopeRules(params *GetScopeRulesParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetScopeRulesOK), nil
-
+	success, ok := result.(*GetScopeRulesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetScopeRulesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSite retrieves an individual c d n site
+  GetSite retrieves an individual c d n site
 */
-func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteOK, error) {
+func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSite",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}",
@@ -1043,24 +1459,33 @@ func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoW
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteOK), nil
-
+	success, ok := result.(*GetSiteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteCertificates retrieves a site s s s l certificates
+  GetSiteCertificates retrieves a site s s s l certificates
 */
-func (a *Client) GetSiteCertificates(params *GetSiteCertificatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteCertificatesOK, error) {
+func (a *Client) GetSiteCertificates(params *GetSiteCertificatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteCertificatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteCertificatesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteCertificates",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates",
@@ -1072,26 +1497,35 @@ func (a *Client) GetSiteCertificates(params *GetSiteCertificatesParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteCertificatesOK), nil
-
+	success, ok := result.(*GetSiteCertificatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteCertificatesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteDNSTargets retrieves a c d n site s DNS c n a m e targets
+  GetSiteDNSTargets retrieves a c d n site s DNS c n a m e targets
 
-A site's hostname should point to these CNAME targets in order for traffic to be sent through StackPath's edge nodes.
+  A site's hostname should point to these CNAME targets in order for traffic to be sent through StackPath's edge nodes.
 */
-func (a *Client) GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteDNSTargetsOK, error) {
+func (a *Client) GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteDNSTargetsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteDNSTargetsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteDnsTargets",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/dns/targets",
@@ -1103,24 +1537,33 @@ func (a *Client) GetSiteDNSTargets(params *GetSiteDNSTargetsParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteDNSTargetsOK), nil
-
+	success, ok := result.(*GetSiteDNSTargetsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteDNSTargetsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteScopes retrieves a c d n site s scopes
+  GetSiteScopes retrieves a c d n site s scopes
 */
-func (a *Client) GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScopesOK, error) {
+func (a *Client) GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScopesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteScopesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteScopes",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes",
@@ -1132,24 +1575,33 @@ func (a *Client) GetSiteScopes(params *GetSiteScopesParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteScopesOK), nil
-
+	success, ok := result.(*GetSiteScopesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteScopesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteScript retrieves an individual edge engine script
+  GetSiteScript retrieves an individual edge engine script
 */
-func (a *Client) GetSiteScript(params *GetSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScriptOK, error) {
+func (a *Client) GetSiteScript(params *GetSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScriptOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteScriptParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteScript",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}",
@@ -1161,24 +1613,33 @@ func (a *Client) GetSiteScript(params *GetSiteScriptParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteScriptOK), nil
-
+	success, ok := result.(*GetSiteScriptOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteScriptDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteScript2 retrieves an individual edge engine script
+  GetSiteScript2 retrieves an individual edge engine script
 */
-func (a *Client) GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScript2OK, error) {
+func (a *Client) GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScript2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteScript2Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteScript2",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}/{script_version}",
@@ -1190,24 +1651,33 @@ func (a *Client) GetSiteScript2(params *GetSiteScript2Params, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteScript2OK), nil
-
+	success, ok := result.(*GetSiteScript2OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteScript2Default)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSiteScripts retrieves all edge engine scripts associated with a c d n site
+  GetSiteScripts retrieves all edge engine scripts associated with a c d n site
 */
-func (a *Client) GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteScriptsOK, error) {
+func (a *Client) GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteScriptsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteScriptsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSiteScripts",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts",
@@ -1219,24 +1689,33 @@ func (a *Client) GetSiteScripts(params *GetSiteScriptsParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSiteScriptsOK), nil
-
+	success, ok := result.(*GetSiteScriptsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSiteScriptsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetSites retrieves all c d n sites in a stack
+  GetSites retrieves all c d n sites in a stack
 */
-func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSitesOK, error) {
+func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSitesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSitesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetSites",
 		Method:             "GET",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites",
@@ -1248,26 +1727,35 @@ func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInf
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSitesOK), nil
-
+	success, ok := result.(*GetSitesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSitesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PurgeContent purges cached content for all c d n sites on a stack
+  PurgeContent purges cached content for all c d n sites on a stack
 
-Content is re-cached on the CDN the next time it is requested. Use the returned purge ID to see the status of a purge request.
+  Content is re-cached on the CDN the next time it is requested. Use the returned purge ID to see the status of a purge request.
 */
-func (a *Client) PurgeContent(params *PurgeContentParams, authInfo runtime.ClientAuthInfoWriter) (*PurgeContentOK, error) {
+func (a *Client) PurgeContent(params *PurgeContentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PurgeContentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPurgeContentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PurgeContent",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/purge",
@@ -1279,26 +1767,35 @@ func (a *Client) PurgeContent(params *PurgeContentParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PurgeContentOK), nil
-
+	success, ok := result.(*PurgeContentOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PurgeContentDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-RenewCertificate issues a renewal for an s s l certificate
+  RenewCertificate issues a renewal for an s s l certificate
 
-StackPath automatically renews certificates that are 30 days from expiration. Call this to retry a renewal that previously failed.
+  StackPath automatically renews certificates that are 30 days from expiration. Call this to retry a renewal that previously failed.
 */
-func (a *Client) RenewCertificate(params *RenewCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*RenewCertificateNoContent, error) {
+func (a *Client) RenewCertificate(params *RenewCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RenewCertificateNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRenewCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "RenewCertificate",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}/renew",
@@ -1310,26 +1807,35 @@ func (a *Client) RenewCertificate(params *RenewCertificateParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*RenewCertificateNoContent), nil
-
+	success, ok := result.(*RenewCertificateNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*RenewCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-RequestCertificate requests an s s l certificate for a c d n site
+  RequestCertificate requests an s s l certificate for a c d n site
 
-The optional list of hosts should be delivery domains for the site. If no hosts parameter is provided, all delivery domains for a site will be included in the SAN field. If the hosts parameter is provided, then the first entry in the list will be used as the certificate's common name.
+  The optional list of hosts should be delivery domains for the site. If no hosts parameter is provided, all delivery domains for a site will be included in the SAN field. If the hosts parameter is provided, then the first entry in the list will be used as the certificate's common name.
 */
-func (a *Client) RequestCertificate(params *RequestCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*RequestCertificateOK, error) {
+func (a *Client) RequestCertificate(params *RequestCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestCertificateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRequestCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "RequestCertificate",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/request",
@@ -1341,26 +1847,35 @@ func (a *Client) RequestCertificate(params *RequestCertificateParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*RequestCertificateOK), nil
-
+	success, ok := result.(*RequestCertificateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*RequestCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-ScanOrigin scans an origin from the c d n
+  ScanOrigin scans an origin from the c d n
 
-Retrieve information regarding an origin, such as its IP address and whether or not it supports SSL.
+  Retrieve information regarding an origin, such as its IP address and whether or not it supports SSL.
 */
-func (a *Client) ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAuthInfoWriter) (*ScanOriginOK, error) {
+func (a *Client) ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ScanOriginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewScanOriginParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "ScanOrigin",
 		Method:             "POST",
 		PathPattern:        "/cdn/v1/origins/scan",
@@ -1372,24 +1887,33 @@ func (a *Client) ScanOrigin(params *ScanOriginParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ScanOriginOK), nil
-
+	success, ok := result.(*ScanOriginOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*ScanOriginDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateCertificate updates an s s l certificate
+  UpdateCertificate updates an s s l certificate
 */
-func (a *Client) UpdateCertificate(params *UpdateCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateCertificateOK, error) {
+func (a *Client) UpdateCertificate(params *UpdateCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCertificateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateCertificateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateCertificate",
 		Method:             "PUT",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/certificates/{certificate_id}",
@@ -1401,24 +1925,33 @@ func (a *Client) UpdateCertificate(params *UpdateCertificateParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateCertificateOK), nil
-
+	success, ok := result.(*UpdateCertificateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateOrigin updates an origin
+  UpdateOrigin updates an origin
 */
-func (a *Client) UpdateOrigin(params *UpdateOriginParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateOriginOK, error) {
+func (a *Client) UpdateOrigin(params *UpdateOriginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateOriginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateOriginParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateOrigin",
 		Method:             "PATCH",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/origins/{origin_id}",
@@ -1430,24 +1963,33 @@ func (a *Client) UpdateOrigin(params *UpdateOriginParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateOriginOK), nil
-
+	success, ok := result.(*UpdateOriginOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateOriginDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateScopeConfiguration updates a c d n site s scope configuration
+  UpdateScopeConfiguration updates a c d n site s scope configuration
 */
-func (a *Client) UpdateScopeConfiguration(params *UpdateScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateScopeConfigurationOK, error) {
+func (a *Client) UpdateScopeConfiguration(params *UpdateScopeConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScopeConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateScopeConfigurationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateScopeConfiguration",
 		Method:             "PATCH",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/configuration",
@@ -1459,24 +2001,33 @@ func (a *Client) UpdateScopeConfiguration(params *UpdateScopeConfigurationParams
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateScopeConfigurationOK), nil
-
+	success, ok := result.(*UpdateScopeConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateScopeConfigurationDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateScopeRuleConfiguration updates an edge rule s configuration
+  UpdateScopeRuleConfiguration updates an edge rule s configuration
 */
-func (a *Client) UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateScopeRuleConfigurationOK, error) {
+func (a *Client) UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScopeRuleConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateScopeRuleConfigurationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateScopeRuleConfiguration",
 		Method:             "PATCH",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration",
@@ -1488,26 +2039,35 @@ func (a *Client) UpdateScopeRuleConfiguration(params *UpdateScopeRuleConfigurati
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateScopeRuleConfigurationOK), nil
-
+	success, ok := result.(*UpdateScopeRuleConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateScopeRuleConfigurationDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateSiteCertificateHosts updates an s s l certificate s hosts
+  UpdateSiteCertificateHosts updates an s s l certificate s hosts
 
-Updating hosts issues a new certificate.
+  Updating hosts issues a new certificate.
 */
-func (a *Client) UpdateSiteCertificateHosts(params *UpdateSiteCertificateHostsParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateSiteCertificateHostsNoContent, error) {
+func (a *Client) UpdateSiteCertificateHosts(params *UpdateSiteCertificateHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSiteCertificateHostsNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSiteCertificateHostsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateSiteCertificateHosts",
 		Method:             "PUT",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/certificates/{certificate_id}/hosts",
@@ -1519,24 +2079,33 @@ func (a *Client) UpdateSiteCertificateHosts(params *UpdateSiteCertificateHostsPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateSiteCertificateHostsNoContent), nil
-
+	success, ok := result.(*UpdateSiteCertificateHostsNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateSiteCertificateHostsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-UpdateSiteScript updates an edge engine script
+  UpdateSiteScript updates an edge engine script
 */
-func (a *Client) UpdateSiteScript(params *UpdateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter) (*UpdateSiteScriptOK, error) {
+func (a *Client) UpdateSiteScript(params *UpdateSiteScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSiteScriptOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSiteScriptParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "UpdateSiteScript",
 		Method:             "PATCH",
 		PathPattern:        "/cdn/v1/stacks/{stack_id}/sites/{site_id}/scripts/{script_id}",
@@ -1548,12 +2117,22 @@ func (a *Client) UpdateSiteScript(params *UpdateSiteScriptParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateSiteScriptOK), nil
-
+	success, ok := result.(*UpdateSiteScriptOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*UpdateSiteScriptDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

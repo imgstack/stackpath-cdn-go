@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CustconfRobotsTxt custconf robots txt
+//
 // swagger:model custconfRobotsTxt
 type CustconfRobotsTxt struct {
 
@@ -39,6 +41,11 @@ type CustconfRobotsTxt struct {
 
 // Validate validates this custconf robots txt
 func (m *CustconfRobotsTxt) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this custconf robots txt based on context it is used
+func (m *CustconfRobotsTxt) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

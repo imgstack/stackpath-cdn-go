@@ -13,77 +13,93 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
-// NewConnectScopeToOriginParams creates a new ConnectScopeToOriginParams object
-// with the default values initialized.
+// NewConnectScopeToOriginParams creates a new ConnectScopeToOriginParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewConnectScopeToOriginParams() *ConnectScopeToOriginParams {
-	var ()
 	return &ConnectScopeToOriginParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewConnectScopeToOriginParamsWithTimeout creates a new ConnectScopeToOriginParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewConnectScopeToOriginParamsWithTimeout(timeout time.Duration) *ConnectScopeToOriginParams {
-	var ()
 	return &ConnectScopeToOriginParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewConnectScopeToOriginParamsWithContext creates a new ConnectScopeToOriginParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewConnectScopeToOriginParamsWithContext(ctx context.Context) *ConnectScopeToOriginParams {
-	var ()
 	return &ConnectScopeToOriginParams{
-
 		Context: ctx,
 	}
 }
 
 // NewConnectScopeToOriginParamsWithHTTPClient creates a new ConnectScopeToOriginParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewConnectScopeToOriginParamsWithHTTPClient(client *http.Client) *ConnectScopeToOriginParams {
-	var ()
 	return &ConnectScopeToOriginParams{
 		HTTPClient: client,
 	}
 }
 
-/*ConnectScopeToOriginParams contains all the parameters to send to the API endpoint
-for the connect scope to origin operation typically these are written to a http.Request
+/* ConnectScopeToOriginParams contains all the parameters to send to the API endpoint
+   for the connect scope to origin operation.
+
+   Typically these are written to a http.Request.
 */
 type ConnectScopeToOriginParams struct {
 
-	/*Body*/
+	// Body.
 	Body *models.CdnConnectScopeToOriginRequest
-	/*ScopeID
-	  The ID of the scope to associate an origin with
 
+	/* ScopeID.
+
+	   The ID of the scope to associate an origin with
 	*/
 	ScopeID string
-	/*SiteID
-	  The ID of the site containing the scope to associate an origin with
 
+	/* SiteID.
+
+	   The ID of the site containing the scope to associate an origin with
 	*/
 	SiteID string
-	/*StackID
-	  The ID of the stack containing the site containing the scope to associate an origin with
 
+	/* StackID.
+
+	   The ID of the stack containing the site containing the scope to associate an origin with
 	*/
 	StackID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the connect scope to origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ConnectScopeToOriginParams) WithDefaults() *ConnectScopeToOriginParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the connect scope to origin params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ConnectScopeToOriginParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the connect scope to origin params
@@ -170,7 +186,6 @@ func (o *ConnectScopeToOriginParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

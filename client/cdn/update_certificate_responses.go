@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // UpdateCertificateReader is a Reader for the UpdateCertificate structure.
@@ -24,28 +23,24 @@ type UpdateCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateCertificateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewUpdateCertificateUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewUpdateCertificateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewUpdateCertificateDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewUpdateCertificateOK() *UpdateCertificateOK {
 	return &UpdateCertificateOK{}
 }
 
-/*UpdateCertificateOK handles this case with default header values.
+/* UpdateCertificateOK describes a response with status code 200, with default header values.
 
 UpdateCertificateOK update certificate o k
 */
@@ -73,6 +68,9 @@ type UpdateCertificateOK struct {
 
 func (o *UpdateCertificateOK) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] updateCertificateOK  %+v", 200, o.Payload)
+}
+func (o *UpdateCertificateOK) GetPayload() *models.CdnUpdateCertificateResponse {
+	return o.Payload
 }
 
 func (o *UpdateCertificateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewUpdateCertificateUnauthorized() *UpdateCertificateUnauthorized {
 	return &UpdateCertificateUnauthorized{}
 }
 
-/*UpdateCertificateUnauthorized handles this case with default header values.
+/* UpdateCertificateUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type UpdateCertificateUnauthorized struct {
 
 func (o *UpdateCertificateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] updateCertificateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *UpdateCertificateUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateCertificateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewUpdateCertificateInternalServerError() *UpdateCertificateInternalServerE
 	return &UpdateCertificateInternalServerError{}
 }
 
-/*UpdateCertificateInternalServerError handles this case with default header values.
+/* UpdateCertificateInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type UpdateCertificateInternalServerError struct {
 
 func (o *UpdateCertificateInternalServerError) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] updateCertificateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateCertificateInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateCertificateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewUpdateCertificateDefault(code int) *UpdateCertificateDefault {
 	}
 }
 
-/*UpdateCertificateDefault handles this case with default header values.
+/* UpdateCertificateDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *UpdateCertificateDefault) Code() int {
 
 func (o *UpdateCertificateDefault) Error() string {
 	return fmt.Sprintf("[PUT /cdn/v1/stacks/{stack_id}/certificates/{certificate_id}][%d] UpdateCertificate default  %+v", o._statusCode, o.Payload)
+}
+func (o *UpdateCertificateDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

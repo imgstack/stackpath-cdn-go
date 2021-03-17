@@ -7,16 +7,17 @@ package models
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StackpathRPCBadRequest stackpath rpc bad request
+//
 // swagger:model stackpath.rpc.BadRequest
 type StackpathRPCBadRequest struct {
 
@@ -31,10 +32,7 @@ func (m *StackpathRPCBadRequest) AtType() string {
 
 // SetAtType sets the at type of this subtype
 func (m *StackpathRPCBadRequest) SetAtType(val string) {
-
 }
-
-// FieldViolations gets the field violations of this subtype
 
 // UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
 func (m *StackpathRPCBadRequest) UnmarshalJSON(raw []byte) error {
@@ -89,8 +87,7 @@ func (m StackpathRPCBadRequest) MarshalJSON() ([]byte, error) {
 	}{
 
 		FieldViolations: m.FieldViolations,
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -99,8 +96,7 @@ func (m StackpathRPCBadRequest) MarshalJSON() ([]byte, error) {
 	}{
 
 		AtType: m.AtType(),
-	},
-	)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -135,6 +131,38 @@ func (m *StackpathRPCBadRequest) validateFieldViolations(formats strfmt.Registry
 
 		if m.FieldViolations[i] != nil {
 			if err := m.FieldViolations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("fieldViolations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this stackpath rpc bad request based on the context it is used
+func (m *StackpathRPCBadRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFieldViolations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StackpathRPCBadRequest) contextValidateFieldViolations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.FieldViolations); i++ {
+
+		if m.FieldViolations[i] != nil {
+			if err := m.FieldViolations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("fieldViolations" + "." + strconv.Itoa(i))
 				}

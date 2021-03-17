@@ -6,9 +6,10 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -16,6 +17,7 @@ import (
 // CdnScopeRule A EdgeRule associated with a CDN site
 //
 // EdgeRules can modify incoming HTTP requests to a CDN site before they're sent to the origin.
+//
 // swagger:model cdnScopeRule
 type CdnScopeRule struct {
 
@@ -56,7 +58,6 @@ func (m *CdnScopeRule) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnScopeRule) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -69,7 +70,6 @@ func (m *CdnScopeRule) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *CdnScopeRule) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -78,6 +78,11 @@ func (m *CdnScopeRule) validateUpdatedAt(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this cdn scope rule based on context it is used
+func (m *CdnScopeRule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

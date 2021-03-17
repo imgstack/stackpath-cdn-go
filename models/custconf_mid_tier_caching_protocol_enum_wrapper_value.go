@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustconfMidTierCachingProtocolEnumWrapperValue custconf mid tier caching protocol enum wrapper value
+//
 // swagger:model custconfMidTierCachingProtocolEnumWrapperValue
 type CustconfMidTierCachingProtocolEnumWrapperValue string
 
@@ -47,7 +48,7 @@ func init() {
 }
 
 func (m CustconfMidTierCachingProtocolEnumWrapperValue) validateCustconfMidTierCachingProtocolEnumWrapperValueEnum(path, location string, value CustconfMidTierCachingProtocolEnumWrapperValue) error {
-	if err := validate.Enum(path, location, value, custconfMidTierCachingProtocolEnumWrapperValueEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, custconfMidTierCachingProtocolEnumWrapperValueEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -65,5 +66,10 @@ func (m CustconfMidTierCachingProtocolEnumWrapperValue) Validate(formats strfmt.
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this custconf mid tier caching protocol enum wrapper value based on context it is used
+func (m CustconfMidTierCachingProtocolEnumWrapperValue) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

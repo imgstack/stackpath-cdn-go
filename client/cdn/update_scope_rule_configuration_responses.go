@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/renderinc/stackpath-cdn-go/models"
+	"github.com/renderinc/stackpath-cdn-go/models"
 )
 
 // UpdateScopeRuleConfigurationReader is a Reader for the UpdateScopeRuleConfiguration structure.
@@ -24,28 +23,24 @@ type UpdateScopeRuleConfigurationReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateScopeRuleConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateScopeRuleConfigurationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewUpdateScopeRuleConfigurationUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 500:
 		result := NewUpdateScopeRuleConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		result := NewUpdateScopeRuleConfigurationDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -63,7 +58,7 @@ func NewUpdateScopeRuleConfigurationOK() *UpdateScopeRuleConfigurationOK {
 	return &UpdateScopeRuleConfigurationOK{}
 }
 
-/*UpdateScopeRuleConfigurationOK handles this case with default header values.
+/* UpdateScopeRuleConfigurationOK describes a response with status code 200, with default header values.
 
 UpdateScopeRuleConfigurationOK update scope rule configuration o k
 */
@@ -73,6 +68,9 @@ type UpdateScopeRuleConfigurationOK struct {
 
 func (o *UpdateScopeRuleConfigurationOK) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration][%d] updateScopeRuleConfigurationOK  %+v", 200, o.Payload)
+}
+func (o *UpdateScopeRuleConfigurationOK) GetPayload() *models.CdnUpdateScopeRuleConfigurationResponse {
+	return o.Payload
 }
 
 func (o *UpdateScopeRuleConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -92,7 +90,7 @@ func NewUpdateScopeRuleConfigurationUnauthorized() *UpdateScopeRuleConfiguration
 	return &UpdateScopeRuleConfigurationUnauthorized{}
 }
 
-/*UpdateScopeRuleConfigurationUnauthorized handles this case with default header values.
+/* UpdateScopeRuleConfigurationUnauthorized describes a response with status code 401, with default header values.
 
 Returned when an unauthorized request is attempted.
 */
@@ -102,6 +100,9 @@ type UpdateScopeRuleConfigurationUnauthorized struct {
 
 func (o *UpdateScopeRuleConfigurationUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration][%d] updateScopeRuleConfigurationUnauthorized  %+v", 401, o.Payload)
+}
+func (o *UpdateScopeRuleConfigurationUnauthorized) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateScopeRuleConfigurationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +122,7 @@ func NewUpdateScopeRuleConfigurationInternalServerError() *UpdateScopeRuleConfig
 	return &UpdateScopeRuleConfigurationInternalServerError{}
 }
 
-/*UpdateScopeRuleConfigurationInternalServerError handles this case with default header values.
+/* UpdateScopeRuleConfigurationInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error.
 */
@@ -131,6 +132,9 @@ type UpdateScopeRuleConfigurationInternalServerError struct {
 
 func (o *UpdateScopeRuleConfigurationInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration][%d] updateScopeRuleConfigurationInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateScopeRuleConfigurationInternalServerError) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateScopeRuleConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -152,7 +156,7 @@ func NewUpdateScopeRuleConfigurationDefault(code int) *UpdateScopeRuleConfigurat
 	}
 }
 
-/*UpdateScopeRuleConfigurationDefault handles this case with default header values.
+/* UpdateScopeRuleConfigurationDefault describes a response with status code -1, with default header values.
 
 Default error structure.
 */
@@ -169,6 +173,9 @@ func (o *UpdateScopeRuleConfigurationDefault) Code() int {
 
 func (o *UpdateScopeRuleConfigurationDefault) Error() string {
 	return fmt.Sprintf("[PATCH /cdn/v1/stacks/{stack_id}/sites/{site_id}/scopes/{scope_id}/rules/{rule_id}/configuration][%d] UpdateScopeRuleConfiguration default  %+v", o._statusCode, o.Payload)
+}
+func (o *UpdateScopeRuleConfigurationDefault) GetPayload() *models.APIStatus {
+	return o.Payload
 }
 
 func (o *UpdateScopeRuleConfigurationDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

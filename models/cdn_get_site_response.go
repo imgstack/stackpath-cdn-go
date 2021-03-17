@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CdnGetSiteResponse The response from a request to retrieve an individual CDN site
+//
 // swagger:model cdnGetSiteResponse
 type CdnGetSiteResponse struct {
 
@@ -35,13 +37,40 @@ func (m *CdnGetSiteResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CdnGetSiteResponse) validateSite(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Site) { // not required
 		return nil
 	}
 
 	if m.Site != nil {
 		if err := m.Site.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("site")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cdn get site response based on the context it is used
+func (m *CdnGetSiteResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSite(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CdnGetSiteResponse) contextValidateSite(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Site != nil {
+		if err := m.Site.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("site")
 			}
